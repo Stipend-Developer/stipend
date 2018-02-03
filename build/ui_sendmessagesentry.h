@@ -163,7 +163,7 @@ public:
         SendMessagesEntry->setWindowTitle(QApplication::translate("SendMessagesEntry", "Form", Q_NULLPTR));
         label_2->setText(QApplication::translate("SendMessagesEntry", "Send &To:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        sendTo->setToolTip(QApplication::translate("SendMessagesEntry", "The address to send the payment to  (e.g. Mg3UTsYKBUBLQvKs2CQ5aJi1N5xhoY5T6a)", Q_NULLPTR));
+        sendTo->setToolTip(QApplication::translate("SendMessagesEntry", "The address to send the payment to  (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
         pasteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Paste address from clipboard", Q_NULLPTR));

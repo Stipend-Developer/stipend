@@ -43,7 +43,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Stipend address (e.g. Mg3UTsYKBUBLQvKs2CQ5aJi1N5xhoY5T6a)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Stipend address (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)"));
 #endif
 
     addEntry();

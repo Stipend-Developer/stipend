@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_OptionsModel_t {
     QByteArrayData data[9];
-    char stringdata0[160];
+    char stringdata0[161];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,7 +39,7 @@ QT_MOC_LITERAL(4, 38, 21), // "transactionFeeChanged"
 QT_MOC_LITERAL(5, 60, 21), // "reserveBalanceChanged"
 QT_MOC_LITERAL(6, 82, 26), // "coinControlFeaturesChanged"
 QT_MOC_LITERAL(7, 109, 21), // "darksendRoundsChanged"
-QT_MOC_LITERAL(8, 131, 28) // "AnonymizeStipendAmountChanged"
+QT_MOC_LITERAL(8, 131, 29) // "AnonymizeStipendAmountChanged"
 
     },
     "OptionsModel\0displayUnitChanged\0\0unit\0"
