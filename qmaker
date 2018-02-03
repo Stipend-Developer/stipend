@@ -1,0 +1,17 @@
+#!/bin/sh
+
+qmake \
+"RELEASE=1" \
+"BDB_LIB_PATH=/usr/local/Cellar/berkeley-db@4/4.8.30/lib" \
+"BDB_INCLUDE_PATH=/usr/local/Cellar/berkeley-db@4/4.8.30/include" \
+"BOOST_INCLUDE_PATH=/usr/local/Cellar/boost/1.65.1/include" \
+"BOOST_LIB_PATH=/usr/local/Cellar/boost/1.65.1/lib" \
+"MINIUPNPC_INCLUDE_PATH=/usr/local/Cellar/miniupnpc/2.0.20171102/include" \
+"MINIUPNPC_LIB_PATH=/usr/local/Cellar/miniupnpc/2.0.20171102/lib" \
+"OPENSSL_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2m/include" \
+"OPENSSL_LIB_PATH=/usr/local/Cellar/openssl/1.0.2m/lib"
+
+
+chmod 755 src/leveldb/build_detect_platform
+chmod 755 src/secp256k1/autogen.sh
+
