@@ -1376,10 +1376,10 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     else if (nHeight > 300 && nHeight <= 400) {
         nSubsidy = 15 * COIN; // instamine prevention
     }   
-    else if (nHeight > 400 && nHeight <= 1500000) {
+    else if (nHeight > 400 && nHeight <= 210000) {
         nSubsidy = 25 * COIN; // initial block reward
     }   	
-    else if (nHeight > 1500000) {
+    else if (nHeight > 210000) {
         nSubsidy = 0 * COIN; // initial block reward
     }
 	
@@ -1392,26 +1392,20 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
     int64_t nSubsidy = 0;
 
-    if (pindexBest->nHeight+1 > 0 && pindexBest->nHeight+1 <= 4801) {
-        nSubsidy = (nCoinAge * STATIC_POS_REWARD) / ((365 * 33 + 8) / 33); // 10% per annum.
-    }
-    else if (pindexBest->nHeight+1 > 4801 && pindexBest->nHeight+1 <= 50000)  {
-        nSubsidy = 15 * COIN; 
-    }
-    else if (pindexBest->nHeight+1 > 50000 && pindexBest->nHeight+1 <= 100000)  {
+    if (pindexBest->nHeight+1 > 1501 && pindexBest->nHeight+1 <= 210000)  {
         nSubsidy = 25 * COIN; 
     }
-    else if (pindexBest->nHeight+1 > 100000 && pindexBest->nHeight+1 <= 200000) {
-        nSubsidy = 20 * COIN;
+    else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
+        nSubsidy = 20 * COIN; 
     }
-    else if (pindexBest->nHeight+1 > 200000 && pindexBest->nHeight+1 <= 300000) {
-        nSubsidy = 15 * COIN;
-    }
-    else if (pindexBest->nHeight+1 > 300000 && pindexBest->nHeight+1 <= 450000) {
+    else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
         nSubsidy = 10 * COIN;
     }
-    else if (pindexBest->nHeight+1 > 450000) {
+    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 850001) {
         nSubsidy = 5 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 850001) {
+        nSubsidy = 3 * COIN;
     }
         
     return nSubsidy + nFees;
