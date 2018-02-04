@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'guiutil.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'guiutil.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GUIUtil__ToolTipToRichTextFilter_t {
     QByteArrayData data[1];
     char stringdata0[33];
@@ -64,7 +62,7 @@ void GUIUtil::ToolTipToRichTextFilter::qt_static_metacall(QObject *_o, QMetaObje
 
 const QMetaObject GUIUtil::ToolTipToRichTextFilter::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_GUIUtil__ToolTipToRichTextFilter.data,
-      qt_meta_data_GUIUtil__ToolTipToRichTextFilter,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_GUIUtil__ToolTipToRichTextFilter,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -75,7 +73,7 @@ const QMetaObject *GUIUtil::ToolTipToRichTextFilter::metaObject() const
 
 void *GUIUtil::ToolTipToRichTextFilter::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_GUIUtil__ToolTipToRichTextFilter.stringdata0))
         return static_cast<void*>(const_cast< ToolTipToRichTextFilter*>(this));
     return QObject::qt_metacast(_clname);
@@ -84,6 +82,8 @@ void *GUIUtil::ToolTipToRichTextFilter::qt_metacast(const char *_clname)
 int GUIUtil::ToolTipToRichTextFilter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_GUIUtil__TableViewLastColumnResizingFixer_t {
@@ -151,7 +151,7 @@ void GUIUtil::TableViewLastColumnResizingFixer::qt_static_metacall(QObject *_o, 
 
 const QMetaObject GUIUtil::TableViewLastColumnResizingFixer::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_GUIUtil__TableViewLastColumnResizingFixer.data,
-      qt_meta_data_GUIUtil__TableViewLastColumnResizingFixer,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_GUIUtil__TableViewLastColumnResizingFixer,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -162,7 +162,7 @@ const QMetaObject *GUIUtil::TableViewLastColumnResizingFixer::metaObject() const
 
 void *GUIUtil::TableViewLastColumnResizingFixer::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_GUIUtil__TableViewLastColumnResizingFixer.stringdata0))
         return static_cast<void*>(const_cast< TableViewLastColumnResizingFixer*>(this));
     return QObject::qt_metacast(_clname);
@@ -228,7 +228,7 @@ void GUIUtil::HelpMessageBox::qt_static_metacall(QObject *_o, QMetaObject::Call 
 
 const QMetaObject GUIUtil::HelpMessageBox::staticMetaObject = {
     { &QMessageBox::staticMetaObject, qt_meta_stringdata_GUIUtil__HelpMessageBox.data,
-      qt_meta_data_GUIUtil__HelpMessageBox,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_GUIUtil__HelpMessageBox,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -239,7 +239,7 @@ const QMetaObject *GUIUtil::HelpMessageBox::metaObject() const
 
 void *GUIUtil::HelpMessageBox::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_GUIUtil__HelpMessageBox.stringdata0))
         return static_cast<void*>(const_cast< HelpMessageBox*>(this));
     return QMessageBox::qt_metacast(_clname);
@@ -248,7 +248,8 @@ void *GUIUtil::HelpMessageBox::qt_metacast(const char *_clname)
 int GUIUtil::HelpMessageBox::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMessageBox::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

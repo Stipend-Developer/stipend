@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'transactiondescdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -58,9 +58,9 @@ public:
 
     void retranslateUi(QDialog *TransactionDescDialog)
     {
-        TransactionDescDialog->setWindowTitle(QApplication::translate("TransactionDescDialog", "Transaction details", Q_NULLPTR));
+        TransactionDescDialog->setWindowTitle(QApplication::translate("TransactionDescDialog", "Transaction details", 0));
 #ifndef QT_NO_TOOLTIP
-        detailText->setToolTip(QApplication::translate("TransactionDescDialog", "This pane shows a detailed description of the transaction", Q_NULLPTR));
+        detailText->setToolTip(QApplication::translate("TransactionDescDialog", "This pane shows a detailed description of the transaction", 0));
 #endif // QT_NO_TOOLTIP
     } // retranslateUi
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'messagepage.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -191,32 +191,32 @@ public:
 
     void retranslateUi(QWidget *MessagePage)
     {
-        MessagePage->setWindowTitle(QApplication::translate("MessagePage", "Address Book", Q_NULLPTR));
-        labelExplanation->setText(QApplication::translate("MessagePage", "These are your sent and received encrypted messages. Click on an item to read it.", Q_NULLPTR));
+        MessagePage->setWindowTitle(QApplication::translate("MessagePage", "Address Book", 0));
+        labelExplanation->setText(QApplication::translate("MessagePage", "These are your sent and received encrypted messages. Click on an item to read it.", 0));
 #ifndef QT_NO_TOOLTIP
-        tableView->setToolTip(QApplication::translate("MessagePage", "Click on a message to view it", Q_NULLPTR));
+        tableView->setToolTip(QApplication::translate("MessagePage", "Click on a message to view it", 0));
 #endif // QT_NO_TOOLTIP
         messageDetails->setTitle(QString());
-        backButton->setText(QApplication::translate("MessagePage", "&Back", Q_NULLPTR));
-        labelContact->setText(QApplication::translate("MessagePage", "Contact:", Q_NULLPTR));
+        backButton->setText(QApplication::translate("MessagePage", "&Back", 0));
+        labelContact->setText(QApplication::translate("MessagePage", "Contact:", 0));
         contactLabel->setText(QString());
-        newButton->setText(QApplication::translate("MessagePage", "&Conversation", Q_NULLPTR));
+        newButton->setText(QApplication::translate("MessagePage", "&Conversation", 0));
 #ifndef QT_NO_TOOLTIP
-        sendButton->setToolTip(QApplication::translate("MessagePage", "Sign a message to prove you own a Stipend address", Q_NULLPTR));
+        sendButton->setToolTip(QApplication::translate("MessagePage", "Sign a message to prove you own a Stipend address", 0));
 #endif // QT_NO_TOOLTIP
-        sendButton->setText(QApplication::translate("MessagePage", "&Send", Q_NULLPTR));
+        sendButton->setText(QApplication::translate("MessagePage", "&Send", 0));
 #ifndef QT_NO_TOOLTIP
-        copyFromAddressButton->setToolTip(QApplication::translate("MessagePage", "Copy the currently selected address to the system clipboard", Q_NULLPTR));
+        copyFromAddressButton->setToolTip(QApplication::translate("MessagePage", "Copy the currently selected address to the system clipboard", 0));
 #endif // QT_NO_TOOLTIP
-        copyFromAddressButton->setText(QApplication::translate("MessagePage", "&Copy From Address", Q_NULLPTR));
+        copyFromAddressButton->setText(QApplication::translate("MessagePage", "&Copy From Address", 0));
 #ifndef QT_NO_TOOLTIP
-        copyToAddressButton->setToolTip(QApplication::translate("MessagePage", "Copy the currently selected address to the system clipboard", Q_NULLPTR));
+        copyToAddressButton->setToolTip(QApplication::translate("MessagePage", "Copy the currently selected address to the system clipboard", 0));
 #endif // QT_NO_TOOLTIP
-        copyToAddressButton->setText(QApplication::translate("MessagePage", "Copy To &Address", Q_NULLPTR));
+        copyToAddressButton->setText(QApplication::translate("MessagePage", "Copy To &Address", 0));
 #ifndef QT_NO_TOOLTIP
-        deleteButton->setToolTip(QApplication::translate("MessagePage", "Delete the currently selected address from the list", Q_NULLPTR));
+        deleteButton->setToolTip(QApplication::translate("MessagePage", "Delete the currently selected address from the list", 0));
 #endif // QT_NO_TOOLTIP
-        deleteButton->setText(QApplication::translate("MessagePage", "&Delete", Q_NULLPTR));
+        deleteButton->setText(QApplication::translate("MessagePage", "&Delete", 0));
     } // retranslateUi
 
 };

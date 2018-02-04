@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'blockbrowser.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -306,34 +306,34 @@ public:
 
     void retranslateUi(QWidget *BlockBrowser)
     {
-        BlockBrowser->setWindowTitle(QApplication::translate("BlockBrowser", "Form", Q_NULLPTR));
-        label_5->setText(QApplication::translate("BlockBrowser", "<html><head/><body><p><span style=\" font-size:20px; font-weight:600; color:#000000;\">Block Explorer </span></p></body></html>", Q_NULLPTR));
-        txButton->setText(QApplication::translate("BlockBrowser", "Decode Transaction", Q_NULLPTR));
-        inputLabel->setText(QApplication::translate("BlockBrowser", "Inputs:", Q_NULLPTR));
-        valueLabel->setText(QApplication::translate("BlockBrowser", "Value out:", Q_NULLPTR));
-        txLabel->setText(QApplication::translate("BlockBrowser", "Transaction ID:", Q_NULLPTR));
-        hardBox->setText(QApplication::translate("BlockBrowser", "0.00", Q_NULLPTR));
-        txID->setText(QApplication::translate("BlockBrowser", "000", Q_NULLPTR));
+        BlockBrowser->setWindowTitle(QApplication::translate("BlockBrowser", "Form", 0));
+        label_5->setText(QApplication::translate("BlockBrowser", "<html><head/><body><p><span style=\" font-size:20px; font-weight:600; color:#000000;\">Block Explorer </span></p></body></html>", 0));
+        txButton->setText(QApplication::translate("BlockBrowser", "Decode Transaction", 0));
+        inputLabel->setText(QApplication::translate("BlockBrowser", "Inputs:", 0));
+        valueLabel->setText(QApplication::translate("BlockBrowser", "Value out:", 0));
+        txLabel->setText(QApplication::translate("BlockBrowser", "Transaction ID:", 0));
+        hardBox->setText(QApplication::translate("BlockBrowser", "0.00", 0));
+        txID->setText(QApplication::translate("BlockBrowser", "000", 0));
         inputBox->setText(QString());
         valueBox->setText(QString());
-        hardLabel->setText(QApplication::translate("BlockBrowser", "Block Difficulty:", Q_NULLPTR));
-        heightLabel_2->setText(QApplication::translate("BlockBrowser", "Block Height:", Q_NULLPTR));
-        timeBox->setText(QApplication::translate("BlockBrowser", "0", Q_NULLPTR));
-        blockButton->setText(QApplication::translate("BlockBrowser", "Jump to Block", Q_NULLPTR));
-        merkleLabel->setText(QApplication::translate("BlockBrowser", "Block Merkle:", Q_NULLPTR));
-        hashLabel->setText(QApplication::translate("BlockBrowser", "Block Hash:", Q_NULLPTR));
+        hardLabel->setText(QApplication::translate("BlockBrowser", "Block Difficulty:", 0));
+        heightLabel_2->setText(QApplication::translate("BlockBrowser", "Block Height:", 0));
+        timeBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        blockButton->setText(QApplication::translate("BlockBrowser", "Jump to Block", 0));
+        merkleLabel->setText(QApplication::translate("BlockBrowser", "Block Merkle:", 0));
+        hashLabel->setText(QApplication::translate("BlockBrowser", "Block Hash:", 0));
         feesBox->setText(QString());
-        heightLabel->setText(QApplication::translate("BlockBrowser", "0", Q_NULLPTR));
-        feesLabel->setText(QApplication::translate("BlockBrowser", "Fees:", Q_NULLPTR));
-        bitsLabel->setText(QApplication::translate("BlockBrowser", "Block nBits:", Q_NULLPTR));
-        bitsBox->setText(QApplication::translate("BlockBrowser", "0", Q_NULLPTR));
-        merkleBox->setText(QApplication::translate("BlockBrowser", "0x0", Q_NULLPTR));
-        outputLabel->setText(QApplication::translate("BlockBrowser", "Outputs:", Q_NULLPTR));
+        heightLabel->setText(QApplication::translate("BlockBrowser", "0", 0));
+        feesLabel->setText(QApplication::translate("BlockBrowser", "Fees:", 0));
+        bitsLabel->setText(QApplication::translate("BlockBrowser", "Block nBits:", 0));
+        bitsBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        merkleBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
+        outputLabel->setText(QApplication::translate("BlockBrowser", "Outputs:", 0));
         outputBox->setText(QString());
-        nonceLabel->setText(QApplication::translate("BlockBrowser", "Block nNonce:", Q_NULLPTR));
-        nonceBox->setText(QApplication::translate("BlockBrowser", "0", Q_NULLPTR));
-        timeLabel->setText(QApplication::translate("BlockBrowser", "Block Timestamp:", Q_NULLPTR));
-        hashBox->setText(QApplication::translate("BlockBrowser", "0x0", Q_NULLPTR));
+        nonceLabel->setText(QApplication::translate("BlockBrowser", "Block nNonce:", 0));
+        nonceBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        timeLabel->setText(QApplication::translate("BlockBrowser", "Block Timestamp:", 0));
+        hashBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
         txBox->setInputMask(QString());
         txBox->setPlaceholderText(QString());
     } // retranslateUi

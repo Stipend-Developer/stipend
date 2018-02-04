@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sendcoinsdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -507,45 +507,45 @@ public:
 
     void retranslateUi(QDialog *SendCoinsDialog)
     {
-        SendCoinsDialog->setWindowTitle(QApplication::translate("SendCoinsDialog", "Send Coins", Q_NULLPTR));
-        labelCoinControlFeatures->setText(QApplication::translate("SendCoinsDialog", "Coin Control Features", Q_NULLPTR));
-        pushButtonCoinControl->setText(QApplication::translate("SendCoinsDialog", "Inputs...", Q_NULLPTR));
-        labelCoinControlAutomaticallySelected->setText(QApplication::translate("SendCoinsDialog", "automatically selected", Q_NULLPTR));
-        labelCoinControlInsuffFunds->setText(QApplication::translate("SendCoinsDialog", "Insufficient funds!", Q_NULLPTR));
-        labelCoinControlQuantityText->setText(QApplication::translate("SendCoinsDialog", "Quantity:", Q_NULLPTR));
-        labelCoinControlQuantity->setText(QApplication::translate("SendCoinsDialog", "0", Q_NULLPTR));
-        labelCoinControlBytesText->setText(QApplication::translate("SendCoinsDialog", "Bytes:", Q_NULLPTR));
-        labelCoinControlBytes->setText(QApplication::translate("SendCoinsDialog", "0", Q_NULLPTR));
-        labelCoinControlAmountText->setText(QApplication::translate("SendCoinsDialog", "Amount:", Q_NULLPTR));
-        labelCoinControlAmount->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", Q_NULLPTR));
-        labelCoinControlPriorityText->setText(QApplication::translate("SendCoinsDialog", "Priority:", Q_NULLPTR));
-        labelCoinControlPriority->setText(QApplication::translate("SendCoinsDialog", "medium", Q_NULLPTR));
-        labelCoinControlFeeText->setText(QApplication::translate("SendCoinsDialog", "Fee:", Q_NULLPTR));
-        labelCoinControlFee->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", Q_NULLPTR));
-        labelCoinControlLowOutputText->setText(QApplication::translate("SendCoinsDialog", "Low Output:", Q_NULLPTR));
-        labelCoinControlLowOutput->setText(QApplication::translate("SendCoinsDialog", "no", Q_NULLPTR));
-        labelCoinControlAfterFeeText->setText(QApplication::translate("SendCoinsDialog", "After Fee:", Q_NULLPTR));
-        labelCoinControlAfterFee->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", Q_NULLPTR));
-        labelCoinControlChangeText->setText(QApplication::translate("SendCoinsDialog", "Change", Q_NULLPTR));
-        labelCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", Q_NULLPTR));
-        checkBoxCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "custom change address", Q_NULLPTR));
+        SendCoinsDialog->setWindowTitle(QApplication::translate("SendCoinsDialog", "Send Coins", 0));
+        labelCoinControlFeatures->setText(QApplication::translate("SendCoinsDialog", "Coin Control Features", 0));
+        pushButtonCoinControl->setText(QApplication::translate("SendCoinsDialog", "Inputs...", 0));
+        labelCoinControlAutomaticallySelected->setText(QApplication::translate("SendCoinsDialog", "automatically selected", 0));
+        labelCoinControlInsuffFunds->setText(QApplication::translate("SendCoinsDialog", "Insufficient funds!", 0));
+        labelCoinControlQuantityText->setText(QApplication::translate("SendCoinsDialog", "Quantity:", 0));
+        labelCoinControlQuantity->setText(QApplication::translate("SendCoinsDialog", "0", 0));
+        labelCoinControlBytesText->setText(QApplication::translate("SendCoinsDialog", "Bytes:", 0));
+        labelCoinControlBytes->setText(QApplication::translate("SendCoinsDialog", "0", 0));
+        labelCoinControlAmountText->setText(QApplication::translate("SendCoinsDialog", "Amount:", 0));
+        labelCoinControlAmount->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
+        labelCoinControlPriorityText->setText(QApplication::translate("SendCoinsDialog", "Priority:", 0));
+        labelCoinControlPriority->setText(QApplication::translate("SendCoinsDialog", "medium", 0));
+        labelCoinControlFeeText->setText(QApplication::translate("SendCoinsDialog", "Fee:", 0));
+        labelCoinControlFee->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
+        labelCoinControlLowOutputText->setText(QApplication::translate("SendCoinsDialog", "Low Output:", 0));
+        labelCoinControlLowOutput->setText(QApplication::translate("SendCoinsDialog", "no", 0));
+        labelCoinControlAfterFeeText->setText(QApplication::translate("SendCoinsDialog", "After Fee:", 0));
+        labelCoinControlAfterFee->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
+        labelCoinControlChangeText->setText(QApplication::translate("SendCoinsDialog", "Change", 0));
+        labelCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
+        checkBoxCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "custom change address", 0));
         labelCoinControlChangeLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        addButton->setToolTip(QApplication::translate("SendCoinsDialog", "Send to multiple recipients at once", Q_NULLPTR));
+        addButton->setToolTip(QApplication::translate("SendCoinsDialog", "Send to multiple recipients at once", 0));
 #endif // QT_NO_TOOLTIP
-        addButton->setText(QApplication::translate("SendCoinsDialog", "Add &Recipient", Q_NULLPTR));
+        addButton->setText(QApplication::translate("SendCoinsDialog", "Add &Recipient", 0));
 #ifndef QT_NO_TOOLTIP
-        clearButton->setToolTip(QApplication::translate("SendCoinsDialog", "Remove all transaction fields", Q_NULLPTR));
+        clearButton->setToolTip(QApplication::translate("SendCoinsDialog", "Remove all transaction fields", 0));
 #endif // QT_NO_TOOLTIP
-        clearButton->setText(QApplication::translate("SendCoinsDialog", "Clear &All", Q_NULLPTR));
-        checkUseDarksend->setText(QApplication::translate("SendCoinsDialog", "Darksend", Q_NULLPTR));
-        checkInstantX->setText(QApplication::translate("SendCoinsDialog", "InstantX", Q_NULLPTR));
-        label->setText(QApplication::translate("SendCoinsDialog", "Balance:", Q_NULLPTR));
-        labelBalance->setText(QApplication::translate("SendCoinsDialog", "123.456 SPD", Q_NULLPTR));
+        clearButton->setText(QApplication::translate("SendCoinsDialog", "Clear &All", 0));
+        checkUseDarksend->setText(QApplication::translate("SendCoinsDialog", "Darksend", 0));
+        checkInstantX->setText(QApplication::translate("SendCoinsDialog", "InstantX", 0));
+        label->setText(QApplication::translate("SendCoinsDialog", "Balance:", 0));
+        labelBalance->setText(QApplication::translate("SendCoinsDialog", "123.456 SPD", 0));
 #ifndef QT_NO_TOOLTIP
-        sendButton->setToolTip(QApplication::translate("SendCoinsDialog", "Confirm the send action", Q_NULLPTR));
+        sendButton->setToolTip(QApplication::translate("SendCoinsDialog", "Confirm the send action", 0));
 #endif // QT_NO_TOOLTIP
-        sendButton->setText(QApplication::translate("SendCoinsDialog", "S&end", Q_NULLPTR));
+        sendButton->setText(QApplication::translate("SendCoinsDialog", "S&end", 0));
     } // retranslateUi
 
 };

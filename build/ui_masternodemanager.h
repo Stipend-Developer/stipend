@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'masternodemanager.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -260,51 +260,51 @@ public:
 
     void retranslateUi(QWidget *MasternodeManager)
     {
-        MasternodeManager->setWindowTitle(QApplication::translate("MasternodeManager", "Form", Q_NULLPTR));
+        MasternodeManager->setWindowTitle(QApplication::translate("MasternodeManager", "Form", 0));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MasternodeManager", "Address", Q_NULLPTR));
+        ___qtablewidgetitem->setText(QApplication::translate("MasternodeManager", "Address", 0));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MasternodeManager", "Rank", Q_NULLPTR));
+        ___qtablewidgetitem1->setText(QApplication::translate("MasternodeManager", "Rank", 0));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MasternodeManager", "Active", Q_NULLPTR));
+        ___qtablewidgetitem2->setText(QApplication::translate("MasternodeManager", "Active", 0));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("MasternodeManager", "Active (secs)", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("MasternodeManager", "Active (secs)", 0));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("MasternodeManager", "Last Seen", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("MasternodeManager", "Last Seen", 0));
         QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("MasternodeManager", "Pubkey", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("MasternodeManager", "Pubkey", 0));
         QTableWidgetItem *___qtablewidgetitem6 = tableWidget_3->horizontalHeaderItem(0);
-        ___qtablewidgetitem6->setText(QApplication::translate("MasternodeManager", "Address", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("MasternodeManager", "Address", 0));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget_3->horizontalHeaderItem(1);
-        ___qtablewidgetitem7->setText(QApplication::translate("MasternodeManager", "Rank", Q_NULLPTR));
+        ___qtablewidgetitem7->setText(QApplication::translate("MasternodeManager", "Rank", 0));
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget_3->horizontalHeaderItem(2);
-        ___qtablewidgetitem8->setText(QApplication::translate("MasternodeManager", "Active", Q_NULLPTR));
+        ___qtablewidgetitem8->setText(QApplication::translate("MasternodeManager", "Active", 0));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget_3->horizontalHeaderItem(3);
-        ___qtablewidgetitem9->setText(QApplication::translate("MasternodeManager", "Active (secs)", Q_NULLPTR));
+        ___qtablewidgetitem9->setText(QApplication::translate("MasternodeManager", "Active (secs)", 0));
         QTableWidgetItem *___qtablewidgetitem10 = tableWidget_3->horizontalHeaderItem(4);
-        ___qtablewidgetitem10->setText(QApplication::translate("MasternodeManager", "Last Seen", Q_NULLPTR));
+        ___qtablewidgetitem10->setText(QApplication::translate("MasternodeManager", "Last Seen", 0));
         QTableWidgetItem *___qtablewidgetitem11 = tableWidget_3->horizontalHeaderItem(5);
-        ___qtablewidgetitem11->setText(QApplication::translate("MasternodeManager", "Pubkey", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MasternodeManager", "Stipend Node Count:", Q_NULLPTR));
-        countLabel->setText(QApplication::translate("MasternodeManager", "0", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MasternodeManager", "Stipend Network", Q_NULLPTR));
-        createButton->setText(QApplication::translate("MasternodeManager", "&Create...", Q_NULLPTR));
+        ___qtablewidgetitem11->setText(QApplication::translate("MasternodeManager", "Pubkey", 0));
+        label_2->setText(QApplication::translate("MasternodeManager", "Stipend Node Count:", 0));
+        countLabel->setText(QApplication::translate("MasternodeManager", "0", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MasternodeManager", "Stipend Network", 0));
+        createButton->setText(QApplication::translate("MasternodeManager", "&Create...", 0));
         QTableWidgetItem *___qtablewidgetitem12 = tableWidget_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem12->setText(QApplication::translate("MasternodeManager", "Alias", Q_NULLPTR));
+        ___qtablewidgetitem12->setText(QApplication::translate("MasternodeManager", "Alias", 0));
         QTableWidgetItem *___qtablewidgetitem13 = tableWidget_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem13->setText(QApplication::translate("MasternodeManager", "IP/Onion", Q_NULLPTR));
+        ___qtablewidgetitem13->setText(QApplication::translate("MasternodeManager", "IP/Onion", 0));
         QTableWidgetItem *___qtablewidgetitem14 = tableWidget_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem14->setText(QApplication::translate("MasternodeManager", "Donation %", Q_NULLPTR));
+        ___qtablewidgetitem14->setText(QApplication::translate("MasternodeManager", "Donation %", 0));
         QTableWidgetItem *___qtablewidgetitem15 = tableWidget_2->horizontalHeaderItem(3);
-        ___qtablewidgetitem15->setText(QApplication::translate("MasternodeManager", "Donation Address", Q_NULLPTR));
+        ___qtablewidgetitem15->setText(QApplication::translate("MasternodeManager", "Donation Address", 0));
         QTableWidgetItem *___qtablewidgetitem16 = tableWidget_2->horizontalHeaderItem(4);
-        ___qtablewidgetitem16->setText(QApplication::translate("MasternodeManager", "Status", Q_NULLPTR));
-        editButton->setText(QApplication::translate("MasternodeManager", "&Edit", Q_NULLPTR));
-        removeButton->setText(QApplication::translate("MasternodeManager", "&Remove", Q_NULLPTR));
-        UpdateButton->setText(QApplication::translate("MasternodeManager", "&Update", Q_NULLPTR));
-        startButton->setText(QApplication::translate("MasternodeManager", "S&tart", Q_NULLPTR));
-        startAllButton->setText(QApplication::translate("MasternodeManager", "St&art All", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MasternodeManager", "My Master Nodes", Q_NULLPTR));
+        ___qtablewidgetitem16->setText(QApplication::translate("MasternodeManager", "Status", 0));
+        editButton->setText(QApplication::translate("MasternodeManager", "&Edit", 0));
+        removeButton->setText(QApplication::translate("MasternodeManager", "&Remove", 0));
+        UpdateButton->setText(QApplication::translate("MasternodeManager", "&Update", 0));
+        startButton->setText(QApplication::translate("MasternodeManager", "S&tart", 0));
+        startAllButton->setText(QApplication::translate("MasternodeManager", "St&art All", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MasternodeManager", "My Master Nodes", 0));
     } // retranslateUi
 
 };

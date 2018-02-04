@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'coincontroldialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -319,29 +319,29 @@ public:
 
     void retranslateUi(QDialog *CoinControlDialog)
     {
-        CoinControlDialog->setWindowTitle(QApplication::translate("CoinControlDialog", "Coin Control", Q_NULLPTR));
-        labelCoinControlQuantityText->setText(QApplication::translate("CoinControlDialog", "Quantity:", Q_NULLPTR));
-        labelCoinControlBytesText->setText(QApplication::translate("CoinControlDialog", "Bytes:", Q_NULLPTR));
-        labelCoinControlAmountText->setText(QApplication::translate("CoinControlDialog", "Amount:", Q_NULLPTR));
-        labelCoinControlPriorityText->setText(QApplication::translate("CoinControlDialog", "Priority:", Q_NULLPTR));
+        CoinControlDialog->setWindowTitle(QApplication::translate("CoinControlDialog", "Coin Control", 0));
+        labelCoinControlQuantityText->setText(QApplication::translate("CoinControlDialog", "Quantity:", 0));
+        labelCoinControlBytesText->setText(QApplication::translate("CoinControlDialog", "Bytes:", 0));
+        labelCoinControlAmountText->setText(QApplication::translate("CoinControlDialog", "Amount:", 0));
+        labelCoinControlPriorityText->setText(QApplication::translate("CoinControlDialog", "Priority:", 0));
         labelCoinControlPriority->setText(QString());
-        labelCoinControlFeeText->setText(QApplication::translate("CoinControlDialog", "Fee:", Q_NULLPTR));
-        labelCoinControlLowOutputText->setText(QApplication::translate("CoinControlDialog", "Low Output:", Q_NULLPTR));
-        labelCoinControlAfterFeeText->setText(QApplication::translate("CoinControlDialog", "After Fee:", Q_NULLPTR));
-        labelCoinControlChangeText->setText(QApplication::translate("CoinControlDialog", "Change:", Q_NULLPTR));
-        pushButtonSelectAll->setText(QApplication::translate("CoinControlDialog", "(un)select all", Q_NULLPTR));
-        radioTreeMode->setText(QApplication::translate("CoinControlDialog", "Tree mode", Q_NULLPTR));
-        radioListMode->setText(QApplication::translate("CoinControlDialog", "List mode", Q_NULLPTR));
+        labelCoinControlFeeText->setText(QApplication::translate("CoinControlDialog", "Fee:", 0));
+        labelCoinControlLowOutputText->setText(QApplication::translate("CoinControlDialog", "Low Output:", 0));
+        labelCoinControlAfterFeeText->setText(QApplication::translate("CoinControlDialog", "After Fee:", 0));
+        labelCoinControlChangeText->setText(QApplication::translate("CoinControlDialog", "Change:", 0));
+        pushButtonSelectAll->setText(QApplication::translate("CoinControlDialog", "(un)select all", 0));
+        radioTreeMode->setText(QApplication::translate("CoinControlDialog", "Tree mode", 0));
+        radioListMode->setText(QApplication::translate("CoinControlDialog", "List mode", 0));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
-        ___qtreewidgetitem->setText(7, QApplication::translate("CoinControlDialog", "Priority", Q_NULLPTR));
-        ___qtreewidgetitem->setText(6, QApplication::translate("CoinControlDialog", "Confirmations", Q_NULLPTR));
-        ___qtreewidgetitem->setText(5, QApplication::translate("CoinControlDialog", "Date", Q_NULLPTR));
-        ___qtreewidgetitem->setText(4, QApplication::translate("CoinControlDialog", "Darksend Rounds", Q_NULLPTR));
-        ___qtreewidgetitem->setText(3, QApplication::translate("CoinControlDialog", "Address", Q_NULLPTR));
-        ___qtreewidgetitem->setText(2, QApplication::translate("CoinControlDialog", "Label", Q_NULLPTR));
-        ___qtreewidgetitem->setText(1, QApplication::translate("CoinControlDialog", "Amount", Q_NULLPTR));
+        ___qtreewidgetitem->setText(7, QApplication::translate("CoinControlDialog", "Priority", 0));
+        ___qtreewidgetitem->setText(6, QApplication::translate("CoinControlDialog", "Confirmations", 0));
+        ___qtreewidgetitem->setText(5, QApplication::translate("CoinControlDialog", "Date", 0));
+        ___qtreewidgetitem->setText(4, QApplication::translate("CoinControlDialog", "Darksend Rounds", 0));
+        ___qtreewidgetitem->setText(3, QApplication::translate("CoinControlDialog", "Address", 0));
+        ___qtreewidgetitem->setText(2, QApplication::translate("CoinControlDialog", "Label", 0));
+        ___qtreewidgetitem->setText(1, QApplication::translate("CoinControlDialog", "Amount", 0));
 #ifndef QT_NO_TOOLTIP
-        ___qtreewidgetitem->setToolTip(6, QApplication::translate("CoinControlDialog", "Confirmed", Q_NULLPTR));
+        ___qtreewidgetitem->setToolTip(6, QApplication::translate("CoinControlDialog", "Confirmed", 0));
 #endif // QT_NO_TOOLTIP
     } // retranslateUi
 

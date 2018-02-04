@@ -56,7 +56,14 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
 {
     std::vector<std::string> ips;
-    ips.push_back("0.0.0.0");
+    ips.push_back("34.225.25.154");
+    ips.push_back("52.45.189.6");
+    ips.push_back("34.232.249.188");
+    ips.push_back("34.231.228.73");
+    ips.push_back("34.239.99.171");
+    ips.push_back("18.218.0.160");
+    ips.push_back("13.59.189.252");
+    ips.push_back("52.15.218.190");
 
     const int64_t oneWeek = 7 * 24 * 60 * 60;
     for (size_t i = 0; i < ips.size(); ++i)
@@ -122,9 +129,16 @@ public:
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x99)(0x73)(0x43)(0xE3).convert_to_container<std::vector<unsigned char> >();
 
 	// NOTE: MODIFIED THIS TO 0.0.0.0
-        vSeeds.push_back(CDNSSeedData("1",  "0.0.0.0"));
+        vSeeds.push_back(CDNSSeedData("1",  "34.225.25.154"));
+	vSeeds.push_back(CDNSSeedData("2",  "52.45.189.6"));
+	vSeeds.push_back(CDNSSeedData("3",  "34.232.249.188"));
+	vSeeds.push_back(CDNSSeedData("4",  "34.231.228.73"));
+	vSeeds.push_back(CDNSSeedData("5",  "34.239.99.171"));
+	vSeeds.push_back(CDNSSeedData("6",  "18.218.0.160"));
+	vSeeds.push_back(CDNSSeedData("7",  "13.59.189.252"));
+	vSeeds.push_back(CDNSSeedData("8",  "52.15.218.190"));
 
-		convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
+	convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
 
         getHardcodedSeeds(vFixedSeeds);
 
