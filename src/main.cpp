@@ -1366,23 +1366,23 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     }
     else if (nHeight > 1 && nHeight <= 100) {
         nSubsidy = 1 * COIN; // instamine prevention
-    }   
+    }
     else if (nHeight > 100 && nHeight <= 200) {
         nSubsidy = 5 * COIN; // instamine prevention
-    }       
+    }
     else if (nHeight > 200 && nHeight <= 300) {
         nSubsidy = 10 * COIN; // instamine prevention
     }
     else if (nHeight > 300 && nHeight <= 400) {
         nSubsidy = 15 * COIN; // instamine prevention
-    }   
+    }
     else if (nHeight > 400 && nHeight <= 210000) {
         nSubsidy = 25 * COIN; // initial block reward
-    }   	
+    }
     else if (nHeight > 210000) {
         nSubsidy = 0 * COIN; // initial block reward
     }
-	
+
     // add fees.
     return nSubsidy + nFees;
 }
@@ -1393,10 +1393,10 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     int64_t nSubsidy = 0;
 
     if (pindexBest->nHeight+1 > 1501 && pindexBest->nHeight+1 <= 210000)  {
-        nSubsidy = 25 * COIN; 
+        nSubsidy = 25 * COIN;
     }
     else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
-        nSubsidy = 20 * COIN; 
+        nSubsidy = 20 * COIN;
     }
     else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
         nSubsidy = 10 * COIN;
@@ -1407,7 +1407,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     else if (pindexBest->nHeight+1 > 850001) {
         nSubsidy = 3 * COIN;
     }
-        
+
     return nSubsidy + nFees;
 }
 
@@ -3190,7 +3190,7 @@ void PrintBlockTree()
         LogPrintf("%d (%u,%u) %s  %08x  %s  mint %7s  tx %u",
 #else
         LogPrintf("%d (%u,%u) %s  %08x  %s  tx %u",
-#endif  
+#endif
             pindex->nHeight,
             pindex->nFile,
             pindex->nBlockPos,
@@ -3199,7 +3199,7 @@ void PrintBlockTree()
             DateTimeStrFormat("%x %H:%M:%S", block.GetBlockTime()),
 #ifndef LOWMEM
             FormatMoney(pindex->nMint),
-#endif 
+#endif
             block.vtx.size());
 
         // put the main time-chain first
@@ -4571,12 +4571,12 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     int64_t ret = 0;
 
-    if (nHeight < 1000) {
-	ret = 0;
-    } else if (nHeight >= 1000 && nHeight <= 4800) {
-        ret = blockValue / 4; // MN Reward 25%
-    } else if (nHeight > 4800) {
-		ret = blockValue * 4 / 5; // MN Reward 80%
+    if (nHeight < 1500) {
+	      ret = 0;
+    } else if (nHeight >= 1500 && nHeight <= 210000) {
+        ret = blockValue * 3 / 5; // MN Reward 60%
+    } else if (nHeight > 210000) {
+		    ret = blockValue / 2 ; // MN Reward 50%
 	}
     return ret;
 }

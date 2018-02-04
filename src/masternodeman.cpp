@@ -357,7 +357,7 @@ CMasternode* CMasternodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins,
     CMasternode *pOldestMasternode = NULL;
 
     BOOST_FOREACH(CMasternode &mn, vMasternodes)
-    {   
+    {
         mn.Check();
         if(!mn.IsEnabled()) continue;
 
@@ -366,7 +366,7 @@ CMasternode* CMasternodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins,
         bool found = false;
         BOOST_FOREACH(const CTxIn& vin, vVins)
             if(mn.vin.prevout == vin.prevout)
-            {   
+            {
                 found = true;
                 break;
             }
@@ -571,7 +571,7 @@ void CMasternodeMan::ProcessMasternodeConnections()
     LOCK(cs_vNodes);
 
     if(!darkSendPool.pSubmittedToMasternode) return;
-    
+
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
         if(darkSendPool.pSubmittedToMasternode->addr == pnode->addr) continue;
@@ -628,7 +628,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
 
         if(donationPercentage < 0 || donationPercentage > 100){
             LogPrintf("dsee - donation percentage out of range %d\n", donationPercentage);
-            return;     
+            return;
         }
         if(protocolVersion < MIN_POOL_PEER_PROTO_VERSION) {
             LogPrintf("dsee - ignoring outdated masternode %s protocol version %d\n", vin.ToString().c_str(), protocolVersion);
@@ -734,13 +734,13 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             }
 
             // verify that sig time is legit in past
-            // should be at least not earlier than block when 10000 TansferCoin tx got MASTERNODE_MIN_CONFIRMATIONS
+            // should be at least not earlier than block when 5000 TansferCoin tx got MASTERNODE_MIN_CONFIRMATIONS
             uint256 hashBlock = 0;
             GetTransaction(vin.prevout.hash, tx, hashBlock);
             map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hashBlock);
            if (mi != mapBlockIndex.end() && (*mi).second)
             {
-                CBlockIndex* pMNIndex = (*mi).second; // block for 10000 TansferCoin tx -> 1 confirmation
+                CBlockIndex* pMNIndex = (*mi).second; // block for 5000 Stipend tx -> 1 confirmation
                 CBlockIndex* pConfIndex = FindBlockByHeight((pMNIndex->nHeight + MASTERNODE_MIN_CONFIRMATIONS - 1)); // block where tx got MASTERNODE_MIN_CONFIRMATIONS
                 if(pConfIndex->GetBlockTime() > sigTime)
                 {
