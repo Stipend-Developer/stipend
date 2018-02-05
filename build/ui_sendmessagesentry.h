@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sendmessagesentry.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -160,36 +160,42 @@ public:
 
     void retranslateUi(QFrame *SendMessagesEntry)
     {
-        SendMessagesEntry->setWindowTitle(QApplication::translate("SendMessagesEntry", "Form", 0));
-        label_2->setText(QApplication::translate("SendMessagesEntry", "Send &To:", 0));
+        SendMessagesEntry->setWindowTitle(QApplication::translate("SendMessagesEntry", "Form", Q_NULLPTR));
+        label_2->setText(QApplication::translate("SendMessagesEntry", "Send &To:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        sendTo->setToolTip(QApplication::translate("SendMessagesEntry", "The address to send the payment to  (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)", 0));
+        sendTo->setToolTip(QApplication::translate("SendMessagesEntry", "The address to send the payment to  (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        pasteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Paste address from clipboard", 0));
+        pasteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Paste address from clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         pasteButton->setText(QString());
-        pasteButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+P", 0));
-        label_4->setText(QApplication::translate("SendMessagesEntry", "&Label:", 0));
+#ifndef QT_NO_SHORTCUT
+        pasteButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
+        label_4->setText(QApplication::translate("SendMessagesEntry", "&Label:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        addAsLabel->setToolTip(QApplication::translate("SendMessagesEntry", "Enter a label for this address to add it to your address book", 0));
+        addAsLabel->setToolTip(QApplication::translate("SendMessagesEntry", "Enter a label for this address to add it to your address book", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        addressBookButton->setToolTip(QApplication::translate("SendMessagesEntry", "Choose address from address book", 0));
+        addressBookButton->setToolTip(QApplication::translate("SendMessagesEntry", "Choose address from address book", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         addressBookButton->setText(QString());
-        addressBookButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+A", 0));
+#ifndef QT_NO_SHORTCUT
+        addressBookButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+A", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
 #ifndef QT_NO_TOOLTIP
-        deleteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Remove this recipient", 0));
+        deleteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Remove this recipient", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         deleteButton->setText(QString());
-        publicKeyLabel->setText(QApplication::translate("SendMessagesEntry", "&Public Key:", 0));
+        publicKeyLabel->setText(QApplication::translate("SendMessagesEntry", "&Public Key:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        PubkeyPasteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Paste address from clipboard", 0));
+        PubkeyPasteButton->setToolTip(QApplication::translate("SendMessagesEntry", "Paste address from clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         PubkeyPasteButton->setText(QString());
-        PubkeyPasteButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+P", 0));
-        messageLabel->setText(QApplication::translate("SendMessagesEntry", "&Message:", 0));
+#ifndef QT_NO_SHORTCUT
+        PubkeyPasteButton->setShortcut(QApplication::translate("SendMessagesEntry", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
+        messageLabel->setText(QApplication::translate("SendMessagesEntry", "&Message:", Q_NULLPTR));
     } // retranslateUi
 
 };

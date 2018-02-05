@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'editaddressdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -110,21 +110,23 @@ public:
 
     void retranslateUi(QDialog *EditAddressDialog)
     {
-        EditAddressDialog->setWindowTitle(QApplication::translate("EditAddressDialog", "Edit Address", 0));
-        label->setText(QApplication::translate("EditAddressDialog", "&Label", 0));
+        EditAddressDialog->setWindowTitle(QApplication::translate("EditAddressDialog", "Edit Address", Q_NULLPTR));
+        label->setText(QApplication::translate("EditAddressDialog", "&Label", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelEdit->setToolTip(QApplication::translate("EditAddressDialog", "The label associated with this address book entry", 0));
+        labelEdit->setToolTip(QApplication::translate("EditAddressDialog", "The label associated with this address book entry", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        label_2->setText(QApplication::translate("EditAddressDialog", "&Address", 0));
+        label_2->setText(QApplication::translate("EditAddressDialog", "&Address", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        addressEdit->setToolTip(QApplication::translate("EditAddressDialog", "The address associated with this address book entry. This can only be modified for sending addresses.", 0));
+        addressEdit->setToolTip(QApplication::translate("EditAddressDialog", "The address associated with this address book entry. This can only be modified for sending addresses.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        EditAddressPasteButton->setToolTip(QApplication::translate("EditAddressDialog", "Paste address from clipboard", 0));
+        EditAddressPasteButton->setToolTip(QApplication::translate("EditAddressDialog", "Paste address from clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         EditAddressPasteButton->setText(QString());
-        EditAddressPasteButton->setShortcut(QApplication::translate("EditAddressDialog", "Alt+P", 0));
-        stealthCB->setText(QApplication::translate("EditAddressDialog", "&Stealth Address", 0));
+#ifndef QT_NO_SHORTCUT
+        EditAddressPasteButton->setShortcut(QApplication::translate("EditAddressDialog", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
+        stealthCB->setText(QApplication::translate("EditAddressDialog", "&Stealth Address", Q_NULLPTR));
     } // retranslateUi
 
 };

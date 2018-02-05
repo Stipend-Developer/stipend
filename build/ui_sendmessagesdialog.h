@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sendmessagesdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -196,31 +196,35 @@ public:
 
     void retranslateUi(QDialog *SendMessagesDialog)
     {
-        SendMessagesDialog->setWindowTitle(QApplication::translate("SendMessagesDialog", "Send Messages", 0));
-        addressFromLabel->setText(QApplication::translate("SendMessagesDialog", "Address &From:", 0));
+        SendMessagesDialog->setWindowTitle(QApplication::translate("SendMessagesDialog", "Send Messages", Q_NULLPTR));
+        addressFromLabel->setText(QApplication::translate("SendMessagesDialog", "Address &From:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        addressBookButton->setToolTip(QApplication::translate("SendMessagesDialog", "Choose address from address book", 0));
+        addressBookButton->setToolTip(QApplication::translate("SendMessagesDialog", "Choose address from address book", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         addressBookButton->setText(QString());
-        addressBookButton->setShortcut(QApplication::translate("SendMessagesDialog", "Alt+A", 0));
+#ifndef QT_NO_SHORTCUT
+        addressBookButton->setShortcut(QApplication::translate("SendMessagesDialog", "Alt+A", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
 #ifndef QT_NO_TOOLTIP
-        pasteButton->setToolTip(QApplication::translate("SendMessagesDialog", "Paste address from clipboard", 0));
+        pasteButton->setToolTip(QApplication::translate("SendMessagesDialog", "Paste address from clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         pasteButton->setText(QString());
-        pasteButton->setShortcut(QApplication::translate("SendMessagesDialog", "Alt+P", 0));
+#ifndef QT_NO_SHORTCUT
+        pasteButton->setShortcut(QApplication::translate("SendMessagesDialog", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
 #ifndef QT_NO_TOOLTIP
-        addButton->setToolTip(QApplication::translate("SendMessagesDialog", "Send to multiple recipients at once", 0));
+        addButton->setToolTip(QApplication::translate("SendMessagesDialog", "Send to multiple recipients at once", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        addButton->setText(QApplication::translate("SendMessagesDialog", "Add &Recipient", 0));
+        addButton->setText(QApplication::translate("SendMessagesDialog", "Add &Recipient", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        clearButton->setToolTip(QApplication::translate("SendMessagesDialog", "Remove all transaction fields", 0));
+        clearButton->setToolTip(QApplication::translate("SendMessagesDialog", "Remove all transaction fields", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        clearButton->setText(QApplication::translate("SendMessagesDialog", "Clear &All", 0));
+        clearButton->setText(QApplication::translate("SendMessagesDialog", "Clear &All", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        sendButton->setToolTip(QApplication::translate("SendMessagesDialog", "Confirm the send action", 0));
+        sendButton->setToolTip(QApplication::translate("SendMessagesDialog", "Confirm the send action", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        sendButton->setText(QApplication::translate("SendMessagesDialog", "S&end", 0));
-        closeButton->setText(QApplication::translate("SendMessagesDialog", "&Close", 0));
+        sendButton->setText(QApplication::translate("SendMessagesDialog", "S&end", Q_NULLPTR));
+        closeButton->setText(QApplication::translate("SendMessagesDialog", "&Close", Q_NULLPTR));
     } // retranslateUi
 
 };

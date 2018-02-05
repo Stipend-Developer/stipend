@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addressbookpage.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -124,32 +124,32 @@ public:
 
     void retranslateUi(QWidget *AddressBookPage)
     {
-        AddressBookPage->setWindowTitle(QApplication::translate("AddressBookPage", "Address Book", 0));
-        labelExplanation->setText(QApplication::translate("AddressBookPage", "These are your Stipend addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.", 0));
+        AddressBookPage->setWindowTitle(QApplication::translate("AddressBookPage", "Address Book", Q_NULLPTR));
+        labelExplanation->setText(QApplication::translate("AddressBookPage", "These are your Stipend addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        tableView->setToolTip(QApplication::translate("AddressBookPage", "Double-click to edit address or label", 0));
+        tableView->setToolTip(QApplication::translate("AddressBookPage", "Double-click to edit address or label", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        newAddressButton->setToolTip(QApplication::translate("AddressBookPage", "Create a new address", 0));
+        newAddressButton->setToolTip(QApplication::translate("AddressBookPage", "Create a new address", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        newAddressButton->setText(QApplication::translate("AddressBookPage", "&New Address", 0));
+        newAddressButton->setText(QApplication::translate("AddressBookPage", "&New Address", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        copyToClipboard->setToolTip(QApplication::translate("AddressBookPage", "Copy the currently selected address to the system clipboard", 0));
+        copyToClipboard->setToolTip(QApplication::translate("AddressBookPage", "Copy the currently selected address to the system clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        copyToClipboard->setText(QApplication::translate("AddressBookPage", "&Copy Address", 0));
-        showQRCode->setText(QApplication::translate("AddressBookPage", "Show &QR Code", 0));
+        copyToClipboard->setText(QApplication::translate("AddressBookPage", "&Copy Address", Q_NULLPTR));
+        showQRCode->setText(QApplication::translate("AddressBookPage", "Show &QR Code", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        signMessage->setToolTip(QApplication::translate("AddressBookPage", "Sign a message to prove you own a Stipend address", 0));
+        signMessage->setToolTip(QApplication::translate("AddressBookPage", "Sign a message to prove you own a Stipend address", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        signMessage->setText(QApplication::translate("AddressBookPage", "Sign &Message", 0));
+        signMessage->setText(QApplication::translate("AddressBookPage", "Sign &Message", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        verifyMessage->setToolTip(QApplication::translate("AddressBookPage", "Verify a message to ensure it was signed with a specified Stipend address", 0));
+        verifyMessage->setToolTip(QApplication::translate("AddressBookPage", "Verify a message to ensure it was signed with a specified Stipend address", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        verifyMessage->setText(QApplication::translate("AddressBookPage", "&Verify Message", 0));
+        verifyMessage->setText(QApplication::translate("AddressBookPage", "&Verify Message", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        deleteButton->setToolTip(QApplication::translate("AddressBookPage", "Delete the currently selected address from the list", 0));
+        deleteButton->setToolTip(QApplication::translate("AddressBookPage", "Delete the currently selected address from the list", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        deleteButton->setText(QApplication::translate("AddressBookPage", "&Delete", 0));
+        deleteButton->setText(QApplication::translate("AddressBookPage", "&Delete", Q_NULLPTR));
     } // retranslateUi
 
 };

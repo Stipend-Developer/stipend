@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'multisiginputentry.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -129,32 +129,36 @@ public:
 
     void retranslateUi(QFrame *MultisigInputEntry)
     {
-        MultisigInputEntry->setWindowTitle(QApplication::translate("MultisigInputEntry", "Form", 0));
+        MultisigInputEntry->setWindowTitle(QApplication::translate("MultisigInputEntry", "Form", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         transactionId->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        transactionId->setPlaceholderText(QApplication::translate("MultisigInputEntry", "Enter a transaction id", 0));
+        transactionId->setPlaceholderText(QApplication::translate("MultisigInputEntry", "Enter a transaction id", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pasteTransactionIdButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         pasteTransactionIdButton->setText(QString());
-        pasteTransactionIdButton->setShortcut(QApplication::translate("MultisigInputEntry", "Alt+P", 0));
+#ifndef QT_NO_SHORTCUT
+        pasteTransactionIdButton->setShortcut(QApplication::translate("MultisigInputEntry", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
 #ifndef QT_NO_TOOLTIP
         deleteButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         deleteButton->setText(QString());
-        transactionIdLabel->setText(QApplication::translate("MultisigInputEntry", "Transaction id:", 0));
-        transactionOutputLabel->setText(QApplication::translate("MultisigInputEntry", "Transaction output:", 0));
-        redeemScriptLabel->setText(QApplication::translate("MultisigInputEntry", "Redeem script:", 0));
+        transactionIdLabel->setText(QApplication::translate("MultisigInputEntry", "Transaction id:", Q_NULLPTR));
+        transactionOutputLabel->setText(QApplication::translate("MultisigInputEntry", "Transaction output:", Q_NULLPTR));
+        redeemScriptLabel->setText(QApplication::translate("MultisigInputEntry", "Redeem script:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         redeemScript->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        redeemScript->setPlaceholderText(QApplication::translate("MultisigInputEntry", "Enter the redeem script of the address in the transaction output", 0));
+        redeemScript->setPlaceholderText(QApplication::translate("MultisigInputEntry", "Enter the redeem script of the address in the transaction output", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pasteRedeemScriptButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         pasteRedeemScriptButton->setText(QString());
-        pasteRedeemScriptButton->setShortcut(QApplication::translate("MultisigInputEntry", "Alt+A", 0));
+#ifndef QT_NO_SHORTCUT
+        pasteRedeemScriptButton->setShortcut(QApplication::translate("MultisigInputEntry", "Alt+A", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
     } // retranslateUi
 
 };

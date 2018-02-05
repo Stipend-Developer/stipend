@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'darksendconfig.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -94,18 +94,18 @@ public:
 
     void retranslateUi(QDialog *DarksendConfig)
     {
-        DarksendConfig->setWindowTitle(QApplication::translate("DarksendConfig", "Configure Darksend", 0));
-        buttonBasic->setText(QApplication::translate("DarksendConfig", "Basic Privacy", 0));
-        buttonHigh->setText(QApplication::translate("DarksendConfig", "High Privacy", 0));
-        buttonMax->setText(QApplication::translate("DarksendConfig", "Maximum Privacy", 0));
-        label->setText(QApplication::translate("DarksendConfig", "Please select a privacy level.", 0));
-        label_2->setText(QApplication::translate("DarksendConfig", "Use 2 separate masternodes to mix funds up to 1000 SPD", 0));
-        label_3->setText(QApplication::translate("DarksendConfig", "Use 8 separate masternodes to mix funds up to 1000 SPD", 0));
-        label_4->setText(QApplication::translate("DarksendConfig", "Use 16 separate masternodes", 0));
-        label_6->setText(QApplication::translate("DarksendConfig", "This option is the quickest and will cost about ~0.025SPDto anonymize 1000 SPD", 0));
-        label_7->setText(QApplication::translate("DarksendConfig", "This option is moderately fast and will cost about 0.05SPDto anonymize 1000 SPD", 0));
-        label_8->setText(QApplication::translate("DarksendConfig", "This is the slowest and most secure option. Using maximum anonymity will cost", 0));
-        label_9->setText(QApplication::translate("DarksendConfig", "0.1 SPD per 1000 SPD you anonymize.", 0));
+        DarksendConfig->setWindowTitle(QApplication::translate("DarksendConfig", "Configure Darksend", Q_NULLPTR));
+        buttonBasic->setText(QApplication::translate("DarksendConfig", "Basic Privacy", Q_NULLPTR));
+        buttonHigh->setText(QApplication::translate("DarksendConfig", "High Privacy", Q_NULLPTR));
+        buttonMax->setText(QApplication::translate("DarksendConfig", "Maximum Privacy", Q_NULLPTR));
+        label->setText(QApplication::translate("DarksendConfig", "Please select a privacy level.", Q_NULLPTR));
+        label_2->setText(QApplication::translate("DarksendConfig", "Use 2 separate masternodes to mix funds up to 1000 SPD", Q_NULLPTR));
+        label_3->setText(QApplication::translate("DarksendConfig", "Use 8 separate masternodes to mix funds up to 1000 SPD", Q_NULLPTR));
+        label_4->setText(QApplication::translate("DarksendConfig", "Use 16 separate masternodes", Q_NULLPTR));
+        label_6->setText(QApplication::translate("DarksendConfig", "This option is the quickest and will cost about ~0.025SPDto anonymize 1000 SPD", Q_NULLPTR));
+        label_7->setText(QApplication::translate("DarksendConfig", "This option is moderately fast and will cost about 0.05SPDto anonymize 1000 SPD", Q_NULLPTR));
+        label_8->setText(QApplication::translate("DarksendConfig", "This is the slowest and most secure option. Using maximum anonymity will cost", Q_NULLPTR));
+        label_9->setText(QApplication::translate("DarksendConfig", "0.1 SPD per 1000 SPD you anonymize.", Q_NULLPTR));
     } // retranslateUi
 
 };

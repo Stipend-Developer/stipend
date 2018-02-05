@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'aboutdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -127,19 +127,19 @@ public:
 
     void retranslateUi(QDialog *AboutDialog)
     {
-        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About Stipend", 0));
-        label->setText(QApplication::translate("AboutDialog", "<b>Stipend</b> version", 0));
+        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About Stipend", Q_NULLPTR));
+        label->setText(QApplication::translate("AboutDialog", "<b>Stipend</b> version", Q_NULLPTR));
         copyrightLabel->setText(QApplication::translate("AboutDialog", "Copyright \302\251 2009-2014 The Bitcoin developers\n"
 "Copyright \302\251 2012-2014 The NovaCoin developers\n"
 "Copyright \302\251 2014 The TransferCoin developers\n"
 "Copyright \302\251 2014-2015 Dash Developers\n"
-"Copyright \302\251 2017-2018 The Stipend developers", 0));
+"Copyright \302\251 2017-2018 The Stipend developers", Q_NULLPTR));
         label_2->setText(QApplication::translate("AboutDialog", "\n"
 "This is experimental software.\n"
 "\n"
 "Distributed under the MIT software license, see the accompanying file COPYING or <a href=\"http://www.opensource.org/licenses/mit-license.php\">http://www.opensource.org/licenses/mit-license.php</a>.\n"
 "\n"
-"This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (<a href=\"https://www.openssl.org/\">https://www.openssl.org/</a>) and cryptographic software written by Eric Young (<a href=\"mailto:eay@cryptsoft.com\">eay@cryptsoft.com</a>) and UPnP software written by Thomas Bernard.", 0));
+"This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (<a href=\"https://www.openssl.org/\">https://www.openssl.org/</a>) and cryptographic software written by Eric Young (<a href=\"mailto:eay@cryptsoft.com\">eay@cryptsoft.com</a>) and UPnP software written by Thomas Bernard.", Q_NULLPTR));
     } // retranslateUi
 
 };

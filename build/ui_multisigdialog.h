@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'multisigdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -593,63 +593,65 @@ public:
 
     void retranslateUi(QDialog *MultisigDialog)
     {
-        MultisigDialog->setWindowTitle(QApplication::translate("MultisigDialog", "Multisig", 0));
+        MultisigDialog->setWindowTitle(QApplication::translate("MultisigDialog", "Multisig", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        addPubKeyButton->setToolTip(QApplication::translate("MultisigDialog", "Add a member to the signing pool", 0));
+        addPubKeyButton->setToolTip(QApplication::translate("MultisigDialog", "Add a member to the signing pool", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        addPubKeyButton->setText(QApplication::translate("MultisigDialog", "&Add public key...", 0));
+        addPubKeyButton->setText(QApplication::translate("MultisigDialog", "&Add public key...", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        clearButton->setToolTip(QApplication::translate("MultisigDialog", "Remove all public key fields", 0));
+        clearButton->setToolTip(QApplication::translate("MultisigDialog", "Remove all public key fields", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        clearButton->setText(QApplication::translate("MultisigDialog", "Clear all", 0));
-        requiredSignaturesLabel->setText(QApplication::translate("MultisigDialog", "Required signatures:", 0));
+        clearButton->setText(QApplication::translate("MultisigDialog", "Clear all", Q_NULLPTR));
+        requiredSignaturesLabel->setText(QApplication::translate("MultisigDialog", "Required signatures:", Q_NULLPTR));
         requiredSignatures->setText(QString());
-        requiredSignatures->setPlaceholderText(QApplication::translate("MultisigDialog", "Enter a number", 0));
-        maxSignaturesLabel->setText(QApplication::translate("MultisigDialog", "/ 1", 0));
-        createAddressButton->setText(QApplication::translate("MultisigDialog", "Create multisig address", 0));
-        multisigAddressLabel->setText(QApplication::translate("MultisigDialog", "Multisig address:", 0));
+        requiredSignatures->setPlaceholderText(QApplication::translate("MultisigDialog", "Enter a number", Q_NULLPTR));
+        maxSignaturesLabel->setText(QApplication::translate("MultisigDialog", "/ 1", Q_NULLPTR));
+        createAddressButton->setText(QApplication::translate("MultisigDialog", "Create multisig address", Q_NULLPTR));
+        multisigAddressLabel->setText(QApplication::translate("MultisigDialog", "Multisig address:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        copyMultisigAddressButton->setToolTip(QApplication::translate("MultisigDialog", "Copy the multisig address to the system clipboard", 0));
+        copyMultisigAddressButton->setToolTip(QApplication::translate("MultisigDialog", "Copy the multisig address to the system clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         copyMultisigAddressButton->setText(QString());
-        redeemScriptLabel->setText(QApplication::translate("MultisigDialog", "Redeem script:", 0));
+        redeemScriptLabel->setText(QApplication::translate("MultisigDialog", "Redeem script:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        copyRedeemScriptButton->setToolTip(QApplication::translate("MultisigDialog", "Copy the redeem script to the system clipboard", 0));
+        copyRedeemScriptButton->setToolTip(QApplication::translate("MultisigDialog", "Copy the redeem script to the system clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         copyRedeemScriptButton->setText(QString());
-        tabWidget->setTabText(tabWidget->indexOf(tabCreateAddress), QApplication::translate("MultisigDialog", "&Create Address", 0));
-        inputsBox->setTitle(QApplication::translate("MultisigDialog", "Inputs", 0));
-        inputsAmountLabel->setText(QApplication::translate("MultisigDialog", "Inputs amount:", 0));
-        inputsAmount->setText(QApplication::translate("MultisigDialog", "123.456", 0));
-        label->setText(QApplication::translate("MultisigDialog", "SPD", 0));
-        addInputButton->setText(QApplication::translate("MultisigDialog", "Add input...", 0));
-        outputsBox->setTitle(QApplication::translate("MultisigDialog", "Outputs", 0));
-        outputsAmountLabel->setText(QApplication::translate("MultisigDialog", "Outputs amount:", 0));
-        outputsAmount->setText(QApplication::translate("MultisigDialog", "123.456", 0));
-        label_2->setText(QApplication::translate("MultisigDialog", "SPD", 0));
-        feeLabel->setText(QApplication::translate("MultisigDialog", "Fee:", 0));
-        fee->setText(QApplication::translate("MultisigDialog", "123.456", 0));
-        label_3->setText(QApplication::translate("MultisigDialog", "SPD", 0));
-        addOutputButton->setText(QApplication::translate("MultisigDialog", "Add output...", 0));
-        createTransactionButton->setText(QApplication::translate("MultisigDialog", "Create transaction", 0));
-        transaction->setPlaceholderText(QApplication::translate("MultisigDialog", "Enter a raw transaction or create a new one", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabCreateAddress), QApplication::translate("MultisigDialog", "&Create Address", Q_NULLPTR));
+        inputsBox->setTitle(QApplication::translate("MultisigDialog", "Inputs", Q_NULLPTR));
+        inputsAmountLabel->setText(QApplication::translate("MultisigDialog", "Inputs amount:", Q_NULLPTR));
+        inputsAmount->setText(QApplication::translate("MultisigDialog", "123.456", Q_NULLPTR));
+        label->setText(QApplication::translate("MultisigDialog", "SPD", Q_NULLPTR));
+        addInputButton->setText(QApplication::translate("MultisigDialog", "Add input...", Q_NULLPTR));
+        outputsBox->setTitle(QApplication::translate("MultisigDialog", "Outputs", Q_NULLPTR));
+        outputsAmountLabel->setText(QApplication::translate("MultisigDialog", "Outputs amount:", Q_NULLPTR));
+        outputsAmount->setText(QApplication::translate("MultisigDialog", "123.456", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MultisigDialog", "SPD", Q_NULLPTR));
+        feeLabel->setText(QApplication::translate("MultisigDialog", "Fee:", Q_NULLPTR));
+        fee->setText(QApplication::translate("MultisigDialog", "123.456", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MultisigDialog", "SPD", Q_NULLPTR));
+        addOutputButton->setText(QApplication::translate("MultisigDialog", "Add output...", Q_NULLPTR));
+        createTransactionButton->setText(QApplication::translate("MultisigDialog", "Create transaction", Q_NULLPTR));
+        transaction->setPlaceholderText(QApplication::translate("MultisigDialog", "Enter a raw transaction or create a new one", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         copyTransactionButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         copyTransactionButton->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        pasteTransactionButton->setToolTip(QApplication::translate("MultisigDialog", "Paste address from clipboard", 0));
+        pasteTransactionButton->setToolTip(QApplication::translate("MultisigDialog", "Paste address from clipboard", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         pasteTransactionButton->setText(QString());
-        pasteTransactionButton->setShortcut(QApplication::translate("MultisigDialog", "Alt+P", 0));
-        signTransactionButton->setText(QApplication::translate("MultisigDialog", "Sign transaction", 0));
+#ifndef QT_NO_SHORTCUT
+        pasteTransactionButton->setShortcut(QApplication::translate("MultisigDialog", "Alt+P", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
+        signTransactionButton->setText(QApplication::translate("MultisigDialog", "Sign transaction", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         copySignedTransactionButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         copySignedTransactionButton->setText(QString());
         statusLabel->setText(QString());
-        sendTransactionButton->setText(QApplication::translate("MultisigDialog", "Send transaction", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tabSpendFunds), QApplication::translate("MultisigDialog", "&Spend Funds", 0));
+        sendTransactionButton->setText(QApplication::translate("MultisigDialog", "Send transaction", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabSpendFunds), QApplication::translate("MultisigDialog", "&Spend Funds", Q_NULLPTR));
     } // retranslateUi
 
 };

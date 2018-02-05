@@ -146,7 +146,7 @@ public:
         strDarksendPoolDummyAddress = "hFoQDUrp63QWqFhjEr3Fmc4ubHRhyzjKUC";
 
         nLastPOWBlock = 210000;
-        nPOSStartBlock = 1500;
+        nPOSStartBlock = 1;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }

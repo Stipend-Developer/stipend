@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'overviewpage.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -597,77 +597,77 @@ public:
 
     void retranslateUi(QWidget *OverviewPage)
     {
-        OverviewPage->setWindowTitle(QApplication::translate("OverviewPage", "Form", 0));
-        label_5->setText(QApplication::translate("OverviewPage", "Balances", 0));
+        OverviewPage->setWindowTitle(QApplication::translate("OverviewPage", "Form", Q_NULLPTR));
+        label_5->setText(QApplication::translate("OverviewPage", "Balances", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelWalletStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", 0));
+        labelWalletStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        labelWatchPending->setToolTip(QApplication::translate("OverviewPage", "Unconfirmed transactions to watch-only addresses", 0));
+        labelWatchPending->setToolTip(QApplication::translate("OverviewPage", "Unconfirmed transactions to watch-only addresses", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        labelUnconfirmed->setToolTip(QApplication::translate("OverviewPage", "Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance", 0));
+        labelUnconfirmed->setToolTip(QApplication::translate("OverviewPage", "Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        labelWatchImmature->setToolTip(QApplication::translate("OverviewPage", "Mined balance in watch-only addresses that has not yet matured", 0));
+        labelWatchImmature->setToolTip(QApplication::translate("OverviewPage", "Mined balance in watch-only addresses that has not yet matured", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        labelTotalText->setText(QApplication::translate("OverviewPage", "Total:", 0));
+        labelTotalText->setText(QApplication::translate("OverviewPage", "Total:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelImmature->setToolTip(QApplication::translate("OverviewPage", "Mined balance that has not yet matured", 0));
+        labelImmature->setToolTip(QApplication::translate("OverviewPage", "Mined balance that has not yet matured", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        labelImmatureText->setText(QApplication::translate("OverviewPage", "Immature:", 0));
+        labelImmatureText->setText(QApplication::translate("OverviewPage", "Immature:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelTotal->setToolTip(QApplication::translate("OverviewPage", "Your current total balance", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_TOOLTIP
-        labelWatchTotal->setToolTip(QApplication::translate("OverviewPage", "Current total balance in watch-only addresses", 0));
-#endif // QT_NO_TOOLTIP
-        labelWatchonly->setText(QApplication::translate("OverviewPage", "Watch-only:", 0));
-        labelBalanceText->setText(QApplication::translate("OverviewPage", "Available:", 0));
-#ifndef QT_NO_TOOLTIP
-        labelBalance->setToolTip(QApplication::translate("OverviewPage", "Your current spendable balance", 0));
-#endif // QT_NO_TOOLTIP
-        label_10->setText(QApplication::translate("OverviewPage", "Stake:", 0));
-#ifndef QT_NO_TOOLTIP
-        labelStake->setToolTip(QApplication::translate("OverviewPage", "Total of coins that was staked, and do not yet count toward the current balance", 0));
+        labelTotal->setToolTip(QApplication::translate("OverviewPage", "Your current total balance", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        labelWatchStake->setToolTip(QApplication::translate("OverviewPage", "Total of coins that was staked in watch-only addresses, and do not yet count toward the current watch-only balance", 0));
+        labelWatchTotal->setToolTip(QApplication::translate("OverviewPage", "Current total balance in watch-only addresses", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        labelWatchonly->setText(QApplication::translate("OverviewPage", "Watch-only:", Q_NULLPTR));
+        labelBalanceText->setText(QApplication::translate("OverviewPage", "Available:", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        labelBalance->setToolTip(QApplication::translate("OverviewPage", "Your current spendable balance", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        label_10->setText(QApplication::translate("OverviewPage", "Stake:", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        labelStake->setToolTip(QApplication::translate("OverviewPage", "Total of coins that was staked, and do not yet count toward the current balance", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        labelWatchAvailable->setToolTip(QApplication::translate("OverviewPage", "Your current balance in watch-only addresses", 0));
+        labelWatchStake->setToolTip(QApplication::translate("OverviewPage", "Total of coins that was staked in watch-only addresses, and do not yet count toward the current watch-only balance", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        labelPendingText->setText(QApplication::translate("OverviewPage", "Pending:", 0));
-        labelSpendable->setText(QApplication::translate("OverviewPage", "Spendable:", 0));
-        label_2->setText(QApplication::translate("OverviewPage", "Darksend", 0));
 #ifndef QT_NO_TOOLTIP
-        labelDarksendSyncStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", 0));
+        labelWatchAvailable->setToolTip(QApplication::translate("OverviewPage", "Your current balance in watch-only addresses", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        labelPendingText->setText(QApplication::translate("OverviewPage", "Pending:", Q_NULLPTR));
+        labelSpendable->setText(QApplication::translate("OverviewPage", "Spendable:", Q_NULLPTR));
+        label_2->setText(QApplication::translate("OverviewPage", "Darksend", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        labelDarksendSyncStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         runAutoDenom->setText(QString());
-        label_6->setText(QApplication::translate("OverviewPage", "Status:", 0));
-        label_7->setText(QApplication::translate("OverviewPage", "Completion:", 0));
-        labelAnonymizedText->setText(QApplication::translate("OverviewPage", "Darksend Balance:", 0));
-        label_8->setText(QApplication::translate("OverviewPage", "Amount and Rounds:", 0));
-        labelAmountRounds->setText(QApplication::translate("OverviewPage", "0 SPD / 0 Rounds", 0));
-        label_9->setText(QApplication::translate("OverviewPage", "Submitted Denom:", 0));
+        label_6->setText(QApplication::translate("OverviewPage", "Status:", Q_NULLPTR));
+        label_7->setText(QApplication::translate("OverviewPage", "Completion:", Q_NULLPTR));
+        labelAnonymizedText->setText(QApplication::translate("OverviewPage", "Darksend Balance:", Q_NULLPTR));
+        label_8->setText(QApplication::translate("OverviewPage", "Amount and Rounds:", Q_NULLPTR));
+        labelAmountRounds->setText(QApplication::translate("OverviewPage", "0 SPD / 0 Rounds", Q_NULLPTR));
+        label_9->setText(QApplication::translate("OverviewPage", "Submitted Denom:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelSubmittedDenom->setToolTip(QApplication::translate("OverviewPage", "The denominations you submitted to the Masternode.<br>To mix, other users must submit the exact same denominations.", 0));
+        labelSubmittedDenom->setToolTip(QApplication::translate("OverviewPage", "The denominations you submitted to the Masternode.<br>To mix, other users must submit the exact same denominations.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        labelSubmittedDenom->setText(QApplication::translate("OverviewPage", "n/a", 0));
-        darksendEnabled->setText(QApplication::translate("OverviewPage", "Enabled/Disabled", 0));
-        darksendStatus->setText(QApplication::translate("OverviewPage", "(Last Message)", 0));
+        labelSubmittedDenom->setText(QApplication::translate("OverviewPage", "n/a", Q_NULLPTR));
+        darksendEnabled->setText(QApplication::translate("OverviewPage", "Enabled/Disabled", Q_NULLPTR));
+        darksendStatus->setText(QApplication::translate("OverviewPage", "(Last Message)", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        darksendAuto->setToolTip(QApplication::translate("OverviewPage", "Try to manually submit a Darksend request.", 0));
+        darksendAuto->setToolTip(QApplication::translate("OverviewPage", "Try to manually submit a Darksend request.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        darksendAuto->setText(QApplication::translate("OverviewPage", "Try Mix", 0));
-        toggleDarksend->setText(QApplication::translate("OverviewPage", "Start/Stop Mixing", 0));
+        darksendAuto->setText(QApplication::translate("OverviewPage", "Try Mix", Q_NULLPTR));
+        toggleDarksend->setText(QApplication::translate("OverviewPage", "Start/Stop Mixing", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        darksendReset->setToolTip(QApplication::translate("OverviewPage", "Reset the current status of Darksend (can interrupt Darksend if it's in the process of Mixing, which can cost you money!)", 0));
+        darksendReset->setToolTip(QApplication::translate("OverviewPage", "Reset the current status of Darksend (can interrupt Darksend if it's in the process of Mixing, which can cost you money!)", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        darksendReset->setText(QApplication::translate("OverviewPage", "Reset", 0));
-        label_4->setText(QApplication::translate("OverviewPage", "Recent transactions", 0));
+        darksendReset->setText(QApplication::translate("OverviewPage", "Reset", Q_NULLPTR));
+        label_4->setText(QApplication::translate("OverviewPage", "Recent transactions", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        labelTransactionsStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", 0));
+        labelTransactionsStatus->setToolTip(QApplication::translate("OverviewPage", "The displayed information may be out of date. Your wallet automatically synchronizes with the Stipend network after a connection is established, but this process has not completed yet.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
     } // retranslateUi
 
