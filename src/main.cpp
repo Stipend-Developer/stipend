@@ -1376,8 +1376,11 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     else if (nHeight > 300 && nHeight <= 400) {
         nSubsidy = 15 * COIN; // instamine prevention
     }
-    else if (nHeight > 400 && nHeight <= 210000) {
+    else if (nHeight > 400 && nHeight <= 1499) {
         nSubsidy = 25 * COIN; // initial block reward
+    }
+    else if (nHeight > 1499 && nHeight <= 210000) {
+        nSubsidy = 15 * COIN; // initial block reward
     }
     else if (nHeight > 210000) {
         nSubsidy = 0 * COIN; // initial block reward
@@ -1392,7 +1395,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
     int64_t nSubsidy = 0;
 
-    if (pindexBest->nHeight+1 > 1501 && pindexBest->nHeight+1 <= 210000)  {
+    if (pindexBest->nHeight+1 > 1500 && pindexBest->nHeight+1 <= 210000)  {
         nSubsidy = 35 * COIN;
     }
     else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
@@ -1401,11 +1404,15 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
         nSubsidy = 10 * COIN;
     }
-    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 850001) {
+    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 840001) {
         nSubsidy = 5 * COIN;
     }
-    else if (pindexBest->nHeight+1 > 850001) {
+    else if (pindexBest->nHeight+1 > 840001 && pindexBest->nHeight+1 <= 2940000) {
+	// end game - further discussion needed
         nSubsidy = 3 * COIN;
+    } else if (pindexBest->nHeight+1 > 2940000) {
+	// end game - further discussion needed
+        nSubsidy = 0 * COIN;
     }
 
     return nSubsidy + nFees;
@@ -4572,11 +4579,11 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
     int64_t ret = 0;
 
     if (nHeight < 1500) {
-	      ret = 0;
+	ret = 0;
     } else if (nHeight >= 1500 && nHeight <= 210000) {
-        ret = blockValue * 3 / 5; // MN Reward 60%
+        ret = blockValue * 25 / 35; // MN Reward 71%
     } else if (nHeight > 210000) {
-		    ret = blockValue / 2 ; // MN Reward 50%
-	}
+	ret = blockValue / 2 ; // MN Reward 50%
+    }
     return ret;
 }
