@@ -107,9 +107,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1517616496; // Wednesday, 17-Jan-18 02:00:01 UTC
+        genesis.nTime    = 1517975380; // Wednesday, 17-Jan-18 02:00:01 UTC
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 396243;
+        genesis.nNonce   = 353295;
 
         hashGenesisBlock = genesis.GetHash();
 
@@ -118,7 +118,7 @@ public:
         LogPrintf("Display nonce so we can input it below %s\n", genesis.nNonce);
         LogPrintf("Display time so we can input it below %s\n", genesis.nTime);
 
-        assert(hashGenesisBlock == uint256("0x567c8fade5e4c3baedae60a51a5621cdb83c3058bb816deda99d779d64f617ee"));
+        assert(hashGenesisBlock == uint256("0xc6a771fbe7353ab3e6b5302858215b476e32ce6ccf75b81cf055426e53e854c7"));
         assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63); // S
@@ -186,6 +186,7 @@ public:
         genesis.nNonce   = 35312;
 
         hashGenesisBlock = genesis.GetHash();
+
         LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
         assert(hashGenesisBlock == uint256("0xa17f87bd5a0fcdaafbedaab77f822a48272b66d36728e5820184bb22e43d9286"));
 
