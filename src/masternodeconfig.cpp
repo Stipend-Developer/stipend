@@ -52,13 +52,13 @@ bool CMasternodeConfig::read(boost::filesystem::path path) {
         }
 
         if(Params().NetworkID() == CChainParams::MAIN){
-            if(CService(ip).GetPort() != 43288) {
-                LogPrintf("Invalid port detected in masternode.conf: %s (must be 43288 for mainnet)\n", line.c_str());
+            if(CService(ip).GetPort() != 46978) {
+                LogPrintf("Invalid port detected in masternode.conf: %s (must be 46978 for mainnet)\n", line.c_str());
                 streamConfig.close();
                 return false;
             }
-        } else if(CService(ip).GetPort() == 43288) {
-            LogPrintf("Invalid port detected in masternode.conf: %s (43288 must be only on mainnet)\n", line.c_str());
+        } else if(CService(ip).GetPort() == 46978) {
+            LogPrintf("Invalid port detected in masternode.conf: %s (46978 must be only on mainnet)\n", line.c_str());
             streamConfig.close();
             return false;
         }

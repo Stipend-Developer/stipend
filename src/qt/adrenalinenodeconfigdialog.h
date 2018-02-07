@@ -17,7 +17,7 @@ class AdrenalineNodeConfigDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AdrenalineNodeConfigDialog(QWidget *parent = 0, QString nodeAddress = "123.456.789.123:43288", QString privkey="MASTERNODEPRIVKEY");
+    explicit AdrenalineNodeConfigDialog(QWidget *parent = 0, QString nodeAddress = "123.456.789.123:46978", QString privkey="MASTERNODEPRIVKEY");
     ~AdrenalineNodeConfigDialog();
 
 private:
