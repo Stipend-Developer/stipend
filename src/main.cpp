@@ -4572,7 +4572,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
     int64_t ret = 0;
 
     if (nHeight < 1500) {
-	      ret = 0;
+	ret = blockValue * 3 / 5;;
     } else if (nHeight >= 1500 && nHeight <= 210000) {
         ret = blockValue * 3 / 5; // MN Reward 60%
     } else if (nHeight > 210000) {
