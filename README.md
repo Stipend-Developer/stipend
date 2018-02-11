@@ -18,42 +18,34 @@ Welcome to the future!
 
 ### Base Specs:
 
-*	Algo: 		C11
-*	Blocktime:	90 sec
-*	Maturity: 	90 blocks
-*	Diff retargeting: 	every block
-*	Total supply: 	~38 000 000 after 10+ years
-*	Masternode Rewards: 80% of POS Rewards since block 4800
+*	Algorithm (PoW/PoS): C11/SHA256d
+*	Block Time (PoW/PoS): 2.5 minutes/2.5 minutes
+*	Maturity: 90 blocks
+*	Difficulty Retargeting: every block
+*	Total Supply: ~19,340,594
+*	Masternode Rewards: 25 SPDs of the POS blocks since block 1500, after block 210,000 50% of the PoS block reward
 *	PoS coins maturation: 24 hour
 
 
 #### PoW Rewards:
 
-*	since start : 1
+*	since block 1 : 475,000 (Premine)
+*	since block 2 : 1
 *	since block 101 : 5
 *	since block 201 : 10
 *	since block 301 : 15
 *	since block 401 : 25
-*	since block 501 : 50
-*	since block 4800 : 37
-*	since block 50 001 : 25
-*	since block 100 001 : 15
-*	since block 200 001 : 8
-*	since block 300 001 : 5
-*	since block 450 001 : 3
-*	since block 600 001 : 1.5
-*	since block 900 001 : 1
-*	Last PoW Block : 1 500 000
+*	since block 1500 : 15
+*	Last PoW Block : 210,000
 
 
 ##### PoS Rewards:
 
-*	since block 4800 : 15
-*	since block 50 001 : 25
-*	since block 100 001 : 20
-*	since block 200 001 : 15
-*	since block 300 001 : 10
-*	since block 450 001 : 5
+*	since block 1500 : 35
+*	since block 210,000 : 20
+*	since block 420,001 : 10
+*	since block 630,001 : 5
+*	since block 840,001 : 3
 
 ###### License
 
