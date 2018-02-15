@@ -98,15 +98,15 @@ Value darksend(const Array& params, bool fHelp)
     std::string sNarr;
     if (params.size() > 6 && params[6].type() != null_type && !params[6].get_str().empty())
         sNarr = params[6].get_str();
-    
+
     if (sNarr.length() > 24)
         throw runtime_error("Narration must be 24 characters or less.");
-    
+
     //string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx, ONLY_DENOMINATED);
     SendMoney(address.Get(), nAmount, wtx, ONLY_DENOMINATED);
     //if (strError != "")
         //throw JSONRPCError(RPC_WALLET_ERROR, strError);
-   
+
     return wtx.GetHash().GetHex();
 }
 
@@ -401,7 +401,7 @@ Value masternode(const Array& params, bool fHelp)
                 std::string strDonationPercentage = "";
 
                 bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
-  
+
                 statusObj.push_back(Pair("result", result ? "successful" : "failed"));
     			if(!result) {
 					statusObj.push_back(Pair("errorMessage", errorMessage));
@@ -540,7 +540,7 @@ Value masternode(const Array& params, bool fHelp)
     {
         Object obj;
         std::string strMode = "addr";
-    
+
         if (params.size() >= 1) strMode = params[0].get_str();
 
         for(int nHeight = pindexBest->nHeight-10; nHeight < pindexBest->nHeight+20; nHeight++)
@@ -657,7 +657,7 @@ Value masternode(const Array& params, bool fHelp)
                 failed++;
                 continue;
             }
-            
+
             CMasternode* pmn = mnodeman.Find(pubKeyMasternode);
             if(pmn == NULL)
             {
@@ -736,17 +736,13 @@ Value masternode(const Array& params, bool fHelp)
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
         mnEntries = masternodeConfig.getEntries();
 
-        CScript pubkey;
-        pubkey = GetScriptForDestination(activeMasternode.pubKeyMasternode.GetID());
-        CTxDestination address1;
-        ExtractDestination(pubkey, address1);
-        CStipendAddress address2(address1);
-
         Object mnObj;
+        CMasternode *pmn = mnodeman.Find(activeMasternode.vin);
+
         mnObj.push_back(Pair("vin", activeMasternode.vin.ToString().c_str()));
         mnObj.push_back(Pair("service", activeMasternode.service.ToString().c_str()));
         mnObj.push_back(Pair("status", activeMasternode.status));
-        mnObj.push_back(Pair("pubKeyMasternode", address2.ToString().c_str()));
+        if (pmn) mnObj.push_back(Pair("pubkey", CStipendAddress(pmn->pubkey.GetID()).ToString().c_str()));
         mnObj.push_back(Pair("notCapableReason", activeMasternode.notCapableReason.c_str()));
         return mnObj;
     }
@@ -763,7 +759,7 @@ Value masternodelist(const Array& params, bool fHelp)
     if (params.size() == 2) strFilter = params[1].get_str();
 
     if (fHelp ||
-            (strMode != "activeseconds" && strMode != "donation" && strMode != "full" && strMode != "lastseen" && strMode != "protocol" 
+            (strMode != "activeseconds" && strMode != "donation" && strMode != "full" && strMode != "lastseen" && strMode != "protocol"
                 && strMode != "pubkey" && strMode != "rank" && strMode != "status" && strMode != "addr" && strMode != "votes" && strMode != "lastpaid"))
     {
         throw runtime_error(

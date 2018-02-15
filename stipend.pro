@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = stipend-qt
-VERSION = 1.4.2.1
+VERSION = 1.0.0.2
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += network printsupport
 DEFINES += ENABLE_WALLET
@@ -40,7 +40,7 @@ contains(RELEASE, 1) {
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7
     macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7
     macx:QMAKE_LFLAGS += -mmacosx-version-min=10.7
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7
 
 
     !windows:!macx {
