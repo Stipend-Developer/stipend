@@ -742,7 +742,7 @@ Value masternode(const Array& params, bool fHelp)
         mnObj.push_back(Pair("vin", activeMasternode.vin.ToString().c_str()));
         mnObj.push_back(Pair("service", activeMasternode.service.ToString().c_str()));
         mnObj.push_back(Pair("status", activeMasternode.status));
-        if (pmn) mnObj.push_back(Pair("pubkey", CStipendAddress(pmn->pubkey.GetID()).ToString().c_str()));
+        if (pmn) mnObj.push_back(Pair("pubkey", CStipendAddress(pmn->pubkey.GetID()).ToString()));
         mnObj.push_back(Pair("notCapableReason", activeMasternode.notCapableReason.c_str()));
         return mnObj;
     }
