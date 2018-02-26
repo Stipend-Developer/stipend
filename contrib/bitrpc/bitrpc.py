@@ -206,6 +206,12 @@ elif cmd == "listtransactions":
 	except:
 		print "\n---An error occurred---\n"
 
+elif cmd == "moneysupply":
+	try:
+		print access.moneysupply()
+	except:
+		print "\n---An error occurred---\n"
+
 elif cmd == "move":
 	try:
 		frm = raw_input("From: ")

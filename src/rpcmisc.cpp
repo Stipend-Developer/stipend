@@ -28,6 +28,18 @@ using namespace boost;
 using namespace boost::assign;
 using namespace json_spirit;
 
+Value moneysupply(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "moneysupply\n"
+            "Returns the current supply of the coin.");
+
+    proxyType proxy;
+    GetProxy(NET_IPV4, proxy);
+    return ValueFromAmount(pindexBest->nMoneySupply);
+}
+
 Value getinfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
@@ -278,4 +290,3 @@ Value spork(const Array& params, bool fHelp)
         "<value> is a epoch datetime to enable or disable spork"
         + HelpRequiringPassphrase());
 }
-
