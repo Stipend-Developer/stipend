@@ -260,6 +260,7 @@ static const CRPCCommand vRPCCommands[] =
 #ifdef ENABLE_WALLET
     { "darksend",               &darksend,               false,     false,      true },
     { "getmininginfo",          &getmininginfo,          true,      false,     false },
+    { "getnetworkhashps",       &getnetworkhashps,       true,      false,     false },
     { "getstakinginfo",         &getstakinginfo,         true,      false,     false },
     { "getnewaddress",          &getnewaddress,          true,      false,     true },
     { "getnewpubkey",           &getnewpubkey,           true,      false,     true },

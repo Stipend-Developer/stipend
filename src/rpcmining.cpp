@@ -78,6 +78,16 @@ Value getstakesubsidy(const Array& params, bool fHelp)
     return (uint64_t)GetProofOfStakeReward(pindexBest->pprev, nCoinAge, 0);
 }
 
+Value getnetworkhashps(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "getnetworkhashps\n"
+            "Returns the current network hashrate.");
+
+    return GetPoWMHashPS();
+}
+
 Value getmininginfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
@@ -123,7 +133,7 @@ Value getstakinginfo(const Array& params, bool fHelp)
 
     uint64_t nWeight = 0;
     uint64_t nExpectedTime = 0;
-    
+
     if (pwalletMain)
         nWeight = pwalletMain->GetStakeWeight();
 
@@ -383,8 +393,8 @@ Value getwork(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Stipend is downloading blocks...");
 
     if (pindexBest->nHeight >= Params().LastPOWBlock())
-        throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");	
-	
+        throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
+
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;    // FIXME: thread safety
     static vector<CBlock*> vNewBlock;
@@ -671,4 +681,3 @@ Value submitblock(const Array& params, bool fHelp)
 
     return Value::null;
 }
-
