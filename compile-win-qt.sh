@@ -5,7 +5,7 @@ MXE_LIB_PATH=$MXE_PATH/usr/i686-w64-mingw32.static/lib
 SECP256K1_LIB_PATH=/usr/local/lib
 
 cd src/leveldb
-make libleveldb.a libmemenv.a
+TARGET_OS=NATIVE_WINDOWS make CC=i686-w64-mingw32.static-g++ CXX=i686-w64-mingw32.static-g++ libleveldb.a libmemenv.a
 cd ../..
 
 cd ./src/secp256k1
