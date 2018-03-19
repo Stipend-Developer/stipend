@@ -113,11 +113,6 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
 
-	      LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
-	      LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        LogPrintf("Display nonce so we can input it below %s\n", genesis.nNonce);
-        LogPrintf("Display time so we can input it below %s\n", genesis.nTime);
-
         assert(hashGenesisBlock == uint256("0x7a5541643f97ca4bff6cd7b01e3fbea04002760713320a5750276d9b9c71d845"));
         assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
 
@@ -188,7 +183,10 @@ public:
         hashGenesisBlock = genesis.GetHash();
 
         LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
+	      LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
+
         assert(hashGenesisBlock == uint256("0xe133d1d3f584f1c3f561e7d0606fa87dabb869325a979c2a82e2f3943c0e3370"));
+        assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
