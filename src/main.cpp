@@ -3636,6 +3636,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         // Change version
         pfrom->PushMessage("verack");
         pfrom->ssSend.SetVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
+	        
+	// Jumpstart header sync to prevent non-signaling shares
+        if (pfrom->fNetworkNode)
+            pfrom->PushMessage("getheaders", chainActive.GetLocator(pindexBestHeader), uint256());
 
         if (!pfrom->fInbound)
         {
