@@ -5,6 +5,8 @@
 #include "protocol.h"
 #include "activemasternode.h"
 #include "masternodeman.h"
+#include "masternodeconfig.h"
+#include "spork.h"
 #include <boost/lexical_cast.hpp>
 #include "clientversion.h"
 
@@ -112,6 +114,89 @@ void CActiveMasternode::ManageStatus()
     //send to all peers
     if(!Dseep(errorMessage)) {
     	LogPrintf("CActiveMasternode::ManageStatus() - Error on Ping: %s\n", errorMessage.c_str());
+    }
+}
+
+bool CActiveMasternode::SendMasternodePing(std::string& errorMessage)
+{
+    if (status != ACTIVE_MASTERNODE_STARTED) {
+        errorMessage = "Masternode is not in a running status";
+        return false;
+    }
+
+    CPubKey pubKeyMasternode;
+    CKey keyMasternode;
+
+    if (!darkSendSigner.SetKey(strMasterNodePrivKey, errorMessage, keyMasternode, pubKeyMasternode)) {
+        errorMessage = strprintf("Error upon calling SetKey: %s\n", errorMessage);
+        return false;
+    }
+
+    LogPrintf("CActiveMasternode::SendMasternodePing() - Relay Masternode Ping vin = %s\n", vin.ToString());
+
+    CMasternodePing mnp(vin);
+    if (!mnp.Sign(keyMasternode, pubKeyMasternode)) {
+        errorMessage = "Couldn't sign Masternode Ping";
+        return false;
+    }
+
+    // Update lastPing for our masternode in Masternode list
+    CMasternode* pmn = mnodeman.Find(vin);
+    if (pmn != NULL) {
+        if (pmn->IsPingedWithin(MASTERNODE_PING_SECONDS, mnp.sigTime)) {
+            errorMessage = "Too early to send Masternode Ping";
+            return false;
+        }
+
+        pmn->lastPing = mnp;
+        mnodeman.mapSeenMasternodePing.insert(make_pair(mnp.GetHash(), mnp));
+
+        //mnodeman.mapSeenMasternodeBroadcast.lastPing is probably outdated, so we'll update it
+        CMasternodeBroadcast mnb(*pmn);
+        uint256 hash = mnb.GetHash();
+        if (mnodeman.mapSeenMasternodeBroadcast.count(hash)) mnodeman.mapSeenMasternodeBroadcast[hash].lastPing = mnp;
+
+        mnp.Relay();
+
+        /*
+         * IT'S SAFE TO REMOVE THIS IN FURTHER VERSIONS
+         * AFTER MIGRATION TO V12 IS DONE
+         */
+
+        if (IsSporkActive(SPORK_10_MASTERNODE_PAY_UPDATED_NODES)) return true;
+        // for migration purposes ping our node on old masternodes network too
+        std::string retErrorMessage;
+        std::vector<unsigned char> vchMasterNodeSignature;
+        int64_t masterNodeSignatureTime = GetAdjustedTime();
+
+        std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(masterNodeSignatureTime) + boost::lexical_cast<std::string>(false);
+
+        if (!darkSendSigner.SignMessage(strMessage, retErrorMessage, vchMasterNodeSignature, keyMasternode)) {
+            errorMessage = "dseep sign message failed: " + retErrorMessage;
+            return false;
+        }
+
+        if (!darkSendSigner.VerifyMessage(pubKeyMasternode, vchMasterNodeSignature, strMessage, retErrorMessage)) {
+            errorMessage = "dseep verify message failed: " + retErrorMessage;
+            return false;
+        }
+
+        LogPrint("masternode", "dseep - relaying from active mn, %s \n", vin.ToString().c_str());
+        LOCK(cs_vNodes);
+        BOOST_FOREACH (CNode* pnode, vNodes)
+            pnode->PushMessage("dseep", vin, vchMasterNodeSignature, masterNodeSignatureTime, false);
+
+        /*
+         * END OF "REMOVE"
+         */
+
+        return true;
+    } else {
+        // Seems like we are trying to send a ping while the Masternode is not registered in the network
+        errorMessage = "DarkSend Masternode List doesn't include our Masternode, shutting down Masternode pinging service! " + vin.ToString();
+        status = ACTIVE_MASTERNODE_NOT_CAPABLE;
+        notCapableReason = errorMessage;
+        return false;
     }
 }
 
@@ -264,11 +349,53 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         }
     }
 
-	return Register(vin, CService(strService, true), keyCollateralAddress, pubKeyCollateralAddress, keyMasternode, pubKeyMasternode, donationAddress, donationPercentage, errorMessage);
+    // The service needs the correct default port to work properly
+    if(!CMasternodeBroadcast::CheckDefaultPort(strService, errorMessage, "CActiveMasternode::Register()"))
+        return false;
+
+    return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyMasternode, pubKeyMasternode, donationAddress, donationPercentage, errorMessage);
 }
 
-bool CActiveMasternode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyMasternode, CPubKey pubKeyMasternode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage) {
-    std::string errorMessage;
+bool CActiveMasternode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyMasternode, CPubKey pubKeyMasternode, CScript donationAddress, int donationPercentage, std::string &errorMessage)
+{
+    CMasternodeBroadcast mnb;
+    CMasternodePing mnp(vin);
+    if (!mnp.Sign(keyMasternode, pubKeyMasternode)) {
+        errorMessage = strprintf("Failed to sign ping, vin: %s", vin.ToString());
+        LogPrintf("CActiveMasternode::Register() -  %s\n", errorMessage);
+        return false;
+    }
+    mnodeman.mapSeenMasternodePing.insert(make_pair(mnp.GetHash(), mnp));
+
+    LogPrintf("CActiveMasternode::Register() - Adding to Masternode list\n    service: %s\n    vin: %s\n", service.ToString(), vin.ToString());
+    mnb = CMasternodeBroadcast(service, vin, pubKeyCollateralAddress, pubKeyMasternode, PROTOCOL_VERSION);
+    mnb.lastPing = mnp;
+    if (!mnb.Sign(keyCollateralAddress)) {
+        errorMessage = strprintf("Failed to sign broadcast, vin: %s", vin.ToString());
+        LogPrintf("CActiveMasternode::Register() - %s\n", errorMessage);
+        return false;
+    }
+    mnodeman.mapSeenMasternodeBroadcast.insert(make_pair(mnb.GetHash(), mnb));
+
+    CMasternode* pmn = mnodeman.Find(vin);
+    if (pmn == NULL) {
+        CMasternode mn(mnb);
+        mnodeman.Add(mn);
+    } else {
+        pmn->UpdateFromNewBroadcast(mnb);
+    }
+
+    //send to all peers
+    LogPrintf("CActiveMasternode::Register() - RelayElectionEntry vin = %s\n", vin.ToString());
+    mnb.Relay();
+
+    /*
+     * IT'S SAFE TO REMOVE THIS IN FURTHER VERSIONS
+     * AFTER MIGRATION TO V12 IS DONE
+     */
+
+    if (IsSporkActive(SPORK_10_MASTERNODE_PAY_UPDATED_NODES)) return true;
+    std::string retErrorMessage;
     std::vector<unsigned char> vchMasterNodeSignature;
     std::string strMasterNodeSignMessage;
     int64_t masterNodeSignatureTime = GetAdjustedTime();
@@ -278,19 +405,18 @@ bool CActiveMasternode::Register(CTxIn vin, CService service, CKey keyCollateral
 
     std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(masterNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION) + donationAddress.ToString() + boost::lexical_cast<std::string>(donationPercentage);
 
-    if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyCollateralAddress)) {
-		retErrorMessage = "sign message failed: " + errorMessage;
-		LogPrintf("CActiveMasternode::Register() - Error: %s\n", retErrorMessage.c_str());
+    if(!darkSendSigner.SignMessage(strMessage, retErrorMessage, vchMasterNodeSignature, keyCollateralAddress)) {
+		errorMessage = "sign message failed: " + retErrorMessage;
+		LogPrintf("CActiveMasternode::Register() - Error: %s\n", errorMessage.c_str());
 		return false;
     }
 
-    if(!darkSendSigner.VerifyMessage(pubKeyCollateralAddress, vchMasterNodeSignature, strMessage, errorMessage)) {
-		retErrorMessage = "Verify message failed: " + errorMessage;
-		LogPrintf("CActiveMasternode::Register() - Error: %s\n", retErrorMessage.c_str());
+    if(!darkSendSigner.VerifyMessage(pubKeyCollateralAddress, vchMasterNodeSignature, strMessage, retErrorMessage)) {
+		errorMessage = "Verify message failed: " + retErrorMessage;
+		LogPrintf("CActiveMasternode::Register() - Error: %s\n", errorMessage.c_str());
 		return false;
-	}
+	  }
 
-    CMasternode* pmn = mnodeman.Find(vin);
     if(pmn == NULL)
     {
         LogPrintf("CActiveMasternode::Register() - Adding to masternode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());

@@ -2124,6 +2124,18 @@ bool CDarkSendSigner::SetKey(std::string strSecret, std::string& errorMessage, C
     return true;
 }
 
+bool CDarkSendSigner::GetKeysFromSecret(std::string strSecret, CKey& keyRet, CPubKey& pubkeyRet)
+{
+    CStipendSecret vchSecret;
+
+    if (!vchSecret.SetString(strSecret)) return false;
+
+    keyRet = vchSecret.GetKey();
+    pubkeyRet = keyRet.GetPubKey();
+
+    return true;
+}
+
 bool CDarkSendSigner::SignMessage(std::string strMessage, std::string& errorMessage, vector<unsigned char>& vchSig, CKey key)
 {
     CHashWriter ss(SER_GETHASH, 0);

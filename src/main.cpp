@@ -1419,6 +1419,34 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     return nSubsidy + nFees;
 }
 
+int64_t GetBlockValue(int nHeight)
+{
+    int64_t nSubsidy = 0;
+
+    if (pindexBest->nHeight+1 > 1500 && pindexBest->nHeight+1 <= 210000)  {
+        nSubsidy = 35 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
+        nSubsidy = 20 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
+        nSubsidy = 10 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 840001) {
+        nSubsidy = 5 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 840001 && pindexBest->nHeight+1 <= 1890000) {
+  // end game - further discussion needed
+        nSubsidy = 3 * COIN;
+    } else if (pindexBest->nHeight+1 > 1890000) {
+  // end game - further discussion needed
+        nSubsidy = 3 * COIN;
+        nSubsidy >>= ((pindexBest->nHeight + 210000) / 1050000);
+    }
+
+    return nSubsidy;
+}
+
 static int64_t nTargetTimespan = 5 * 90;
 
 // ppcoin: find last block index up to pindex
@@ -2566,8 +2594,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     bool foundPaymentAndPayee = false;
 
                     CScript payee;
-                    CTxIn vin;
-                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
+                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee) || payee == CScript()){
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
@@ -2605,14 +2632,6 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
     } else {
         if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
     }
-
-
-
-
-
-
-
-
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx)
@@ -2922,7 +2941,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
         // If we're in LiteMode disable darksend features without disabling masternodes
         if (!fLiteMode && !fImporting && !fReindex && pindexBest->nHeight > Checkpoints::GetTotalBlocksEstimate()){
 
-            if(masternodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
+            if(masternodePayments.GetBlockPayee(pindexBest->nHeight, payee)){
                 //UPDATE MASTERNODE LAST PAID TIME
                 CMasternode* pmn = mnodeman.Find(vin);
                 if(pmn != NULL) {
@@ -2938,7 +2957,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 
         } else if (fLiteMode && !fImporting && !fReindex && pindexBest->nHeight > Checkpoints::GetTotalBlocksEstimate())
         {
-            if(masternodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
+            if(masternodePayments.GetBlockPayee(pindexBest->nHeight, payee)){
                 //UPDATE MASTERNODE LAST PAID TIME
                 CMasternode* pmn = mnodeman.Find(vin);
                 if(pmn != NULL) {
@@ -3418,7 +3437,11 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
     case MSG_SPORK:
         return mapSporks.count(inv.hash);
     case MSG_MASTERNODE_WINNER:
-        return mapSeenMasternodeVotes.count(inv.hash);
+        return masternodePayments.mapMasternodePayeeVotes.count(inv.hash);
+    case MSG_MASTERNODE_ANNOUNCE:
+        return mnodeman.mapSeenMasternodeBroadcast.count(inv.hash);
+    case MSG_MASTERNODE_PING:
+        return mnodeman.mapSeenMasternodePing.count(inv.hash);
     }
     // Don't know what it is, just say we already got one
     return true;
@@ -3519,11 +3542,30 @@ void static ProcessGetData(CNode* pfrom)
                     }
                 }
                 if (!pushed && inv.type == MSG_MASTERNODE_WINNER) {
-                    if(mapSeenMasternodeVotes.count(inv.hash)){
+                    if(masternodePayments.mapMasternodePayeeVotes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
-                        ss << mapSeenMasternodeVotes[inv.hash];
+                        ss << masternodePayments.mapMasternodePayeeVotes[inv.hash];
                         pfrom->PushMessage("mnw", ss);
+                        pushed = true;
+                    }
+                }
+                if (!pushed && inv.type == MSG_MASTERNODE_ANNOUNCE) {
+                    if (mnodeman.mapSeenMasternodeBroadcast.count(inv.hash)) {
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mnodeman.mapSeenMasternodeBroadcast[inv.hash];
+                        pfrom->PushMessage("mnb", ss);
+                        pushed = true;
+                    }
+                }
+
+                if (!pushed && inv.type == MSG_MASTERNODE_PING) {
+                    if (mnodeman.mapSeenMasternodePing.count(inv.hash)) {
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mnodeman.mapSeenMasternodePing[inv.hash];
+                        pfrom->PushMessage("mnp", ss);
                         pushed = true;
                     }
                 }
@@ -4225,7 +4267,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
         darkSendPool.ProcessMessageDarksend(pfrom, strCommand, vRecv);
         mnodeman.ProcessMessage(pfrom, strCommand, vRecv);
-        ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
+        masternodePayments.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
 
@@ -4243,6 +4285,24 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
 
     return true;
+}
+
+int ActiveProtocol()
+{
+
+    // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
+    // messages because it's not in their code
+
+/*    if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+*/
+
+    // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
+    // own ModifierUpgradeBlock()
+
+    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
@@ -4564,8 +4624,6 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
     }
     return true;
 }
-
-
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {

@@ -75,3 +75,15 @@ bool CMasternodeConfig::read(boost::filesystem::path path) {
     streamConfig.close();
     return true;
 }
+
+bool CMasternodeConfig::CMasternodeEntry::castOutputIndex(int &n)
+{
+    try {
+        n = std::atoi(outputIndex.c_str());
+    } catch (const std::exception e) {
+        LogPrintf("%s: %s on getOutputIndex\n", __func__, e.what());
+        return false;
+    }
+
+    return true;
+}

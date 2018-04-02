@@ -124,6 +124,8 @@ enum {
     MSG_TXLOCK_VOTE,
     MSG_SPORK,
     MSG_MASTERNODE_WINNER,
+    MSG_MASTERNODE_PING,
+    MSG_MASTERNODE_ANNOUNCE,
     MSG_MASTERNODE_SCANNING_ERROR,
     MSG_DSTX
 };
@@ -247,7 +249,7 @@ public:
         SetNull();
         nCreateTime = nCreateTimeIn;
     }
-  
+
     IMPLEMENT_SERIALIZE
     (
         READWRITE(this->nVersion);
@@ -277,7 +279,7 @@ public:
         }
     }
 };
-  
+
 typedef std::map<CSubNet, CBanEntry> banmap_t;
 
 class SecMsgNode
@@ -292,9 +294,9 @@ public:
         nPeerId         = 0;
         fEnabled        = false;
     };
-    
+
     ~SecMsgNode() {};
-    
+
     CCriticalSection            cs_smsg_net;
     int64_t                     lastSeen;
     int64_t                     lastMatched;
@@ -302,7 +304,7 @@ public:
     uint32_t                    nWakeCounter;
     uint32_t                    nPeerId;
     bool                        fEnabled;
-    
+
 };
 
 
@@ -485,7 +487,7 @@ public:
     unsigned int GetTotalRecvSize()
     {
         unsigned int total = 0;
-        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg) 
+        BOOST_FOREACH(const CNetMessage &msg, vRecvMsg)
             total += msg.vRecv.size() + 24;
         return total;
     }

@@ -5719,7 +5719,9 @@ build/activemasternode.o: src/activemasternode.cpp src/protocol.h \
 		src/darksend.h \
 		src/masternodeman.h \
 		src/masternode-payments.h \
-		src/darksend-relay.h
+		src/darksend-relay.h \
+		src/masternodeconfig.h \
+		src/spork.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/activemasternode.o src/activemasternode.cpp
 
 build/masternodeman.o: src/masternodeman.cpp src/masternodeman.h \
@@ -5778,7 +5780,8 @@ build/masternodeman.o: src/masternodeman.cpp src/masternodeman.h \
 		src/darksend.h \
 		src/masternode-payments.h \
 		src/darksend-relay.h \
-		src/addrman.h
+		src/addrman.h \
+		src/spork.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/masternodeman.o src/masternodeman.cpp
 
 build/masternode-payments.o: src/masternode-payments.cpp src/masternode-payments.h \

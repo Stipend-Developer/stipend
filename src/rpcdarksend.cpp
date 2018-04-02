@@ -547,7 +547,7 @@ Value masternode(const Array& params, bool fHelp)
         {
             CScript payee;
             CTxIn vin;
-            if(masternodePayments.GetBlockPayee(nHeight, payee, vin)){
+            if(masternodePayments.GetBlockPayee(nHeight, payee)){
                 CTxDestination address1;
                 ExtractDestination(payee, address1);
                 CStipendAddress address2(address1);

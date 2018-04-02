@@ -31,6 +31,7 @@ static const int DATABASE_VERSION = 70509;
 //
 
 static const int PROTOCOL_VERSION = 11001;
+static const int GETHEADERS_VERSION = 70077;
 
 // intial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
@@ -39,7 +40,9 @@ static const int INIT_PROTO_VERSION = 209;
 static const int MIN_PEER_PROTO_VERSION = 11001;
 
 // minimum peer version accepted by DarkSendPool
-static const int MIN_POOL_PEER_PROTO_VERSION = 11001; 
+static const int MIN_POOL_PEER_PROTO_VERSION = 11001;
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70911;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70912;
 
 static const int MIN_INSTANTX_PROTO_VERSION = 11001;
 

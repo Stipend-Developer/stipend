@@ -17,6 +17,11 @@
 
 class uint256;
 
+class CMasternode;
+class CMasternodeBroadcast;
+class CMasternodePing;
+extern map<int64_t, uint256> mapCacheBlockHashes;
+
 #define MASTERNODE_NOT_PROCESSED               0 // initial state
 #define MASTERNODE_IS_CAPABLE                  1
 #define MASTERNODE_NOT_CAPABLE                 2
@@ -37,11 +42,78 @@ class uint256;
 using namespace std;
 
 class CMasternode;
+class CMasternodeBroadcast;
+class CMasternodePing;
 
 extern CCriticalSection cs_masternodes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
 bool GetBlockHash(uint256& hash, int nBlockHeight);
+
+
+//
+// The Masternode Ping Class : Contains a different serialize method for sending pings from masternodes throughout the network
+//
+
+class CMasternodePing
+{
+public:
+    CTxIn vin;
+    uint256 blockHash;
+    int64_t sigTime; //mnb message times
+    std::vector<unsigned char> vchSig;
+    //removed stop
+
+    CMasternodePing();
+    CMasternodePing(CTxIn& newVin);
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(vin);
+        READWRITE(blockHash);
+        READWRITE(sigTime);
+        READWRITE(vchSig);
+    )
+
+    bool CheckAndUpdate(int& nDos, bool fRequireEnabled = true);
+    bool Sign(CKey& keyMasternode, CPubKey& pubkey2);
+    void Relay();
+
+    uint256 GetHash()
+    {
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+        ss << vin;
+        ss << sigTime;
+        return ss.GetHash();
+    }
+
+    void swap(CMasternodePing& first, CMasternodePing& second) // nothrow
+    {
+        // enable ADL (not necessary in our case, but good practice)
+        using std::swap;
+
+        // by swapping the members of two classes,
+        // the two classes are effectively swapped
+        swap(first.vin, second.vin);
+        swap(first.blockHash, second.blockHash);
+        swap(first.sigTime, second.sigTime);
+        swap(first.vchSig, second.vchSig);
+    }
+
+    CMasternodePing& operator=(CMasternodePing from)
+    {
+        swap(*this, from);
+        return *this;
+    }
+    friend bool operator==(const CMasternodePing& a, const CMasternodePing& b)
+    {
+        return a.vin == b.vin && a.blockHash == b.blockHash;
+    }
+    friend bool operator!=(const CMasternodePing& a, const CMasternodePing& b)
+    {
+        return !(a == b);
+    }
+};
 
 //
 // The Masternode Class. For managing the darksend process. It contains the input of the 1000TX, signature to prove
@@ -62,7 +134,7 @@ public:
         MASTERNODE_POS_ERROR = 5
     };
 
-    CTxIn vin;  
+    CTxIn vin;
     CService addr;
     CPubKey pubkey;
     CPubKey pubkey2;
@@ -70,6 +142,7 @@ public:
     int activeState;
     int64_t sigTime; //dsee message times
     int64_t lastDseep;
+    int64_t lastDsee;
     int64_t lastTimeSeen;
     int cacheInputAge;
     int cacheInputAgeBlock;
@@ -84,6 +157,7 @@ public:
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
     int64_t nLastPaid;
+    CMasternodePing lastPing;
 
 
     CMasternode();
@@ -120,6 +194,7 @@ public:
         swap(first.nScanningErrorCount, second.nScanningErrorCount);
         swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
         swap(first.nLastPaid, second.nLastPaid);
+        swap(first.lastPing, second.lastPing);
     }
 
     CMasternode& operator=(CMasternode from)
@@ -169,13 +244,13 @@ public:
                 READWRITE(nScanningErrorCount);
                 READWRITE(nLastScanningErrorBlockHeight);
                 READWRITE(nLastPaid);
+                READWRITE(lastPing);
         }
     )
 
-    int64_t SecondsSincePayment()
-    {
-        return (GetAdjustedTime() - nLastPaid);
-    }
+    int64_t SecondsSincePayment();
+
+    bool UpdateFromNewBroadcast(CMasternodeBroadcast& mnb);
 
     void UpdateLastSeen(int64_t override=0)
     {
@@ -195,16 +270,22 @@ public:
 
     void Check();
 
-    bool UpdatedWithin(int seconds)
+    bool IsBroadcastedWithin(int seconds)
     {
-        // LogPrintf("UpdatedWithin %d, %d --  %d \n", GetAdjustedTime() , lastTimeSeen, (GetAdjustedTime() - lastTimeSeen) < seconds);
+        return (GetAdjustedTime() - sigTime) < seconds;
+    }
 
-        return (GetAdjustedTime() - lastTimeSeen) < seconds;
+    bool IsPingedWithin(int seconds, int64_t now = -1)
+    {
+        now == -1 ? now = GetAdjustedTime() : now;
+
+        return (lastPing == CMasternodePing()) ? false : now - lastPing.sigTime < seconds;
     }
 
     void Disable()
     {
         lastTimeSeen = 0;
+        lastPing = CMasternodePing();
     }
 
     bool IsEnabled()
@@ -235,6 +316,51 @@ public:
 
         return strStatus;
     }
+
+    int64_t GetLastPaid();
+    bool IsValidNetAddr();
+};
+
+//
+// The Masternode Broadcast Class : Contains a different serialize method for sending masternodes through the network
+//
+
+class CMasternodeBroadcast : public CMasternode
+{
+public:
+    CMasternodeBroadcast();
+    CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVersionIn);
+    CMasternodeBroadcast(const CMasternode& mn);
+
+    bool CheckAndUpdate(int& nDoS);
+    bool CheckInputsAndAdd(int& nDos);
+    bool Sign(CKey& keyCollateralAddress);
+    void Relay();
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(vin);
+        READWRITE(addr);
+        READWRITE(pubkey);
+        READWRITE(pubkey2);
+        READWRITE(sig);
+        READWRITE(sigTime);
+        READWRITE(protocolVersion);
+        READWRITE(nLastDsq);
+    )
+
+    uint256 GetHash()
+    {
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+        ss << sigTime;
+        ss << pubkey;
+        return ss.GetHash();
+    }
+
+    /// Create Masternode broadcast, needs to be relayed manually after that
+    static bool Create(CTxIn vin, CService service, CKey keyCollateralAddressNew, CPubKey pubkey, CKey keyMasternodeNew, CPubKey pubKeyMasternodeNew, std::string& strErrorRet, CMasternodeBroadcast& mnbRet);
+    static bool Create(std::string strService, std::string strKey, std::string strTxHash, std::string strOutputIndex, std::string& strErrorRet, CMasternodeBroadcast& mnbRet, bool fOffline = false);
+    static bool CheckDefaultPort(std::string strService, std::string& strErrorRet, std::string strContext);
 };
 
 #endif

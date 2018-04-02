@@ -58,6 +58,9 @@ private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
 
+    // critical section to protect the inner data structures specifically on messaging
+    mutable CCriticalSection cs_process_message;
+
     // map to hold all MNs
     std::vector<CMasternode> vMasternodes;
     // who's asked for the masternode list and the last time
@@ -68,6 +71,12 @@ private:
     std::map<COutPoint, int64_t> mWeAskedForMasternodeListEntry;
 
 public:
+
+    // Keep track of all broadcasts I've seen
+    map<uint256, CMasternodeBroadcast> mapSeenMasternodeBroadcast;
+    // Keep track of all pings I've seen
+    map<uint256, CMasternodePing> mapSeenMasternodePing;
+
     // keep track of dsq count to prevent masternodes from gaming darksend queue
     int64_t nDsqCount;
 
@@ -85,6 +94,8 @@ public:
                 READWRITE(mWeAskedForMasternodeList);
                 READWRITE(mWeAskedForMasternodeListEntry);
                 READWRITE(nDsqCount);
+                READWRITE(mapSeenMasternodeBroadcast);
+                READWRITE(mapSeenMasternodePing);
         }
     )
 
@@ -110,23 +121,23 @@ public:
 
     int CountMasternodesAboveProtocol(int protocolVersion);
 
+    void CountNetworks(int protocolVersion, int& ipv4, int& ipv6, int& onion);
+
     void DsegUpdate(CNode* pnode);
 
     // Find an entry
+    CMasternode* Find(const CScript& payee);
     CMasternode* Find(const CTxIn& vin);
     CMasternode* Find(const CPubKey& pubKeyMasternode);
 
-    //Find an entry thta do not match every entry provided vector
-    CMasternode* FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge);
-
-    // Find a random entry
-    CMasternode* FindRandom();
+    /// Find an entry in the masternode list that is next to be paid
+    CMasternode* GetNextMasternodeInQueueForPayment(int nBlockHeight, bool fFilterSigTime, int& nCount);
 
     /// Find a random entry
-    CMasternode* FindRandomNotInVec(std::vector<CTxIn> &vecToExclude, int protocolVersion = -1);
+    CMasternode* FindRandomNotInVec(std::vector<CTxIn>& vecToExclude, int protocolVersion = -1);
 
-    // Get the current winner for this block
-    CMasternode* GetCurrentMasterNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
+    /// Get the current winner for this block
+    CMasternode* GetCurrentMasterNode(int mod = 1, int64_t nBlockHeight = 0, int minProtocol = 0);
 
     std::vector<CMasternode> GetFullMasternodeVector() { Check(); return vMasternodes; }
 
@@ -142,6 +153,9 @@ public:
     int size() { return vMasternodes.size(); }
 
     std::string ToString() const;
+
+    /// Return the number of Masternodes older than (default) 8000 seconds
+    int stable_size ();
 
     //
     // Relay Masternode Messages

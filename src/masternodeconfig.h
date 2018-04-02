@@ -40,6 +40,7 @@ public:
             this->outputIndex = outputIndex;
             this->donationAddress = donationAddress;
             this->donationPercent = donationPercent;
+            this->outputIndex = outputIndex;
         }
 
         const std::string& getAlias() const {
@@ -53,6 +54,8 @@ public:
         const std::string& getOutputIndex() const {
             return outputIndex;
         }
+
+        bool castOutputIndex(int& n);
 
         void setOutputIndex(const std::string& outputIndex) {
             this->outputIndex = outputIndex;
@@ -105,8 +108,6 @@ public:
 
 private:
     std::vector<CMasternodeEntry> entries;
-
-
 };
 
 
