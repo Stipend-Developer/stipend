@@ -261,6 +261,13 @@ public:
         }
     }
 
+    bool UpdatedWithin(int seconds)
+    {
+        // LogPrintf("UpdatedWithin %d, %d --  %d \n", GetAdjustedTime() , lastTimeSeen, (GetAdjustedTime() - lastTimeSeen) < seconds);
+
+        return (GetAdjustedTime() - lastTimeSeen) < seconds;
+    }
+    
     inline uint64_t SliceHash(uint256& hash, int slice)
     {
         uint64_t n = 0;

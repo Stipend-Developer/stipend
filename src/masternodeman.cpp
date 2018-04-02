@@ -789,12 +789,11 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             //   e.g. We don't want the entry relayed/time updated when we're syncing the list
             // mn.pubkey = pubkey, IsVinAssociatedWithPubkey is validated once below,
             //   after that they just need to match
-            if(count == -1 && pmn->pubkey == pubkey && (GetAdjustedTime() - pmn->lastDsee > MASTERNODE_MIN_DSEE_SECONDS)) {
-              pmn->UpdateLastSeen();
-              if (pmn->protocolVersion > GETHEADERS_VERSION && sigTime - pmn->lastPing.sigTime < MASTERNODE_MIN_DSEE_SECONDS) return;
-              if (pmn->lastDsee < sigTime) { //take the newest entry
-                    LogPrintf("dsee - Got updated entry for %s\n", addr.ToString().c_str());
-                    pmn->pubkey2 = pubkey2;
+            if(count == -1 && pmn->pubkey == pubkey && !pmn->UpdatedWithin(MASTERNODE_MIN_DSEE_SECONDS)){
+                pmn->UpdateLastSeen();
+
+                if(pmn->sigTime < sigTime){ //take the newest entry
+                    LogPrintf("dsee - Got updated entry for %s\n", addr.ToString().c_str());                    pmn->pubkey2 = pubkey2;
                     pmn->sigTime = sigTime;
                     pmn->sig = vchSig;
                     pmn->protocolVersion = protocolVersion;
@@ -957,6 +956,18 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
                     BOOST_FOREACH (CNode* pnode, vNodes)
                         if (pnode->nVersion >= masternodePayments.GetMinMasternodePaymentsProto())
                             pnode->PushMessage("dseep", vin, vchSig, sigTime, stop);
+                }
+                
+                if(!pmn->UpdatedWithin(MASTERNODE_MIN_DSEEP_SECONDS))
+                {
+                    if(stop) pmn->Disable();
+                    else
+                    {
+                        pmn->UpdateLastSeen();
+                        pmn->Check();
+                        if(!pmn->IsEnabled()) return;
+                    }
+                    mnodeman.RelayMasternodeEntryPing(vin, vchSig, sigTime, stop);
                 }
             }
             return;
