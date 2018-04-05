@@ -1419,6 +1419,34 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     return nSubsidy + nFees;
 }
 
+int64_t GetBlockValue(int nHeight)
+{
+    int64_t nSubsidy = 0;
+
+    if (pindexBest->nHeight+1 > 1500 && pindexBest->nHeight+1 <= 210000)  {
+        nSubsidy = 35 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
+        nSubsidy = 20 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
+        nSubsidy = 10 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 840001) {
+        nSubsidy = 5 * COIN;
+    }
+    else if (pindexBest->nHeight+1 > 840001 && pindexBest->nHeight+1 <= 1890000) {
+  // end game - further discussion needed
+        nSubsidy = 3 * COIN;
+    } else if (pindexBest->nHeight+1 > 1890000) {
+  // end game - further discussion needed
+        nSubsidy = 3 * COIN;
+        nSubsidy >>= ((pindexBest->nHeight + 210000) / 1050000);
+    }
+
+    return nSubsidy;
+}
+
 static int64_t nTargetTimespan = 5 * 90;
 
 // ppcoin: find last block index up to pindex
@@ -4243,6 +4271,24 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
 
     return true;
+}
+
+int ActiveProtocol()
+{
+
+    // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
+    // messages because it's not in their code
+
+/*    if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+*/
+
+    // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
+    // own ModifierUpgradeBlock()
+
+    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
