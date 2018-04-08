@@ -404,7 +404,7 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 
     if(nBlockHeight <= nLastBlockHeight) return false;
     if(!enabled) return false;
-    CMasternodePaymentWinner newWinner;
+    CMasternodePaymentWinner newWinner(activeMasternode.vin);
     int nMinimumAge = mnodeman.CountEnabled();
     CScript payeeSource;
 
@@ -424,65 +424,27 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
     }
 
     // pay to the oldest MN that still had no payment but its input is old enough and it was active long enough
-    CMasternode *pmn = mnodeman.FindOldestNotInVec(vecLastPayments, nMinimumAge);
-    if(pmn != NULL)
-    {
-        LogPrintf(" Found by FindOldestNotInVec \n");
+    int nCount = 0;
+    CMasternode* pmn = mnodeman.GetNextMasternodeInQueueForPayment(nBlockHeight, true, nCount);
+    if (pmn != NULL) {
+        LogPrint("masternode","CMasternodePayments::ProcessBlock() Found by FindOldestNotInVec \n");
 
-        newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
-        newWinner.vin = pmn->vin;
+        CScript payee = GetScriptForDestination(pmn->pubkey.GetID());
+        newWinner.AddPayee(payee);
 
-        if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
-            newWinner.payee = pmn->donationAddress;
-        } else {
-            newWinner.payee = GetScriptForDestination(pmn->pubkey.GetID());
-        }
+        CTxDestination address1;
+        ExtractDestination(payee, address1);
+        CBitcoinAddress address2(address1);
 
-        payeeSource = GetScriptForDestination(pmn->pubkey.GetID());
+        LogPrint("masternode","CMasternodePayments::ProcessBlock() Winner payee %s nHeight %d. \n", address2.ToString().c_str(), newWinner.nBlockHeight);
+    } else {
+        LogPrint("masternode","CMasternodePayments::ProcessBlock() Failed to find masternode to pay\n");
     }
 
-    //if we can't find new MN to get paid, pick first active MN counting back from the end of vecLastPayments list
-    if(newWinner.nBlockHeight == 0 && nMinimumAge > 0)
-    {
-        LogPrintf(" Find by reverse \n");
-
-        BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
-        {
-            CMasternode* pmn = mnodeman.Find(vinLP);
-            if(pmn != NULL)
-            {
-                pmn->Check();
-                if(!pmn->IsEnabled()) continue;
-
-                newWinner.score = 0;
-                newWinner.nBlockHeight = nBlockHeight;
-                newWinner.vin = pmn->vin;
-
-                if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
-                    newWinner.payee = pmn->donationAddress;
-                } else {
-                    newWinner.payee = GetScriptForDestination(pmn->pubkey.GetID());
-                }
-
-                payeeSource = GetScriptForDestination(pmn->pubkey.GetID());
-
-                break; // we found active MN
-            }
-        }
-    }
-
-    if(newWinner.nBlockHeight == 0) return false;
-
-    CTxDestination address1;
-    ExtractDestination(newWinner.payee, address1);
-    CStipendAddress address2(address1);
-
-    CTxDestination address3;
-    ExtractDestination(payeeSource, address3);
-    CStipendAddress address4(address3);
-
-    LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
+    std::string errorMessage;
+    CPubKey pubKeyMasternode;
+    CKey keyMasternode;
 
     if(Sign(newWinner))
     {
