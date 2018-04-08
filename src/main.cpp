@@ -2594,20 +2594,63 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     bool foundPaymentAndPayee = false;
 
                     CScript payee;
+                    string targetNode;
                     CTxIn vin;
-                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
-                        foundPayee = true; //doesn't require a specific payee
-                        foundPaymentAmount = true;
-                        foundPaymentAndPayee = true;
-                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
+
+                    CScript payeeAddress = CScript();
+                    int payeeReward = 0;
+                    bool hasPayment = true;
+
+                    if (!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin)) {
+                        CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
+
+                        if (winningNode) {
+                            payee = GetScriptForDestination(winningNode->pubkey.GetID());
+                            payeeAddress = winningNode->donationAddress;
+                            payeeReward = winningNode->donationPercentage;
+
+                            if (hasPayment && payeeReward == 0) {
+                                CTxDestination address1;
+                                ExtractDestination(payee, address1);
+                                CStipendAddress address2(address1);
+                                targetNode = address2.ToString().c_str();
+                            }
+
+                            if (hasPayment && payeeReward == 100) {
+                                CTxDestination address1;
+                                ExtractDestination(payeeAddress, address1);
+                                CStipendAddress address2(address1);
+                                targetNode = address2.ToString().c_str();
+                            }
+
+                            if (hasPayment && payeeReward > 0 && payeeReward < 100) {
+                                CTxDestination address1;
+                                ExtractDestination(payee, address1);
+                                CStipendAddress address2(address1);
+
+                                CTxDestination address3;
+                                ExtractDestination(payeeAddress, address3);
+                                CStipendAddress address4(address3);
+                                targetNode = address2.ToString().c_str();
+                            }
+                            LogPrintf("Detected Masternode Payment to %s\n", targetNode);
+                        } else {
+                            LogPrintf("Cant Calculate Winner, Passing");
+                            foundPaymentAmount = true;
+                            foundPayee = true;
+                            foundPaymentAndPayee = true;
+                        }
                     }
 
                     for (unsigned int i = 0; i < vtx[1].vout.size(); i++) {
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount )
+                        CTxDestination address1;
+                        ExtractDestination(vtx[1].vout[i].scriptPubKey, address1);
+                        CStipendAddress address2(address1);
+                        if(vtx[1].vout[i].nValue == masternodePaymentAmount)
                             foundPaymentAmount = true;
-                        if(vtx[1].vout[i].scriptPubKey == payee )
+                        if(address2.ToString().c_str() == targetNode)
                             foundPayee = true;
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount && vtx[1].vout[i].scriptPubKey == payee)
+                        if(vtx[1].vout[i].nValue == masternodePaymentAmount && address2.ToString().c_str() == targetNode)
                             foundPaymentAndPayee = true;
                     }
 
