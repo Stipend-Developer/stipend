@@ -608,7 +608,7 @@ public:
             *this = 0;
     }
 
-    uint256& uint256::SetCompact(uint32_t nCompact, bool* pfNegative, bool* pfOverflow)
+    uint256& SetCompact(uint32_t nCompact, bool* pfNegative, bool* pfOverflow)
     {
         int nSize = nCompact >> 24;
         uint32_t nWord = nCompact & 0x007fffff;
@@ -628,7 +628,7 @@ public:
         return *this;
     }
 
-    uint32_t uint256::GetCompact(bool fNegative) const
+    uint32_t GetCompact(bool fNegative) const
     {
         int nSize = (bits() + 7) / 8;
         uint32_t nCompact = 0;
