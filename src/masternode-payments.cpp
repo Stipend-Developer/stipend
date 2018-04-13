@@ -134,26 +134,6 @@ bool CMasternodePayments::Sign(CMasternodePaymentWinner& winner)
     return true;
 }
 
-bool IsBlockPayeeValid(const CTransaction vtx, const CTransaction ctx, int nBlockHeight)
-{
-    if (!darkSendPool.IsBlockchainSynced()) {
-        LogPrint("mnpayments", "Client not synced, skipping block payee checks\n");
-        return true;
-    }
-
-    const CTransaction& txNew = (nBlockHeight > 210000 ? ctx : vtx);
-    //check for masternode payee
-    if (masternodePayments.IsTransactionValid(txNew, nBlockHeight))
-        return true;
-    LogPrint("masternode","Invalid mn payment detected %s\n", txNew.ToString().c_str());
-
-    if (IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))
-        return false;
-    LogPrint("masternode","Masternode payment enforcement is disabled, accepting block\n");
-
-    return true;
-}
-
 uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
 {
     uint256 n1 = blockHash;

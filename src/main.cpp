@@ -79,6 +79,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeenOrphan;
 
 map<uint256, CTransaction> mapOrphanTransactions;
 map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
+map<uint256, int64_t> mapRejectedBlocks;
 
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
@@ -2555,7 +2556,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                 BOOST_FOREACH(const CTxIn& in, tx.vin){
                     if(mapLockedInputs.count(in.prevout)){
                         if(mapLockedInputs[in.prevout] != tx.GetHash()){
-                            if(fDebug) { LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString().c_str(), tx.GetHash().ToString().c_str()); }
+                            LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString().c_str(), tx.GetHash().ToString().c_str());
                             return DoS(0, error("CheckBlock() : found conflicting transaction with transaction lock"));
                         }
                     }
@@ -2566,10 +2567,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         if(fDebug) { LogPrintf("CheckBlock() : skipping transaction locking checks\n"); }
     }
 
-
-
     // ----------- masternode payments -----------
-
     bool MasternodePayments = false;
     bool fIsInitialDownload = IsInitialBlockDownload();
 
@@ -2594,63 +2592,20 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     bool foundPaymentAndPayee = false;
 
                     CScript payee;
-                    string targetNode;
                     CTxIn vin;
-
-                    CScript payeeAddress = CScript();
-                    int payeeReward = 0;
-                    bool hasPayment = true;
-
-                    if (!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin)) {
-                        CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
-
-                        if (winningNode) {
-                            payee = GetScriptForDestination(winningNode->pubkey.GetID());
-                            payeeAddress = winningNode->donationAddress;
-                            payeeReward = winningNode->donationPercentage;
-
-                            if (hasPayment && payeeReward == 0) {
-                                CTxDestination address1;
-                                ExtractDestination(payee, address1);
-                                CStipendAddress address2(address1);
-                                targetNode = address2.ToString().c_str();
-                            }
-
-                            if (hasPayment && payeeReward == 100) {
-                                CTxDestination address1;
-                                ExtractDestination(payeeAddress, address1);
-                                CStipendAddress address2(address1);
-                                targetNode = address2.ToString().c_str();
-                            }
-
-                            if (hasPayment && payeeReward > 0 && payeeReward < 100) {
-                                CTxDestination address1;
-                                ExtractDestination(payee, address1);
-                                CStipendAddress address2(address1);
-
-                                CTxDestination address3;
-                                ExtractDestination(payeeAddress, address3);
-                                CStipendAddress address4(address3);
-                                targetNode = address2.ToString().c_str();
-                            }
-                            LogPrintf("Detected Masternode Payment to %s\n", targetNode);
-                        } else {
-                            LogPrintf("Cant Calculate Winner, Passing");
-                            foundPaymentAmount = true;
-                            foundPayee = true;
-                            foundPaymentAndPayee = true;
-                        }
+                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
+                        foundPayee = true; //doesn't require a specific payee
+                        foundPaymentAmount = true;
+                        foundPaymentAndPayee = true;
+                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
                     }
-
+                    
                     for (unsigned int i = 0; i < vtx[1].vout.size(); i++) {
-                        CTxDestination address1;
-                        ExtractDestination(vtx[1].vout[i].scriptPubKey, address1);
-                        CStipendAddress address2(address1);
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount)
+                        if(vtx[1].vout[i].nValue == masternodePaymentAmount )
                             foundPaymentAmount = true;
-                        if(address2.ToString().c_str() == targetNode)
+                        if(vtx[1].vout[i].scriptPubKey == payee )
                             foundPayee = true;
-                        if(vtx[1].vout[i].nValue == masternodePaymentAmount && address2.ToString().c_str() == targetNode)
+                        if(vtx[1].vout[i].nValue == masternodePaymentAmount && vtx[1].vout[i].scriptPubKey == payee)
                             foundPaymentAndPayee = true;
                     }
 
@@ -2674,16 +2629,8 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             if(fDebug) { LogPrintf("CheckBlock() : skipping masternode payment checks\n"); }
         }
     } else {
-        if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
+          if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
     }
-
-
-
-
-
-
-
-
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx)
@@ -3663,7 +3610,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PEER_PROTO_VERSION)
+        if ((pfrom->nVersion < MIN_PEER_PROTO_VERSION) || (nBestHeight >= 120000 && pfrom->nVersion < MIN_PEER_PROTO_VERSION_FORK1))
         {
             // disconnect from peers older than this proto version
             LogPrintf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString(), pfrom->nVersion);

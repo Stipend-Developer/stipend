@@ -28,7 +28,6 @@ extern CMasternodePayments masternodePayments;
 extern map<uint256, CMasternodePaymentWinner> mapSeenMasternodeVotes;
 
 void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
-bool IsBlockPayeeValid(const CTransaction vtx, const CTransaction ctx, int nBlockHeight);
 std::string GetRequiredPaymentsString(int nBlockHeight);
 
 #define MNPAYMENTS_SIGNATURES_REQUIRED 6
