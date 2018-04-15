@@ -2593,13 +2593,13 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
                     CScript payee;
                     CTxIn vin;
-                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
-                        foundPayee = true; //doesn't require a specific payee
+                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin)) {
+                        foundPayee = true;
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
                         if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
                     }
-                    
+
                     for (unsigned int i = 0; i < vtx[1].vout.size(); i++) {
                         if(vtx[1].vout[i].nValue == masternodePaymentAmount )
                             foundPaymentAmount = true;
