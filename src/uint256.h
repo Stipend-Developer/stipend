@@ -6,7 +6,6 @@
 #ifndef BITCOIN_UINT256_H
 #define BITCOIN_UINT256_H
 
-#include <assert.h>
 #include <string>
 #include <vector>
 #include <stdint.h>
@@ -305,20 +304,6 @@ public:
         return std::string(psz, psz + sizeof(pn)*2);
     }
 
-    unsigned int bits() const
-    {
-        for (int pos = WIDTH - 1; pos >= 0; pos--) {
-            if (pn[pos]) {
-                for (int bits = 31; bits > 0; bits--) {
-                    if (pn[pos] & 1 << bits)
-                        return 32 * pos + bits + 1;
-                }
-                return 32 * pos + 1;
-            }
-        }
-        return 0;
-    }
-
     void SetHex(const char* psz)
     {
         memset(pn,0,sizeof(pn));
@@ -389,12 +374,6 @@ public:
         return pn[2*n] | (uint64_t)pn[2*n+1] << 32;
     }
 
-    uint64_t GetLow64() const
-    {
-        assert(WIDTH >= 2);
-        return pn[0] | (uint64_t)pn[1] << 32;
-    }
-
     unsigned int GetSerializeSize(int nType, int nVersion) const
     {
         return sizeof(pn);
@@ -415,11 +394,7 @@ public:
     friend class uint160;
     friend class uint256;
     friend class uint512;
-
     friend inline int Testuint256AdHoc(std::vector<std::string> vArg);
-    friend inline const base_uint operator>>(const base_uint& a, int shift) { return base_uint(a) >>= shift; }
-    friend inline const base_uint operator<<(const base_uint& a, int shift) { return base_uint(a) <<= shift; }
-
 };
 
 typedef base_uint<160> base_uint160;
@@ -607,49 +582,6 @@ public:
         else
             *this = 0;
     }
-
-    uint256& SetCompact(uint32_t nCompact, bool* pfNegative, bool* pfOverflow)
-    {
-        int nSize = nCompact >> 24;
-        uint32_t nWord = nCompact & 0x007fffff;
-        if (nSize <= 3) {
-            nWord >>= 8 * (3 - nSize);
-            *this = nWord;
-        } else {
-            *this = nWord;
-            *this <<= 8 * (nSize - 3);
-        }
-        if (pfNegative)
-            *pfNegative = nWord != 0 && (nCompact & 0x00800000) != 0;
-        if (pfOverflow)
-            *pfOverflow = nWord != 0 && ((nSize > 34) ||
-                                            (nWord > 0xff && nSize > 33) ||
-                                            (nWord > 0xffff && nSize > 32));
-        return *this;
-    }
-
-    uint32_t GetCompact(bool fNegative) const
-    {
-        int nSize = (bits() + 7) / 8;
-        uint32_t nCompact = 0;
-        if (nSize <= 3) {
-            nCompact = GetLow64() << 8 * (3 - nSize);
-        } else {
-            uint256 bn = *this >> 8 * (nSize - 3);
-            nCompact = bn.GetLow64();
-        }
-        // The 0x00800000 bit denotes the sign.
-        // Thus, if it is already set, divide the mantissa by 256 and increase the exponent.
-        if (nCompact & 0x00800000) {
-            nCompact >>= 8;
-            nSize++;
-        }
-        assert((nCompact & ~0x007fffff) == 0);
-        assert(nSize < 256);
-        nCompact |= nSize << 24;
-        nCompact |= (fNegative && (nCompact & 0x007fffff) ? 0x00800000 : 0);
-        return nCompact;
-    }
 };
 
 inline bool operator==(const uint256& a, uint64_t b)                         { return (base_uint256)a == b; }
@@ -702,22 +634,10 @@ inline const uint256 operator+(const uint256& a, const uint256& b)      { return
 inline const uint256 operator-(const uint256& a, const uint256& b)      { return (base_uint256)a -  (base_uint256)b; }
 
 
-inline uint256 uint256S(const char* str)
-{
-    uint256 rv;
-    rv.SetHex(str);
-    return rv;
-}
-/* uint256 from std::string.
- * This is a separate function because the constructor uint256(const std::string &str) can result
- * in dangerously catching uint256(0) via std::string(const char*).
- */
-inline uint256 uint256S(const std::string& str)
-{
-    uint256 rv;
-    rv.SetHex(str);
-    return rv;
-}
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////
 //

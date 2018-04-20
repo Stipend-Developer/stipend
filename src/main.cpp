@@ -79,7 +79,6 @@ set<pair<COutPoint, unsigned int> > setStakeSeenOrphan;
 
 map<uint256, CTransaction> mapOrphanTransactions;
 map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
-map<uint256, int64_t> mapRejectedBlocks;
 
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
@@ -1420,34 +1419,6 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     return nSubsidy + nFees;
 }
 
-int64_t GetBlockValue(int nHeight)
-{
-    int64_t nSubsidy = 0;
-
-    if (pindexBest->nHeight+1 > 1500 && pindexBest->nHeight+1 <= 210000)  {
-        nSubsidy = 35 * COIN;
-    }
-    else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
-        nSubsidy = 20 * COIN;
-    }
-    else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
-        nSubsidy = 10 * COIN;
-    }
-    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 840001) {
-        nSubsidy = 5 * COIN;
-    }
-    else if (pindexBest->nHeight+1 > 840001 && pindexBest->nHeight+1 <= 1890000) {
-  // end game - further discussion needed
-        nSubsidy = 3 * COIN;
-    } else if (pindexBest->nHeight+1 > 1890000) {
-  // end game - further discussion needed
-        nSubsidy = 3 * COIN;
-        nSubsidy >>= ((pindexBest->nHeight + 210000) / 1050000);
-    }
-
-    return nSubsidy;
-}
-
 static int64_t nTargetTimespan = 5 * 90;
 
 // ppcoin: find last block index up to pindex
@@ -1818,10 +1789,17 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTx
 
         if (!IsCoinStake())
         {
+            if (nValueIn < GetValueOut())
+                return DoS(100, error("ConnectInputs() : %s value in < value out", GetHash().ToString()));
+
             // Tally transaction fees
             int64_t nTxFee = nValueIn - GetValueOut();
+            if (nTxFee < 0)
+                return DoS(100, error("ConnectInputs() : %s nTxFee < 0", GetHash().ToString()));
+
             nFees += nTxFee;
-        }
+            if (!MoneyRange(nFees))
+                return DoS(100, error("ConnectInputs() : nFees out of range"));         }
     }
 
     return true;
@@ -2556,7 +2534,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                 BOOST_FOREACH(const CTxIn& in, tx.vin){
                     if(mapLockedInputs.count(in.prevout)){
                         if(mapLockedInputs[in.prevout] != tx.GetHash()){
-                            LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString().c_str(), tx.GetHash().ToString().c_str());
+                            if(fDebug) { LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString().c_str(), tx.GetHash().ToString().c_str()); }
                             return DoS(0, error("CheckBlock() : found conflicting transaction with transaction lock"));
                         }
                     }
@@ -2567,7 +2545,10 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         if(fDebug) { LogPrintf("CheckBlock() : skipping transaction locking checks\n"); }
     }
 
+
+
     // ----------- masternode payments -----------
+
     bool MasternodePayments = false;
     bool fIsInitialDownload = IsInitialBlockDownload();
 
@@ -2629,8 +2610,16 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             if(fDebug) { LogPrintf("CheckBlock() : skipping masternode payment checks\n"); }
         }
     } else {
-          if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
+        if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
     }
+
+
+
+
+
+
+
+
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx)
@@ -3610,6 +3599,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
+
         if ((pfrom->nVersion < MIN_PEER_PROTO_VERSION) || (nBestHeight >= 112500 && pfrom->nVersion < MIN_PEER_PROTO_VERSION_FORK1))
         {
             // disconnect from peers older than this proto version
@@ -4261,24 +4251,6 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
 
     return true;
-}
-
-int ActiveProtocol()
-{
-
-    // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
-    // messages because it's not in their code
-
-/*    if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
-            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-*/
-
-    // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
-    // own ModifierUpgradeBlock()
-
-    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
