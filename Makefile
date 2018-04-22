@@ -132,7 +132,6 @@ SOURCES       = src/txdb-leveldb.cpp \
 		src/support/cleanse.cpp \
 		src/stealth.cpp \
 		src/qt/flowlayout.cpp \
-		src/qt/darksendconfig.cpp \
 		src/masternode.cpp \
 		src/darksend.cpp \
 		src/darksend-relay.cpp \
@@ -212,7 +211,6 @@ SOURCES       = src/txdb-leveldb.cpp \
 		build/moc_notificator.cpp \
 		build/moc_paymentserver.cpp \
 		build/moc_rpcconsole.cpp \
-		build/moc_darksendconfig.cpp \
 		build/moc_masternodemanager.cpp \
 		build/moc_addeditadrenalinenode.cpp \
 		build/moc_adrenalinenodeconfigdialog.cpp \
@@ -312,7 +310,6 @@ OBJECTS       = build/txdb-leveldb.o \
 		build/cleanse.o \
 		build/stealth.o \
 		build/flowlayout.o \
-		build/darksendconfig.o \
 		build/masternode.o \
 		build/darksend.o \
 		build/darksend-relay.o \
@@ -393,7 +390,6 @@ OBJECTS       = build/txdb-leveldb.o \
 		build/moc_notificator.o \
 		build/moc_paymentserver.o \
 		build/moc_rpcconsole.o \
-		build/moc_darksendconfig.o \
 		build/moc_masternodemanager.o \
 		build/moc_addeditadrenalinenode.o \
 		build/moc_adrenalinenodeconfigdialog.o \
@@ -569,7 +565,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/tinyformat.h \
 		src/stealth.h \
 		src/qt/flowlayout.h \
-		src/qt/darksendconfig.h \
 		src/masternode.h \
 		src/darksend.h \
 		src/darksend-relay.h \
@@ -698,7 +693,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/support/cleanse.cpp \
 		src/stealth.cpp \
 		src/qt/flowlayout.cpp \
-		src/qt/darksendconfig.cpp \
 		src/masternode.cpp \
 		src/darksend.cpp \
 		src/darksend-relay.cpp \
@@ -770,7 +764,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): /home/nicksigil/Desktop/Stipend/src/leveldb/libleveldb.a /home/nicksigil/Desktop/Stipend/src/secp256k1/src/libsecp256k1_la-secp256k1.o /home/nicksigil/Desktop/Stipend/build/build.h build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_darksendconfig.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h $(OBJECTS)  
+$(TARGET): /home/nicksigil/Desktop/Stipend/src/leveldb/libleveldb.a /home/nicksigil/Desktop/Stipend/src/secp256k1/src/libsecp256k1_la-secp256k1.o /home/nicksigil/Desktop/Stipend/build/build.h build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: stipend.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -936,9 +930,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts $(DISTDIR)/
 	$(COPY_FILE) --parents src/qt/bitcoin.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents src/qt/bitcoingui.h src/qt/transactiontablemodel.h src/qt/addresstablemodel.h src/qt/bantablemodel.h src/qt/optionsdialog.h src/qt/coincontroldialog.h src/qt/coincontroltreewidget.h src/qt/sendcoinsdialog.h src/qt/addressbookpage.h src/qt/signverifymessagedialog.h src/qt/aboutdialog.h src/qt/editaddressdialog.h src/qt/bitcoinaddressvalidator.h src/alert.h src/allocators.h src/addrman.h src/base58.h src/bignum.h src/chainparams.h src/chainparamsseeds.h src/checkpoints.h src/compat.h src/coincontrol.h src/sync.h src/util.h src/hash.h src/uint256.h src/kernel.h src/pbkdf2.h src/serialize.h src/support/cleanse.h src/core.h src/main.h src/miner.h src/net.h src/ecwrapper.h src/key.h src/pubkey.h src/db.h src/txdb.h src/txmempool.h src/walletdb.h src/script.h src/scrypt.h src/init.h src/mruset.h src/json/json_spirit_writer_template.h src/json/json_spirit_writer.h src/json/json_spirit_value.h src/json/json_spirit_utils.h src/json/json_spirit_stream_reader.h src/json/json_spirit_reader_template.h src/json/json_spirit_reader.h src/json/json_spirit_error_position.h src/json/json_spirit.h src/qt/clientmodel.h src/qt/guiutil.h src/qt/transactionrecord.h src/qt/guiconstants.h src/qt/optionsmodel.h src/qt/monitoreddatamapper.h src/qt/peertablemodel.h src/qt/trafficgraphwidget.h src/qt/transactiondesc.h src/qt/transactiondescdialog.h src/qt/bitcoinamountfield.h src/wallet.h src/keystore.h src/qt/transactionfilterproxy.h src/qt/transactionview.h src/qt/walletmodel.h src/qt/walletmodeltransaction.h src/rpcclient.h src/rpcprotocol.h src/rpcserver.h src/qt/overviewpage.h src/qt/csvmodelwriter.h src/crypter.h src/qt/sendcoinsentry.h src/qt/qvalidatedlineedit.h src/qt/bitcoinunits.h src/qt/qvaluecombobox.h src/qt/askpassphrasedialog.h src/protocol.h src/qt/notificator.h src/qt/paymentserver.h src/ui_interface.h src/qt/rpcconsole.h src/version.h src/netbase.h src/clientversion.h src/threadsafety.h src/tinyformat.h src/stealth.h src/qt/flowlayout.h src/qt/darksendconfig.h src/masternode.h src/darksend.h src/darksend-relay.h src/instantx.h src/activemasternode.h src/masternodeconfig.h src/masternodeman.h src/masternode-payments.h src/spork.h src/crypto/common.h src/crypto/hmac_sha256.h src/crypto/hmac_sha512.h src/crypto/ripemd160.h src/crypto/sha1.h src/crypto/sha256.h src/crypto/sha512.h src/qt/masternodemanager.h src/qt/addeditadrenalinenode.h src/qt/adrenalinenodeconfigdialog.h src/qt/qcustomplot.h src/smessage.h src/qt/messagepage.h src/qt/messagemodel.h src/qt/sendmessagesdialog.h src/qt/sendmessagesentry.h src/qt/blockbrowser.h src/qt/plugins/mrichtexteditor/mrichtextedit.h src/qt/qvalidatedtextedit.h src/qt/tradingdialog.h src/qt/multisigaddressentry.h src/qt/multisiginputentry.h src/qt/multisigdialog.h src/sph_skein.h src/sph_keccak.h src/sph_jh.h src/sph_groestl.h src/sph_bmw.h src/sph_types.h src/sph_luffa.h src/sph_cubehash.h src/sph_echo.h src/sph_shavite.h src/sph_simd.h src/sph_types.h src/limitedmap.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/txdb-leveldb.cpp src/qt/bitcoin.cpp src/qt/bitcoingui.cpp src/qt/transactiontablemodel.cpp src/qt/addresstablemodel.cpp src/qt/bantablemodel.cpp src/qt/optionsdialog.cpp src/qt/sendcoinsdialog.cpp src/qt/coincontroldialog.cpp src/qt/coincontroltreewidget.cpp src/qt/addressbookpage.cpp src/qt/signverifymessagedialog.cpp src/qt/aboutdialog.cpp src/qt/editaddressdialog.cpp src/qt/bitcoinaddressvalidator.cpp src/alert.cpp src/allocators.cpp src/base58.cpp src/chainparams.cpp src/version.cpp src/sync.cpp src/txmempool.cpp src/util.cpp src/hash.cpp src/netbase.cpp src/ecwrapper.cpp src/key.cpp src/pubkey.cpp src/script.cpp src/scrypt.cpp src/core.cpp src/main.cpp src/miner.cpp src/init.cpp src/net.cpp src/checkpoints.cpp src/addrman.cpp src/db.cpp src/walletdb.cpp src/qt/clientmodel.cpp src/qt/guiutil.cpp src/qt/transactionrecord.cpp src/qt/optionsmodel.cpp src/qt/monitoreddatamapper.cpp src/qt/peertablemodel.cpp src/qt/trafficgraphwidget.cpp src/qt/transactiondesc.cpp src/qt/transactiondescdialog.cpp src/qt/bitcoinstrings.cpp src/qt/bitcoinamountfield.cpp src/wallet.cpp src/keystore.cpp src/qt/transactionfilterproxy.cpp src/qt/transactionview.cpp src/qt/walletmodel.cpp src/qt/walletmodeltransaction.cpp src/rpcclient.cpp src/rpcprotocol.cpp src/rpcserver.cpp src/rpcdump.cpp src/rpcmisc.cpp src/rpcnet.cpp src/rpcmining.cpp src/rpcwallet.cpp src/rpcblockchain.cpp src/rpcrawtransaction.cpp src/qt/overviewpage.cpp src/qt/csvmodelwriter.cpp src/crypter.cpp src/qt/sendcoinsentry.cpp src/qt/qvalidatedlineedit.cpp src/qt/bitcoinunits.cpp src/qt/qvaluecombobox.cpp src/qt/askpassphrasedialog.cpp src/protocol.cpp src/qt/notificator.cpp src/qt/paymentserver.cpp src/qt/rpcconsole.cpp src/noui.cpp src/kernel.cpp src/pbkdf2.cpp src/support/cleanse.cpp src/stealth.cpp src/qt/flowlayout.cpp src/qt/darksendconfig.cpp src/masternode.cpp src/darksend.cpp src/darksend-relay.cpp src/rpcdarksend.cpp src/instantx.cpp src/activemasternode.cpp src/masternodeman.cpp src/masternode-payments.cpp src/spork.cpp src/masternodeconfig.cpp src/crypto/hmac_sha256.cpp src/crypto/hmac_sha512.cpp src/crypto/ripemd160.cpp src/crypto/sha1.cpp src/crypto/sha256.cpp src/crypto/sha512.cpp src/qt/masternodemanager.cpp src/qt/addeditadrenalinenode.cpp src/qt/adrenalinenodeconfigdialog.cpp src/qt/qcustomplot.cpp src/smessage.cpp src/qt/messagepage.cpp src/qt/messagemodel.cpp src/qt/sendmessagesdialog.cpp src/qt/sendmessagesentry.cpp src/qt/blockbrowser.cpp src/qt/qvalidatedtextedit.cpp src/qt/plugins/mrichtexteditor/mrichtextedit.cpp src/qt/tradingdialog.cpp src/qt/multisigaddressentry.cpp src/qt/multisiginputentry.cpp src/qt/multisigdialog.cpp src/rpcsmessage.cpp src/blake.c src/bmw.c src/groestl.c src/jh.c src/keccak.c src/skein.c src/luffa.c src/cubehash.c src/shavite.c src/echo.c src/simd.c $(DISTDIR)/
-	$(COPY_FILE) --parents src/qt/forms/coincontroldialog.ui src/qt/forms/sendcoinsdialog.ui src/qt/forms/addressbookpage.ui src/qt/forms/signverifymessagedialog.ui src/qt/forms/aboutdialog.ui src/qt/forms/editaddressdialog.ui src/qt/forms/transactiondescdialog.ui src/qt/forms/overviewpage.ui src/qt/forms/sendcoinsentry.ui src/qt/forms/askpassphrasedialog.ui src/qt/forms/rpcconsole.ui src/qt/forms/optionsdialog.ui src/qt/forms/darksendconfig.ui src/qt/forms/masternodemanager.ui src/qt/forms/addeditadrenalinenode.ui src/qt/forms/adrenalinenodeconfigdialog.ui src/qt/forms/messagepage.ui src/qt/forms/sendmessagesentry.ui src/qt/forms/sendmessagesdialog.ui src/qt/forms/blockbrowser.ui src/qt/forms/tradingdialog.ui src/qt/forms/multisigaddressentry.ui src/qt/forms/multisiginputentry.ui src/qt/forms/multisigdialog.ui src/qt/plugins/mrichtexteditor/mrichtextedit.ui $(DISTDIR)/
+	$(COPY_FILE) --parents src/qt/bitcoingui.h src/qt/transactiontablemodel.h src/qt/addresstablemodel.h src/qt/bantablemodel.h src/qt/optionsdialog.h src/qt/coincontroldialog.h src/qt/coincontroltreewidget.h src/qt/sendcoinsdialog.h src/qt/addressbookpage.h src/qt/signverifymessagedialog.h src/qt/aboutdialog.h src/qt/editaddressdialog.h src/qt/bitcoinaddressvalidator.h src/alert.h src/allocators.h src/addrman.h src/base58.h src/bignum.h src/chainparams.h src/chainparamsseeds.h src/checkpoints.h src/compat.h src/coincontrol.h src/sync.h src/util.h src/hash.h src/uint256.h src/kernel.h src/pbkdf2.h src/serialize.h src/support/cleanse.h src/core.h src/main.h src/miner.h src/net.h src/ecwrapper.h src/key.h src/pubkey.h src/db.h src/txdb.h src/txmempool.h src/walletdb.h src/script.h src/scrypt.h src/init.h src/mruset.h src/json/json_spirit_writer_template.h src/json/json_spirit_writer.h src/json/json_spirit_value.h src/json/json_spirit_utils.h src/json/json_spirit_stream_reader.h src/json/json_spirit_reader_template.h src/json/json_spirit_reader.h src/json/json_spirit_error_position.h src/json/json_spirit.h src/qt/clientmodel.h src/qt/guiutil.h src/qt/transactionrecord.h src/qt/guiconstants.h src/qt/optionsmodel.h src/qt/monitoreddatamapper.h src/qt/peertablemodel.h src/qt/trafficgraphwidget.h src/qt/transactiondesc.h src/qt/transactiondescdialog.h src/qt/bitcoinamountfield.h src/wallet.h src/keystore.h src/qt/transactionfilterproxy.h src/qt/transactionview.h src/qt/walletmodel.h src/qt/walletmodeltransaction.h src/rpcclient.h src/rpcprotocol.h src/rpcserver.h src/qt/overviewpage.h src/qt/csvmodelwriter.h src/crypter.h src/qt/sendcoinsentry.h src/qt/qvalidatedlineedit.h src/qt/bitcoinunits.h src/qt/qvaluecombobox.h src/qt/askpassphrasedialog.h src/protocol.h src/qt/notificator.h src/qt/paymentserver.h src/ui_interface.h src/qt/rpcconsole.h src/version.h src/netbase.h src/clientversion.h src/threadsafety.h src/tinyformat.h src/stealth.h src/qt/flowlayout.h src/masternode.h src/darksend.h src/darksend-relay.h src/instantx.h src/activemasternode.h src/masternodeconfig.h src/masternodeman.h src/masternode-payments.h src/spork.h src/crypto/common.h src/crypto/hmac_sha256.h src/crypto/hmac_sha512.h src/crypto/ripemd160.h src/crypto/sha1.h src/crypto/sha256.h src/crypto/sha512.h src/qt/masternodemanager.h src/qt/addeditadrenalinenode.h src/qt/adrenalinenodeconfigdialog.h src/qt/qcustomplot.h src/smessage.h src/qt/messagepage.h src/qt/messagemodel.h src/qt/sendmessagesdialog.h src/qt/sendmessagesentry.h src/qt/blockbrowser.h src/qt/plugins/mrichtexteditor/mrichtextedit.h src/qt/qvalidatedtextedit.h src/qt/tradingdialog.h src/qt/multisigaddressentry.h src/qt/multisiginputentry.h src/qt/multisigdialog.h src/sph_skein.h src/sph_keccak.h src/sph_jh.h src/sph_groestl.h src/sph_bmw.h src/sph_types.h src/sph_luffa.h src/sph_cubehash.h src/sph_echo.h src/sph_shavite.h src/sph_simd.h src/sph_types.h src/limitedmap.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/txdb-leveldb.cpp src/qt/bitcoin.cpp src/qt/bitcoingui.cpp src/qt/transactiontablemodel.cpp src/qt/addresstablemodel.cpp src/qt/bantablemodel.cpp src/qt/optionsdialog.cpp src/qt/sendcoinsdialog.cpp src/qt/coincontroldialog.cpp src/qt/coincontroltreewidget.cpp src/qt/addressbookpage.cpp src/qt/signverifymessagedialog.cpp src/qt/aboutdialog.cpp src/qt/editaddressdialog.cpp src/qt/bitcoinaddressvalidator.cpp src/alert.cpp src/allocators.cpp src/base58.cpp src/chainparams.cpp src/version.cpp src/sync.cpp src/txmempool.cpp src/util.cpp src/hash.cpp src/netbase.cpp src/ecwrapper.cpp src/key.cpp src/pubkey.cpp src/script.cpp src/scrypt.cpp src/core.cpp src/main.cpp src/miner.cpp src/init.cpp src/net.cpp src/checkpoints.cpp src/addrman.cpp src/db.cpp src/walletdb.cpp src/qt/clientmodel.cpp src/qt/guiutil.cpp src/qt/transactionrecord.cpp src/qt/optionsmodel.cpp src/qt/monitoreddatamapper.cpp src/qt/peertablemodel.cpp src/qt/trafficgraphwidget.cpp src/qt/transactiondesc.cpp src/qt/transactiondescdialog.cpp src/qt/bitcoinstrings.cpp src/qt/bitcoinamountfield.cpp src/wallet.cpp src/keystore.cpp src/qt/transactionfilterproxy.cpp src/qt/transactionview.cpp src/qt/walletmodel.cpp src/qt/walletmodeltransaction.cpp src/rpcclient.cpp src/rpcprotocol.cpp src/rpcserver.cpp src/rpcdump.cpp src/rpcmisc.cpp src/rpcnet.cpp src/rpcmining.cpp src/rpcwallet.cpp src/rpcblockchain.cpp src/rpcrawtransaction.cpp src/qt/overviewpage.cpp src/qt/csvmodelwriter.cpp src/crypter.cpp src/qt/sendcoinsentry.cpp src/qt/qvalidatedlineedit.cpp src/qt/bitcoinunits.cpp src/qt/qvaluecombobox.cpp src/qt/askpassphrasedialog.cpp src/protocol.cpp src/qt/notificator.cpp src/qt/paymentserver.cpp src/qt/rpcconsole.cpp src/noui.cpp src/kernel.cpp src/pbkdf2.cpp src/support/cleanse.cpp src/stealth.cpp src/qt/flowlayout.cpp src/masternode.cpp src/darksend.cpp src/darksend-relay.cpp src/rpcdarksend.cpp src/instantx.cpp src/activemasternode.cpp src/masternodeman.cpp src/masternode-payments.cpp src/spork.cpp src/masternodeconfig.cpp src/crypto/hmac_sha256.cpp src/crypto/hmac_sha512.cpp src/crypto/ripemd160.cpp src/crypto/sha1.cpp src/crypto/sha256.cpp src/crypto/sha512.cpp src/qt/masternodemanager.cpp src/qt/addeditadrenalinenode.cpp src/qt/adrenalinenodeconfigdialog.cpp src/qt/qcustomplot.cpp src/smessage.cpp src/qt/messagepage.cpp src/qt/messagemodel.cpp src/qt/sendmessagesdialog.cpp src/qt/sendmessagesentry.cpp src/qt/blockbrowser.cpp src/qt/qvalidatedtextedit.cpp src/qt/plugins/mrichtexteditor/mrichtextedit.cpp src/qt/tradingdialog.cpp src/qt/multisigaddressentry.cpp src/qt/multisiginputentry.cpp src/qt/multisigdialog.cpp src/rpcsmessage.cpp src/blake.c src/bmw.c src/groestl.c src/jh.c src/keccak.c src/skein.c src/luffa.c src/cubehash.c src/shavite.c src/echo.c src/simd.c $(DISTDIR)/
+	$(COPY_FILE) --parents src/qt/forms/coincontroldialog.ui src/qt/forms/sendcoinsdialog.ui src/qt/forms/addressbookpage.ui src/qt/forms/signverifymessagedialog.ui src/qt/forms/aboutdialog.ui src/qt/forms/editaddressdialog.ui src/qt/forms/transactiondescdialog.ui src/qt/forms/overviewpage.ui src/qt/forms/sendcoinsentry.ui src/qt/forms/askpassphrasedialog.ui src/qt/forms/rpcconsole.ui src/qt/forms/optionsdialog.ui src/qt/forms/masternodemanager.ui src/qt/forms/addeditadrenalinenode.ui src/qt/forms/adrenalinenodeconfigdialog.ui src/qt/forms/messagepage.ui src/qt/forms/sendmessagesentry.ui src/qt/forms/sendmessagesdialog.ui src/qt/forms/blockbrowser.ui src/qt/forms/tradingdialog.ui src/qt/forms/multisigaddressentry.ui src/qt/forms/multisiginputentry.ui src/qt/forms/multisigdialog.ui src/qt/plugins/mrichtexteditor/mrichtextedit.ui $(DISTDIR)/
 	$(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts $(DISTDIR)/
 
 
@@ -1291,9 +1285,9 @@ qrc_bitcoin.cpp: src/qt/bitcoin.qrc \
 		src/qt/res/icons/black/connect0_16.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name bitcoin src/qt/bitcoin.qrc -o qrc_bitcoin.cpp
 
-compiler_moc_header_make_all: build/moc_bitcoingui.cpp build/moc_transactiontablemodel.cpp build/moc_addresstablemodel.cpp build/moc_bantablemodel.cpp build/moc_optionsdialog.cpp build/moc_coincontroldialog.cpp build/moc_coincontroltreewidget.cpp build/moc_sendcoinsdialog.cpp build/moc_addressbookpage.cpp build/moc_signverifymessagedialog.cpp build/moc_aboutdialog.cpp build/moc_editaddressdialog.cpp build/moc_bitcoinaddressvalidator.cpp build/moc_clientmodel.cpp build/moc_guiutil.cpp build/moc_optionsmodel.cpp build/moc_monitoreddatamapper.cpp build/moc_peertablemodel.cpp build/moc_trafficgraphwidget.cpp build/moc_transactiondesc.cpp build/moc_transactiondescdialog.cpp build/moc_bitcoinamountfield.cpp build/moc_transactionfilterproxy.cpp build/moc_transactionview.cpp build/moc_walletmodel.cpp build/moc_overviewpage.cpp build/moc_csvmodelwriter.cpp build/moc_sendcoinsentry.cpp build/moc_qvalidatedlineedit.cpp build/moc_bitcoinunits.cpp build/moc_qvaluecombobox.cpp build/moc_askpassphrasedialog.cpp build/moc_notificator.cpp build/moc_paymentserver.cpp build/moc_rpcconsole.cpp build/moc_darksendconfig.cpp build/moc_masternodemanager.cpp build/moc_addeditadrenalinenode.cpp build/moc_adrenalinenodeconfigdialog.cpp build/moc_qcustomplot.cpp build/moc_messagepage.cpp build/moc_messagemodel.cpp build/moc_sendmessagesdialog.cpp build/moc_sendmessagesentry.cpp build/moc_blockbrowser.cpp build/moc_mrichtextedit.cpp build/moc_qvalidatedtextedit.cpp build/moc_tradingdialog.cpp build/moc_multisigaddressentry.cpp build/moc_multisiginputentry.cpp build/moc_multisigdialog.cpp
+compiler_moc_header_make_all: build/moc_bitcoingui.cpp build/moc_transactiontablemodel.cpp build/moc_addresstablemodel.cpp build/moc_bantablemodel.cpp build/moc_optionsdialog.cpp build/moc_coincontroldialog.cpp build/moc_coincontroltreewidget.cpp build/moc_sendcoinsdialog.cpp build/moc_addressbookpage.cpp build/moc_signverifymessagedialog.cpp build/moc_aboutdialog.cpp build/moc_editaddressdialog.cpp build/moc_bitcoinaddressvalidator.cpp build/moc_clientmodel.cpp build/moc_guiutil.cpp build/moc_optionsmodel.cpp build/moc_monitoreddatamapper.cpp build/moc_peertablemodel.cpp build/moc_trafficgraphwidget.cpp build/moc_transactiondesc.cpp build/moc_transactiondescdialog.cpp build/moc_bitcoinamountfield.cpp build/moc_transactionfilterproxy.cpp build/moc_transactionview.cpp build/moc_walletmodel.cpp build/moc_overviewpage.cpp build/moc_csvmodelwriter.cpp build/moc_sendcoinsentry.cpp build/moc_qvalidatedlineedit.cpp build/moc_bitcoinunits.cpp build/moc_qvaluecombobox.cpp build/moc_askpassphrasedialog.cpp build/moc_notificator.cpp build/moc_paymentserver.cpp build/moc_rpcconsole.cpp build/moc_masternodemanager.cpp build/moc_addeditadrenalinenode.cpp build/moc_adrenalinenodeconfigdialog.cpp build/moc_qcustomplot.cpp build/moc_messagepage.cpp build/moc_messagemodel.cpp build/moc_sendmessagesdialog.cpp build/moc_sendmessagesentry.cpp build/moc_blockbrowser.cpp build/moc_mrichtextedit.cpp build/moc_qvalidatedtextedit.cpp build/moc_tradingdialog.cpp build/moc_multisigaddressentry.cpp build/moc_multisiginputentry.cpp build/moc_multisigdialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/moc_bitcoingui.cpp build/moc_transactiontablemodel.cpp build/moc_addresstablemodel.cpp build/moc_bantablemodel.cpp build/moc_optionsdialog.cpp build/moc_coincontroldialog.cpp build/moc_coincontroltreewidget.cpp build/moc_sendcoinsdialog.cpp build/moc_addressbookpage.cpp build/moc_signverifymessagedialog.cpp build/moc_aboutdialog.cpp build/moc_editaddressdialog.cpp build/moc_bitcoinaddressvalidator.cpp build/moc_clientmodel.cpp build/moc_guiutil.cpp build/moc_optionsmodel.cpp build/moc_monitoreddatamapper.cpp build/moc_peertablemodel.cpp build/moc_trafficgraphwidget.cpp build/moc_transactiondesc.cpp build/moc_transactiondescdialog.cpp build/moc_bitcoinamountfield.cpp build/moc_transactionfilterproxy.cpp build/moc_transactionview.cpp build/moc_walletmodel.cpp build/moc_overviewpage.cpp build/moc_csvmodelwriter.cpp build/moc_sendcoinsentry.cpp build/moc_qvalidatedlineedit.cpp build/moc_bitcoinunits.cpp build/moc_qvaluecombobox.cpp build/moc_askpassphrasedialog.cpp build/moc_notificator.cpp build/moc_paymentserver.cpp build/moc_rpcconsole.cpp build/moc_darksendconfig.cpp build/moc_masternodemanager.cpp build/moc_addeditadrenalinenode.cpp build/moc_adrenalinenodeconfigdialog.cpp build/moc_qcustomplot.cpp build/moc_messagepage.cpp build/moc_messagemodel.cpp build/moc_sendmessagesdialog.cpp build/moc_sendmessagesentry.cpp build/moc_blockbrowser.cpp build/moc_mrichtextedit.cpp build/moc_qvalidatedtextedit.cpp build/moc_tradingdialog.cpp build/moc_multisigaddressentry.cpp build/moc_multisiginputentry.cpp build/moc_multisigdialog.cpp
+	-$(DEL_FILE) build/moc_bitcoingui.cpp build/moc_transactiontablemodel.cpp build/moc_addresstablemodel.cpp build/moc_bantablemodel.cpp build/moc_optionsdialog.cpp build/moc_coincontroldialog.cpp build/moc_coincontroltreewidget.cpp build/moc_sendcoinsdialog.cpp build/moc_addressbookpage.cpp build/moc_signverifymessagedialog.cpp build/moc_aboutdialog.cpp build/moc_editaddressdialog.cpp build/moc_bitcoinaddressvalidator.cpp build/moc_clientmodel.cpp build/moc_guiutil.cpp build/moc_optionsmodel.cpp build/moc_monitoreddatamapper.cpp build/moc_peertablemodel.cpp build/moc_trafficgraphwidget.cpp build/moc_transactiondesc.cpp build/moc_transactiondescdialog.cpp build/moc_bitcoinamountfield.cpp build/moc_transactionfilterproxy.cpp build/moc_transactionview.cpp build/moc_walletmodel.cpp build/moc_overviewpage.cpp build/moc_csvmodelwriter.cpp build/moc_sendcoinsentry.cpp build/moc_qvalidatedlineedit.cpp build/moc_bitcoinunits.cpp build/moc_qvaluecombobox.cpp build/moc_askpassphrasedialog.cpp build/moc_notificator.cpp build/moc_paymentserver.cpp build/moc_rpcconsole.cpp build/moc_masternodemanager.cpp build/moc_addeditadrenalinenode.cpp build/moc_adrenalinenodeconfigdialog.cpp build/moc_qcustomplot.cpp build/moc_messagepage.cpp build/moc_messagemodel.cpp build/moc_sendmessagesdialog.cpp build/moc_sendmessagesentry.cpp build/moc_blockbrowser.cpp build/moc_mrichtextedit.cpp build/moc_qvalidatedtextedit.cpp build/moc_tradingdialog.cpp build/moc_multisigaddressentry.cpp build/moc_multisiginputentry.cpp build/moc_multisigdialog.cpp
 build/moc_bitcoingui.cpp: src/qt/bitcoingui.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nicksigil/Desktop/Stipend -I/home/nicksigil/Desktop/Stipend/src -I/home/nicksigil/Desktop/Stipend/src/json -I/home/nicksigil/Desktop/Stipend/src/qt -I/home/nicksigil/Desktop/Stipend/src/qt/plugins/mrichtexteditor -I/home/nicksigil/Desktop/Stipend/src/leveldb/include -I/home/nicksigil/Desktop/Stipend/src/leveldb/helpers -I/home/nicksigil/Desktop/Stipend/src/secp256k1/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include src/qt/bitcoingui.h -o build/moc_bitcoingui.cpp
 
@@ -1647,9 +1641,6 @@ build/moc_rpcconsole.cpp: src/qt/guiutil.h \
 		src/qt/rpcconsole.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nicksigil/Desktop/Stipend -I/home/nicksigil/Desktop/Stipend/src -I/home/nicksigil/Desktop/Stipend/src/json -I/home/nicksigil/Desktop/Stipend/src/qt -I/home/nicksigil/Desktop/Stipend/src/qt/plugins/mrichtexteditor -I/home/nicksigil/Desktop/Stipend/src/leveldb/include -I/home/nicksigil/Desktop/Stipend/src/leveldb/helpers -I/home/nicksigil/Desktop/Stipend/src/secp256k1/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include src/qt/rpcconsole.h -o build/moc_rpcconsole.cpp
 
-build/moc_darksendconfig.cpp: src/qt/darksendconfig.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nicksigil/Desktop/Stipend -I/home/nicksigil/Desktop/Stipend/src -I/home/nicksigil/Desktop/Stipend/src/json -I/home/nicksigil/Desktop/Stipend/src/qt -I/home/nicksigil/Desktop/Stipend/src/qt/plugins/mrichtexteditor -I/home/nicksigil/Desktop/Stipend/src/leveldb/include -I/home/nicksigil/Desktop/Stipend/src/leveldb/helpers -I/home/nicksigil/Desktop/Stipend/src/secp256k1/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include src/qt/darksendconfig.h -o build/moc_darksendconfig.cpp
-
 build/moc_masternodemanager.cpp: src/util.h \
 		src/serialize.h \
 		src/allocators.h \
@@ -1945,9 +1936,15 @@ build/overviewpage.moc: src/qt/overviewpage.h \
 		src/tinyformat.h \
 		build/ui_overviewpage.h \
 		src/qt/clientmodel.h \
-		src/darksend.h \
-		src/core.h \
+		src/qt/walletmodel.h \
+		src/qt/walletmodeltransaction.h \
+		src/instantx.h \
 		src/uint256.h \
+		src/sync.h \
+		src/threadsafety.h \
+		src/net.h \
+		src/compat.h \
+		src/core.h \
 		src/script.h \
 		src/keystore.h \
 		src/key.h \
@@ -1955,19 +1952,16 @@ build/overviewpage.moc: src/qt/overviewpage.h \
 		src/hash.h \
 		src/crypto/ripemd160.h \
 		src/crypto/sha256.h \
-		src/sync.h \
-		src/threadsafety.h \
 		src/bignum.h \
 		src/stealth.h \
-		src/main.h \
-		src/txmempool.h \
-		src/net.h \
-		src/compat.h \
 		src/limitedmap.h \
 		src/mruset.h \
 		src/netbase.h \
 		src/protocol.h \
 		src/chainparams.h \
+		src/base58.h \
+		src/main.h \
+		src/txmempool.h \
 		src/scrypt.h \
 		src/hashblock.h \
 		src/sph_blake.h \
@@ -1982,22 +1976,11 @@ build/overviewpage.moc: src/qt/overviewpage.h \
 		src/sph_shavite.h \
 		src/sph_simd.h \
 		src/sph_echo.h \
-		src/activemasternode.h \
-		src/masternode.h \
-		src/base58.h \
-		src/init.h \
 		src/wallet.h \
 		src/walletdb.h \
 		src/db.h \
 		src/crypter.h \
 		src/ui_interface.h \
-		src/masternodeman.h \
-		src/masternode-payments.h \
-		src/darksend-relay.h \
-		src/qt/darksendconfig.h \
-		src/qt/walletmodel.h \
-		src/qt/walletmodeltransaction.h \
-		src/instantx.h \
 		src/qt/bitcoinunits.h \
 		src/qt/optionsmodel.h \
 		src/qt/transactiontablemodel.h \
@@ -2054,6 +2037,7 @@ build/rpcconsole.moc: src/qt/rpcconsole.h \
 		src/sph_simd.h \
 		src/sph_echo.h \
 		build/ui_rpcconsole.h \
+		src/qt/trafficgraphwidget.h \
 		src/qt/bantablemodel.h \
 		src/qt/clientmodel.h \
 		src/rpcserver.h \
@@ -2067,9 +2051,9 @@ build/rpcconsole.moc: src/qt/rpcconsole.h \
 		src/qt/rpcconsole.cpp
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nicksigil/Desktop/Stipend -I/home/nicksigil/Desktop/Stipend/src -I/home/nicksigil/Desktop/Stipend/src/json -I/home/nicksigil/Desktop/Stipend/src/qt -I/home/nicksigil/Desktop/Stipend/src/qt/plugins/mrichtexteditor -I/home/nicksigil/Desktop/Stipend/src/leveldb/include -I/home/nicksigil/Desktop/Stipend/src/leveldb/helpers -I/home/nicksigil/Desktop/Stipend/src/secp256k1/include -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include src/qt/rpcconsole.cpp -o build/rpcconsole.moc
 
-compiler_uic_make_all: build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_darksendconfig.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h
+compiler_uic_make_all: build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h
 compiler_uic_clean:
-	-$(DEL_FILE) build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_darksendconfig.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h
+	-$(DEL_FILE) build/ui_coincontroldialog.h build/ui_sendcoinsdialog.h build/ui_addressbookpage.h build/ui_signverifymessagedialog.h build/ui_aboutdialog.h build/ui_editaddressdialog.h build/ui_transactiondescdialog.h build/ui_overviewpage.h build/ui_sendcoinsentry.h build/ui_askpassphrasedialog.h build/ui_rpcconsole.h build/ui_optionsdialog.h build/ui_masternodemanager.h build/ui_addeditadrenalinenode.h build/ui_adrenalinenodeconfigdialog.h build/ui_messagepage.h build/ui_sendmessagesentry.h build/ui_sendmessagesdialog.h build/ui_blockbrowser.h build/ui_tradingdialog.h build/ui_multisigaddressentry.h build/ui_multisiginputentry.h build/ui_multisigdialog.h build/ui_mrichtextedit.h
 build/ui_coincontroldialog.h: src/qt/forms/coincontroldialog.ui \
 		src/qt/coincontroltreewidget.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic src/qt/forms/coincontroldialog.ui -o build/ui_coincontroldialog.h
@@ -2127,9 +2111,6 @@ build/ui_optionsdialog.h: src/qt/forms/optionsdialog.ui \
 		src/clientversion.h \
 		src/tinyformat.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic src/qt/forms/optionsdialog.ui -o build/ui_optionsdialog.h
-
-build/ui_darksendconfig.h: src/qt/forms/darksendconfig.ui
-	/usr/lib/x86_64-linux-gnu/qt5/bin/uic src/qt/forms/darksendconfig.ui -o build/ui_darksendconfig.h
 
 build/ui_masternodemanager.h: src/qt/forms/masternodemanager.ui
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic src/qt/forms/masternodemanager.ui -o build/ui_masternodemanager.h
@@ -2562,7 +2543,7 @@ build/bantablemodel.o: src/qt/bantablemodel.cpp src/qt/bantablemodel.h \
 
 build/optionsdialog.o: src/qt/optionsdialog.cpp src/qt/optionsdialog.h \
 		build/ui_optionsdialog.h \
-		src/qt/bitcoinunits.h \
+		src/qt/bitcoinamountfield.h \
 		src/util.h \
 		src/serialize.h \
 		src/allocators.h \
@@ -2570,6 +2551,9 @@ build/optionsdialog.o: src/qt/optionsdialog.cpp src/qt/optionsdialog.h \
 		src/version.h \
 		src/clientversion.h \
 		src/tinyformat.h \
+		src/qt/qvalidatedlineedit.h \
+		src/qt/qvaluecombobox.h \
+		src/qt/bitcoinunits.h \
 		src/qt/monitoreddatamapper.h \
 		src/netbase.h \
 		src/compat.h \
@@ -2645,6 +2629,7 @@ build/sendcoinsdialog.o: src/qt/sendcoinsdialog.cpp src/qt/sendcoinsdialog.h \
 
 build/coincontroldialog.o: src/qt/coincontroldialog.cpp src/qt/coincontroldialog.h \
 		build/ui_coincontroldialog.h \
+		src/qt/coincontroltreewidget.h \
 		src/qt/addresstablemodel.h \
 		src/qt/bitcoinunits.h \
 		src/util.h \
@@ -2728,6 +2713,7 @@ build/addressbookpage.o: src/qt/addressbookpage.cpp src/qt/addressbookpage.h \
 
 build/signverifymessagedialog.o: src/qt/signverifymessagedialog.cpp src/qt/signverifymessagedialog.h \
 		build/ui_signverifymessagedialog.h \
+		src/qt/qvalidatedlineedit.h \
 		src/qt/addressbookpage.h \
 		src/base58.h \
 		src/chainparams.h \
@@ -4790,9 +4776,15 @@ build/overviewpage.o: src/qt/overviewpage.cpp src/qt/overviewpage.h \
 		src/tinyformat.h \
 		build/ui_overviewpage.h \
 		src/qt/clientmodel.h \
-		src/darksend.h \
-		src/core.h \
+		src/qt/walletmodel.h \
+		src/qt/walletmodeltransaction.h \
+		src/instantx.h \
 		src/uint256.h \
+		src/sync.h \
+		src/threadsafety.h \
+		src/net.h \
+		src/compat.h \
+		src/core.h \
 		src/script.h \
 		src/keystore.h \
 		src/key.h \
@@ -4800,19 +4792,16 @@ build/overviewpage.o: src/qt/overviewpage.cpp src/qt/overviewpage.h \
 		src/hash.h \
 		src/crypto/ripemd160.h \
 		src/crypto/sha256.h \
-		src/sync.h \
-		src/threadsafety.h \
 		src/bignum.h \
 		src/stealth.h \
-		src/main.h \
-		src/txmempool.h \
-		src/net.h \
-		src/compat.h \
 		src/limitedmap.h \
 		src/mruset.h \
 		src/netbase.h \
 		src/protocol.h \
 		src/chainparams.h \
+		src/base58.h \
+		src/main.h \
+		src/txmempool.h \
 		src/scrypt.h \
 		src/hashblock.h \
 		src/sph_blake.h \
@@ -4827,22 +4816,11 @@ build/overviewpage.o: src/qt/overviewpage.cpp src/qt/overviewpage.h \
 		src/sph_shavite.h \
 		src/sph_simd.h \
 		src/sph_echo.h \
-		src/activemasternode.h \
-		src/masternode.h \
-		src/base58.h \
-		src/init.h \
 		src/wallet.h \
 		src/walletdb.h \
 		src/db.h \
 		src/crypter.h \
 		src/ui_interface.h \
-		src/masternodeman.h \
-		src/masternode-payments.h \
-		src/darksend-relay.h \
-		src/qt/darksendconfig.h \
-		src/qt/walletmodel.h \
-		src/qt/walletmodeltransaction.h \
-		src/instantx.h \
 		src/qt/bitcoinunits.h \
 		src/qt/optionsmodel.h \
 		src/qt/transactiontablemodel.h \
@@ -4888,8 +4866,7 @@ build/crypter.o: src/crypter.cpp src/crypter.h \
 
 build/sendcoinsentry.o: src/qt/sendcoinsentry.cpp src/qt/sendcoinsentry.h \
 		build/ui_sendcoinsentry.h \
-		src/qt/guiutil.h \
-		src/qt/bitcoinunits.h \
+		src/qt/bitcoinamountfield.h \
 		src/util.h \
 		src/serialize.h \
 		src/allocators.h \
@@ -4897,6 +4874,9 @@ build/sendcoinsentry.o: src/qt/sendcoinsentry.cpp src/qt/sendcoinsentry.h \
 		src/version.h \
 		src/clientversion.h \
 		src/tinyformat.h \
+		src/qt/qvalidatedlineedit.h \
+		src/qt/guiutil.h \
+		src/qt/bitcoinunits.h \
 		src/qt/addressbookpage.h \
 		src/qt/walletmodel.h \
 		src/qt/walletmodeltransaction.h \
@@ -5135,6 +5115,7 @@ build/rpcconsole.o: src/qt/rpcconsole.cpp src/qt/rpcconsole.h \
 		src/sph_simd.h \
 		src/sph_echo.h \
 		build/ui_rpcconsole.h \
+		src/qt/trafficgraphwidget.h \
 		src/qt/bantablemodel.h \
 		src/qt/clientmodel.h \
 		src/rpcserver.h \
@@ -5284,66 +5265,6 @@ build/stealth.o: src/stealth.cpp src/stealth.h \
 
 build/flowlayout.o: src/qt/flowlayout.cpp src/qt/flowlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/flowlayout.o src/qt/flowlayout.cpp
-
-build/darksendconfig.o: src/qt/darksendconfig.cpp src/qt/darksendconfig.h \
-		build/ui_darksendconfig.h \
-		src/qt/bitcoinunits.h \
-		src/util.h \
-		src/serialize.h \
-		src/allocators.h \
-		src/support/cleanse.h \
-		src/version.h \
-		src/clientversion.h \
-		src/tinyformat.h \
-		src/qt/guiconstants.h \
-		src/qt/optionsmodel.h \
-		src/qt/walletmodel.h \
-		src/qt/walletmodeltransaction.h \
-		src/instantx.h \
-		src/uint256.h \
-		src/sync.h \
-		src/threadsafety.h \
-		src/net.h \
-		src/compat.h \
-		src/core.h \
-		src/script.h \
-		src/keystore.h \
-		src/key.h \
-		src/pubkey.h \
-		src/hash.h \
-		src/crypto/ripemd160.h \
-		src/crypto/sha256.h \
-		src/bignum.h \
-		src/stealth.h \
-		src/limitedmap.h \
-		src/mruset.h \
-		src/netbase.h \
-		src/protocol.h \
-		src/chainparams.h \
-		src/base58.h \
-		src/main.h \
-		src/txmempool.h \
-		src/scrypt.h \
-		src/hashblock.h \
-		src/sph_blake.h \
-		src/sph_types.h \
-		src/sph_bmw.h \
-		src/sph_groestl.h \
-		src/sph_jh.h \
-		src/sph_keccak.h \
-		src/sph_skein.h \
-		src/sph_luffa.h \
-		src/sph_cubehash.h \
-		src/sph_shavite.h \
-		src/sph_simd.h \
-		src/sph_echo.h \
-		src/wallet.h \
-		src/walletdb.h \
-		src/db.h \
-		src/crypter.h \
-		src/ui_interface.h \
-		src/init.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/darksendconfig.o src/qt/darksendconfig.cpp
 
 build/masternode.o: src/masternode.cpp src/masternode.h \
 		src/uint256.h \
@@ -6152,9 +6073,9 @@ build/smessage.o: src/smessage.cpp src/smessage.h \
 
 build/messagepage.o: src/qt/messagepage.cpp src/qt/messagepage.h \
 		build/ui_messagepage.h \
-		src/qt/sendmessagesdialog.h \
 		src/qt/plugins/mrichtexteditor/mrichtextedit.h \
 		build/ui_mrichtextedit.h \
+		src/qt/sendmessagesdialog.h \
 		src/qt/messagemodel.h \
 		src/uint256.h \
 		src/allocators.h \
@@ -6294,6 +6215,7 @@ build/messagemodel.o: src/qt/messagemodel.cpp src/qt/guiutil.h \
 
 build/sendmessagesdialog.o: src/qt/sendmessagesdialog.cpp src/qt/sendmessagesdialog.h \
 		build/ui_sendmessagesdialog.h \
+		src/qt/qvalidatedlineedit.h \
 		src/qt/walletmodel.h \
 		src/qt/walletmodeltransaction.h \
 		src/util.h \
@@ -6362,6 +6284,8 @@ build/sendmessagesdialog.o: src/qt/sendmessagesdialog.cpp src/qt/sendmessagesdia
 
 build/sendmessagesentry.o: src/qt/sendmessagesentry.cpp src/qt/sendmessagesentry.h \
 		build/ui_sendmessagesentry.h \
+		src/qt/qvalidatedlineedit.h \
+		src/qt/qvalidatedtextedit.h \
 		src/qt/guiutil.h \
 		src/qt/addressbookpage.h \
 		src/qt/walletmodel.h \
@@ -6588,6 +6512,7 @@ build/multisigaddressentry.o: src/qt/multisigaddressentry.cpp src/qt/addressbook
 		src/qt/guiutil.h \
 		src/qt/multisigaddressentry.h \
 		build/ui_multisigaddressentry.h \
+		src/qt/qvalidatedlineedit.h \
 		src/qt/walletmodel.h \
 		src/qt/walletmodeltransaction.h \
 		src/instantx.h \
@@ -6644,6 +6569,7 @@ build/multisiginputentry.o: src/qt/multisiginputentry.cpp src/base58.h \
 		src/stealth.h \
 		src/qt/multisiginputentry.h \
 		build/ui_multisiginputentry.h \
+		src/qt/qvalidatedlineedit.h \
 		src/main.h \
 		src/core.h \
 		src/txmempool.h \
@@ -6964,9 +6890,6 @@ build/moc_paymentserver.o: build/moc_paymentserver.cpp
 
 build/moc_rpcconsole.o: build/moc_rpcconsole.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_rpcconsole.o build/moc_rpcconsole.cpp
-
-build/moc_darksendconfig.o: build/moc_darksendconfig.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_darksendconfig.o build/moc_darksendconfig.cpp
 
 build/moc_masternodemanager.o: build/moc_masternodemanager.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_masternodemanager.o build/moc_masternodemanager.cpp
