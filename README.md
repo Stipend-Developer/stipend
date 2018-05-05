@@ -1,3 +1,7 @@
+
+## [Join us on Discord](https://discord.gg/3Bjhz4k)
+
+
 # The Stipend
 
 We introduce you a new cryptocoin called Stipend.
