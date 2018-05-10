@@ -135,6 +135,11 @@ static QString seconds_to_DHMS(quint32 duration)
 
 void MasternodeManager::updateListConc() {
 
+        int scroll_position = 0;
+
+        scroll_position = ui->tableWidget->verticalScrollBar()->value();
+
+        ui->tableWidget->setUpdatesEnabled(false);
         ui->tableWidget->setSortingEnabled(false);
         ui->tableWidget->clearContents();
         ui->tableWidget->setRowCount(0);
@@ -179,13 +184,14 @@ void MasternodeManager::updateListConc() {
             ui->tableWidget->setItem(0, 3, lastSeenItem);
             ui->tableWidget->setItem(0, 4, pubkeyItem);
 
-
-		}
+        }
 
         ui->countLabel->setText(QString::number(ui->tableWidget->rowCount()));
-        ui->tableWidget->setSortingEnabled(true);
         //on_UpdateButton_clicked();
-        //ui->tableWidget->verticalScrollBar()->setSliderPosition(ui->tableWidget->verticalScrollBar()->sliderPosition());
+        ui->tableWidget->setSortingEnabled(true);
+        ui->tableWidget->setUpdatesEnabled(true);
+        ui->tableWidget->verticalScrollBar()->setSliderPosition(scroll_position);
+
 }
 
 
