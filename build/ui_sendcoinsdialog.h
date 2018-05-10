@@ -70,6 +70,12 @@ public:
     QCheckBox *checkBoxCoinControlChange;
     QLineEdit *lineEditCoinControlChange;
     QLabel *labelCoinControlChangeLabel;
+    QHBoxLayout *horizontalLayoutCoinControl6;
+    QCheckBox *splitBlockCheckBox;
+    QLineEdit *splitBlockLineEdit;
+    QLabel *labelBlockSizeText;
+    QLabel *labelBlockSize;
+    QSpacerItem *horizontalSpacer_7;
     QSpacerItem *verticalSpacerCoinControl;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -386,6 +392,48 @@ public:
 
         verticalLayoutCoinControl->addLayout(horizontalLayoutCoinControl4);
 
+        horizontalLayoutCoinControl6 = new QHBoxLayout();
+        horizontalLayoutCoinControl6->setSpacing(12);
+        horizontalLayoutCoinControl6->setObjectName(QStringLiteral("horizontalLayoutCoinControl6"));
+        horizontalLayoutCoinControl6->setContentsMargins(-1, -1, 0, -1);
+        splitBlockCheckBox = new QCheckBox(frameCoinControl);
+        splitBlockCheckBox->setObjectName(QStringLiteral("splitBlockCheckBox"));
+        sizePolicy2.setHeightForWidth(splitBlockCheckBox->sizePolicy().hasHeightForWidth());
+        splitBlockCheckBox->setSizePolicy(sizePolicy2);
+        splitBlockCheckBox->setMinimumSize(QSize(200, 0));
+        splitBlockCheckBox->setMaximumSize(QSize(200, 16777215));
+
+        horizontalLayoutCoinControl6->addWidget(splitBlockCheckBox);
+
+        splitBlockLineEdit = new QLineEdit(frameCoinControl);
+        splitBlockLineEdit->setObjectName(QStringLiteral("splitBlockLineEdit"));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(50);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(splitBlockLineEdit->sizePolicy().hasHeightForWidth());
+        splitBlockLineEdit->setSizePolicy(sizePolicy5);
+        splitBlockLineEdit->setMinimumSize(QSize(100, 0));
+        splitBlockLineEdit->setMaximumSize(QSize(100, 16777215));
+
+        horizontalLayoutCoinControl6->addWidget(splitBlockLineEdit);
+
+        labelBlockSizeText = new QLabel(frameCoinControl);
+        labelBlockSizeText->setObjectName(QStringLiteral("labelBlockSizeText"));
+
+        horizontalLayoutCoinControl6->addWidget(labelBlockSizeText);
+
+        labelBlockSize = new QLabel(frameCoinControl);
+        labelBlockSize->setObjectName(QStringLiteral("labelBlockSize"));
+
+        horizontalLayoutCoinControl6->addWidget(labelBlockSize);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayoutCoinControl6->addItem(horizontalSpacer_7);
+
+
+        verticalLayoutCoinControl->addLayout(horizontalLayoutCoinControl6);
+
         verticalSpacerCoinControl = new QSpacerItem(800, 1, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayoutCoinControl->addItem(verticalSpacerCoinControl);
@@ -430,11 +478,11 @@ public:
 
         clearButton = new QPushButton(SendCoinsDialog);
         clearButton->setObjectName(QStringLiteral("clearButton"));
-        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(clearButton->sizePolicy().hasHeightForWidth());
-        clearButton->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(clearButton->sizePolicy().hasHeightForWidth());
+        clearButton->setSizePolicy(sizePolicy6);
         clearButton->setAutoRepeatDelay(300);
         clearButton->setAutoDefault(false);
 
@@ -459,18 +507,18 @@ public:
 
         label = new QLabel(SendCoinsDialog);
         label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy7);
 
         horizontalLayout_2->addWidget(label);
 
         labelBalance = new QLabel(SendCoinsDialog);
         labelBalance->setObjectName(QStringLiteral("labelBalance"));
-        sizePolicy6.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
-        labelBalance->setSizePolicy(sizePolicy6);
+        sizePolicy7.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
+        labelBalance->setSizePolicy(sizePolicy7);
         labelBalance->setCursor(QCursor(Qt::IBeamCursor));
         labelBalance->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
 
@@ -528,8 +576,12 @@ public:
         labelCoinControlAfterFee->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
         labelCoinControlChangeText->setText(QApplication::translate("SendCoinsDialog", "Change", 0));
         labelCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "0.00 SPD", 0));
-        checkBoxCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "custom change address", 0));
+        checkBoxCoinControlChange->setText(QApplication::translate("SendCoinsDialog", "Custom Change Address", 0));
         labelCoinControlChangeLabel->setText(QString());
+        splitBlockCheckBox->setText(QApplication::translate("SendCoinsDialog", "Split UTXO", 0));
+        splitBlockLineEdit->setPlaceholderText(QApplication::translate("SendCoinsDialog", "# of outputs", 0));
+        labelBlockSizeText->setText(QApplication::translate("SendCoinsDialog", "UTXO Size:", 0));
+        labelBlockSize->setText(QApplication::translate("SendCoinsDialog", "0 SPD", 0));
 #ifndef QT_NO_TOOLTIP
         addButton->setToolTip(QApplication::translate("SendCoinsDialog", "Send to multiple recipients at once", 0));
 #endif // QT_NO_TOOLTIP

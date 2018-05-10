@@ -62,7 +62,6 @@ MasternodeManager::MasternodeManager(QWidget *parent) :
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-	ui->tableWidget_3->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 		
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateNodeList()));
@@ -135,25 +134,27 @@ static QString seconds_to_DHMS(quint32 duration)
 }
 
 void MasternodeManager::updateListConc() {
-	if (ui->tableWidget->isVisible()) 
-	{
-		ui->tableWidget_3->clearContents();
-		ui->tableWidget_3->setRowCount(0);
+
+        ui->tableWidget->setSortingEnabled(false);
+        ui->tableWidget->clearContents();
+        ui->tableWidget->setRowCount(0);
 		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-		ui->tableWidget_3->horizontalHeader()->setSortIndicator(ui->tableWidget->horizontalHeader()->sortIndicatorSection() ,ui->tableWidget->horizontalHeader()->sortIndicatorOrder());
 
 		BOOST_FOREACH(CMasternode& mn, vMasternodes)
 		{
-			int mnRow = 0;
-			ui->tableWidget_3->insertRow(0);
+            ui->tableWidget->insertRow(0);
 
 			// populate list
 			// Address, Rank, Active, Active Seconds, Last Seen, Pub Key
 			QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(mn.IsEnabled()));
 			QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
-			QString Rank = QString::number(mnodeman.GetMasternodeRank(mn.vin, pindexBest->nHeight));
-			QTableWidgetItem *rankItem = new QTableWidgetItem(Rank.rightJustified(2, '0', false));
-			QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(mn.lastTimeSeen - mn.sigTime)));
+
+            // Disable the rank calculation until we find a quicker way
+
+            //QString Rank = QString::number(mnodeman.GetMasternodeRank(mn.vin, pindexBest->nHeight));
+            //QTableWidgetItem *rankItem = new QTableWidgetItem(Rank.rightJustified(2, '0', false));
+
+            QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(mn.lastTimeSeen - mn.sigTime)));
 			QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(mn.lastTimeSeen)));
 
 			CScript pubkey;
@@ -163,61 +164,30 @@ void MasternodeManager::updateListConc() {
 			CStipendAddress address2(address1);
 			QTableWidgetItem *pubkeyItem = new QTableWidgetItem(QString::fromStdString(address2.ToString()));
 
-			ui->tableWidget_3->setItem(mnRow, 0, addressItem);
-			ui->tableWidget_3->setItem(mnRow, 1, rankItem);
-			ui->tableWidget_3->setItem(mnRow, 2, activeItem);
-			ui->tableWidget_3->setItem(mnRow, 3, activeSecondsItem);
-			ui->tableWidget_3->setItem(mnRow, 4, lastSeenItem);
-			ui->tableWidget_3->setItem(mnRow, 5, pubkeyItem);
+            ui->tableWidget->setItem(0, 0, addressItem);
+
+            // Column order changed as we removed Rank column
+
+            //ui->tableWidget->setItem(0, 1, rankItem);
+            //ui->tableWidget->setItem(0, 2, activeItem);
+            //ui->tableWidget->setItem(0, 3, activeSecondsItem);
+            //ui->tableWidget->setItem(0, 4, lastSeenItem);
+            //ui->tableWidget->setItem(0, 5, pubkeyItem);
+
+            ui->tableWidget->setItem(0, 1, activeItem);
+            ui->tableWidget->setItem(0, 2, activeSecondsItem);
+            ui->tableWidget->setItem(0, 3, lastSeenItem);
+            ui->tableWidget->setItem(0, 4, pubkeyItem);
+
+
 		}
-		ui->countLabel->setText(QString::number(ui->tableWidget_3->rowCount()));
-		on_UpdateButton_clicked();
-		ui->tableWidget->setVisible(0);
-		ui->tableWidget_3->setVisible(1);
-		ui->tableWidget_3->verticalScrollBar()->setSliderPosition(ui->tableWidget->verticalScrollBar()->sliderPosition());
-	}
-	else
-		{
-		ui->tableWidget->clearContents();
-		ui->tableWidget->setRowCount(0);
-		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-		ui->tableWidget->horizontalHeader()->setSortIndicator(ui->tableWidget_3->horizontalHeader()->sortIndicatorSection() ,ui->tableWidget_3->horizontalHeader()->sortIndicatorOrder());
 
-		BOOST_FOREACH(CMasternode& mn, vMasternodes)
-		{
-			int mnRow = 0;
-			ui->tableWidget->insertRow(0);
-
-			// populate list
-			// Address, Rank, Active, Active Seconds, Last Seen, Pub Key
-			QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(mn.IsEnabled()));
-			QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
-			QString Rank = QString::number(mnodeman.GetMasternodeRank(mn.vin, pindexBest->nHeight));
-			QTableWidgetItem *rankItem = new QTableWidgetItem(Rank.rightJustified(2, '0', false));
-			QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(mn.lastTimeSeen - mn.sigTime)));
-			QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(mn.lastTimeSeen)));
-
-			CScript pubkey;
-			pubkey =GetScriptForDestination(mn.pubkey.GetID());
-			CTxDestination address1;
-			ExtractDestination(pubkey, address1);
-			CStipendAddress address2(address1);
-			QTableWidgetItem *pubkeyItem = new QTableWidgetItem(QString::fromStdString(address2.ToString()));
-
-			ui->tableWidget->setItem(mnRow, 0, addressItem);
-			ui->tableWidget->setItem(mnRow, 1, rankItem);
-			ui->tableWidget->setItem(mnRow, 2, activeItem);
-			ui->tableWidget->setItem(mnRow, 3, activeSecondsItem);
-			ui->tableWidget->setItem(mnRow, 4, lastSeenItem);
-			ui->tableWidget->setItem(mnRow, 5, pubkeyItem);
-		}
-		ui->countLabel->setText(QString::number(ui->tableWidget->rowCount()));
-		on_UpdateButton_clicked();
-		ui->tableWidget_3->setVisible(0);
-		ui->tableWidget->setVisible(1);
-		ui->tableWidget->verticalScrollBar()->setSliderPosition(ui->tableWidget_3->verticalScrollBar()->sliderPosition());
-		}
+        ui->countLabel->setText(QString::number(ui->tableWidget->rowCount()));
+        ui->tableWidget->setSortingEnabled(true);
+        //on_UpdateButton_clicked();
+        //ui->tableWidget->verticalScrollBar()->setSliderPosition(ui->tableWidget->verticalScrollBar()->sliderPosition());
 }
+
 
 
 void MasternodeManager::updateNodeList()
