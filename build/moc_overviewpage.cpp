@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_OverviewPage_t {
-    QByteArrayData data[25];
-    char stringdata0[355];
+    QByteArrayData data[21];
+    char stringdata0[298];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,38 +33,33 @@ QT_MOC_LITERAL(0, 0, 12), // "OverviewPage"
 QT_MOC_LITERAL(1, 13, 18), // "transactionClicked"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 5), // "index"
-QT_MOC_LITERAL(4, 39, 14), // "darkSendStatus"
-QT_MOC_LITERAL(5, 54, 10), // "setBalance"
-QT_MOC_LITERAL(6, 65, 7), // "CAmount"
-QT_MOC_LITERAL(7, 73, 7), // "balance"
-QT_MOC_LITERAL(8, 81, 5), // "stake"
-QT_MOC_LITERAL(9, 87, 18), // "unconfirmedBalance"
-QT_MOC_LITERAL(10, 106, 15), // "immatureBalance"
-QT_MOC_LITERAL(11, 122, 17), // "anonymizedBalance"
-QT_MOC_LITERAL(12, 140, 16), // "watchOnlyBalance"
-QT_MOC_LITERAL(13, 157, 14), // "watchOnlyStake"
-QT_MOC_LITERAL(14, 172, 18), // "watchUnconfBalance"
-QT_MOC_LITERAL(15, 191, 20), // "watchImmatureBalance"
-QT_MOC_LITERAL(16, 212, 14), // "toggleDarksend"
-QT_MOC_LITERAL(17, 227, 12), // "darksendAuto"
-QT_MOC_LITERAL(18, 240, 13), // "darksendReset"
-QT_MOC_LITERAL(19, 254, 17), // "updateDisplayUnit"
-QT_MOC_LITERAL(20, 272, 24), // "handleTransactionClicked"
-QT_MOC_LITERAL(21, 297, 12), // "updateAlerts"
-QT_MOC_LITERAL(22, 310, 8), // "warnings"
-QT_MOC_LITERAL(23, 319, 21), // "updateWatchOnlyLabels"
-QT_MOC_LITERAL(24, 341, 13) // "showWatchOnly"
+QT_MOC_LITERAL(4, 39, 10), // "setBalance"
+QT_MOC_LITERAL(5, 50, 7), // "CAmount"
+QT_MOC_LITERAL(6, 58, 7), // "balance"
+QT_MOC_LITERAL(7, 66, 5), // "stake"
+QT_MOC_LITERAL(8, 72, 18), // "unconfirmedBalance"
+QT_MOC_LITERAL(9, 91, 15), // "immatureBalance"
+QT_MOC_LITERAL(10, 107, 17), // "anonymizedBalance"
+QT_MOC_LITERAL(11, 125, 16), // "watchOnlyBalance"
+QT_MOC_LITERAL(12, 142, 14), // "watchOnlyStake"
+QT_MOC_LITERAL(13, 157, 18), // "watchUnconfBalance"
+QT_MOC_LITERAL(14, 176, 20), // "watchImmatureBalance"
+QT_MOC_LITERAL(15, 197, 17), // "updateDisplayUnit"
+QT_MOC_LITERAL(16, 215, 24), // "handleTransactionClicked"
+QT_MOC_LITERAL(17, 240, 12), // "updateAlerts"
+QT_MOC_LITERAL(18, 253, 8), // "warnings"
+QT_MOC_LITERAL(19, 262, 21), // "updateWatchOnlyLabels"
+QT_MOC_LITERAL(20, 284, 13) // "showWatchOnly"
 
     },
     "OverviewPage\0transactionClicked\0\0index\0"
-    "darkSendStatus\0setBalance\0CAmount\0"
-    "balance\0stake\0unconfirmedBalance\0"
-    "immatureBalance\0anonymizedBalance\0"
-    "watchOnlyBalance\0watchOnlyStake\0"
-    "watchUnconfBalance\0watchImmatureBalance\0"
-    "toggleDarksend\0darksendAuto\0darksendReset\0"
-    "updateDisplayUnit\0handleTransactionClicked\0"
-    "updateAlerts\0warnings\0updateWatchOnlyLabels\0"
+    "setBalance\0CAmount\0balance\0stake\0"
+    "unconfirmedBalance\0immatureBalance\0"
+    "anonymizedBalance\0watchOnlyBalance\0"
+    "watchOnlyStake\0watchUnconfBalance\0"
+    "watchImmatureBalance\0updateDisplayUnit\0"
+    "handleTransactionClicked\0updateAlerts\0"
+    "warnings\0updateWatchOnlyLabels\0"
     "showWatchOnly"
 };
 #undef QT_MOC_LITERAL
@@ -75,7 +70,7 @@ static const uint qt_meta_data_OverviewPage[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,32 +78,24 @@ static const uint qt_meta_data_OverviewPage[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   64,    2, 0x06 /* Public */,
+       1,    1,   44,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   67,    2, 0x0a /* Public */,
-       5,    9,   68,    2, 0x0a /* Public */,
-      16,    0,   87,    2, 0x08 /* Private */,
-      17,    0,   88,    2, 0x08 /* Private */,
-      18,    0,   89,    2, 0x08 /* Private */,
-      19,    0,   90,    2, 0x08 /* Private */,
-      20,    1,   91,    2, 0x08 /* Private */,
-      21,    1,   94,    2, 0x08 /* Private */,
-      23,    1,   97,    2, 0x08 /* Private */,
+       4,    9,   47,    2, 0x0a /* Public */,
+      15,    0,   66,    2, 0x08 /* Private */,
+      16,    1,   67,    2, 0x08 /* Private */,
+      17,    1,   70,    2, 0x08 /* Private */,
+      19,    1,   73,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QModelIndex,    3,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6, 0x80000000 | 6,    7,    8,    9,   10,   11,   12,   13,   14,   15,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5, 0x80000000 | 5,    6,    7,    8,    9,   10,   11,   12,   13,   14,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QModelIndex,    3,
-    QMetaType::Void, QMetaType::QString,   22,
-    QMetaType::Void, QMetaType::Bool,   24,
+    QMetaType::Void, QMetaType::QString,   18,
+    QMetaType::Void, QMetaType::Bool,   20,
 
        0        // eod
 };
@@ -120,15 +107,11 @@ void OverviewPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->transactionClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 1: _t->darkSendStatus(); break;
-        case 2: _t->setBalance((*reinterpret_cast< const CAmount(*)>(_a[1])),(*reinterpret_cast< const CAmount(*)>(_a[2])),(*reinterpret_cast< const CAmount(*)>(_a[3])),(*reinterpret_cast< const CAmount(*)>(_a[4])),(*reinterpret_cast< const CAmount(*)>(_a[5])),(*reinterpret_cast< const CAmount(*)>(_a[6])),(*reinterpret_cast< const CAmount(*)>(_a[7])),(*reinterpret_cast< const CAmount(*)>(_a[8])),(*reinterpret_cast< const CAmount(*)>(_a[9]))); break;
-        case 3: _t->toggleDarksend(); break;
-        case 4: _t->darksendAuto(); break;
-        case 5: _t->darksendReset(); break;
-        case 6: _t->updateDisplayUnit(); break;
-        case 7: _t->handleTransactionClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 8: _t->updateAlerts((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 9: _t->updateWatchOnlyLabels((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 1: _t->setBalance((*reinterpret_cast< const CAmount(*)>(_a[1])),(*reinterpret_cast< const CAmount(*)>(_a[2])),(*reinterpret_cast< const CAmount(*)>(_a[3])),(*reinterpret_cast< const CAmount(*)>(_a[4])),(*reinterpret_cast< const CAmount(*)>(_a[5])),(*reinterpret_cast< const CAmount(*)>(_a[6])),(*reinterpret_cast< const CAmount(*)>(_a[7])),(*reinterpret_cast< const CAmount(*)>(_a[8])),(*reinterpret_cast< const CAmount(*)>(_a[9]))); break;
+        case 2: _t->updateDisplayUnit(); break;
+        case 3: _t->handleTransactionClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 4: _t->updateAlerts((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->updateWatchOnlyLabels((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -168,13 +151,13 @@ int OverviewPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 6;
     }
     return _id;
 }

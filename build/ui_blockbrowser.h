@@ -35,35 +35,35 @@ public:
     QLabel *label_5;
     QSpacerItem *horizontalSpacer_2;
     QGridLayout *gridLayout_3;
+    QLineEdit *txBox;
+    QLabel *nonceBox;
+    QLabel *merkleBox;
+    QLabel *inputLabel;
     QSpacerItem *verticalSpacer;
     QPushButton *txButton;
-    QLabel *inputLabel;
-    QLabel *valueLabel;
-    QLabel *txLabel;
+    QLabel *merkleLabel;
+    QPushButton *blockButton;
+    QLabel *bitsLabel;
     QLabel *hardBox;
-    QLabel *txID;
-    QLabel *inputBox;
+    QSpinBox *heightBox;
+    QLabel *txLabel;
+    QLabel *heightLabel_2;
+    QLabel *outputLabel;
+    QLabel *valueLabel;
+    QLabel *feesLabel;
     QLabel *valueBox;
     QLabel *hardLabel;
-    QSpinBox *heightBox;
-    QLabel *heightLabel_2;
-    QLabel *timeBox;
-    QPushButton *blockButton;
-    QLabel *merkleLabel;
-    QLabel *hashLabel;
-    QLabel *feesBox;
-    QLabel *heightLabel;
-    QLabel *feesLabel;
-    QLabel *bitsLabel;
     QLabel *bitsBox;
-    QLabel *merkleBox;
-    QLabel *outputLabel;
+    QLabel *timeBox;
+    QLabel *txID;
     QLabel *outputBox;
+    QLabel *heightLabel;
+    QLabel *feesBox;
+    QLabel *inputBox;
     QLabel *nonceLabel;
-    QLabel *nonceBox;
+    QLabel *hashLabel;
     QLabel *timeLabel;
     QLabel *hashBox;
-    QLineEdit *txBox;
     QSpacerItem *verticalSpacer_2;
 
     void setupUi(QWidget *BlockBrowser)
@@ -112,6 +112,35 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         gridLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
         gridLayout_3->setHorizontalSpacing(7);
+        txBox = new QLineEdit(widget);
+        txBox->setObjectName(QStringLiteral("txBox"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(txBox->sizePolicy().hasHeightForWidth());
+        txBox->setSizePolicy(sizePolicy1);
+
+        gridLayout_3->addWidget(txBox, 12, 0, 1, 1);
+
+        nonceBox = new QLabel(widget);
+        nonceBox->setObjectName(QStringLiteral("nonceBox"));
+        nonceBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        gridLayout_3->addWidget(nonceBox, 6, 1, 1, 1);
+
+        merkleBox = new QLabel(widget);
+        merkleBox->setObjectName(QStringLiteral("merkleBox"));
+        merkleBox->setMinimumSize(QSize(0, 0));
+        merkleBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        gridLayout_3->addWidget(merkleBox, 5, 1, 1, 1);
+
+        inputLabel = new QLabel(widget);
+        inputLabel->setObjectName(QStringLiteral("inputLabel"));
+        inputLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        gridLayout_3->addWidget(inputLabel, 17, 0, 1, 1);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout_3->addItem(verticalSpacer, 18, 0, 1, 1);
@@ -121,21 +150,20 @@ public:
 
         gridLayout_3->addWidget(txButton, 12, 1, 1, 1);
 
-        inputLabel = new QLabel(widget);
-        inputLabel->setObjectName(QStringLiteral("inputLabel"));
-        inputLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        merkleLabel = new QLabel(widget);
+        merkleLabel->setObjectName(QStringLiteral("merkleLabel"));
 
-        gridLayout_3->addWidget(inputLabel, 17, 0, 1, 1);
+        gridLayout_3->addWidget(merkleLabel, 5, 0, 1, 1);
 
-        valueLabel = new QLabel(widget);
-        valueLabel->setObjectName(QStringLiteral("valueLabel"));
+        blockButton = new QPushButton(widget);
+        blockButton->setObjectName(QStringLiteral("blockButton"));
 
-        gridLayout_3->addWidget(valueLabel, 14, 0, 1, 1);
+        gridLayout_3->addWidget(blockButton, 1, 1, 1, 1);
 
-        txLabel = new QLabel(widget);
-        txLabel->setObjectName(QStringLiteral("txLabel"));
+        bitsLabel = new QLabel(widget);
+        bitsLabel->setObjectName(QStringLiteral("bitsLabel"));
 
-        gridLayout_3->addWidget(txLabel, 13, 0, 1, 1);
+        gridLayout_3->addWidget(bitsLabel, 7, 0, 1, 1);
 
         hardBox = new QLabel(widget);
         hardBox->setObjectName(QStringLiteral("hardBox"));
@@ -143,18 +171,39 @@ public:
 
         gridLayout_3->addWidget(hardBox, 9, 1, 1, 1);
 
-        txID = new QLabel(widget);
-        txID->setObjectName(QStringLiteral("txID"));
-        txID->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+        heightBox = new QSpinBox(widget);
+        heightBox->setObjectName(QStringLiteral("heightBox"));
+        sizePolicy1.setHeightForWidth(heightBox->sizePolicy().hasHeightForWidth());
+        heightBox->setSizePolicy(sizePolicy1);
+        heightBox->setMaximum(99999999);
 
-        gridLayout_3->addWidget(txID, 13, 1, 1, 1);
+        gridLayout_3->addWidget(heightBox, 1, 0, 1, 1);
 
-        inputBox = new QLabel(widget);
-        inputBox->setObjectName(QStringLiteral("inputBox"));
-        inputBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        inputBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+        txLabel = new QLabel(widget);
+        txLabel->setObjectName(QStringLiteral("txLabel"));
 
-        gridLayout_3->addWidget(inputBox, 17, 1, 1, 1);
+        gridLayout_3->addWidget(txLabel, 13, 0, 1, 1);
+
+        heightLabel_2 = new QLabel(widget);
+        heightLabel_2->setObjectName(QStringLiteral("heightLabel_2"));
+
+        gridLayout_3->addWidget(heightLabel_2, 3, 0, 1, 1);
+
+        outputLabel = new QLabel(widget);
+        outputLabel->setObjectName(QStringLiteral("outputLabel"));
+        outputLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        gridLayout_3->addWidget(outputLabel, 16, 0, 1, 1);
+
+        valueLabel = new QLabel(widget);
+        valueLabel->setObjectName(QStringLiteral("valueLabel"));
+
+        gridLayout_3->addWidget(valueLabel, 14, 0, 1, 1);
+
+        feesLabel = new QLabel(widget);
+        feesLabel->setObjectName(QStringLiteral("feesLabel"));
+
+        gridLayout_3->addWidget(feesLabel, 15, 0, 1, 1);
 
         valueBox = new QLabel(widget);
         valueBox->setObjectName(QStringLiteral("valueBox"));
@@ -167,21 +216,11 @@ public:
 
         gridLayout_3->addWidget(hardLabel, 9, 0, 1, 1);
 
-        heightBox = new QSpinBox(widget);
-        heightBox->setObjectName(QStringLiteral("heightBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(heightBox->sizePolicy().hasHeightForWidth());
-        heightBox->setSizePolicy(sizePolicy1);
-        heightBox->setMaximum(99999999);
+        bitsBox = new QLabel(widget);
+        bitsBox->setObjectName(QStringLiteral("bitsBox"));
+        bitsBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
-        gridLayout_3->addWidget(heightBox, 1, 0, 1, 1);
-
-        heightLabel_2 = new QLabel(widget);
-        heightLabel_2->setObjectName(QStringLiteral("heightLabel_2"));
-
-        gridLayout_3->addWidget(heightLabel_2, 3, 0, 1, 1);
+        gridLayout_3->addWidget(bitsBox, 7, 1, 1, 1);
 
         timeBox = new QLabel(widget);
         timeBox->setObjectName(QStringLiteral("timeBox"));
@@ -189,61 +228,11 @@ public:
 
         gridLayout_3->addWidget(timeBox, 8, 1, 1, 1);
 
-        blockButton = new QPushButton(widget);
-        blockButton->setObjectName(QStringLiteral("blockButton"));
+        txID = new QLabel(widget);
+        txID->setObjectName(QStringLiteral("txID"));
+        txID->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
-        gridLayout_3->addWidget(blockButton, 1, 1, 1, 1);
-
-        merkleLabel = new QLabel(widget);
-        merkleLabel->setObjectName(QStringLiteral("merkleLabel"));
-
-        gridLayout_3->addWidget(merkleLabel, 5, 0, 1, 1);
-
-        hashLabel = new QLabel(widget);
-        hashLabel->setObjectName(QStringLiteral("hashLabel"));
-
-        gridLayout_3->addWidget(hashLabel, 4, 0, 1, 1);
-
-        feesBox = new QLabel(widget);
-        feesBox->setObjectName(QStringLiteral("feesBox"));
-        feesBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
-
-        gridLayout_3->addWidget(feesBox, 15, 1, 1, 1);
-
-        heightLabel = new QLabel(widget);
-        heightLabel->setObjectName(QStringLiteral("heightLabel"));
-        heightLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
-
-        gridLayout_3->addWidget(heightLabel, 3, 1, 1, 1);
-
-        feesLabel = new QLabel(widget);
-        feesLabel->setObjectName(QStringLiteral("feesLabel"));
-
-        gridLayout_3->addWidget(feesLabel, 15, 0, 1, 1);
-
-        bitsLabel = new QLabel(widget);
-        bitsLabel->setObjectName(QStringLiteral("bitsLabel"));
-
-        gridLayout_3->addWidget(bitsLabel, 7, 0, 1, 1);
-
-        bitsBox = new QLabel(widget);
-        bitsBox->setObjectName(QStringLiteral("bitsBox"));
-        bitsBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
-
-        gridLayout_3->addWidget(bitsBox, 7, 1, 1, 1);
-
-        merkleBox = new QLabel(widget);
-        merkleBox->setObjectName(QStringLiteral("merkleBox"));
-        merkleBox->setMinimumSize(QSize(187, 0));
-        merkleBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
-
-        gridLayout_3->addWidget(merkleBox, 5, 1, 1, 1);
-
-        outputLabel = new QLabel(widget);
-        outputLabel->setObjectName(QStringLiteral("outputLabel"));
-        outputLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-
-        gridLayout_3->addWidget(outputLabel, 16, 0, 1, 1);
+        gridLayout_3->addWidget(txID, 13, 1, 1, 1);
 
         outputBox = new QLabel(widget);
         outputBox->setObjectName(QStringLiteral("outputBox"));
@@ -252,16 +241,34 @@ public:
 
         gridLayout_3->addWidget(outputBox, 16, 1, 1, 1);
 
+        heightLabel = new QLabel(widget);
+        heightLabel->setObjectName(QStringLiteral("heightLabel"));
+        heightLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        gridLayout_3->addWidget(heightLabel, 3, 1, 1, 1);
+
+        feesBox = new QLabel(widget);
+        feesBox->setObjectName(QStringLiteral("feesBox"));
+        feesBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        gridLayout_3->addWidget(feesBox, 15, 1, 1, 1);
+
+        inputBox = new QLabel(widget);
+        inputBox->setObjectName(QStringLiteral("inputBox"));
+        inputBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        inputBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        gridLayout_3->addWidget(inputBox, 17, 1, 1, 1);
+
         nonceLabel = new QLabel(widget);
         nonceLabel->setObjectName(QStringLiteral("nonceLabel"));
 
         gridLayout_3->addWidget(nonceLabel, 6, 0, 1, 1);
 
-        nonceBox = new QLabel(widget);
-        nonceBox->setObjectName(QStringLiteral("nonceBox"));
-        nonceBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+        hashLabel = new QLabel(widget);
+        hashLabel->setObjectName(QStringLiteral("hashLabel"));
 
-        gridLayout_3->addWidget(nonceBox, 6, 1, 1, 1);
+        gridLayout_3->addWidget(hashLabel, 4, 0, 1, 1);
 
         timeLabel = new QLabel(widget);
         timeLabel->setObjectName(QStringLiteral("timeLabel"));
@@ -280,13 +287,6 @@ public:
         hashBox->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
 
         gridLayout_3->addWidget(hashBox, 4, 1, 1, 1);
-
-        txBox = new QLineEdit(widget);
-        txBox->setObjectName(QStringLiteral("txBox"));
-        sizePolicy1.setHeightForWidth(txBox->sizePolicy().hasHeightForWidth());
-        txBox->setSizePolicy(sizePolicy1);
-
-        gridLayout_3->addWidget(txBox, 12, 0, 1, 1);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -308,34 +308,34 @@ public:
     {
         BlockBrowser->setWindowTitle(QApplication::translate("BlockBrowser", "Form", 0));
         label_5->setText(QApplication::translate("BlockBrowser", "<html><head/><body><p><span style=\" font-size:20px; font-weight:600; color:#000000;\">Block Explorer </span></p></body></html>", 0));
-        txButton->setText(QApplication::translate("BlockBrowser", "Decode Transaction", 0));
-        inputLabel->setText(QApplication::translate("BlockBrowser", "Inputs:", 0));
-        valueLabel->setText(QApplication::translate("BlockBrowser", "Value out:", 0));
-        txLabel->setText(QApplication::translate("BlockBrowser", "Transaction ID:", 0));
-        hardBox->setText(QApplication::translate("BlockBrowser", "0.00", 0));
-        txID->setText(QApplication::translate("BlockBrowser", "000", 0));
-        inputBox->setText(QString());
-        valueBox->setText(QString());
-        hardLabel->setText(QApplication::translate("BlockBrowser", "Block Difficulty:", 0));
-        heightLabel_2->setText(QApplication::translate("BlockBrowser", "Block Height:", 0));
-        timeBox->setText(QApplication::translate("BlockBrowser", "0", 0));
-        blockButton->setText(QApplication::translate("BlockBrowser", "Jump to Block", 0));
-        merkleLabel->setText(QApplication::translate("BlockBrowser", "Block Merkle:", 0));
-        hashLabel->setText(QApplication::translate("BlockBrowser", "Block Hash:", 0));
-        feesBox->setText(QString());
-        heightLabel->setText(QApplication::translate("BlockBrowser", "0", 0));
-        feesLabel->setText(QApplication::translate("BlockBrowser", "Fees:", 0));
-        bitsLabel->setText(QApplication::translate("BlockBrowser", "Block nBits:", 0));
-        bitsBox->setText(QApplication::translate("BlockBrowser", "0", 0));
-        merkleBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
-        outputLabel->setText(QApplication::translate("BlockBrowser", "Outputs:", 0));
-        outputBox->setText(QString());
-        nonceLabel->setText(QApplication::translate("BlockBrowser", "Block nNonce:", 0));
-        nonceBox->setText(QApplication::translate("BlockBrowser", "0", 0));
-        timeLabel->setText(QApplication::translate("BlockBrowser", "Block Timestamp:", 0));
-        hashBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
         txBox->setInputMask(QString());
         txBox->setPlaceholderText(QString());
+        nonceBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        merkleBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
+        inputLabel->setText(QApplication::translate("BlockBrowser", "Inputs:", 0));
+        txButton->setText(QApplication::translate("BlockBrowser", "Decode Transaction", 0));
+        merkleLabel->setText(QApplication::translate("BlockBrowser", "Block Merkle:", 0));
+        blockButton->setText(QApplication::translate("BlockBrowser", "Jump to Block", 0));
+        bitsLabel->setText(QApplication::translate("BlockBrowser", "Block nBits:", 0));
+        hardBox->setText(QApplication::translate("BlockBrowser", "0.00", 0));
+        txLabel->setText(QApplication::translate("BlockBrowser", "Transaction ID:", 0));
+        heightLabel_2->setText(QApplication::translate("BlockBrowser", "Block Height:", 0));
+        outputLabel->setText(QApplication::translate("BlockBrowser", "Outputs:", 0));
+        valueLabel->setText(QApplication::translate("BlockBrowser", "Value out:", 0));
+        feesLabel->setText(QApplication::translate("BlockBrowser", "Fees:", 0));
+        valueBox->setText(QString());
+        hardLabel->setText(QApplication::translate("BlockBrowser", "Block Difficulty:", 0));
+        bitsBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        timeBox->setText(QApplication::translate("BlockBrowser", "0", 0));
+        txID->setText(QApplication::translate("BlockBrowser", "000", 0));
+        outputBox->setText(QString());
+        heightLabel->setText(QApplication::translate("BlockBrowser", "0", 0));
+        feesBox->setText(QString());
+        inputBox->setText(QString());
+        nonceLabel->setText(QApplication::translate("BlockBrowser", "Block nNonce:", 0));
+        hashLabel->setText(QApplication::translate("BlockBrowser", "Block Hash:", 0));
+        timeLabel->setText(QApplication::translate("BlockBrowser", "Block Timestamp:", 0));
+        hashBox->setText(QApplication::translate("BlockBrowser", "0x0", 0));
     } // retranslateUi
 
 };

@@ -190,7 +190,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(tradingHeaderContainer->sizePolicy().hasHeightForWidth());
         tradingHeaderContainer->setSizePolicy(sizePolicy);
-        tradingHeaderContainer->setMinimumSize(QSize(849, 40));
+        tradingHeaderContainer->setMinimumSize(QSize(550, 40));
         tradingHeaderContainer->setMaximumSize(QSize(16777215, 220));
         tradingHeaderContainer->setFrameShape(QFrame::NoFrame);
         tradingHeaderContainer->setFrameShadow(QFrame::Raised);
