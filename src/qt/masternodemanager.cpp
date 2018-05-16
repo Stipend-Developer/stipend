@@ -211,12 +211,7 @@ void MasternodeManager::updateNodeList()
     if (fFilterUpdated) ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", nSecondsToWait)));
     if (nSecondsToWait > 0) return;
 
-    nTimeListUpdated = GetTime();
-    
-	nTimeListUpdated = GetTime();
-    fFilterUpdated = false;
-	if (f1.isFinished())
-		f1 = QtConcurrent::run(this,&MasternodeManager::updateListConc);   
+    updateListConc();
 	
 }
 
