@@ -1426,12 +1426,11 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
     return pindex;
 }
 
+const int targetReadjustmentForkHeight = 192000;
+
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
     CBigNum bnTargetLimit = fProofOfStake ? GetProofOfStakeLimit(pindexLast->nHeight) : Params().ProofOfWorkLimit();
-
-
-
 
     if (pindexLast == NULL)
         return bnTargetLimit.GetCompact(); // genesis block
@@ -1445,17 +1444,15 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
-    if(!NO_FORK && pindexBest->nHeight >= HARD_FORK_BLOCK){
-        if (nActualSpacing < 0){
-            nActualSpacing = TARGET_SPACING_FORK;
-        }
-        if(nActualSpacing > TARGET_SPACING_FORK * 10){
-            nActualSpacing = TARGET_SPACING_FORK * 10;
-        }
-    } else if(NO_FORK || pindexBest->nHeight < HARD_FORK_BLOCK) {
-        if (nActualSpacing < 0){
+    if(pindexBest->nHeight < targetReadjustmentForkHeight) {
+        if (nActualSpacing < 0) {
             nActualSpacing = TARGET_SPACING;
         }
+    } else {
+        if (nActualSpacing < nTargetTimespan / 2)
+            nActualSpacing = nTargetTimespan / 2;
+        if (nActualSpacing > nTargetTimespan * 2)
+            nActualSpacing = nTargetTimespan * 2;
     }
 
     // ppcoin: target change every block

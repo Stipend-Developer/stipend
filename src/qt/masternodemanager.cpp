@@ -59,17 +59,13 @@ MasternodeManager::MasternodeManager(QWidget *parent) :
 
     ui->editButton->setEnabled(false);
     ui->startButton->setEnabled(false);
-
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-		
+
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateNodeList()));
     if(!GetBoolArg("-reindexaddr", false))
         timer->start(1000);
     fFilterUpdated = true;
 	nTimeFilterUpdated = GetTime();
-    updateNodeList();
 }
 
 MasternodeManager::~MasternodeManager()
@@ -132,89 +128,6 @@ static QString seconds_to_DHMS(quint32 duration)
       return res.sprintf("%02dh:%02dm:%02ds", hours, minutes, seconds);
   return res.sprintf("%dd %02dh:%02dm:%02ds", days, hours, minutes, seconds);
 }
-
-void MasternodeManager::updateListConc() {
-
-        int scroll_position = 0;
-
-        scroll_position = ui->tableWidget->verticalScrollBar()->value();
-
-        ui->tableWidget->setUpdatesEnabled(false);
-        ui->tableWidget->setSortingEnabled(false);
-        ui->tableWidget->clearContents();
-        ui->tableWidget->setRowCount(0);
-		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-
-		BOOST_FOREACH(CMasternode& mn, vMasternodes)
-		{
-            ui->tableWidget->insertRow(0);
-
-			// populate list
-			// Address, Rank, Active, Active Seconds, Last Seen, Pub Key
-			QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(mn.IsEnabled()));
-			QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
-
-            // Disable the rank calculation until we find a quicker way
-
-            //QString Rank = QString::number(mnodeman.GetMasternodeRank(mn.vin, pindexBest->nHeight));
-            //QTableWidgetItem *rankItem = new QTableWidgetItem(Rank.rightJustified(2, '0', false));
-
-            QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(mn.lastTimeSeen - mn.sigTime)));
-			QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(mn.lastTimeSeen)));
-
-			CScript pubkey;
-			pubkey =GetScriptForDestination(mn.pubkey.GetID());
-			CTxDestination address1;
-			ExtractDestination(pubkey, address1);
-			CStipendAddress address2(address1);
-			QTableWidgetItem *pubkeyItem = new QTableWidgetItem(QString::fromStdString(address2.ToString()));
-
-            ui->tableWidget->setItem(0, 0, addressItem);
-
-            // Column order changed as we removed Rank column
-
-            //ui->tableWidget->setItem(0, 1, rankItem);
-            //ui->tableWidget->setItem(0, 2, activeItem);
-            //ui->tableWidget->setItem(0, 3, activeSecondsItem);
-            //ui->tableWidget->setItem(0, 4, lastSeenItem);
-            //ui->tableWidget->setItem(0, 5, pubkeyItem);
-
-            ui->tableWidget->setItem(0, 1, activeItem);
-            ui->tableWidget->setItem(0, 2, activeSecondsItem);
-            ui->tableWidget->setItem(0, 3, lastSeenItem);
-            ui->tableWidget->setItem(0, 4, pubkeyItem);
-
-        }
-
-        ui->countLabel->setText(QString::number(ui->tableWidget->rowCount()));
-        //on_UpdateButton_clicked();
-        ui->tableWidget->setSortingEnabled(true);
-        ui->tableWidget->setUpdatesEnabled(true);
-        ui->tableWidget->verticalScrollBar()->setSliderPosition(scroll_position);
-
-}
-
-
-
-void MasternodeManager::updateNodeList()
-{
-	
-    TRY_LOCK(cs_masternodes, lockMasternodes);
-    if(!lockMasternodes)
-        return;
-	static int64_t nTimeListUpdated = GetTime();
-
-    // to prevent high cpu usage update only once in MASTERNODELIST_UPDATE_SECONDS seconds
-    // or MASTERNODELIST_FILTER_COOLDOWN_SECONDS seconds after filter was last changed
-    int64_t nSecondsToWait = fFilterUpdated ? nTimeFilterUpdated - GetTime() + MASTERNODELIST_FILTER_COOLDOWN_SECONDS : nTimeListUpdated - GetTime() + MASTERNODELIST_UPDATE_SECONDS;
-
-    if (fFilterUpdated) ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", nSecondsToWait)));
-    if (nSecondsToWait > 0) return;
-
-    updateListConc();
-	
-}
-
 
 void MasternodeManager::setClientModel(ClientModel *model)
 {
