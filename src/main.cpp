@@ -1416,7 +1416,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     return nSubsidy + nFees;
 }
 
-static int64_t nTargetTimespan = 5 * 90;
+static int64_t nTargetTimespan = 90;
 
 // ppcoin: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
@@ -1452,11 +1452,10 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
         if (nActualSpacing < 0) {
             nActualSpacing = 1;
         }
-
-        if (nActualSpacing < nTargetTimespan / 2)
-            nActualSpacing = nTargetTimespan / 2;
-        if (nActualSpacing > nTargetTimespan * 2)
-            nActualSpacing = nTargetTimespan * 2;
+        if (nActualSpacing < TARGET_SPACING / 2)
+            nActualSpacing = TARGET_SPACING / 2;
+        if (nActualSpacing > TARGET_SPACING * 2)
+            nActualSpacing = TARGET_SPACING * 2;
     }
 
     // ppcoin: target change every block
