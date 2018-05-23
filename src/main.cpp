@@ -1453,10 +1453,10 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
             nActualSpacing = 1;
         }
 
-        if (nActualSpacing < nTargetTimespan / 2)
-            nActualSpacing = nTargetTimespan / 2;
-        if (nActualSpacing > nTargetTimespan * 2)
-            nActualSpacing = nTargetTimespan * 2;
+        if (nActualSpacing < TARGET_SPACING / 2)
+            nActualSpacing = TARGET_SPACING / 2;
+        if (nActualSpacing > TARGET_SPACING * 2)
+            nActualSpacing = TARGET_SPACING * 2;
     }
 
     // ppcoin: target change every block
