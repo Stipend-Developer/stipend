@@ -1449,6 +1449,10 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
             nActualSpacing = TARGET_SPACING;
         }
     } else {
+        if (nActualSpacing < 0) {
+            nActualSpacing = 1;
+        }
+
         if (nActualSpacing < nTargetTimespan / 2)
             nActualSpacing = nTargetTimespan / 2;
         if (nActualSpacing > nTargetTimespan * 2)
