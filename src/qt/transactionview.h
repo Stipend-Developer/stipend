@@ -98,7 +98,7 @@ signals:
     void message(const QString &title, const QString &message, unsigned int style);
 
     /** Send computed sum back to wallet-view */
-    void trxAmount(QString amount);
+    void trxTotalAmountUpdated(QString message);
 
 public slots:
     void chooseDate(int idx);

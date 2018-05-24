@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_TransactionView_t {
     QByteArrayData data[28];
-    char stringdata0[320];
+    char stringdata0[332];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,39 +35,39 @@ QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 7), // "message"
 QT_MOC_LITERAL(4, 39, 5), // "title"
 QT_MOC_LITERAL(5, 45, 5), // "style"
-QT_MOC_LITERAL(6, 51, 9), // "trxAmount"
-QT_MOC_LITERAL(7, 61, 6), // "amount"
-QT_MOC_LITERAL(8, 68, 14), // "contextualMenu"
-QT_MOC_LITERAL(9, 83, 16), // "dateRangeChanged"
-QT_MOC_LITERAL(10, 100, 11), // "showDetails"
-QT_MOC_LITERAL(11, 112, 11), // "copyAddress"
-QT_MOC_LITERAL(12, 124, 9), // "editLabel"
-QT_MOC_LITERAL(13, 134, 9), // "copyLabel"
-QT_MOC_LITERAL(14, 144, 10), // "copyAmount"
-QT_MOC_LITERAL(15, 155, 8), // "copyTxID"
-QT_MOC_LITERAL(16, 164, 21), // "updateWatchOnlyColumn"
-QT_MOC_LITERAL(17, 186, 14), // "fHaveWatchOnly"
-QT_MOC_LITERAL(18, 201, 10), // "chooseDate"
-QT_MOC_LITERAL(19, 212, 3), // "idx"
-QT_MOC_LITERAL(20, 216, 10), // "chooseType"
-QT_MOC_LITERAL(21, 227, 15), // "chooseWatchonly"
-QT_MOC_LITERAL(22, 243, 13), // "changedPrefix"
-QT_MOC_LITERAL(23, 257, 6), // "prefix"
-QT_MOC_LITERAL(24, 264, 13), // "changedAmount"
-QT_MOC_LITERAL(25, 278, 13), // "exportClicked"
-QT_MOC_LITERAL(26, 292, 16), // "focusTransaction"
-QT_MOC_LITERAL(27, 309, 10) // "computeSum"
+QT_MOC_LITERAL(6, 51, 21), // "trxTotalAmountUpdated"
+QT_MOC_LITERAL(7, 73, 14), // "contextualMenu"
+QT_MOC_LITERAL(8, 88, 16), // "dateRangeChanged"
+QT_MOC_LITERAL(9, 105, 11), // "showDetails"
+QT_MOC_LITERAL(10, 117, 11), // "copyAddress"
+QT_MOC_LITERAL(11, 129, 9), // "editLabel"
+QT_MOC_LITERAL(12, 139, 9), // "copyLabel"
+QT_MOC_LITERAL(13, 149, 10), // "copyAmount"
+QT_MOC_LITERAL(14, 160, 8), // "copyTxID"
+QT_MOC_LITERAL(15, 169, 21), // "updateWatchOnlyColumn"
+QT_MOC_LITERAL(16, 191, 14), // "fHaveWatchOnly"
+QT_MOC_LITERAL(17, 206, 10), // "chooseDate"
+QT_MOC_LITERAL(18, 217, 3), // "idx"
+QT_MOC_LITERAL(19, 221, 10), // "chooseType"
+QT_MOC_LITERAL(20, 232, 15), // "chooseWatchonly"
+QT_MOC_LITERAL(21, 248, 13), // "changedPrefix"
+QT_MOC_LITERAL(22, 262, 6), // "prefix"
+QT_MOC_LITERAL(23, 269, 13), // "changedAmount"
+QT_MOC_LITERAL(24, 283, 6), // "amount"
+QT_MOC_LITERAL(25, 290, 13), // "exportClicked"
+QT_MOC_LITERAL(26, 304, 16), // "focusTransaction"
+QT_MOC_LITERAL(27, 321, 10) // "computeSum"
 
     },
     "TransactionView\0doubleClicked\0\0message\0"
-    "title\0style\0trxAmount\0amount\0"
+    "title\0style\0trxTotalAmountUpdated\0"
     "contextualMenu\0dateRangeChanged\0"
     "showDetails\0copyAddress\0editLabel\0"
     "copyLabel\0copyAmount\0copyTxID\0"
     "updateWatchOnlyColumn\0fHaveWatchOnly\0"
     "chooseDate\0idx\0chooseType\0chooseWatchonly\0"
     "changedPrefix\0prefix\0changedAmount\0"
-    "exportClicked\0focusTransaction\0"
+    "amount\0exportClicked\0focusTransaction\0"
     "computeSum"
 };
 #undef QT_MOC_LITERAL
@@ -91,20 +91,20 @@ static const uint qt_meta_data_TransactionView[] = {
        6,    1,  124,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    1,  127,    2, 0x08 /* Private */,
-       9,    0,  130,    2, 0x08 /* Private */,
-      10,    0,  131,    2, 0x08 /* Private */,
-      11,    0,  132,    2, 0x08 /* Private */,
-      12,    0,  133,    2, 0x08 /* Private */,
-      13,    0,  134,    2, 0x08 /* Private */,
-      14,    0,  135,    2, 0x08 /* Private */,
-      15,    0,  136,    2, 0x08 /* Private */,
-      16,    1,  137,    2, 0x08 /* Private */,
-      18,    1,  140,    2, 0x0a /* Public */,
-      20,    1,  143,    2, 0x0a /* Public */,
-      21,    1,  146,    2, 0x0a /* Public */,
-      22,    1,  149,    2, 0x0a /* Public */,
-      24,    1,  152,    2, 0x0a /* Public */,
+       7,    1,  127,    2, 0x08 /* Private */,
+       8,    0,  130,    2, 0x08 /* Private */,
+       9,    0,  131,    2, 0x08 /* Private */,
+      10,    0,  132,    2, 0x08 /* Private */,
+      11,    0,  133,    2, 0x08 /* Private */,
+      12,    0,  134,    2, 0x08 /* Private */,
+      13,    0,  135,    2, 0x08 /* Private */,
+      14,    0,  136,    2, 0x08 /* Private */,
+      15,    1,  137,    2, 0x08 /* Private */,
+      17,    1,  140,    2, 0x0a /* Public */,
+      19,    1,  143,    2, 0x0a /* Public */,
+      20,    1,  146,    2, 0x0a /* Public */,
+      21,    1,  149,    2, 0x0a /* Public */,
+      23,    1,  152,    2, 0x0a /* Public */,
       25,    0,  155,    2, 0x0a /* Public */,
       26,    1,  156,    2, 0x0a /* Public */,
       27,    0,  159,    2, 0x0a /* Public */,
@@ -112,7 +112,7 @@ static const uint qt_meta_data_TransactionView[] = {
  // signals: parameters
     QMetaType::Void, QMetaType::QModelIndex,    2,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::UInt,    4,    3,    5,
-    QMetaType::Void, QMetaType::QString,    7,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QPoint,    2,
@@ -123,12 +123,12 @@ static const uint qt_meta_data_TransactionView[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   17,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, QMetaType::QString,   23,
-    QMetaType::Void, QMetaType::QString,    7,
+    QMetaType::Void, QMetaType::Bool,   16,
+    QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void, QMetaType::QString,   24,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QModelIndex,    2,
     QMetaType::Void,
@@ -144,7 +144,7 @@ void TransactionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         switch (_id) {
         case 0: _t->doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 1: _t->message((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3]))); break;
-        case 2: _t->trxAmount((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->trxTotalAmountUpdated((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 3: _t->contextualMenu((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
         case 4: _t->dateRangeChanged(); break;
         case 5: _t->showDetails(); break;
@@ -181,7 +181,7 @@ void TransactionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         }
         {
             typedef void (TransactionView::*_t)(QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&TransactionView::trxAmount)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&TransactionView::trxTotalAmountUpdated)) {
                 *result = 2;
             }
         }
@@ -239,7 +239,7 @@ void TransactionView::message(const QString & _t1, const QString & _t2, unsigned
 }
 
 // SIGNAL 2
-void TransactionView::trxAmount(QString _t1)
+void TransactionView::trxTotalAmountUpdated(QString _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

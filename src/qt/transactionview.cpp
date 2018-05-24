@@ -11,6 +11,7 @@
 #include "transactionrecord.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
+#include "guiconstants.h"
 
 #include "ui_interface.h"
 
@@ -466,12 +467,31 @@ void TransactionView::computeSum()
         return;
     QModelIndexList selection = transactionView->selectionModel()->selectedRows();
 
-    foreach (QModelIndex index, selection){
-        amount += index.data(TransactionTableModel::AmountRole).toLongLong();
-    }
-    QString strAmount(BitcoinUnits::formatWithUnit(nDisplayUnit, amount, true, BitcoinUnits::separatorAlways));
-    if (amount < 0) strAmount = "<span style='color:red;'>" + strAmount + "</span>";
-    emit trxAmount(strAmount);
+	QString strAmount;
+
+	// We want to show total amount just if more than 1 transaction is selected.
+	if (selection.size() > 1) 
+	{
+	    foreach (QModelIndex index, selection){
+	        amount += index.data(TransactionTableModel::AmountRole).toLongLong();
+	    }
+
+		strAmount = BitcoinUnits::formatWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways);
+
+	    if (amount >= 0) 
+		{
+			QRgb amountColor = fUseBlackTheme ? COLOR_POSITIVE_BACK_THEME.rgb() : COLOR_POSITIVE.rgb();
+			strAmount = "<span>Sum: <span style='color:#" 
+				+ QString::number(amountColor, 16) 
+				+ ";'>" + strAmount + "</span></span>";        
+		}
+		else
+		{
+			strAmount = "<span>Sum: <span style='color:#" + QString::number(COLOR_NEGATIVE.rgb(), 16) 
+				+ ";'>" + strAmount + "</span></span>";
+		}
+	}
+    emit trxTotalAmountUpdated(strAmount);
 }
 
 QWidget *TransactionView::createDateRangeWidget()

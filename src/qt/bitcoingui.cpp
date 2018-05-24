@@ -69,6 +69,7 @@
 #include <QScrollArea>
 #include <QScroller>
 #include <QTextDocument>
+#include <QTextEdit>
 
 #include <iostream>
 
@@ -85,6 +86,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBarLabel(0),
     progressBar(0),
     progressDialog(0),
+    totalAmountLabel(0),
     encryptWalletAction(0),
     changePassphraseAction(0),
     unlockWalletAction(0),
@@ -215,6 +217,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
+    progressBar->setMinimumSize(376, 0);
 
     if (!fUseBlackTheme)
     {
@@ -228,8 +231,27 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         }
     }
 
+    totalAmountLabel = new QLabel();
+    totalAmountLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+    totalAmountLabel->setVisible(false);
+    totalAmountLabel->setContentsMargins(3,0,3,0);
+    // By below code we support color theme: normal or Black Theme. We copy colors from
+    // QTextEdit and apply them to QLabel so we receive QLabel that looks like QTextBox.
+    QPalette totalAmountLabelPalette = totalAmountLabel->palette();
+    QTextEdit textEdit;
+    QColor textEditBackgroundColor = textEdit.palette().color(QPalette::Window);
+    QColor textEditTextColor = textEdit.palette().color(QPalette::WindowText);
+    totalAmountLabelPalette.setColor(
+        QPalette::Window, textEditBackgroundColor);
+    totalAmountLabelPalette.setColor(
+        QPalette::WindowText, textEditTextColor);
+    totalAmountLabel->setPalette(totalAmountLabelPalette);
+    totalAmountLabel->setAutoFillBackground(true);
+
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
+
+    statusBar()->addPermanentWidget(totalAmountLabel);
     statusBar()->addPermanentWidget(frameBlocks);
     statusBar()->setObjectName("statusBar");
     statusBar()->setStyleSheet("#statusBar { color: #ffffff; background-color: qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #1c1c1c, stop: 1 #353535);  }");
@@ -244,6 +266,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Double-clicking on a transaction on the transaction history page shows details
     connect(transactionView, SIGNAL(doubleClicked(QModelIndex)), transactionView, SLOT(showDetails()));
+    connect(transactionView, SIGNAL(trxTotalAmountUpdated(QString)), this, SLOT(showTotalAmount(QString)));
 
     rpcConsole = new RPCConsole(0);
     connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(show()));
@@ -755,6 +778,20 @@ void BitcoinGUI::setNumBlocks(int count)
     progressBar->setToolTip(tooltip);
 
     statusBar()->setVisible(true);
+}
+
+void BitcoinGUI::showTotalAmount(QString message)
+{
+    if (message.isEmpty())
+    {
+        totalAmountLabel->setVisible(false);
+        totalAmountLabel->setText(message);
+    }
+    else
+    {
+        totalAmountLabel->setText(message);
+        totalAmountLabel->setVisible(true);
+    }
 }
 
 void BitcoinGUI::message(const QString &title, const QString &message, bool modal, unsigned int style)
