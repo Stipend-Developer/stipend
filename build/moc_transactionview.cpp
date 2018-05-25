@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_TransactionView_t {
-    QByteArrayData data[28];
-    char stringdata0[332];
+    QByteArrayData data[29];
+    char stringdata0[363];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -56,7 +56,8 @@ QT_MOC_LITERAL(23, 269, 13), // "changedAmount"
 QT_MOC_LITERAL(24, 283, 6), // "amount"
 QT_MOC_LITERAL(25, 290, 13), // "exportClicked"
 QT_MOC_LITERAL(26, 304, 16), // "focusTransaction"
-QT_MOC_LITERAL(27, 321, 10) // "computeSum"
+QT_MOC_LITERAL(27, 321, 17), // "updateTotalAmount"
+QT_MOC_LITERAL(28, 339, 23) // "ensureTotalAmountHidden"
 
     },
     "TransactionView\0doubleClicked\0\0message\0"
@@ -68,7 +69,7 @@ QT_MOC_LITERAL(27, 321, 10) // "computeSum"
     "chooseDate\0idx\0chooseType\0chooseWatchonly\0"
     "changedPrefix\0prefix\0changedAmount\0"
     "amount\0exportClicked\0focusTransaction\0"
-    "computeSum"
+    "updateTotalAmount\0ensureTotalAmountHidden"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +79,7 @@ static const uint qt_meta_data_TransactionView[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,28 +87,29 @@ static const uint qt_meta_data_TransactionView[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  114,    2, 0x06 /* Public */,
-       3,    3,  117,    2, 0x06 /* Public */,
-       6,    1,  124,    2, 0x06 /* Public */,
+       1,    1,  119,    2, 0x06 /* Public */,
+       3,    3,  122,    2, 0x06 /* Public */,
+       6,    1,  129,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    1,  127,    2, 0x08 /* Private */,
-       8,    0,  130,    2, 0x08 /* Private */,
-       9,    0,  131,    2, 0x08 /* Private */,
-      10,    0,  132,    2, 0x08 /* Private */,
-      11,    0,  133,    2, 0x08 /* Private */,
-      12,    0,  134,    2, 0x08 /* Private */,
-      13,    0,  135,    2, 0x08 /* Private */,
-      14,    0,  136,    2, 0x08 /* Private */,
-      15,    1,  137,    2, 0x08 /* Private */,
-      17,    1,  140,    2, 0x0a /* Public */,
-      19,    1,  143,    2, 0x0a /* Public */,
-      20,    1,  146,    2, 0x0a /* Public */,
-      21,    1,  149,    2, 0x0a /* Public */,
-      23,    1,  152,    2, 0x0a /* Public */,
-      25,    0,  155,    2, 0x0a /* Public */,
-      26,    1,  156,    2, 0x0a /* Public */,
-      27,    0,  159,    2, 0x0a /* Public */,
+       7,    1,  132,    2, 0x08 /* Private */,
+       8,    0,  135,    2, 0x08 /* Private */,
+       9,    0,  136,    2, 0x08 /* Private */,
+      10,    0,  137,    2, 0x08 /* Private */,
+      11,    0,  138,    2, 0x08 /* Private */,
+      12,    0,  139,    2, 0x08 /* Private */,
+      13,    0,  140,    2, 0x08 /* Private */,
+      14,    0,  141,    2, 0x08 /* Private */,
+      15,    1,  142,    2, 0x08 /* Private */,
+      17,    1,  145,    2, 0x0a /* Public */,
+      19,    1,  148,    2, 0x0a /* Public */,
+      20,    1,  151,    2, 0x0a /* Public */,
+      21,    1,  154,    2, 0x0a /* Public */,
+      23,    1,  157,    2, 0x0a /* Public */,
+      25,    0,  160,    2, 0x0a /* Public */,
+      26,    1,  161,    2, 0x0a /* Public */,
+      27,    1,  164,    2, 0x0a /* Public */,
+      27,    0,  167,    2, 0x2a /* Public | MethodCloned */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QModelIndex,    2,
@@ -131,6 +133,7 @@ static const uint qt_meta_data_TransactionView[] = {
     QMetaType::Void, QMetaType::QString,   24,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QModelIndex,    2,
+    QMetaType::Void, QMetaType::Bool,   28,
     QMetaType::Void,
 
        0        // eod
@@ -161,7 +164,8 @@ void TransactionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 16: _t->changedAmount((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 17: _t->exportClicked(); break;
         case 18: _t->focusTransaction((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 19: _t->computeSum(); break;
+        case 19: _t->updateTotalAmount((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 20: _t->updateTotalAmount(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -213,13 +217,13 @@ int TransactionView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 21)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }
