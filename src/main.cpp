@@ -2584,6 +2584,27 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     ExtractDestination(payee, address1);
                     CStipendAddress address2(address1);
 
+                    if (nBestHeight >= 210000) {
+
+                        CScript winner;
+                        CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
+                        if (winningNode) {
+                            winner = GetScriptForDestination(winningNode->pubkey.GetID());
+
+                            CTxDestination address3;
+                            ExtractDestination(winner, address3);
+                            CStipendAddress address4(address3);
+
+                            if (address2.ToString() != address4.ToString()) {
+                                LogPrintf("CheckBlock() : Incorrect winner, rejecting the block.");
+                                return DoS(100, error("CheckBlock() : Masternode payment incorrect, rejecting block"));
+                            }
+                        } else {
+                            LogPrintf("CheckBlock() : No masternode winner found");
+                            return DoS(100, error("CheckBlock() : Couldn't find masternode winner"));
+                        }
+                    }
+
                     if(!foundPaymentAndPayee) {
                         if(fDebug) { LogPrintf("CheckBlock() : Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1); }
                         return DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));
