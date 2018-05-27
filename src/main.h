@@ -1059,7 +1059,11 @@ public:
 
     int64_t GetPastTimeLimit() const
     {
-        return GetBlockTime() - DRIFT;
+        if (nHeight >= 210000) {
+            return GetBlockTime() - DRIFT_FORK;
+        } else {
+            return GetBlockTime() - DRIFT;
+        }
     }
 
     enum { nMedianTimeSpan=11 };
