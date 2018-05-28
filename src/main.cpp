@@ -1114,7 +1114,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    return max(0, nCoinbaseMaturity - GetDepthInMainChain());
+    return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
 }
 
 
@@ -1376,11 +1376,11 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     else if (nHeight > 300 && nHeight <= 400) {
         nSubsidy = 15 * COIN; // instamine prevention
     }
-    else if (nHeight > 400 && nHeight <= 210000) {
+    else if (nHeight > 400 && nHeight <= 1499) {
         nSubsidy = 25 * COIN; // initial block reward
     }
-    else if (nHeight > 210000) {
-        nSubsidy = 0 * COIN; // initial block reward
+    else if (nHeight > 1499 && nHeight <= 210000) {
+        nSubsidy = 15 * COIN; // initial block reward
     }
 
     // add fees.
@@ -1392,7 +1392,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
     int64_t nSubsidy = 0;
 
-    if (pindexBest->nHeight+1 > 1 && pindexBest->nHeight+1 <= 210000)  {
+    if (pindexBest->nHeight+1 > 1500 && pindexBest->nHeight+1 <= 210000)  {
         nSubsidy = 35 * COIN;
     }
     else if (pindexBest->nHeight+1 > 210000 && pindexBest->nHeight+1 <= 420001)  {
@@ -1401,11 +1401,16 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     else if (pindexBest->nHeight+1 > 420001 && pindexBest->nHeight+1 <= 630001) {
         nSubsidy = 10 * COIN;
     }
-    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 850001) {
+    else if (pindexBest->nHeight+1 > 630001 && pindexBest->nHeight+1 <= 840001) {
         nSubsidy = 5 * COIN;
     }
-    else if (pindexBest->nHeight+1 > 850001) {
+    else if (pindexBest->nHeight+1 > 840001 && pindexBest->nHeight+1 <= 1890000) {
+	// end game - further discussion needed
         nSubsidy = 3 * COIN;
+    } else if (pindexBest->nHeight+1 > 1890000) {
+	// end game - further discussion needed
+        nSubsidy = 3 * COIN;
+        nSubsidy >>= ((pindexBest->nHeight + 210000) / 1050000);
     }
 
     return nSubsidy + nFees;
@@ -1421,12 +1426,11 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
     return pindex;
 }
 
+const int targetReadjustmentForkHeight = 192000;
+
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
     CBigNum bnTargetLimit = fProofOfStake ? GetProofOfStakeLimit(pindexLast->nHeight) : Params().ProofOfWorkLimit();
-
-
-
 
     if (pindexLast == NULL)
         return bnTargetLimit.GetCompact(); // genesis block
@@ -1440,17 +1444,19 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
-    if(!NO_FORK && pindexBest->nHeight >= HARD_FORK_BLOCK){
-        if (nActualSpacing < 0){
-            nActualSpacing = TARGET_SPACING_FORK;
-        }
-        if(nActualSpacing > TARGET_SPACING_FORK * 10){
-            nActualSpacing = TARGET_SPACING_FORK * 10;
-        }
-    } else if(NO_FORK || pindexBest->nHeight < HARD_FORK_BLOCK) {
-        if (nActualSpacing < 0){
+    if(pindexBest->nHeight < targetReadjustmentForkHeight) {
+        if (nActualSpacing < 0) {
             nActualSpacing = TARGET_SPACING;
         }
+    } else {
+        if (nActualSpacing < 0) {
+            nActualSpacing = 1;
+        }
+
+        if (nActualSpacing < TARGET_SPACING / 2)
+            nActualSpacing = TARGET_SPACING / 2;
+        if (nActualSpacing > TARGET_SPACING * 2)
+            nActualSpacing = TARGET_SPACING * 2;
     }
 
     // ppcoin: target change every block
@@ -1781,20 +1787,11 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTx
 
         if (!IsCoinStake())
         {
-            if (nValueIn < GetValueOut())
-                return DoS(100, error("ConnectInputs() : %s value in < value out", GetHash().ToString()));
-
             // Tally transaction fees
             int64_t nTxFee = nValueIn - GetValueOut();
-            if (nTxFee < 0)
-                return DoS(100, error("ConnectInputs() : %s nTxFee < 0", GetHash().ToString()));
-
             nFees += nTxFee;
-            if (!MoneyRange(nFees))
-                return DoS(100, error("ConnectInputs() : nFees out of range"));
         }
     }
-
     return true;
 }
 
@@ -2567,8 +2564,8 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
                     CScript payee;
                     CTxIn vin;
-                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
-                        foundPayee = true; //doesn't require a specific payee
+                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin)) {
+                        foundPayee = true;
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
                         if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
@@ -3592,7 +3589,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PEER_PROTO_VERSION)
+
+        if ((pfrom->nVersion < MIN_PEER_PROTO_VERSION) || (nBestHeight >= 192000 && pfrom->nVersion < MIN_PEER_PROTO_VERSION_FORK1))
         {
             // disconnect from peers older than this proto version
             LogPrintf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString(), pfrom->nVersion);
@@ -4572,11 +4570,11 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
     int64_t ret = 0;
 
     if (nHeight < 1500) {
-	ret = blockValue * 3 / 5;;
+	ret = 0;
     } else if (nHeight >= 1500 && nHeight <= 210000) {
-        ret = blockValue * 3 / 5; // MN Reward 60%
+        ret = blockValue * 25 / 35; // MN Reward 71%
     } else if (nHeight > 210000) {
-		    ret = blockValue / 2 ; // MN Reward 50%
-	}
+	      ret = blockValue * 3 / 5 ; // MN Reward 60%
+    }
     return ret;
 }

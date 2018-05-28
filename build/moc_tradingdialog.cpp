@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tradingdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tradingdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_tradingDialog_t {
     QByteArrayData data[91];
     char stringdata0[1590];
@@ -364,43 +362,43 @@ void tradingDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 40: _t->on_WithdrawPasteButton_clicked(); break;
         case 41: _t->on_DepositCopyButton_clicked(); break;
         case 42: { int _r = _t->SetExchangeInfoTextLabels();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 43: { QString _r = _t->FuExchangeTimeStampToReadable((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 44: { QString _r = _t->CancelOrder((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 45: { QString _r = _t->BuyTX((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 46: { QString _r = _t->SellTX((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 47: { QString _r = _t->Withdraw((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 48: { QString _r = _t->GetMarketHistory();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 49: { QString _r = _t->GetMarketSummary();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 50: { QString _r = _t->GetOrderBook();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 51: { QString _r = _t->GetOpenOrders();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 52: { QString _r = _t->GetAccountHistory();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 53: { QString _r = _t->GetBalance((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 54: { QString _r = _t->GetDepositAddress();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 55: { QString _r = _t->HMAC_SHA512_SIGNER((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 56: { QString _r = _t->sendRequest((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 57: { string _r = _t->encryptDecrypt((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])));
-            if (_a[0]) *reinterpret_cast< string*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< string*>(_a[0]) = _r; }  break;
         case 58: { QJsonObject _r = _t->GetResultObjectFromJSONObject((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QJsonObject*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QJsonObject*>(_a[0]) = _r; }  break;
         case 59: { QJsonObject _r = _t->GetResultObjectFromJSONArray((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QJsonObject*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QJsonObject*>(_a[0]) = _r; }  break;
         case 60: { QJsonArray _r = _t->GetResultArrayFromJSONObject((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QJsonArray*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QJsonArray*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -408,7 +406,7 @@ void tradingDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 
 const QMetaObject tradingDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_tradingDialog.data,
-      qt_meta_data_tradingDialog,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_tradingDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -419,7 +417,7 @@ const QMetaObject *tradingDialog::metaObject() const
 
 void *tradingDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_tradingDialog.stringdata0))
         return static_cast<void*>(const_cast< tradingDialog*>(this));
     return QDialog::qt_metacast(_clname);
@@ -441,5 +439,4 @@ int tradingDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

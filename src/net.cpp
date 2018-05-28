@@ -371,7 +371,7 @@ bool CheckNode(CAddress addrConnect)
     {
         LogPrint("net", "connected masternode %s\n", addrConnect.ToString());
         closesocket(hSocket);
-        
+
 /*        // Set to non-blocking
 #ifdef WIN32
         u_long nOne = 1;
@@ -384,7 +384,7 @@ bool CheckNode(CAddress addrConnect)
         CNode* pnode = new CNode(hSocket, addrConnect, "", false);
         // Close connection
         pnode->CloseSocketDisconnect();
-*/        
+*/
         return true;
     }
     LogPrint("net", "connecting to masternode %s failed\n", addrConnect.ToString());
@@ -1543,7 +1543,8 @@ void static StartSync(const vector<CNode*> &vNodes) {
         if (!pnode->fClient && !pnode->fOneShot &&
             !pnode->fDisconnect && pnode->fSuccessfullyConnected &&
             (pnode->nStartingHeight > (nBestHeight - 144)) &&
-            (pnode->nVersion < NOBLKS_VERSION_START || pnode->nVersion >= NOBLKS_VERSION_END)) {
+            (pnode->nVersion < NOBLKS_VERSION_START ||
+             pnode->nVersion >= NOBLKS_VERSION_END)) {
             // if ok, compare node's score with the best so far
             int64_t nScore = NodeSyncScore(pnode);
             if (pnodeNewSync == NULL || nScore > nBestScore) {
@@ -1834,7 +1835,7 @@ void StartNode(boost::thread_group& threadGroup)
     // Map ports with UPnP
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
-    
+
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
 

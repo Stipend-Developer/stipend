@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'multisigaddressentry.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -132,38 +132,34 @@ public:
 
     void retranslateUi(QFrame *MultisigAddressEntry)
     {
-        MultisigAddressEntry->setWindowTitle(QApplication::translate("MultisigAddressEntry", "Form", Q_NULLPTR));
-        pubkeyLabel->setText(QApplication::translate("MultisigAddressEntry", "Public &key:", Q_NULLPTR));
+        MultisigAddressEntry->setWindowTitle(QApplication::translate("MultisigAddressEntry", "Form", 0));
+        pubkeyLabel->setText(QApplication::translate("MultisigAddressEntry", "Public &key:", 0));
 #ifndef QT_NO_TOOLTIP
-        pubkey->setToolTip(QApplication::translate("MultisigAddressEntry", "The public key of an address", Q_NULLPTR));
+        pubkey->setToolTip(QApplication::translate("MultisigAddressEntry", "The public key of an address", 0));
 #endif // QT_NO_TOOLTIP
-        pubkey->setPlaceholderText(QApplication::translate("MultisigAddressEntry", "Enter a public key", Q_NULLPTR));
+        pubkey->setPlaceholderText(QApplication::translate("MultisigAddressEntry", "Enter a public key", 0));
 #ifndef QT_NO_TOOLTIP
-        pasteButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Paste public key from clipboard", Q_NULLPTR));
+        pasteButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Paste public key from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         pasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        pasteButton->setShortcut(QApplication::translate("MultisigAddressEntry", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
+        pasteButton->setShortcut(QApplication::translate("MultisigAddressEntry", "Alt+P", 0));
 #ifndef QT_NO_TOOLTIP
-        deleteButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Remove this public key", Q_NULLPTR));
+        deleteButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Remove this public key", 0));
 #endif // QT_NO_TOOLTIP
         deleteButton->setText(QString());
-        addressLabel->setText(QApplication::translate("MultisigAddressEntry", "&Address:", Q_NULLPTR));
+        addressLabel->setText(QApplication::translate("MultisigAddressEntry", "&Address:", 0));
 #ifndef QT_NO_TOOLTIP
-        address->setToolTip(QApplication::translate("MultisigAddressEntry", "Address associated to the public key", Q_NULLPTR));
+        address->setToolTip(QApplication::translate("MultisigAddressEntry", "Address associated to the public key", 0));
 #endif // QT_NO_TOOLTIP
-        address->setPlaceholderText(QApplication::translate("MultisigAddressEntry", "Enter one of your addresses to get its public key", Q_NULLPTR));
+        address->setPlaceholderText(QApplication::translate("MultisigAddressEntry", "Enter one of your addresses to get its public key", 0));
 #ifndef QT_NO_TOOLTIP
-        addressBookButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Choose address from address book", Q_NULLPTR));
+        addressBookButton->setToolTip(QApplication::translate("MultisigAddressEntry", "Choose address from address book", 0));
 #endif // QT_NO_TOOLTIP
         addressBookButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        addressBookButton->setShortcut(QApplication::translate("MultisigAddressEntry", "Alt+A", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        labelLabel->setText(QApplication::translate("MultisigAddressEntry", "Label:", Q_NULLPTR));
+        addressBookButton->setShortcut(QApplication::translate("MultisigAddressEntry", "Alt+A", 0));
+        labelLabel->setText(QApplication::translate("MultisigAddressEntry", "Label:", 0));
 #ifndef QT_NO_TOOLTIP
-        label->setToolTip(QApplication::translate("MultisigAddressEntry", "Address associated to the public key", Q_NULLPTR));
+        label->setToolTip(QApplication::translate("MultisigAddressEntry", "Address associated to the public key", 0));
 #endif // QT_NO_TOOLTIP
     } // retranslateUi
 

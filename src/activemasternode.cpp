@@ -40,24 +40,29 @@ void CActiveMasternode::ManageStatus()
                 return;
             }
         } else {
-        	service = CService(strMasterNodeAddr, true);
+        	     service = CService(strMasterNodeAddr, true);
         }
 
         LogPrintf("CActiveMasternode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString().c_str());
 
-        if(Params().NetworkID() == CChainParams::MAIN){
-            if(service.GetPort() != 46980) {
-                notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " - only 46980 is supported on mainnet.";
+        if(Params().NetworkID() == CChainParams::MAIN) {
+            if(service.GetPort() != 46978) {
+                notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " - only 46978 is supported on mainnet.";
                 status = MASTERNODE_NOT_CAPABLE;
                 LogPrintf("CActiveMasternode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
                 return;
             }
-        } else if(service.GetPort() == 46980) {
-            notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " - 46980 is only supported on mainnet.";
+        } else if(service.GetPort() == 46978) {
+            notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " - 46978 is only supported on mainnet.";
+        }
+
+        if(!ConnectNode((CAddress)service, service.ToString().c_str())){
+            notCapableReason = "Could not connect to " + service.ToString();
             status = MASTERNODE_NOT_CAPABLE;
             LogPrintf("CActiveMasternode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
             return;
         }
+
         if(Params().NetworkID() == CChainParams::MAIN){
             if(!(service.IsIPv4() && service.IsRoutable())) {
                 notCapableReason = "Invalid IP address (IPV4 ONLY)" + service.ToString();
@@ -122,11 +127,10 @@ void CActiveMasternode::ManageStatus()
             if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyMasternode, pubKeyMasternode, donationAddress, donationPercentage, errorMessage)) {
                 LogPrintf("CActiveMasternode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
             }
-
             return;
         } else {
             notCapableReason = "Could not find suitable coins!";
-        	LogPrintf("CActiveMasternode::ManageStatus() - Could not find suitable coins!\n");
+            LogPrintf("CActiveMasternode::ManageStatus() - Could not find suitable coins!\n");
         }
     }
 
@@ -488,6 +492,7 @@ bool CActiveMasternode::EnableHotColdMasterNode(CTxIn& newVin, CService& newServ
     if(!fMasterNode) return false;
 
     status = MASTERNODE_REMOTELY_ENABLED;
+    notCapableReason = "Masternode started remotely";
 
     //The values below are needed for signing dseep messages going forward
     this->vin = newVin;

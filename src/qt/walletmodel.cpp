@@ -873,3 +873,8 @@ CWallet* WalletModel::getWallet()
 {
     return wallet;
 }
+
+bool WalletModel::isMine(CBitcoinAddress address)
+{
+    return IsMine(*wallet, address.Get());
+}

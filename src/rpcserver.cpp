@@ -234,6 +234,7 @@ static const CRPCCommand vRPCCommands[] =
     { "getnettotals",           &getnettotals,           true,      true,      false },
     { "getdifficulty",          &getdifficulty,          true,      false,     false },
     { "getinfo",                &getinfo,                true,      false,     false },
+    { "moneysupply",            &moneysupply,            true,      false,     false },
     { "getrawmempool",          &getrawmempool,          true,      false,     false },
     { "getblock",               &getblock,               false,     false,     false },
     { "getblockbynumber",       &getblockbynumber,       false,     false,     false },
@@ -255,10 +256,11 @@ static const CRPCCommand vRPCCommands[] =
     { "spork",                  &spork,                  true,      false,      false },
     { "masternode",             &masternode,             true,      false,      true },
     { "masternodelist",         &masternodelist,         true,      false,      false },
-    
+
 #ifdef ENABLE_WALLET
     { "darksend",               &darksend,               false,     false,      true },
     { "getmininginfo",          &getmininginfo,          true,      false,     false },
+    { "getnetworkhashps",       &getnetworkhashps,       true,      false,     false },
     { "getstakinginfo",         &getstakinginfo,         true,      false,     false },
     { "getnewaddress",          &getnewaddress,          true,      false,     true },
     { "getnewpubkey",           &getnewpubkey,           true,      false,     true },

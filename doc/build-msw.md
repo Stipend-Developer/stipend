@@ -18,7 +18,7 @@ Example of Configuration file
 
 	rpcuser=stipendd
 	rpcpassword=vejktejklungwerklcgerkum
-	rpcport=43289
+	rpcport=46979
 	rpcallowip=127.0.0.1
 	listen=1
 	server=1

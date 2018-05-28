@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'signverifymessagedialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'signverifymessagedialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SignVerifyMessageDialog_t {
     QByteArrayData data[10];
     char stringdata0[267];
@@ -113,7 +111,7 @@ void SignVerifyMessageDialog::qt_static_metacall(QObject *_o, QMetaObject::Call 
 
 const QMetaObject SignVerifyMessageDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_SignVerifyMessageDialog.data,
-      qt_meta_data_SignVerifyMessageDialog,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_SignVerifyMessageDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -124,7 +122,7 @@ const QMetaObject *SignVerifyMessageDialog::metaObject() const
 
 void *SignVerifyMessageDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_SignVerifyMessageDialog.stringdata0))
         return static_cast<void*>(const_cast< SignVerifyMessageDialog*>(this));
     return QDialog::qt_metacast(_clname);
@@ -146,5 +144,4 @@ int SignVerifyMessageDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_
     }
     return _id;
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'sendcoinsdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,17 +12,15 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'sendcoinsdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SendCoinsDialog_t {
-    QByteArrayData data[41];
-    char stringdata0[684];
+    QByteArrayData data[44];
+    char stringdata0[733];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -71,7 +69,10 @@ QT_MOC_LITERAL(36, 543, 28), // "coinControlClipboardAfterFee"
 QT_MOC_LITERAL(37, 572, 25), // "coinControlClipboardBytes"
 QT_MOC_LITERAL(38, 598, 28), // "coinControlClipboardPriority"
 QT_MOC_LITERAL(39, 627, 29), // "coinControlClipboardLowOutput"
-QT_MOC_LITERAL(40, 657, 26) // "coinControlClipboardChange"
+QT_MOC_LITERAL(40, 657, 26), // "coinControlClipboardChange"
+QT_MOC_LITERAL(41, 684, 17), // "splitBlockChecked"
+QT_MOC_LITERAL(42, 702, 25), // "splitBlockLineEditChanged"
+QT_MOC_LITERAL(43, 728, 4) // "text"
 
     },
     "SendCoinsDialog\0message\0\0title\0modal\0"
@@ -94,7 +95,8 @@ QT_MOC_LITERAL(40, 657, 26) // "coinControlClipboardChange"
     "coinControlClipboardBytes\0"
     "coinControlClipboardPriority\0"
     "coinControlClipboardLowOutput\0"
-    "coinControlClipboardChange"
+    "coinControlClipboardChange\0splitBlockChecked\0"
+    "splitBlockLineEditChanged\0text"
 };
 #undef QT_MOC_LITERAL
 
@@ -104,7 +106,7 @@ static const uint qt_meta_data_SendCoinsDialog[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      26,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -112,32 +114,34 @@ static const uint qt_meta_data_SendCoinsDialog[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    4,  134,    2, 0x06 /* Public */,
+       1,    4,  144,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  143,    2, 0x0a /* Public */,
-       7,    0,  144,    2, 0x0a /* Public */,
-       8,    0,  145,    2, 0x0a /* Public */,
-       9,    0,  146,    2, 0x0a /* Public */,
-      11,    0,  147,    2, 0x0a /* Public */,
-      12,    9,  148,    2, 0x0a /* Public */,
-      23,    0,  167,    2, 0x08 /* Private */,
-      24,    1,  168,    2, 0x08 /* Private */,
-      26,    0,  171,    2, 0x08 /* Private */,
-      27,    0,  172,    2, 0x08 /* Private */,
-      28,    1,  173,    2, 0x08 /* Private */,
-      29,    0,  176,    2, 0x08 /* Private */,
-      30,    1,  177,    2, 0x08 /* Private */,
-      31,    1,  180,    2, 0x08 /* Private */,
-      32,    0,  183,    2, 0x08 /* Private */,
-      33,    0,  184,    2, 0x08 /* Private */,
-      34,    0,  185,    2, 0x08 /* Private */,
-      35,    0,  186,    2, 0x08 /* Private */,
-      36,    0,  187,    2, 0x08 /* Private */,
-      37,    0,  188,    2, 0x08 /* Private */,
-      38,    0,  189,    2, 0x08 /* Private */,
-      39,    0,  190,    2, 0x08 /* Private */,
-      40,    0,  191,    2, 0x08 /* Private */,
+       6,    0,  153,    2, 0x0a /* Public */,
+       7,    0,  154,    2, 0x0a /* Public */,
+       8,    0,  155,    2, 0x0a /* Public */,
+       9,    0,  156,    2, 0x0a /* Public */,
+      11,    0,  157,    2, 0x0a /* Public */,
+      12,    9,  158,    2, 0x0a /* Public */,
+      23,    0,  177,    2, 0x08 /* Private */,
+      24,    1,  178,    2, 0x08 /* Private */,
+      26,    0,  181,    2, 0x08 /* Private */,
+      27,    0,  182,    2, 0x08 /* Private */,
+      28,    1,  183,    2, 0x08 /* Private */,
+      29,    0,  186,    2, 0x08 /* Private */,
+      30,    1,  187,    2, 0x08 /* Private */,
+      31,    1,  190,    2, 0x08 /* Private */,
+      32,    0,  193,    2, 0x08 /* Private */,
+      33,    0,  194,    2, 0x08 /* Private */,
+      34,    0,  195,    2, 0x08 /* Private */,
+      35,    0,  196,    2, 0x08 /* Private */,
+      36,    0,  197,    2, 0x08 /* Private */,
+      37,    0,  198,    2, 0x08 /* Private */,
+      38,    0,  199,    2, 0x08 /* Private */,
+      39,    0,  200,    2, 0x08 /* Private */,
+      40,    0,  201,    2, 0x08 /* Private */,
+      41,    1,  202,    2, 0x08 /* Private */,
+      42,    1,  205,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Bool, QMetaType::UInt,    3,    1,    4,    5,
@@ -166,6 +170,8 @@ static const uint qt_meta_data_SendCoinsDialog[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::QString,   43,
 
        0        // eod
 };
@@ -181,7 +187,7 @@ void SendCoinsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 2: _t->reject(); break;
         case 3: _t->accept(); break;
         case 4: { SendCoinsEntry* _r = _t->addEntry();
-            if (_a[0]) *reinterpret_cast< SendCoinsEntry**>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< SendCoinsEntry**>(_a[0]) = _r; }  break;
         case 5: _t->updateTabsAndLabels(); break;
         case 6: _t->setBalance((*reinterpret_cast< const CAmount(*)>(_a[1])),(*reinterpret_cast< const CAmount(*)>(_a[2])),(*reinterpret_cast< const CAmount(*)>(_a[3])),(*reinterpret_cast< const CAmount(*)>(_a[4])),(*reinterpret_cast< const CAmount(*)>(_a[5])),(*reinterpret_cast< const CAmount(*)>(_a[6])),(*reinterpret_cast< const CAmount(*)>(_a[7])),(*reinterpret_cast< const CAmount(*)>(_a[8])),(*reinterpret_cast< const CAmount(*)>(_a[9]))); break;
         case 7: _t->on_sendButton_clicked(); break;
@@ -201,6 +207,8 @@ void SendCoinsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 21: _t->coinControlClipboardPriority(); break;
         case 22: _t->coinControlClipboardLowOutput(); break;
         case 23: _t->coinControlClipboardChange(); break;
+        case 24: _t->splitBlockChecked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 25: _t->splitBlockLineEditChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -210,7 +218,6 @@ void SendCoinsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             typedef void (SendCoinsDialog::*_t)(const QString & , const QString & , bool , unsigned int );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SendCoinsDialog::message)) {
                 *result = 0;
-                return;
             }
         }
     }
@@ -218,7 +225,7 @@ void SendCoinsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
 
 const QMetaObject SendCoinsDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_SendCoinsDialog.data,
-      qt_meta_data_SendCoinsDialog,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_SendCoinsDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -229,7 +236,7 @@ const QMetaObject *SendCoinsDialog::metaObject() const
 
 void *SendCoinsDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_SendCoinsDialog.stringdata0))
         return static_cast<void*>(const_cast< SendCoinsDialog*>(this));
     return QDialog::qt_metacast(_clname);
@@ -241,13 +248,13 @@ int SendCoinsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 26)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 26;
     }
     return _id;
 }
@@ -255,8 +262,7 @@ int SendCoinsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void SendCoinsDialog::message(const QString & _t1, const QString & _t2, bool _t3, unsigned int _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

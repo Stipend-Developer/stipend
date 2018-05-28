@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'optionsdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -393,68 +393,68 @@ public:
 
     void retranslateUi(QDialog *OptionsDialog)
     {
-        OptionsDialog->setWindowTitle(QApplication::translate("OptionsDialog", "Options", Q_NULLPTR));
-        transactionFeeInfoLabel->setText(QApplication::translate("OptionsDialog", "Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.", Q_NULLPTR));
-        transactionFeeLabel->setText(QApplication::translate("OptionsDialog", "Pay transaction &fee", Q_NULLPTR));
-        reserveBalanceInfoLabel->setText(QApplication::translate("OptionsDialog", "Reserved amount does not participate in staking and is therefore spendable at any time.", Q_NULLPTR));
-        reserveBalanceLabel->setText(QApplication::translate("OptionsDialog", "Reserve", Q_NULLPTR));
+        OptionsDialog->setWindowTitle(QApplication::translate("OptionsDialog", "Options", 0));
+        transactionFeeInfoLabel->setText(QApplication::translate("OptionsDialog", "Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.", 0));
+        transactionFeeLabel->setText(QApplication::translate("OptionsDialog", "Pay transaction &fee", 0));
+        reserveBalanceInfoLabel->setText(QApplication::translate("OptionsDialog", "Reserved amount does not participate in staking and is therefore spendable at any time.", 0));
+        reserveBalanceLabel->setText(QApplication::translate("OptionsDialog", "Reserve", 0));
 #ifndef QT_NO_TOOLTIP
-        bitcoinAtStartup->setToolTip(QApplication::translate("OptionsDialog", "Automatically start Stipend after logging in to the system.", Q_NULLPTR));
+        bitcoinAtStartup->setToolTip(QApplication::translate("OptionsDialog", "Automatically start Stipend after logging in to the system.", 0));
 #endif // QT_NO_TOOLTIP
-        bitcoinAtStartup->setText(QApplication::translate("OptionsDialog", "&Start Stipend on system login", Q_NULLPTR));
+        bitcoinAtStartup->setText(QApplication::translate("OptionsDialog", "&Start Stipend on system login", 0));
 #ifndef QT_NO_TOOLTIP
-        label->setToolTip(QApplication::translate("OptionsDialog", "<html><head/><body><p>This setting determines the amount of individual masternodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</p></body></html>", Q_NULLPTR));
+        label->setToolTip(QApplication::translate("OptionsDialog", "<html><head/><body><p>This setting determines the amount of individual masternodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("OptionsDialog", "Darksend rounds to use", Q_NULLPTR));
+        label->setText(QApplication::translate("OptionsDialog", "Darksend rounds to use", 0));
 #ifndef QT_NO_TOOLTIP
-        label_2->setToolTip(QApplication::translate("OptionsDialog", "This amount acts as a threshold to turn off Darksend once it's reached.", Q_NULLPTR));
+        label_2->setToolTip(QApplication::translate("OptionsDialog", "This amount acts as a threshold to turn off Darksend once it's reached.", 0));
 #endif // QT_NO_TOOLTIP
-        label_2->setText(QApplication::translate("OptionsDialog", "Amount of Stipend to keep anonymized", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tabMain), QApplication::translate("OptionsDialog", "&Main", Q_NULLPTR));
+        label_2->setText(QApplication::translate("OptionsDialog", "Amount of Stipend to keep anonymized", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabMain), QApplication::translate("OptionsDialog", "&Main", 0));
 #ifndef QT_NO_TOOLTIP
-        mapPortUpnp->setToolTip(QApplication::translate("OptionsDialog", "Automatically open the Stipend client port on the router. This only works when your router supports UPnP and it is enabled.", Q_NULLPTR));
+        mapPortUpnp->setToolTip(QApplication::translate("OptionsDialog", "Automatically open the Stipend client port on the router. This only works when your router supports UPnP and it is enabled.", 0));
 #endif // QT_NO_TOOLTIP
-        mapPortUpnp->setText(QApplication::translate("OptionsDialog", "Map port using &UPnP", Q_NULLPTR));
+        mapPortUpnp->setText(QApplication::translate("OptionsDialog", "Map port using &UPnP", 0));
 #ifndef QT_NO_TOOLTIP
-        connectSocks->setToolTip(QApplication::translate("OptionsDialog", "Connect to the Stipend network through a SOCKS5 proxy (e.g. when connecting through Tor).", Q_NULLPTR));
+        connectSocks->setToolTip(QApplication::translate("OptionsDialog", "Connect to the Stipend network through a SOCKS5 proxy (e.g. when connecting through Tor).", 0));
 #endif // QT_NO_TOOLTIP
-        connectSocks->setText(QApplication::translate("OptionsDialog", "&Connect through SOCKS5 proxy:", Q_NULLPTR));
-        proxyIpLabel->setText(QApplication::translate("OptionsDialog", "Proxy &IP:", Q_NULLPTR));
+        connectSocks->setText(QApplication::translate("OptionsDialog", "&Connect through SOCKS5 proxy:", 0));
+        proxyIpLabel->setText(QApplication::translate("OptionsDialog", "Proxy &IP:", 0));
 #ifndef QT_NO_TOOLTIP
-        proxyIp->setToolTip(QApplication::translate("OptionsDialog", "IP address of the proxy (e.g. 127.0.0.1)", Q_NULLPTR));
+        proxyIp->setToolTip(QApplication::translate("OptionsDialog", "IP address of the proxy (e.g. 127.0.0.1)", 0));
 #endif // QT_NO_TOOLTIP
-        proxyPortLabel->setText(QApplication::translate("OptionsDialog", "&Port:", Q_NULLPTR));
+        proxyPortLabel->setText(QApplication::translate("OptionsDialog", "&Port:", 0));
 #ifndef QT_NO_TOOLTIP
-        proxyPort->setToolTip(QApplication::translate("OptionsDialog", "Port of the proxy (e.g. 9050)", Q_NULLPTR));
+        proxyPort->setToolTip(QApplication::translate("OptionsDialog", "Port of the proxy (e.g. 9050)", 0));
 #endif // QT_NO_TOOLTIP
-        tabWidget->setTabText(tabWidget->indexOf(tabNetwork), QApplication::translate("OptionsDialog", "&Network", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabNetwork), QApplication::translate("OptionsDialog", "&Network", 0));
 #ifndef QT_NO_TOOLTIP
-        minimizeToTray->setToolTip(QApplication::translate("OptionsDialog", "Show only a tray icon after minimizing the window.", Q_NULLPTR));
+        minimizeToTray->setToolTip(QApplication::translate("OptionsDialog", "Show only a tray icon after minimizing the window.", 0));
 #endif // QT_NO_TOOLTIP
-        minimizeToTray->setText(QApplication::translate("OptionsDialog", "&Minimize to the tray instead of the taskbar", Q_NULLPTR));
+        minimizeToTray->setText(QApplication::translate("OptionsDialog", "&Minimize to the tray instead of the taskbar", 0));
 #ifndef QT_NO_TOOLTIP
-        minimizeOnClose->setToolTip(QApplication::translate("OptionsDialog", "Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.", Q_NULLPTR));
+        minimizeOnClose->setToolTip(QApplication::translate("OptionsDialog", "Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.", 0));
 #endif // QT_NO_TOOLTIP
-        minimizeOnClose->setText(QApplication::translate("OptionsDialog", "M&inimize on close", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tabWindow), QApplication::translate("OptionsDialog", "&Window", Q_NULLPTR));
-        langLabel->setText(QApplication::translate("OptionsDialog", "User Interface &language:", Q_NULLPTR));
+        minimizeOnClose->setText(QApplication::translate("OptionsDialog", "M&inimize on close", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabWindow), QApplication::translate("OptionsDialog", "&Window", 0));
+        langLabel->setText(QApplication::translate("OptionsDialog", "User Interface &language:", 0));
 #ifndef QT_NO_TOOLTIP
-        lang->setToolTip(QApplication::translate("OptionsDialog", "The user interface language can be set here. This setting will take effect after restarting Stipend.", Q_NULLPTR));
+        lang->setToolTip(QApplication::translate("OptionsDialog", "The user interface language can be set here. This setting will take effect after restarting Stipend.", 0));
 #endif // QT_NO_TOOLTIP
-        unitLabel->setText(QApplication::translate("OptionsDialog", "&Unit to show amounts in:", Q_NULLPTR));
+        unitLabel->setText(QApplication::translate("OptionsDialog", "&Unit to show amounts in:", 0));
 #ifndef QT_NO_TOOLTIP
-        unit->setToolTip(QApplication::translate("OptionsDialog", "Choose the default subdivision unit to show in the interface and when sending coins.", Q_NULLPTR));
+        unit->setToolTip(QApplication::translate("OptionsDialog", "Choose the default subdivision unit to show in the interface and when sending coins.", 0));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        coinControlFeatures->setToolTip(QApplication::translate("OptionsDialog", "Whether to show coin control features or not.", Q_NULLPTR));
+        coinControlFeatures->setToolTip(QApplication::translate("OptionsDialog", "Whether to show coin control features or not.", 0));
 #endif // QT_NO_TOOLTIP
-        coinControlFeatures->setText(QApplication::translate("OptionsDialog", "Display coin &control features (experts only!)", Q_NULLPTR));
-        useBlackTheme->setText(QApplication::translate("OptionsDialog", "Use black visual theme (requires restart)", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tabDisplay), QApplication::translate("OptionsDialog", "&Display", Q_NULLPTR));
+        coinControlFeatures->setText(QApplication::translate("OptionsDialog", "Display coin &control features (experts only!)", 0));
+        useBlackTheme->setText(QApplication::translate("OptionsDialog", "Use black visual theme (requires restart)", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabDisplay), QApplication::translate("OptionsDialog", "&Display", 0));
         statusLabel->setText(QString());
-        okButton->setText(QApplication::translate("OptionsDialog", "&OK", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("OptionsDialog", "&Cancel", Q_NULLPTR));
-        applyButton->setText(QApplication::translate("OptionsDialog", "&Apply", Q_NULLPTR));
+        okButton->setText(QApplication::translate("OptionsDialog", "&OK", 0));
+        cancelButton->setText(QApplication::translate("OptionsDialog", "&Cancel", 0));
+        applyButton->setText(QApplication::translate("OptionsDialog", "&Apply", 0));
     } // retranslateUi
 
 };

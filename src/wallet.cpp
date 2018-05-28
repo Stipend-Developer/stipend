@@ -2395,35 +2395,55 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 int64_t nTotalValue = nValue + nFeeRet;
                 double dPriority = 0;
                 // vouts to the payees
-                BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
+                if (coinControl && !coinControl->fSplitBlock) {
+                    BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
+                    {
+                        CTxOut txout(s.second, s.first);
+                        bool fOpReturn = false;
+
+                        if(txout.IsNull() || (!txout.IsEmpty() && txout.nValue == 0))
+                        {
+                            txnouttype whichType;
+                            vector<valtype> vSolutions;
+                            if (!Solver(txout.scriptPubKey, whichType, vSolutions))
+                            {
+                                strFailReason = _("Invalid scriptPubKey");
+                                return false;
+                            }
+                            if(whichType == TX_NONSTANDARD)
+                            {
+                                strFailReason = _("Unknown transaction type");
+                                return false;
+                            }
+                            if(whichType == TX_NULL_DATA)
+                                fOpReturn = true;
+                        }
+
+                        if (!fOpReturn && txout.IsDust(MIN_RELAY_TX_FEE))
+                        {
+                            strFailReason = _("Transaction amount too small");
+                            return false;
+                        }
+                        wtxNew.vout.push_back(txout);
+                    }
+                } else
                 {
-                    CTxOut txout(s.second, s.first);
-                    bool fOpReturn = false;
+                    int nSplitBlock;
 
-                    if(txout.IsNull() || (!txout.IsEmpty() && txout.nValue == 0))
-                    {
-                        txnouttype whichType;
-                        vector<valtype> vSolutions;
-                        if (!Solver(txout.scriptPubKey, whichType, vSolutions))
-                        {
-                            strFailReason = _("Invalid scriptPubKey");
-                            return false;
-                        }
-                        if(whichType == TX_NONSTANDARD)
-                        {
-                            strFailReason = _("Unknown transaction type");
-                            return false;
-                        }
-                        if(whichType == TX_NULL_DATA)
-                            fOpReturn = true;
-                    }
+                    if (coinControl)
+                        nSplitBlock = coinControl->nSplitBlock;
+                    else
+                        nSplitBlock = 1;
 
-                    if (!fOpReturn && txout.IsDust(MIN_RELAY_TX_FEE))
-                    {
-                        strFailReason = _("Transaction amount too small");
-                        return false;
+                    BOOST_FOREACH (const PAIRTYPE(CScript, CAmount) & s, vecSend) {
+                        for (int i = 0; i < nSplitBlock; i++) {
+                            if (i == nSplitBlock - 1) {
+                                uint64_t nRemainder = s.second % nSplitBlock;
+                                wtxNew.vout.push_back(CTxOut((s.second / nSplitBlock) + nRemainder, s.first));
+                            } else
+                                wtxNew.vout.push_back(CTxOut(s.second / nSplitBlock, s.first));
+                        }
                     }
-                    wtxNew.vout.push_back(txout);
                 }
 
                 // Choose coins to use

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'transactionview.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'transactionview.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TransactionView_t {
     QByteArrayData data[28];
     char stringdata0[320];
@@ -173,21 +171,18 @@ void TransactionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             typedef void (TransactionView::*_t)(const QModelIndex & );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&TransactionView::doubleClicked)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (TransactionView::*_t)(const QString & , const QString & , unsigned int );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&TransactionView::message)) {
                 *result = 1;
-                return;
             }
         }
         {
             typedef void (TransactionView::*_t)(QString );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&TransactionView::trxAmount)) {
                 *result = 2;
-                return;
             }
         }
     }
@@ -195,7 +190,7 @@ void TransactionView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
 
 const QMetaObject TransactionView::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_TransactionView.data,
-      qt_meta_data_TransactionView,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_TransactionView,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -206,7 +201,7 @@ const QMetaObject *TransactionView::metaObject() const
 
 void *TransactionView::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_TransactionView.stringdata0))
         return static_cast<void*>(const_cast< TransactionView*>(this));
     return QWidget::qt_metacast(_clname);
@@ -232,22 +227,21 @@ int TransactionView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void TransactionView::doubleClicked(const QModelIndex & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void TransactionView::message(const QString & _t1, const QString & _t2, unsigned int _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void TransactionView::trxAmount(QString _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE
