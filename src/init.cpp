@@ -787,6 +787,15 @@ bool AppInit2(boost::thread_group& threadGroup)
             return false;
         }
     }
+
+    if (mapArgs.count("-stakethreshold")) // ppcoin: reserve balance amount
+    {
+        if (!ParseMoney(mapArgs["-stakethreshold"], nStakeThreshold))
+        {
+            InitError(_("Invalid amount for -stakethreshold=<amount>"));
+            return false;
+        }
+    }
 #endif
 
     BOOST_FOREACH(string strDest, mapMultiArgs["-seednode"])

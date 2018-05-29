@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'optionsdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -39,22 +39,27 @@ public:
     QTabWidget *tabWidget;
     QWidget *tabMain;
     QGridLayout *gridLayout;
-    QLabel *transactionFeeInfoLabel;
-    QHBoxLayout *horizontalLayoutFee;
-    QLabel *transactionFeeLabel;
-    BitcoinAmountField *transactionFee;
-    QSpacerItem *horizontalSpacerFee;
-    QLabel *reserveBalanceInfoLabel;
+    QSpinBox *anonymizeStipend;
     QHBoxLayout *horizontalLayoutReserveBalance;
     QLabel *reserveBalanceLabel;
     BitcoinAmountField *reserveBalance;
     QSpacerItem *horizontalSpacerReserveBalance;
-    QCheckBox *bitcoinAtStartup;
-    QSpacerItem *verticalSpacer_Main;
+    QLabel *reserveBalanceInfoLabel;
+    QLabel *transactionFeeInfoLabel;
     QLabel *label;
-    QSpinBox *darksendRounds;
     QLabel *label_2;
-    QSpinBox *anonymizeStipend;
+    QHBoxLayout *horizontalLayoutFee;
+    QLabel *transactionFeeLabel;
+    BitcoinAmountField *transactionFee;
+    QSpacerItem *horizontalSpacerFee;
+    QSpacerItem *verticalSpacer_Main;
+    QCheckBox *bitcoinAtStartup;
+    QHBoxLayout *horizontalLayoutStakeThreshold;
+    QLabel *StakeThresholdLabel;
+    QSpinBox *stakeThreshold;
+    QSpacerItem *horizontalSpacerStakeThreshold;
+    QSpinBox *darksendRounds;
+    QLabel *label_3;
     QWidget *tabNetwork;
     QVBoxLayout *verticalLayout_Network;
     QCheckBox *mapPortUpnp;
@@ -94,7 +99,7 @@ public:
     {
         if (OptionsDialog->objectName().isEmpty())
             OptionsDialog->setObjectName(QStringLiteral("OptionsDialog"));
-        OptionsDialog->resize(540, 380);
+        OptionsDialog->resize(540, 438);
         OptionsDialog->setModal(true);
         verticalLayout = new QVBoxLayout(OptionsDialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -105,39 +110,14 @@ public:
         tabMain->setObjectName(QStringLiteral("tabMain"));
         gridLayout = new QGridLayout(tabMain);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        transactionFeeInfoLabel = new QLabel(tabMain);
-        transactionFeeInfoLabel->setObjectName(QStringLiteral("transactionFeeInfoLabel"));
-        transactionFeeInfoLabel->setTextFormat(Qt::PlainText);
-        transactionFeeInfoLabel->setWordWrap(true);
+        anonymizeStipend = new QSpinBox(tabMain);
+        anonymizeStipend->setObjectName(QStringLiteral("anonymizeStipend"));
+        anonymizeStipend->setMinimum(2);
+        anonymizeStipend->setMaximum(10000);
+        anonymizeStipend->setSingleStep(10);
+        anonymizeStipend->setValue(1000);
 
-        gridLayout->addWidget(transactionFeeInfoLabel, 0, 0, 1, 2);
-
-        horizontalLayoutFee = new QHBoxLayout();
-        horizontalLayoutFee->setObjectName(QStringLiteral("horizontalLayoutFee"));
-        transactionFeeLabel = new QLabel(tabMain);
-        transactionFeeLabel->setObjectName(QStringLiteral("transactionFeeLabel"));
-        transactionFeeLabel->setTextFormat(Qt::PlainText);
-
-        horizontalLayoutFee->addWidget(transactionFeeLabel);
-
-        transactionFee = new BitcoinAmountField(tabMain);
-        transactionFee->setObjectName(QStringLiteral("transactionFee"));
-
-        horizontalLayoutFee->addWidget(transactionFee);
-
-        horizontalSpacerFee = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayoutFee->addItem(horizontalSpacerFee);
-
-
-        gridLayout->addLayout(horizontalLayoutFee, 1, 0, 1, 1);
-
-        reserveBalanceInfoLabel = new QLabel(tabMain);
-        reserveBalanceInfoLabel->setObjectName(QStringLiteral("reserveBalanceInfoLabel"));
-        reserveBalanceInfoLabel->setTextFormat(Qt::PlainText);
-        reserveBalanceInfoLabel->setWordWrap(true);
-
-        gridLayout->addWidget(reserveBalanceInfoLabel, 2, 0, 1, 2);
+        gridLayout->addWidget(anonymizeStipend, 9, 1, 1, 1);
 
         horizontalLayoutReserveBalance = new QHBoxLayout();
         horizontalLayoutReserveBalance->setObjectName(QStringLiteral("horizontalLayoutReserveBalance"));
@@ -159,27 +139,24 @@ public:
 
         gridLayout->addLayout(horizontalLayoutReserveBalance, 3, 0, 1, 1);
 
-        bitcoinAtStartup = new QCheckBox(tabMain);
-        bitcoinAtStartup->setObjectName(QStringLiteral("bitcoinAtStartup"));
+        reserveBalanceInfoLabel = new QLabel(tabMain);
+        reserveBalanceInfoLabel->setObjectName(QStringLiteral("reserveBalanceInfoLabel"));
+        reserveBalanceInfoLabel->setTextFormat(Qt::PlainText);
+        reserveBalanceInfoLabel->setWordWrap(true);
 
-        gridLayout->addWidget(bitcoinAtStartup, 4, 0, 1, 1);
+        gridLayout->addWidget(reserveBalanceInfoLabel, 2, 0, 1, 2);
 
-        verticalSpacer_Main = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        transactionFeeInfoLabel = new QLabel(tabMain);
+        transactionFeeInfoLabel->setObjectName(QStringLiteral("transactionFeeInfoLabel"));
+        transactionFeeInfoLabel->setTextFormat(Qt::PlainText);
+        transactionFeeInfoLabel->setWordWrap(true);
 
-        gridLayout->addItem(verticalSpacer_Main, 5, 0, 1, 1);
+        gridLayout->addWidget(transactionFeeInfoLabel, 0, 0, 1, 2);
 
         label = new QLabel(tabMain);
         label->setObjectName(QStringLiteral("label"));
 
-        gridLayout->addWidget(label, 6, 0, 1, 1);
-
-        darksendRounds = new QSpinBox(tabMain);
-        darksendRounds->setObjectName(QStringLiteral("darksendRounds"));
-        darksendRounds->setMinimum(2);
-        darksendRounds->setMaximum(16);
-        darksendRounds->setValue(3);
-
-        gridLayout->addWidget(darksendRounds, 6, 1, 1, 1);
+        gridLayout->addWidget(label, 8, 0, 1, 1);
 
         label_2 = new QLabel(tabMain);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -196,16 +173,71 @@ public:
         label_2->setAccessibleDescription(QStringLiteral(""));
 #endif // QT_NO_ACCESSIBILITY
 
-        gridLayout->addWidget(label_2, 7, 0, 1, 1);
+        gridLayout->addWidget(label_2, 9, 0, 1, 1);
 
-        anonymizeStipend = new QSpinBox(tabMain);
-        anonymizeStipend->setObjectName(QStringLiteral("anonymizeStipend"));
-        anonymizeStipend->setMinimum(2);
-        anonymizeStipend->setMaximum(10000);
-        anonymizeStipend->setSingleStep(10);
-        anonymizeStipend->setValue(1000);
+        horizontalLayoutFee = new QHBoxLayout();
+        horizontalLayoutFee->setObjectName(QStringLiteral("horizontalLayoutFee"));
+        transactionFeeLabel = new QLabel(tabMain);
+        transactionFeeLabel->setObjectName(QStringLiteral("transactionFeeLabel"));
+        transactionFeeLabel->setTextFormat(Qt::PlainText);
 
-        gridLayout->addWidget(anonymizeStipend, 7, 1, 1, 1);
+        horizontalLayoutFee->addWidget(transactionFeeLabel);
+
+        transactionFee = new BitcoinAmountField(tabMain);
+        transactionFee->setObjectName(QStringLiteral("transactionFee"));
+
+        horizontalLayoutFee->addWidget(transactionFee);
+
+        horizontalSpacerFee = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayoutFee->addItem(horizontalSpacerFee);
+
+
+        gridLayout->addLayout(horizontalLayoutFee, 1, 0, 1, 1);
+
+        verticalSpacer_Main = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_Main, 7, 0, 1, 1);
+
+        bitcoinAtStartup = new QCheckBox(tabMain);
+        bitcoinAtStartup->setObjectName(QStringLiteral("bitcoinAtStartup"));
+
+        gridLayout->addWidget(bitcoinAtStartup, 4, 0, 1, 1);
+
+        horizontalLayoutStakeThreshold = new QHBoxLayout();
+        horizontalLayoutStakeThreshold->setObjectName(QStringLiteral("horizontalLayoutStakeThreshold"));
+        StakeThresholdLabel = new QLabel(tabMain);
+        StakeThresholdLabel->setObjectName(QStringLiteral("StakeThresholdLabel"));
+
+        horizontalLayoutStakeThreshold->addWidget(StakeThresholdLabel);
+
+        stakeThreshold = new QSpinBox(tabMain);
+        stakeThreshold->setObjectName(QStringLiteral("stakeThreshold"));
+        stakeThreshold->setMinimum(100);
+        stakeThreshold->setMaximum(100000);
+        stakeThreshold->setValue(100);
+
+        horizontalLayoutStakeThreshold->addWidget(stakeThreshold);
+
+        horizontalSpacerStakeThreshold = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayoutStakeThreshold->addItem(horizontalSpacerStakeThreshold);
+
+
+        gridLayout->addLayout(horizontalLayoutStakeThreshold, 6, 0, 1, 1);
+
+        darksendRounds = new QSpinBox(tabMain);
+        darksendRounds->setObjectName(QStringLiteral("darksendRounds"));
+        darksendRounds->setMinimum(2);
+        darksendRounds->setMaximum(16);
+        darksendRounds->setValue(3);
+
+        gridLayout->addWidget(darksendRounds, 8, 1, 1, 1);
+
+        label_3 = new QLabel(tabMain);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 5, 0, 1, 1);
 
         tabWidget->addTab(tabMain, QString());
         tabNetwork = new QWidget();
@@ -375,8 +407,8 @@ public:
         verticalLayout->addLayout(horizontalLayout_Buttons);
 
 #ifndef QT_NO_SHORTCUT
-        transactionFeeLabel->setBuddy(transactionFee);
         reserveBalanceLabel->setBuddy(reserveBalance);
+        transactionFeeLabel->setBuddy(transactionFee);
         proxyIpLabel->setBuddy(proxyIp);
         proxyPortLabel->setBuddy(proxyPort);
         langLabel->setBuddy(lang);
@@ -393,68 +425,70 @@ public:
 
     void retranslateUi(QDialog *OptionsDialog)
     {
-        OptionsDialog->setWindowTitle(QApplication::translate("OptionsDialog", "Options", 0));
-        transactionFeeInfoLabel->setText(QApplication::translate("OptionsDialog", "Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.", 0));
-        transactionFeeLabel->setText(QApplication::translate("OptionsDialog", "Pay transaction &fee", 0));
-        reserveBalanceInfoLabel->setText(QApplication::translate("OptionsDialog", "Reserved amount does not participate in staking and is therefore spendable at any time.", 0));
-        reserveBalanceLabel->setText(QApplication::translate("OptionsDialog", "Reserve", 0));
+        OptionsDialog->setWindowTitle(QApplication::translate("OptionsDialog", "Options", Q_NULLPTR));
+        reserveBalanceLabel->setText(QApplication::translate("OptionsDialog", "Reserve", Q_NULLPTR));
+        reserveBalanceInfoLabel->setText(QApplication::translate("OptionsDialog", "Reserved amount does not participate in staking and is therefore spendable at any time.", Q_NULLPTR));
+        transactionFeeInfoLabel->setText(QApplication::translate("OptionsDialog", "Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        bitcoinAtStartup->setToolTip(QApplication::translate("OptionsDialog", "Automatically start Stipend after logging in to the system.", 0));
+        label->setToolTip(QApplication::translate("OptionsDialog", "<html><head/><body><p>This setting determines the amount of individual masternodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        bitcoinAtStartup->setText(QApplication::translate("OptionsDialog", "&Start Stipend on system login", 0));
+        label->setText(QApplication::translate("OptionsDialog", "Darksend rounds to use", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        label->setToolTip(QApplication::translate("OptionsDialog", "<html><head/><body><p>This setting determines the amount of individual masternodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</p></body></html>", 0));
+        label_2->setToolTip(QApplication::translate("OptionsDialog", "This amount acts as a threshold to turn off Darksend once it's reached.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("OptionsDialog", "Darksend rounds to use", 0));
+        label_2->setText(QApplication::translate("OptionsDialog", "Amount of Stipend to keep anonymized", Q_NULLPTR));
+        transactionFeeLabel->setText(QApplication::translate("OptionsDialog", "Pay transaction &fee", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        label_2->setToolTip(QApplication::translate("OptionsDialog", "This amount acts as a threshold to turn off Darksend once it's reached.", 0));
+        bitcoinAtStartup->setToolTip(QApplication::translate("OptionsDialog", "Automatically start Stipend after logging in to the system.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        label_2->setText(QApplication::translate("OptionsDialog", "Amount of Stipend to keep anonymized", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tabMain), QApplication::translate("OptionsDialog", "&Main", 0));
+        bitcoinAtStartup->setText(QApplication::translate("OptionsDialog", "&Start Stipend on system login", Q_NULLPTR));
+        StakeThresholdLabel->setText(QApplication::translate("OptionsDialog", "StakeThreshold", Q_NULLPTR));
+        label_3->setText(QApplication::translate("OptionsDialog", "This will set the output size of your stakes.", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabMain), QApplication::translate("OptionsDialog", "&Main", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        mapPortUpnp->setToolTip(QApplication::translate("OptionsDialog", "Automatically open the Stipend client port on the router. This only works when your router supports UPnP and it is enabled.", 0));
+        mapPortUpnp->setToolTip(QApplication::translate("OptionsDialog", "Automatically open the Stipend client port on the router. This only works when your router supports UPnP and it is enabled.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        mapPortUpnp->setText(QApplication::translate("OptionsDialog", "Map port using &UPnP", 0));
+        mapPortUpnp->setText(QApplication::translate("OptionsDialog", "Map port using &UPnP", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        connectSocks->setToolTip(QApplication::translate("OptionsDialog", "Connect to the Stipend network through a SOCKS5 proxy (e.g. when connecting through Tor).", 0));
+        connectSocks->setToolTip(QApplication::translate("OptionsDialog", "Connect to the Stipend network through a SOCKS5 proxy (e.g. when connecting through Tor).", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        connectSocks->setText(QApplication::translate("OptionsDialog", "&Connect through SOCKS5 proxy:", 0));
-        proxyIpLabel->setText(QApplication::translate("OptionsDialog", "Proxy &IP:", 0));
+        connectSocks->setText(QApplication::translate("OptionsDialog", "&Connect through SOCKS5 proxy:", Q_NULLPTR));
+        proxyIpLabel->setText(QApplication::translate("OptionsDialog", "Proxy &IP:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        proxyIp->setToolTip(QApplication::translate("OptionsDialog", "IP address of the proxy (e.g. 127.0.0.1)", 0));
+        proxyIp->setToolTip(QApplication::translate("OptionsDialog", "IP address of the proxy (e.g. 127.0.0.1)", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        proxyPortLabel->setText(QApplication::translate("OptionsDialog", "&Port:", 0));
+        proxyPortLabel->setText(QApplication::translate("OptionsDialog", "&Port:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        proxyPort->setToolTip(QApplication::translate("OptionsDialog", "Port of the proxy (e.g. 9050)", 0));
+        proxyPort->setToolTip(QApplication::translate("OptionsDialog", "Port of the proxy (e.g. 9050)", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        tabWidget->setTabText(tabWidget->indexOf(tabNetwork), QApplication::translate("OptionsDialog", "&Network", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabNetwork), QApplication::translate("OptionsDialog", "&Network", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        minimizeToTray->setToolTip(QApplication::translate("OptionsDialog", "Show only a tray icon after minimizing the window.", 0));
+        minimizeToTray->setToolTip(QApplication::translate("OptionsDialog", "Show only a tray icon after minimizing the window.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        minimizeToTray->setText(QApplication::translate("OptionsDialog", "&Minimize to the tray instead of the taskbar", 0));
+        minimizeToTray->setText(QApplication::translate("OptionsDialog", "&Minimize to the tray instead of the taskbar", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        minimizeOnClose->setToolTip(QApplication::translate("OptionsDialog", "Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.", 0));
+        minimizeOnClose->setToolTip(QApplication::translate("OptionsDialog", "Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        minimizeOnClose->setText(QApplication::translate("OptionsDialog", "M&inimize on close", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tabWindow), QApplication::translate("OptionsDialog", "&Window", 0));
-        langLabel->setText(QApplication::translate("OptionsDialog", "User Interface &language:", 0));
+        minimizeOnClose->setText(QApplication::translate("OptionsDialog", "M&inimize on close", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabWindow), QApplication::translate("OptionsDialog", "&Window", Q_NULLPTR));
+        langLabel->setText(QApplication::translate("OptionsDialog", "User Interface &language:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        lang->setToolTip(QApplication::translate("OptionsDialog", "The user interface language can be set here. This setting will take effect after restarting Stipend.", 0));
+        lang->setToolTip(QApplication::translate("OptionsDialog", "The user interface language can be set here. This setting will take effect after restarting Stipend.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        unitLabel->setText(QApplication::translate("OptionsDialog", "&Unit to show amounts in:", 0));
+        unitLabel->setText(QApplication::translate("OptionsDialog", "&Unit to show amounts in:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        unit->setToolTip(QApplication::translate("OptionsDialog", "Choose the default subdivision unit to show in the interface and when sending coins.", 0));
+        unit->setToolTip(QApplication::translate("OptionsDialog", "Choose the default subdivision unit to show in the interface and when sending coins.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        coinControlFeatures->setToolTip(QApplication::translate("OptionsDialog", "Whether to show coin control features or not.", 0));
+        coinControlFeatures->setToolTip(QApplication::translate("OptionsDialog", "Whether to show coin control features or not.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        coinControlFeatures->setText(QApplication::translate("OptionsDialog", "Display coin &control features (experts only!)", 0));
-        useBlackTheme->setText(QApplication::translate("OptionsDialog", "Use black visual theme (requires restart)", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tabDisplay), QApplication::translate("OptionsDialog", "&Display", 0));
+        coinControlFeatures->setText(QApplication::translate("OptionsDialog", "Display coin &control features (experts only!)", Q_NULLPTR));
+        useBlackTheme->setText(QApplication::translate("OptionsDialog", "Use black visual theme (requires restart)", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabDisplay), QApplication::translate("OptionsDialog", "&Display", Q_NULLPTR));
         statusLabel->setText(QString());
-        okButton->setText(QApplication::translate("OptionsDialog", "&OK", 0));
-        cancelButton->setText(QApplication::translate("OptionsDialog", "&Cancel", 0));
-        applyButton->setText(QApplication::translate("OptionsDialog", "&Apply", 0));
+        okButton->setText(QApplication::translate("OptionsDialog", "&OK", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("OptionsDialog", "&Cancel", Q_NULLPTR));
+        applyButton->setText(QApplication::translate("OptionsDialog", "&Apply", Q_NULLPTR));
     } // retranslateUi
 
 };

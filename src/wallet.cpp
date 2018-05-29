@@ -30,9 +30,10 @@ using namespace std;
 // Settings
 int64_t nTransactionFee = MIN_TX_FEE;
 int64_t nReserveBalance = 0;
+int64_t nStakeThreshold = MIN_STAKE_THRESHOLD;
 int64_t nMinimumInputValue = 0;
 
-static int64_t GetStakeCombineThreshold() { return GetArg("-stakethreshold", 100) * COIN; }
+static int64_t GetStakeCombineThreshold() { return nStakeThreshold * COIN; }
 static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
 
 //////////////////////////////////////////////////////////////////////////////

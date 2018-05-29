@@ -37,6 +37,7 @@ public:
         ProxySocksVersion,      // int
         Fee,                    // qint64
         ReserveBalance,         // qint64
+        StakeThreshold,         // int
         DisplayUnit,            // BitcoinUnits::Unit
         Language,               // QString
         CoinControlFeatures,    // bool
@@ -82,6 +83,7 @@ signals:
     void displayUnitChanged(int unit);
     void transactionFeeChanged(qint64);
     void reserveBalanceChanged(qint64);
+    void stakeThresholdChanged(int);
     void coinControlFeaturesChanged(bool);
     void darksendRoundsChanged(int);
     void AnonymizeStipendAmountChanged(int);
