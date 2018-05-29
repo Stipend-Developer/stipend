@@ -773,9 +773,9 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
         if (GetTransaction(outpoint.hash, tx21, hashi)) {
             blacklistname = tx21.vout[outpoint.n].scriptPubKey.IsBlacklisted();
             if (blacklistname) {
-								LogPrintf("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)\n", tx.GetHash().ToString().c_str(), blacklistname);
-								return error("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)", tx.GetHash().ToString().c_str(), blacklistname);
-						}
+                LogPrintf("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)\n", tx.GetHash().ToString().c_str(), blacklistname);
+                return error("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+            }
         } else {
             LogPrintf("Tx Not found");
         }

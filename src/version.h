@@ -37,7 +37,7 @@ static const int INIT_PROTO_VERSION = 209;
 
 // disconnect from peers older than this proto version
 static const int MIN_PEER_PROTO_VERSION = 11003;
-static const int MIN_PEER_PROTO_VERSION_FORK1 = 11003;
+static const int MIN_PEER_PROTO_VERSION_FORK1 = 11004;
 
 // minimum peer version accepted by DarkSendPool
 static const int MIN_POOL_PEER_PROTO_VERSION = 11003;
