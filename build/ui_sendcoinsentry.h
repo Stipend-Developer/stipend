@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sendcoinsentry.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -137,34 +137,30 @@ public:
 
     void retranslateUi(QFrame *SendCoinsEntry)
     {
-        SendCoinsEntry->setWindowTitle(QApplication::translate("SendCoinsEntry", "Form", Q_NULLPTR));
-        label_2->setText(QApplication::translate("SendCoinsEntry", "Pay &To:", Q_NULLPTR));
-        label->setText(QApplication::translate("SendCoinsEntry", "A&mount:", Q_NULLPTR));
-        label_4->setText(QApplication::translate("SendCoinsEntry", "&Label:", Q_NULLPTR));
+        SendCoinsEntry->setWindowTitle(QApplication::translate("SendCoinsEntry", "Form", 0));
+        label_2->setText(QApplication::translate("SendCoinsEntry", "Pay &To:", 0));
+        label->setText(QApplication::translate("SendCoinsEntry", "A&mount:", 0));
+        label_4->setText(QApplication::translate("SendCoinsEntry", "&Label:", 0));
 #ifndef QT_NO_TOOLTIP
-        addAsLabel->setToolTip(QApplication::translate("SendCoinsEntry", "Enter a label for this address to add it to your address book", Q_NULLPTR));
+        addAsLabel->setToolTip(QApplication::translate("SendCoinsEntry", "Enter a label for this address to add it to your address book", 0));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        addressBookButton->setToolTip(QApplication::translate("SendCoinsEntry", "Choose address from address book", Q_NULLPTR));
+        addressBookButton->setToolTip(QApplication::translate("SendCoinsEntry", "Choose address from address book", 0));
 #endif // QT_NO_TOOLTIP
         addressBookButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        addressBookButton->setShortcut(QApplication::translate("SendCoinsEntry", "Alt+A", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
+        addressBookButton->setShortcut(QApplication::translate("SendCoinsEntry", "Alt+A", 0));
 #ifndef QT_NO_TOOLTIP
-        deleteButton->setToolTip(QApplication::translate("SendCoinsEntry", "Remove this recipient", Q_NULLPTR));
+        deleteButton->setToolTip(QApplication::translate("SendCoinsEntry", "Remove this recipient", 0));
 #endif // QT_NO_TOOLTIP
         deleteButton->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        payTo->setToolTip(QApplication::translate("SendCoinsEntry", "The address to send the payment to (e.g. C8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)", Q_NULLPTR));
+        payTo->setToolTip(QApplication::translate("SendCoinsEntry", "The address to send the payment to (e.g. C8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)", 0));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        pasteButton->setToolTip(QApplication::translate("SendCoinsEntry", "Paste address from clipboard", Q_NULLPTR));
+        pasteButton->setToolTip(QApplication::translate("SendCoinsEntry", "Paste address from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         pasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        pasteButton->setShortcut(QApplication::translate("SendCoinsEntry", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
+        pasteButton->setShortcut(QApplication::translate("SendCoinsEntry", "Alt+P", 0));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tradingdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -190,7 +190,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(tradingHeaderContainer->sizePolicy().hasHeightForWidth());
         tradingHeaderContainer->setSizePolicy(sizePolicy);
-        tradingHeaderContainer->setMinimumSize(QSize(849, 40));
+        tradingHeaderContainer->setMinimumSize(QSize(550, 40));
         tradingHeaderContainer->setMaximumSize(QSize(16777215, 220));
         tradingHeaderContainer->setFrameShape(QFrame::NoFrame);
         tradingHeaderContainer->setFrameShadow(QFrame::Raised);
@@ -1555,135 +1555,125 @@ public:
 
     void retranslateUi(QDialog *tradingDialog)
     {
-        tradingDialog->setWindowTitle(QApplication::translate("tradingDialog", "Dialog", Q_NULLPTR));
-        Bid->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        volumet->setText(QApplication::translate("tradingDialog", "0.000000000", Q_NULLPTR));
-        Ask->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        volumebtc->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_3->setText(QApplication::translate("tradingDialog", "Units", Q_NULLPTR));
-        label232->setText(QApplication::translate("tradingDialog", "BTC Available:", Q_NULLPTR));
-        BtcAvailableLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        labelBTC->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        label232_2->setText(QApplication::translate("tradingDialog", "SPD Available:", Q_NULLPTR));
-        TXAvailableLabel->setText(QApplication::translate("tradingDialog", " 0.00000000 ", Q_NULLPTR));
-        labelTX->setText(QApplication::translate("tradingDialog", " SPD", Q_NULLPTR));
-        Buy_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", Q_NULLPTR));
-        label_4->setText(QApplication::translate("tradingDialog", "SPD", Q_NULLPTR));
-        Sell_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", Q_NULLPTR));
-        label_22->setText(QApplication::translate("tradingDialog", "SPD", Q_NULLPTR));
-        label_6->setText(QApplication::translate("tradingDialog", "Bid", Q_NULLPTR));
-        label_5->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        label_16->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        label_23->setText(QApplication::translate("tradingDialog", "Total w/ 0.25% Fee ", Q_NULLPTR));
-        BuyCostLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_24->setText(QApplication::translate("tradingDialog", " BTC", Q_NULLPTR));
-        label_19->setText(QApplication::translate("tradingDialog", "Total w/ 0.25% Fee ", Q_NULLPTR));
-        SellCostLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_17->setText(QApplication::translate("tradingDialog", " BTC", Q_NULLPTR));
-        BuyTX->setText(QApplication::translate("tradingDialog", "Buy SPD", Q_NULLPTR));
-        SellTXBTN->setText(QApplication::translate("tradingDialog", "Sell SPD", Q_NULLPTR));
-        BtcDemand->setText(QApplication::translate("tradingDialog", "0.00000000 BTC", Q_NULLPTR));
-        AsksCount->setText(QApplication::translate("tradingDialog", "Asks: 0000", Q_NULLPTR));
-        BtcSupply->setText(QApplication::translate("tradingDialog", "0.00000000 BTC", Q_NULLPTR));
-        TXDemand->setText(QApplication::translate("tradingDialog", "Demand: 0.00000000 SPD", Q_NULLPTR));
-        TXSupply->setText(QApplication::translate("tradingDialog", "Supply: 0.00000000 SPD", Q_NULLPTR));
-        BidsCount->setText(QApplication::translate("tradingDialog", "Bids: 0000", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(BuyTab), QApplication::translate("tradingDialog", "Trade", Q_NULLPTR));
-        label_21->setText(QApplication::translate("tradingDialog", "Lowest price:", Q_NULLPTR));
-        CSDumpLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_25->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        label_32->setText(QApplication::translate("tradingDialog", "Amount in SPD:", Q_NULLPTR));
-        CSTotalLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_35->setText(QApplication::translate("tradingDialog", "SPD", Q_NULLPTR));
-        label_20->setText(QApplication::translate("tradingDialog", "Total w/ Fees :", Q_NULLPTR));
-        CSReceiveLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_18->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        CSUnitsBtn->setText(QApplication::translate("tradingDialog", "Send", Q_NULLPTR));
+        tradingDialog->setWindowTitle(QApplication::translate("tradingDialog", "Dialog", 0));
+        Bid->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        volumet->setText(QApplication::translate("tradingDialog", "0.000000000", 0));
+        Ask->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        volumebtc->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_3->setText(QApplication::translate("tradingDialog", "Units", 0));
+        label232->setText(QApplication::translate("tradingDialog", "BTC Available:", 0));
+        BtcAvailableLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        labelBTC->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        label232_2->setText(QApplication::translate("tradingDialog", "SPD Available:", 0));
+        TXAvailableLabel->setText(QApplication::translate("tradingDialog", " 0.00000000 ", 0));
+        labelTX->setText(QApplication::translate("tradingDialog", " SPD", 0));
+        Buy_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", 0));
+        label_4->setText(QApplication::translate("tradingDialog", "SPD", 0));
+        Sell_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", 0));
+        label_22->setText(QApplication::translate("tradingDialog", "SPD", 0));
+        label_6->setText(QApplication::translate("tradingDialog", "Bid", 0));
+        label_5->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        label_16->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        label_23->setText(QApplication::translate("tradingDialog", "Total w/ 0.25% Fee ", 0));
+        BuyCostLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_24->setText(QApplication::translate("tradingDialog", " BTC", 0));
+        label_19->setText(QApplication::translate("tradingDialog", "Total w/ 0.25% Fee ", 0));
+        SellCostLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_17->setText(QApplication::translate("tradingDialog", " BTC", 0));
+        BuyTX->setText(QApplication::translate("tradingDialog", "Buy SPD", 0));
+        SellTXBTN->setText(QApplication::translate("tradingDialog", "Sell SPD", 0));
+        BtcDemand->setText(QApplication::translate("tradingDialog", "0.00000000 BTC", 0));
+        AsksCount->setText(QApplication::translate("tradingDialog", "Asks: 0000", 0));
+        BtcSupply->setText(QApplication::translate("tradingDialog", "0.00000000 BTC", 0));
+        TXDemand->setText(QApplication::translate("tradingDialog", "Demand: 0.00000000 SPD", 0));
+        TXSupply->setText(QApplication::translate("tradingDialog", "Supply: 0.00000000 SPD", 0));
+        BidsCount->setText(QApplication::translate("tradingDialog", "Bids: 0000", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(BuyTab), QApplication::translate("tradingDialog", "Trade", 0));
+        label_21->setText(QApplication::translate("tradingDialog", "Lowest price:", 0));
+        CSDumpLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_25->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        label_32->setText(QApplication::translate("tradingDialog", "Amount in SPD:", 0));
+        CSTotalLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_35->setText(QApplication::translate("tradingDialog", "SPD", 0));
+        label_20->setText(QApplication::translate("tradingDialog", "Total w/ Fees :", 0));
+        CSReceiveLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_18->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        CSUnitsBtn->setText(QApplication::translate("tradingDialog", "Send", 0));
         label232_8->setText(QString());
-        label232_13->setText(QApplication::translate("tradingDialog", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600;\">Warning:</span><span style=\" font-size:9pt;\"> This feature is in </span><span style=\" font-size:9pt; font-weight:600;\">ALPHA ! USE AT OWN RISK !</span></p></body></html>", Q_NULLPTR));
+        label232_13->setText(QApplication::translate("tradingDialog", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600;\">Warning:</span><span style=\" font-size:9pt;\"> This feature is in </span><span style=\" font-size:9pt; font-weight:600;\">ALPHA ! USE AT OWN RISK !</span></p></body></html>", 0));
         label232_15->setText(QApplication::translate("tradingDialog", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600; text-decoration: underline;\">Instructions:</span></p><p align=\"center\">To use the cross sending feature you need to have </p><p align=\"center\">SPD available to spend on FuExchange. If you don't have any </p><p align=\"center\">you can find your deposit address on the &quot;Balance&quot; tab.</p><p align=\"center\">1. Enter the amount you want to receive in Bitcoin.</p><p align=\"center\">2. Enter the Bitcoin address you are sending to.</p><p align=\"center\">3. Check that the Total with fee's is correct.</p><p align=\"center\">4. Press send and watch the magic happen.</p><p align=\"center\"><span style=\" font-weight:600; text-decoration: underline;\">Notes.</span></p><p align=\"center\"><span style=\" font-size:7pt;\">Total w/ fees: N/A means you dont have enoughSPDto sell !</span></p><p align=\"center\"><span style=\" font-size:7pt;\">All trades are done through FuExchange using your own balance and API keys.</span></p><p align=\"cen"
-                        "ter\"><span style=\" font-size:7pt;\">Encrypt and backup your wallet when using this feature.</span></p><p align=\"center\"><span style=\" font-size:7pt;\">If you don't have a password you future-exchange account will be accessible 24/7</span></p><p align=\"center\"><span style=\" font-size:7pt;\">Withdrawal fee of 0.002 and 0.25% taken by FuExchange.</span></p></body></html>", Q_NULLPTR));
-        label_27->setText(QApplication::translate("tradingDialog", "Amount:", Q_NULLPTR));
-        label_8->setText(QApplication::translate("tradingDialog", "Address:", Q_NULLPTR));
-        label_29->setText(QApplication::translate("tradingDialog", "SPD Balance:", Q_NULLPTR));
-        FuExchangeTXLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_30->setText(QApplication::translate("tradingDialog", "SPD", Q_NULLPTR));
-        label_36->setText(QApplication::translate("tradingDialog", "BTC Balance:", Q_NULLPTR));
-        FuExchangeBTCLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", Q_NULLPTR));
-        label_37->setText(QApplication::translate("tradingDialog", "BTC", Q_NULLPTR));
-        CS_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", Q_NULLPTR));
+                        "ter\"><span style=\" font-size:7pt;\">Encrypt and backup your wallet when using this feature.</span></p><p align=\"center\"><span style=\" font-size:7pt;\">If you don't have a password you future-exchange account will be accessible 24/7</span></p><p align=\"center\"><span style=\" font-size:7pt;\">Withdrawal fee of 0.002 and 0.25% taken by FuExchange.</span></p></body></html>", 0));
+        label_27->setText(QApplication::translate("tradingDialog", "Amount:", 0));
+        label_8->setText(QApplication::translate("tradingDialog", "Address:", 0));
+        label_29->setText(QApplication::translate("tradingDialog", "SPD Balance:", 0));
+        FuExchangeTXLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_30->setText(QApplication::translate("tradingDialog", "SPD", 0));
+        label_36->setText(QApplication::translate("tradingDialog", "BTC Balance:", 0));
+        FuExchangeBTCLabel->setText(QApplication::translate("tradingDialog", " 0.00000000", 0));
+        label_37->setText(QApplication::translate("tradingDialog", "BTC", 0));
+        CS_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", 0));
 #ifndef QT_NO_TOOLTIP
-        CSPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", Q_NULLPTR));
+        CSPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         CSPasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        CSPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        label232_4->setText(QApplication::translate("tradingDialog", "Cross-Send", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(tab), QApplication::translate("tradingDialog", "Send", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(MarketHistory), QApplication::translate("tradingDialog", "Market History", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(OpenOrders), QApplication::translate("tradingDialog", "Open Orders", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(TradeHistory), QApplication::translate("tradingDialog", "Trade history", Q_NULLPTR));
-        label_11->setText(QApplication::translate("tradingDialog", "SPD Balance:", Q_NULLPTR));
-        TXBalanceLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_12->setText(QApplication::translate("tradingDialog", "BTC Balance:", Q_NULLPTR));
-        BitcoinBalanceLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_13->setText(QApplication::translate("tradingDialog", "SPD Available:", Q_NULLPTR));
-        TXAvailableLabel_2->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_15->setText(QApplication::translate("tradingDialog", "BTC Available:", Q_NULLPTR));
-        BitcoinAvailableLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_14->setText(QApplication::translate("tradingDialog", "SPD Pending:", Q_NULLPTR));
-        TXPendingLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        label_31->setText(QApplication::translate("tradingDialog", "BTC Pending:", Q_NULLPTR));
-        BitcoinPendingLabel->setText(QApplication::translate("tradingDialog", "0.00000000", Q_NULLPTR));
-        GenDepositBTN->setText(QApplication::translate("tradingDialog", "GenerateSPDCoin Deposit Address", Q_NULLPTR));
-        label_33->setText(QApplication::translate("tradingDialog", "Deposit Address:", Q_NULLPTR));
+        CSPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", 0));
+        label232_4->setText(QApplication::translate("tradingDialog", "Cross-Send", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(tab), QApplication::translate("tradingDialog", "Send", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(MarketHistory), QApplication::translate("tradingDialog", "Market History", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(OpenOrders), QApplication::translate("tradingDialog", "Open Orders", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(TradeHistory), QApplication::translate("tradingDialog", "Trade history", 0));
+        label_11->setText(QApplication::translate("tradingDialog", "SPD Balance:", 0));
+        TXBalanceLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_12->setText(QApplication::translate("tradingDialog", "BTC Balance:", 0));
+        BitcoinBalanceLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_13->setText(QApplication::translate("tradingDialog", "SPD Available:", 0));
+        TXAvailableLabel_2->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_15->setText(QApplication::translate("tradingDialog", "BTC Available:", 0));
+        BitcoinAvailableLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_14->setText(QApplication::translate("tradingDialog", "SPD Pending:", 0));
+        TXPendingLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        label_31->setText(QApplication::translate("tradingDialog", "BTC Pending:", 0));
+        BitcoinPendingLabel->setText(QApplication::translate("tradingDialog", "0.00000000", 0));
+        GenDepositBTN->setText(QApplication::translate("tradingDialog", "GenerateSPDCoin Deposit Address", 0));
+        label_33->setText(QApplication::translate("tradingDialog", "Deposit Address:", 0));
         DepositAddressLabel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        DepositCopyButton->setToolTip(QApplication::translate("tradingDialog", "Copy to clipboard", Q_NULLPTR));
+        DepositCopyButton->setToolTip(QApplication::translate("tradingDialog", "Copy to clipboard", 0));
 #endif // QT_NO_TOOLTIP
         DepositCopyButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        DepositCopyButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        label_34->setText(QApplication::translate("tradingDialog", "Withdraw SPD:", Q_NULLPTR));
-        label_26->setText(QApplication::translate("tradingDialog", "Amount:", Q_NULLPTR));
+        DepositCopyButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", 0));
+        label_34->setText(QApplication::translate("tradingDialog", "Withdraw SPD:", 0));
+        label_26->setText(QApplication::translate("tradingDialog", "Amount:", 0));
         WithdrawUnitsInput->setText(QString());
-        Withdraw_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", Q_NULLPTR));
-        label_10->setText(QApplication::translate("tradingDialog", "Address:", Q_NULLPTR));
+        Withdraw_Max_Amount->setText(QApplication::translate("tradingDialog", "Max", 0));
+        label_10->setText(QApplication::translate("tradingDialog", "Address:", 0));
 #ifndef QT_NO_TOOLTIP
-        WithdrawPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", Q_NULLPTR));
+        WithdrawPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         WithdrawPasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        WithdrawPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        WithdrawUnitsBtn->setText(QApplication::translate("tradingDialog", "Withdraw", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(BalanceTab), QApplication::translate("tradingDialog", "Balance", Q_NULLPTR));
-        label_2->setText(QApplication::translate("tradingDialog", "API Key", Q_NULLPTR));
+        WithdrawPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", 0));
+        WithdrawUnitsBtn->setText(QApplication::translate("tradingDialog", "Withdraw", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(BalanceTab), QApplication::translate("tradingDialog", "Balance", 0));
+        label_2->setText(QApplication::translate("tradingDialog", "API Key", 0));
         ApiKeyInput->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        KeyPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", Q_NULLPTR));
+        KeyPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         KeyPasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        KeyPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        label->setText(QApplication::translate("tradingDialog", "Secret Key", Q_NULLPTR));
+        KeyPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", 0));
+        label->setText(QApplication::translate("tradingDialog", "Secret Key", 0));
 #ifndef QT_NO_TOOLTIP
-        SecretPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", Q_NULLPTR));
+        SecretPasteButton->setToolTip(QApplication::translate("tradingDialog", "Paste from clipboard", 0));
 #endif // QT_NO_TOOLTIP
         SecretPasteButton->setText(QString());
-#ifndef QT_NO_SHORTCUT
-        SecretPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", Q_NULLPTR));
-#endif // QT_NO_SHORTCUT
-        label_28->setText(QApplication::translate("tradingDialog", "Password", Q_NULLPTR));
-        LoadKeys->setText(QApplication::translate("tradingDialog", "Load API Keys", Q_NULLPTR));
-        UpdateKeys->setText(QApplication::translate("tradingDialog", "Update API Keys", Q_NULLPTR));
-        SaveKeys->setText(QApplication::translate("tradingDialog", "Save API Keys", Q_NULLPTR));
-        label232_17->setText(QApplication::translate("tradingDialog", "<html><head/><body><p>Loading keys:</p><p>1) Enter Password</p><p>2) Load API Keys</p><p>3) Start trading on FuExchange</p></body></html>", Q_NULLPTR));
-        label232_16->setText(QApplication::translate("tradingDialog", "<html><head/><body><p>Saving keys:</p><p>1) Enter in API Keys found at <a href=\"https://future-exchange.com/Account/ManageApiKey\"><span style=\" text-decoration: underline; color:#0000ff;\">FuExchange</span></a></p><p>2) Enter Password</p><p>3) Save API Keys</p><p>4) Start trading on FuExchange</p></body></html>", Q_NULLPTR));
-        TradingTabWidget->setTabText(TradingTabWidget->indexOf(ApiSettings), QApplication::translate("tradingDialog", "Settings", Q_NULLPTR));
+        SecretPasteButton->setShortcut(QApplication::translate("tradingDialog", "Alt+P", 0));
+        label_28->setText(QApplication::translate("tradingDialog", "Password", 0));
+        LoadKeys->setText(QApplication::translate("tradingDialog", "Load API Keys", 0));
+        UpdateKeys->setText(QApplication::translate("tradingDialog", "Update API Keys", 0));
+        SaveKeys->setText(QApplication::translate("tradingDialog", "Save API Keys", 0));
+        label232_17->setText(QApplication::translate("tradingDialog", "<html><head/><body><p>Loading keys:</p><p>1) Enter Password</p><p>2) Load API Keys</p><p>3) Start trading on FuExchange</p></body></html>", 0));
+        label232_16->setText(QApplication::translate("tradingDialog", "<html><head/><body><p>Saving keys:</p><p>1) Enter in API Keys found at <a href=\"https://future-exchange.com/Account/ManageApiKey\"><span style=\" text-decoration: underline; color:#0000ff;\">FuExchange</span></a></p><p>2) Enter Password</p><p>3) Save API Keys</p><p>4) Start trading on FuExchange</p></body></html>", 0));
+        TradingTabWidget->setTabText(TradingTabWidget->indexOf(ApiSettings), QApplication::translate("tradingDialog", "Settings", 0));
     } // retranslateUi
 
 };

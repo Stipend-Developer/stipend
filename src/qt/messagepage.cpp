@@ -80,8 +80,8 @@ MessagePage::MessagePage(QWidget *parent) :
     messageTextEdit(new MRichTextEdit())
 {
     ui->setupUi(this);
-   
-    
+
+
 #ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
     ui->deleteButton->setIcon(QIcon());
 #endif
@@ -109,7 +109,6 @@ MessagePage::MessagePage(QWidget *parent) :
     // Show Messages
     ui->listConversation->setItemDelegate(msgdelegate);
     ui->listConversation->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
-    ui->listConversation->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listConversation->setAttribute(Qt::WA_MacShowFocusRect, false);
 }
 
@@ -123,7 +122,7 @@ void MessagePage::setModel(MessageModel *model)
     this->model = model;
     if(!model)
         return;
-    
+
     //if (model->proxyModel)
     //    delete model->proxyModel;
     model->proxyModel = new QSortFilterProxyModel(this);
@@ -426,4 +425,3 @@ void MessagePage::contextualMenu(const QPoint &point)
         contextMenu->exec(QCursor::pos());
     }
 }
-

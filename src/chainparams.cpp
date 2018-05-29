@@ -68,7 +68,7 @@ static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
     const int64_t oneWeek = 7 * 24 * 60 * 60;
     for (size_t i = 0; i < ips.size(); ++i)
     {
-        CAddress addr(CService(ips[i], 46980));
+        CAddress addr(CService(ips[i], 46978));
         addr.nTime = GetTime() - GetRand(oneWeek) - oneWeek;
         vSeedsOut.push_back(addr);
     }
@@ -85,8 +85,8 @@ public:
         pchMessageStart[2] = 0xdb;
         pchMessageStart[3] = 0xdb;
         vAlertPubKey = ParseHex("7501131e64effceb1644efc56ed3594ef64425850aa52617506177cf245575f0aa11e5b1777cfd8621ea39a7996872a07631ea25b3fdda00df37f5e982fe58850a");
-        nDefaultPort = 46980;
-        nRPCPort = 43289;
+        nDefaultPort = 46978;
+        nRPCPort = 46979;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16); // starting difficulty is 1 / 2^12
 
         const char* pszTimestamp = "Update this at the day of deployment";
@@ -107,18 +107,13 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1517616496; // Wednesday, 17-Jan-18 02:00:01 UTC
+        genesis.nTime    = 1518016375; // Wednesday, 17-Jan-18 02:00:01 UTC
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 396243;
+        genesis.nNonce   = 644221;
 
         hashGenesisBlock = genesis.GetHash();
 
-	      LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
-	      LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        LogPrintf("Display nonce so we can input it below %s\n", genesis.nNonce);
-        LogPrintf("Display time so we can input it below %s\n", genesis.nTime);
-
-        assert(hashGenesisBlock == uint256("0x567c8fade5e4c3baedae60a51a5621cdb83c3058bb816deda99d779d64f617ee"));
+        assert(hashGenesisBlock == uint256("0x7a5541643f97ca4bff6cd7b01e3fbea04002760713320a5750276d9b9c71d845"));
         assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63); // S
@@ -146,7 +141,7 @@ public:
         strDarksendPoolDummyAddress = "hFoQDUrp63QWqFhjEr3Fmc4ubHRhyzjKUC";
 
         nLastPOWBlock = 210000;
-        nPOSStartBlock = 1;
+        nPOSStartBlock = 1500;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -178,16 +173,20 @@ public:
         pchMessageStart[3] = 0xb8;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
         vAlertPubKey = ParseHex("7501131e15af76eb1d0e4a656ed3594ef64425850aa52617506177cf245575f0aa11e5b1777cfd8621ea39a7996872a07631ea25b3fdda00df37f5e982fe58850a");
-        nDefaultPort = 54331;
-        nRPCPort = 46999;
+        nDefaultPort = 59432;
+        nRPCPort = 59433;
         strDataDir = "testnet";
-        genesis.nTime    = 1517279841;
+        genesis.nTime    = 1518016375;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 35312;
+        genesis.nNonce   = 353314;
 
         hashGenesisBlock = genesis.GetHash();
+
         LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0xa17f87bd5a0fcdaafbedaab77f822a48272b66d36728e5820184bb22e43d9286"));
+	      LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
+
+        assert(hashGenesisBlock == uint256("0xe133d1d3f584f1c3f561e7d0606fa87dabb869325a979c2a82e2f3943c0e3370"));
+        assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
 
         vFixedSeeds.clear();
         vSeeds.clear();

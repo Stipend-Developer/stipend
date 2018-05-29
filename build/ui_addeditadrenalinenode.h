@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addeditadrenalinenode.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -208,17 +208,17 @@ public:
 
     void retranslateUi(QDialog *AddEditAdrenalineNode)
     {
-        AddEditAdrenalineNode->setWindowTitle(QApplication::translate("AddEditAdrenalineNode", "Add/Edit Stipend Node", Q_NULLPTR));
-        label_9->setText(QApplication::translate("AddEditAdrenalineNode", "<html><head/><body><p>Enter an Alias (friendly name) for your Master Node and its address (either clearnet IP and port or Tor onion address and port). The address should be in the format 123.456.789.123:9999 or akjdsafxjkhasdf.onion:9999. You must send exactly 10 000SPDto the collateral address.</p></body></html>", Q_NULLPTR));
-        label_4->setText(QApplication::translate("AddEditAdrenalineNode", "Alias*", Q_NULLPTR));
-        label_6->setText(QApplication::translate("AddEditAdrenalineNode", "Address*", Q_NULLPTR));
-        label_5->setText(QApplication::translate("AddEditAdrenalineNode", "PrivKey*", Q_NULLPTR));
-        label_2->setText(QApplication::translate("AddEditAdrenalineNode", "TxHash*", Q_NULLPTR));
-        label_8->setText(QApplication::translate("AddEditAdrenalineNode", "Output Index*", Q_NULLPTR));
-        label_3->setText(QApplication::translate("AddEditAdrenalineNode", "Donation Address", Q_NULLPTR));
-        label_7->setText(QApplication::translate("AddEditAdrenalineNode", "Donation %", Q_NULLPTR));
-        okButton->setText(QApplication::translate("AddEditAdrenalineNode", "&OK", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("AddEditAdrenalineNode", "&Cancel", Q_NULLPTR));
+        AddEditAdrenalineNode->setWindowTitle(QApplication::translate("AddEditAdrenalineNode", "Add/Edit Stipend Node", 0));
+        label_9->setText(QApplication::translate("AddEditAdrenalineNode", "<html><head/><body><p>Enter an Alias (friendly name) for your Master Node and its address (either clearnet IP and port or Tor onion address and port). The address should be in the format 123.456.789.123:9999 or akjdsafxjkhasdf.onion:9999. You must send exactly 5000 SPD to the collateral address.</p></body></html>", 0));
+        label_4->setText(QApplication::translate("AddEditAdrenalineNode", "Alias*", 0));
+        label_6->setText(QApplication::translate("AddEditAdrenalineNode", "Address*", 0));
+        label_5->setText(QApplication::translate("AddEditAdrenalineNode", "PrivKey*", 0));
+        label_2->setText(QApplication::translate("AddEditAdrenalineNode", "TxHash*", 0));
+        label_8->setText(QApplication::translate("AddEditAdrenalineNode", "Output Index*", 0));
+        label_3->setText(QApplication::translate("AddEditAdrenalineNode", "Donation Address", 0));
+        label_7->setText(QApplication::translate("AddEditAdrenalineNode", "Donation %", 0));
+        okButton->setText(QApplication::translate("AddEditAdrenalineNode", "&OK", 0));
+        cancelButton->setText(QApplication::translate("AddEditAdrenalineNode", "&Cancel", 0));
     } // retranslateUi
 
 };

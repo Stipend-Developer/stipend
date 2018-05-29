@@ -94,6 +94,11 @@ void OptionsModel::Init()
     if (mapArgs.count("-paytxfee"))
         addOverriddenOption("-paytxfee");
     nReserveBalance = settings.value("nReserveBalance").toLongLong();
+    if (!settings.contains("nStakeThreshold"))
+        settings.setValue("nStakeThreshold", (qint64)MIN_STAKE_THRESHOLD);
+    nStakeThreshold = settings.value("nStakeThreshold").toLongLong(); // if -paytxfee is set, this will be overridden later in init.cpp
+    if (mapArgs.count("-stakethreshold"))
+        addOverriddenOption("-stakethreshold");
 #endif
 
 
@@ -197,6 +202,10 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("nTransactionFee");            
         case ReserveBalance:
             return QVariant((qint64) nReserveBalance);
+        case StakeThreshold:
+            if (nStakeThreshold != settings.value("nStackThreshold").toLongLong())
+                settings.setValue("nStackThreshold", (qint64)nStakeThreshold);
+            return settings.value("nStackThreshold");
 #endif
         case DisplayUnit:
             return nDisplayUnit;
@@ -291,6 +300,11 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             nReserveBalance = value.toLongLong();
             settings.setValue("nReserveBalance", (qint64) nReserveBalance);
             emit reserveBalanceChanged(nReserveBalance);
+            break;
+        case StakeThreshold:
+            nStakeThreshold = value.toLongLong();
+            settings.setValue("nStakeThreshold", (qint64) nStakeThreshold);
+            emit stakeThresholdChanged(nStakeThreshold);
             break;
 #endif
         case DisplayUnit:

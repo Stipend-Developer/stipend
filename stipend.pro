@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = stipend-qt
-VERSION = 1.4.2.1
+VERSION = 1.0.0.2
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += network printsupport
 DEFINES += ENABLE_WALLET
@@ -10,6 +10,7 @@ CONFIG += thread
 CONFIG += static
 #CONFIG += openssl-linked
 CONFIG += openssl
+CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
@@ -39,7 +40,7 @@ contains(RELEASE, 1) {
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7
     macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7
     macx:QMAKE_LFLAGS += -mmacosx-version-min=10.7
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7
 
 
     !windows:!macx {
@@ -270,7 +271,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/tinyformat.h \
     src/stealth.h \
     src/qt/flowlayout.h \
-    src/qt/darksendconfig.h \
     src/masternode.h \
     src/darksend.h \
     src/darksend-relay.h \
@@ -399,7 +399,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/support/cleanse.cpp \
     src/stealth.cpp \
     src/qt/flowlayout.cpp \
-    src/qt/darksendconfig.cpp \
     src/masternode.cpp \
     src/darksend.cpp \
     src/darksend-relay.cpp \
@@ -461,7 +460,6 @@ FORMS += \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
-    src/qt/forms/darksendconfig.ui \
     src/qt/forms/masternodemanager.ui \
     src/qt/forms/addeditadrenalinenode.ui \
     src/qt/forms/adrenalinenodeconfigdialog.ui \
@@ -624,8 +622,9 @@ windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
     LIBS += -lgmp
 } else {
     INCLUDEPATH += $$SECP256K1_INCLUDE_PATH
-    LIBS += $$join(SECP256K1_LIB_PATH,,-L,) -lsecp256k1
+    LIBS += -L/usr/local/lib -L/usr/lib -lsecp256k1
 }
+
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
 windows:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
 

@@ -332,13 +332,13 @@ BlockBrowser::BlockBrowser(QWidget *parent) :
     ui->setupUi(this);
 
     setFixedSize(400, 420);
-        
+
     connect(ui->blockButton, SIGNAL(pressed()), this, SLOT(blockClicked()));
     connect(ui->txButton, SIGNAL(pressed()), this, SLOT(txClicked()));
 }
 
 void BlockBrowser::updateExplorer(bool block)
-{    
+{
     if(block)
     {
         ui->heightLabel->show();
@@ -379,10 +379,10 @@ void BlockBrowser::updateExplorer(bool block)
         ui->merkleBox->setText(QMerkle);
         ui->bitsBox->setText(QBits);
         ui->nonceBox->setText(QNonce);
-        ui->timeBox->setText(QTime);     
+        ui->timeBox->setText(QTime);
         ui->hardBox->setText(QHardness);
-    } 
-    
+    }
+
     if(block == false) {
         ui->txID->show();
         ui->txLabel->show();
