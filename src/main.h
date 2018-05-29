@@ -74,7 +74,7 @@ static const int64_t DRIFT = 600;
 static const int64_t DRIFT_FORK = 90;
 
 inline int64_t FutureDrift(int64_t nTime, int nHeight) {
-    if (nHeight >= 210000) {
+    if (nHeight >= 205000) {
         return nTime + DRIFT_FORK;
     } else {
         return nTime + DRIFT;
@@ -1059,7 +1059,7 @@ public:
 
     int64_t GetPastTimeLimit() const
     {
-        if (nHeight >= 210000) {
+        if (nHeight >= 205000) {
             return GetBlockTime() - DRIFT_FORK;
         } else {
             return GetBlockTime() - DRIFT;

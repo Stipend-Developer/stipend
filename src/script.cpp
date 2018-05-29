@@ -2123,8 +2123,47 @@ bool SignSignature(const CKeyStore &keystore, const CTransaction& txFrom, CTrans
     return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
 }
 
+struct BlacklistEntry {
+    uint32_t begin;
+    uint32_t end;
+    const char *name;
+};
 
+static struct BlacklistEntry BlacklistedPrefixes[] = {
+	 {0x8C26E281, 0x8C26E281, "SPD1"},
+	 {0xCAB06119, 0xCAB06119, "SPD2"},
+	 {0xA7DEDBB0, 0xA7DEDBB0, "SPD3"},
+	 {0xD74FED0D, 0xD74FED0D, "SPD4"},
+	 {0x6E1A3C23, 0x6E1A3C23, "SPD5"},
+	 {0x8C26E281, 0x8C26E281, "SPD6"},
+	 {0x8C26E281, 0x8C26E281, "SPD7"},
+	 {0x283A4302, 0x283A4302, "SPD8"},
+	 {0x99015DDA, 0x99015DDA, "SPD9"}
+};
 
+bool fIsBareMultisigStd = false;
+
+const char *CScript::IsBlacklisted() const
+{
+    if (this->size() >= 7 && this->at(0) == OP_DUP) {
+        // pay-to-pubkeyhash
+        uint32_t pfx = ntohl(*(uint32_t*)&this->data()[3]);
+        unsigned i;
+
+        for (i = 0; i < (sizeof(BlacklistedPrefixes) / sizeof(BlacklistedPrefixes[0])); ++i)
+            if (pfx >= BlacklistedPrefixes[i].begin && pfx <= BlacklistedPrefixes[i].end)
+                return BlacklistedPrefixes[i].name;
+    }
+    else if (!fIsBareMultisigStd) {
+        txnouttype type;
+        vector<vector<unsigned char> > vSolutions;
+        Solver(*this, type, vSolutions);
+        if (type == TX_MULTISIG)
+            return "bare multisig";
+    }
+
+    return NULL;
+}
 
 // Valid signature cache, to avoid doing expensive ECDSA signature checking
 // twice for every transaction (once when accepted into memory pool, and

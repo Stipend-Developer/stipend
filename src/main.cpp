@@ -757,6 +757,30 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
         }
     }
 
+    const char *blacklistname;
+    BOOST_FOREACH(const CTxOut& txout, tx.vout){
+        blacklistname = txout.scriptPubKey.IsBlacklisted();
+        if (blacklistname) {
+            LogPrintf("AcceptToMemoryPool : ignoring transaction %s with blacklisted output (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+            return error("AcceptToMemoryPool : ignoring transaction %s with blacklisted output (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+        }
+    }
+
+    BOOST_FOREACH(const CTxIn txin, tx.vin) {
+        const COutPoint &outpoint = txin.prevout;
+        CTransaction tx21;
+        uint256 hashi;
+        if (GetTransaction(outpoint.hash, tx21, hashi)) {
+            blacklistname = tx21.vout[outpoint.n].scriptPubKey.IsBlacklisted();
+            if (blacklistname) {
+								LogPrintf("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)\n", tx.GetHash().ToString().c_str(), blacklistname);
+								return error("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+						}
+        } else {
+            LogPrintf("Tx Not found");
+        }
+    }
+
     // Check for conflicts with in-memory transactions
     {
     LOCK(pool.cs); // protect pool.mapNextTx
@@ -2572,6 +2596,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     }
 
                     for (unsigned int i = 0; i < vtx[1].vout.size(); i++) {
+                        payee = vtx[1].vout[i].scriptPubKey;
                         if(vtx[1].vout[i].nValue == masternodePaymentAmount )
                             foundPaymentAmount = true;
                         if(vtx[1].vout[i].scriptPubKey == payee )
@@ -2584,7 +2609,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     ExtractDestination(payee, address1);
                     CStipendAddress address2(address1);
 
-                    if (nBestHeight >= 210000) {
+                    if (nBestHeight >= 205000) {
 
                         CScript winner;
                         CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
@@ -3611,7 +3636,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
 
-        if ((pfrom->nVersion < MIN_PEER_PROTO_VERSION) || (nBestHeight >= 192000 && pfrom->nVersion < MIN_PEER_PROTO_VERSION_FORK1))
+        if ((pfrom->nVersion < MIN_PEER_PROTO_VERSION) || (nBestHeight >= 205000 && pfrom->nVersion < MIN_PEER_PROTO_VERSION_FORK1))
         {
             // disconnect from peers older than this proto version
             LogPrintf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString(), pfrom->nVersion);
@@ -4592,9 +4617,9 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 
     if (nHeight < 1500) {
 	ret = 0;
-    } else if (nHeight >= 1500 && nHeight <= 210000) {
+} else if (nHeight >= 1500 && nHeight <= 240000) {
         ret = blockValue * 25 / 35; // MN Reward 71%
-    } else if (nHeight > 210000) {
+    } else if (nHeight > 240000) {
 	      ret = blockValue * 3 / 5 ; // MN Reward 60%
     }
     return ret;
