@@ -71,7 +71,7 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
 static const int64_t DRIFT = 600;
-static const int64_t DRIFT_FORK = 90;
+static const int64_t DRIFT_FORK = 120;
 
 inline int64_t FutureDrift(int64_t nTime, int nHeight) {
     if (nHeight >= 205000) {
