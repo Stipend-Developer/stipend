@@ -105,7 +105,7 @@ static bool SelectBlockFromCandidates(vector<pair<int64_t, uint256> >& vSortedBy
 // selected block of a given block group in the past.
 // The selection of a block is based on a hash of the block's proof-hash and
 // the previous stake modifier.
-// Stake modifier is recomputed at a fixed time interval instead of every 
+// Stake modifier is recomputed at a fixed time interval instead of every
 // block. This is to make it difficult for an attacker to gain control of
 // additional bits in the stake modifier, even after generating a chain of
 // blocks.
@@ -129,12 +129,7 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
 
     // Sort candidate blocks by timestamp
     vector<pair<int64_t, uint256> > vSortedByTimestamp;
-
-    if(!NO_FORK && pindexBest->nHeight >= HARD_FORK_BLOCK){
-        vSortedByTimestamp.reserve(64 * nModifierInterval / TARGET_SPACING_FORK);
-    } else {
-        vSortedByTimestamp.reserve(64 * nModifierInterval / TARGET_SPACING);
-    }
+    vSortedByTimestamp.reserve(64 * nModifierInterval / TARGET_SPACING);
 
     int64_t nSelectionInterval = GetStakeModifierSelectionInterval();
     int64_t nSelectionIntervalStart = (pindexPrev->GetBlockTime() / nModifierInterval) * nModifierInterval - nSelectionInterval;
@@ -215,12 +210,10 @@ bool CheckStakeKernelHash(CBlockIndex* pindexPrev, unsigned int nBits, unsigned 
     if (nTimeTx < txPrev.nTime)  // Transaction timestamp violation
         return error("CheckStakeKernelHash() : nTime violation");
 
-    if(NO_FORK || pindexBest->nHeight < HARD_FORK_BLOCK){
-        if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
-            return error("CheckStakeKernelHash() : min age violation");
-        if (nTimeBlockFrom + nStakeMaxAge < nTimeTx) // Max age requirement
-            return error("CheckStakeKernelHash() : max age violation");
-    }
+    if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
+        return error("CheckStakeKernelHash() : min age violation");
+    if (nTimeBlockFrom + nStakeMaxAge < nTimeTx) // Max age requirement
+        return error("CheckStakeKernelHash() : max age violation");
 
     // Base target
     CBigNum bnTarget;
@@ -241,14 +234,8 @@ bool CheckStakeKernelHash(CBlockIndex* pindexPrev, unsigned int nBits, unsigned 
     // Calculate hash
     CDataStream ss(SER_GETHASH, 0);
 
-    if(!NO_FORK && pindexBest->nHeight >= HARD_FORK_BLOCK){
-        ss << bnStakeModifierV2;
-        ss << txPrev.nTime << prevout.hash << prevout.n << nTimeTx;
-        hashProofOfStake = Hash(ss.begin(), ss.end());
-    } else{
-        ss << nStakeModifier << nTimeBlockFrom << txPrev.nTime << prevout.hash << prevout.n << nTimeTx;
-        hashProofOfStake = Hash(ss.begin(), ss.end());
-    }
+    ss << nStakeModifier << nTimeBlockFrom << txPrev.nTime << prevout.hash << prevout.n << nTimeTx;
+    hashProofOfStake = Hash(ss.begin(), ss.end());
 
     if (fPrintProofOfStake)
     {

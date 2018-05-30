@@ -27,8 +27,6 @@ static const int64_t DARKSEND_POOL_MAX = (9999.99*COIN);
 static const int64_t STATIC_POS_REWARD = 10 * CENT; //Constant POS reward of 10%
 static const int64_t TARGET_SPACING_FORK = 90;
 static const int64_t TARGET_SPACING = 90;
-static const bool NO_FORK = true;
-static const signed int HARD_FORK_BLOCK = 90000000;
 
 #define INSTANTX_SIGNATURES_REQUIRED           10
 #define INSTANTX_SIGNATURES_TOTAL              15
@@ -69,6 +67,8 @@ static const int64_t MAX_MONEY = 4000000000u * COIN; // 1M PoW coins
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
+
+inline bool IsProtocolV3(int nHeight) { return TestNet() || nHeight > 205000; }
 
 static const int64_t DRIFT = 600;
 static const int64_t DRIFT_FORK = 120;
@@ -190,6 +190,7 @@ bool AbortNode(const std::string &msg, const std::string &userMessage="");
 bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue);
+int64_t GetMasternodePaymentSmall(int nHeight, CAmount nFees);
 
 struct CNodeStateStats {
     int nMisbehavior;
