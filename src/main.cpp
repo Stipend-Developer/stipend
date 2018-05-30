@@ -2056,7 +2056,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         CTxIn vin;
 
         if (!masternodePayments.GetBlockPayee(pindex->nHeight, payee, vin) || payee == CScript()){
-            foundPayee = true; // doesn't require a specific payee
+            foundPayee = true; // doesn't require a specific payee (Fixed : Explorer1337)
             foundPaymentAmount = true;
             foundPaymentAndPayee = true;
         }
