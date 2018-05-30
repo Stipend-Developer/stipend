@@ -120,6 +120,7 @@ void OptionsDialog::setMapper()
     /* Main */
     mapper->addMapping(ui->transactionFee, OptionsModel::Fee);
     mapper->addMapping(ui->reserveBalance, OptionsModel::ReserveBalance);
+    mapper->addMapping(ui->stakeThreshold, OptionsModel::StakeThreshold);
     mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
 
     /* Network */
