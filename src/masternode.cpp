@@ -183,7 +183,6 @@ uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
     unsigned int iAddrHash;
     memcpy(&iAddrHash, &hash4, 4);
     iAddrHash = iAddrHash << 11;
-    LogPrintf("CalculateScore():MN addr:%s, AddrHash:%X\n", strAddr.c_str(), iAddrHash);
     CBlockIndex* pIndexWork = pindexBest;
     for (iLastPaid = 1; iLastPaid < 4095; iLastPaid++) {
         if (pIndexWork) {
@@ -196,7 +195,6 @@ uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
     rInt32 = (rInt32 >> 12);
     rInt32 = (rInt32 | (iLastPaid<<20));
     r = rInt32;
-    LogPrintf("\t iLastPaid:%d, rInt32:%X\n", iLastPaid, rInt32);
 
     return r;
 }
