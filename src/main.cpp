@@ -4719,6 +4719,6 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 
 int64_t GetMasternodePaymentSmall(int nHeight, int64_t blockValue)
 {
-    int64_t ret = GetMasternodePayment(nHeight, blockValue) / 10;
+    int64_t ret = GetMasternodePayment(nHeight, blockValue) / 100;
     return ret;
 }
