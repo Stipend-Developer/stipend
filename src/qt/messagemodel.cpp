@@ -48,7 +48,9 @@ public:
     {
         cachedMessageTable.clear();
         
-        if (parent->getWalletModel()->getEncryptionStatus() == WalletModel::Locked)
+        if (parent->getWalletModel()->getEncryptionStatus() == WalletModel::Locked
+			// UnlockedForStakingOnly was added as before it was substate of Locked state.
+			|| parent->getWalletModel()->getEncryptionStatus() == WalletModel::UnlockedForStakingOnly)
         {
             // -- messages are stored encrypted, can't load them without the private keys
             return;
@@ -227,7 +229,9 @@ public:
     
     void setEncryptionStatus(int status)
     {
-        if (status == WalletModel::Locked)
+        if (status == WalletModel::Locked
+			// UnlockedForStakingOnly was added as before it was substate of Locked state.
+			|| status == WalletModel::UnlockedForStakingOnly)
         {
             // -- Wallet is locked, clear secure message display.
             cachedMessageTable.clear();

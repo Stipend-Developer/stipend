@@ -123,8 +123,20 @@ void WalletModel::updateStatus()
 {
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
+	// We resets StackingOnly flag if the wallet is locked. We do this here
+	// just for any case to make sure we do not have a case with invalid state.
+	// fWalletUnlockStakingOnly should be false all the time while 
+	// EncryptionStatus is Locked.
+	if (newEncryptionStatus == Locked)
+	{
+		fWalletUnlockStakingOnly = false;
+	}
+
     if(cachedEncryptionStatus != newEncryptionStatus)
+	{
+		cachedEncryptionStatus = newEncryptionStatus;
         emit encryptionStatusChanged(newEncryptionStatus);
+	}
 }
 
 void WalletModel::pollBalanceChanged()
@@ -575,7 +587,7 @@ WalletModel::EncryptionStatus WalletModel::getEncryptionStatus() const
     }
     else if(fWalletUnlockStakingOnly)
     {
-    return Locked;
+    	return UnlockedForStakingOnly;
     }
     else if (wallet->fWalletUnlockAnonymizeOnly)
     {
@@ -601,18 +613,47 @@ bool WalletModel::setWalletEncrypted(bool encrypted, const SecureString &passphr
     }
 }
 
-bool WalletModel::setWalletLocked(bool locked, const SecureString &passPhrase, bool anonymizeOnly)
+bool WalletModel::lockWallet(bool stakingOnly)
 {
-    if(locked)
-    {
-        // Lock
-        return wallet->Lock();
-    }
-    else
-    {
-        // Unlock
-        return wallet->Unlock(passPhrase, anonymizeOnly);
-    }
+	// Lock
+    bool result = true;
+	
+	if (!stakingOnly) 
+	{
+		result = wallet->Lock();
+	}
+
+	//Resets Unlock Stacking Only flag.
+	if (result)
+	{	
+		fWalletUnlockStakingOnly = stakingOnly;
+
+		// Updates status to reflect UI chnages as we changed fWalletUnlockStakingOnly flag,
+		// wallet->Lock(); also send this signal but we do this to ensure update with the
+		// latest values. This may lead to duplicated refresh on UI but this is minor issue.
+		updateStatus();
+	}
+
+    return result;
+}
+
+bool WalletModel::unlockWallet(const SecureString &passPhrase, bool stakingOnly)
+{
+    // Unlock
+    bool result = wallet->Unlock(passPhrase, false);
+
+	//Sets Unlock Stacking Only flag if required.
+	if (result)
+	{
+		fWalletUnlockStakingOnly = stakingOnly;
+
+		// Updates status to reflect UI chnages as we changed fWalletUnlockStakingOnly flag,
+		// wallet->Lock(); also send this signal but we do this to ensure update with the
+		// latest values. This may lead to duplicated refresh on UI but this is minor issue.
+		updateStatus();
+	}
+
+    return result;
 }
 
 bool WalletModel::isAnonymizeOnlyUnlocked()
@@ -626,6 +667,7 @@ bool WalletModel::changePassphrase(const SecureString &oldPass, const SecureStri
     {
         LOCK(wallet->cs_wallet);
         wallet->Lock(); // Make sure wallet is locked before attempting pass change
+		fWalletUnlockStakingOnly = false; // Resets also StakingOnly flag.
         retval = wallet->ChangeWalletPassphrase(oldPass, newPass);
     }
     return retval;
@@ -746,29 +788,36 @@ void WalletModel::unsubscribeFromCoreSignals()
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock()
 {
-    bool was_locked = getEncryptionStatus() == Locked;
+    EncryptionStatus wasEncryptionStatus = getEncryptionStatus();
 
-    if ((!was_locked) && fWalletUnlockStakingOnly && isAnonymizeOnlyUnlocked())
-    {
-       setWalletLocked(true);
-       was_locked = getEncryptionStatus() == Locked;
+	bool requestingUnlockRequired = wasEncryptionStatus == Locked
+		|| wasEncryptionStatus == UnlockedForStakingOnly
+		|| wasEncryptionStatus == UnlockedForAnonymizationOnly;
 
-    }
-    if(was_locked)
-    {
+	// if the wallet is already unlocked, we do not show UI and just 
+	// continue.
+	if (requestingUnlockRequired)
+	{
         // Request UI to unlock wallet
         emit requireUnlock();
-    }
-    // If wallet is still locked, unlock was failed or cancelled, mark context as invalid
-    bool valid = getEncryptionStatus() != Locked;
+	}
 
-    return UnlockContext(this, valid, was_locked && !fWalletUnlockStakingOnly);
+    // If wallet was not unlocked, unlock was failed or cancelled, mark context as invalid
+    bool valid = getEncryptionStatus() == Unlocked;
+
+    return UnlockContext(this, valid, 
+		// We want to restore initial state if we requested unlock from user.
+		requestingUnlockRequired,
+		// We want to restore UnlockedForStakingOnly if it was initially configured.
+		wasEncryptionStatus == UnlockedForStakingOnly);
 }
 
-WalletModel::UnlockContext::UnlockContext(WalletModel *wallet, bool valid, bool relock):
+WalletModel::UnlockContext::UnlockContext(WalletModel *wallet, bool valid, 
+	bool relock, bool forStakingOnly):
         wallet(wallet),
-        valid(valid),
-        relock(relock)
+		valid(valid),
+        relock(relock),
+        forStakingOnly(forStakingOnly)
 {
 }
 
@@ -776,7 +825,7 @@ WalletModel::UnlockContext::~UnlockContext()
 {
     if(valid && relock)
     {
-        wallet->setWalletLocked(true);
+       	wallet->lockWallet(forStakingOnly);
     }
 }
 
@@ -785,6 +834,7 @@ void WalletModel::UnlockContext::CopyFrom(const UnlockContext& rhs)
     // Stipend context; old object no longer relocks wallet
     *this = rhs;
     rhs.relock = false;
+    rhs.forStakingOnly = false;
 }
 
 bool WalletModel::getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const

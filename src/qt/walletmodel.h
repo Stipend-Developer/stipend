@@ -117,9 +117,10 @@ public:
     enum EncryptionStatus
     {
         Unencrypted,  // !wallet->IsCrypted()
-        Locked,       // wallet->IsCrypted() && wallet->IsLocked()
+        Locked,       // (wallet->IsCrypted() && wallet->IsLocked())
         Unlocked,      // wallet->IsCrypted() && !wallet->IsLocked()
-        UnlockedForAnonymizationOnly    // wallet->IsCrypted() && !wallet->IsLocked() && wallet->fWalletUnlockAnonymizeOnly
+        UnlockedForAnonymizationOnly,    // wallet->IsCrypted() && !wallet->IsLocked() && wallet->fWalletUnlockAnonymizeOnly
+        UnlockedForStakingOnly,         // (wallet->IsCrypted() && !wallet->IsLocked()) && fWalletUnlockStakingOnly)
     };
 
     OptionsModel *getOptionsModel();
@@ -157,8 +158,9 @@ public:
 
     // Wallet encryption
     bool setWalletEncrypted(bool encrypted, const SecureString &passphrase);
-    // Passphrase only needed when unlocking
-    bool setWalletLocked(bool locked, const SecureString &passPhrase=SecureString(), bool anonymizeOnly=false);
+	bool lockWallet(bool stakingOnly = false);
+	bool unlockWallet(const SecureString &passPhrase, bool stakingOnly = false);
+
     bool changePassphrase(const SecureString &oldPass, const SecureString &newPass);
     // Is wallet unlocked for anonymization only?
     bool isAnonymizeOnlyUnlocked();
@@ -169,7 +171,7 @@ public:
     class UnlockContext
     {
     public:
-        UnlockContext(WalletModel *wallet, bool valid, bool relock);
+        UnlockContext(WalletModel *wallet, bool valid, bool relock, bool forStakingOnly);
         ~UnlockContext();
 
         bool isValid() const { return valid; }
@@ -180,7 +182,10 @@ public:
     private:
         WalletModel *wallet;
         bool valid;
-        mutable bool relock; // mutable, as it can be set to false by copying
+
+		// Muutable as they are updated in CopyFrom for const parameter. 
+        mutable bool relock; 
+		mutable bool forStakingOnly;
 
         void CopyFrom(const UnlockContext& rhs);
     };
