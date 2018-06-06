@@ -132,6 +132,7 @@ public:
 
     bool fFileBacked;
     bool fWalletUnlockAnonymizeOnly;
+    bool fFirstRun;
     std::string strWalletFile;
 
     std::set<int64_t> setKeyPool;
@@ -822,14 +823,11 @@ public:
     {
         if (pwallet == 0)
             return 0;
-
         // Must wait until coinbase is safely deep enough in the chain before valuing it
         if ((IsCoinBase() || IsCoinStake()) && GetBlocksToMaturity() > 0)
             return 0;
-
         if (fUseCache && fAvailableCreditCached)
             return nAvailableCreditCached;
-
         CAmount nCredit = 0;
         for (unsigned int i = 0; i < vout.size(); i++)
         {
@@ -841,7 +839,6 @@ public:
                     throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of range");
             }
         }
-
         nAvailableCreditCached = nCredit;
         fAvailableCreditCached = true;
         return nCredit;
