@@ -542,6 +542,33 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         rpcConsole->setClientModel(clientModel);
         addressBookPage->setOptionsModel(clientModel->getOptionsModel());
         receiveCoinsPage->setOptionsModel(clientModel->getOptionsModel());
+
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(checkPingTimes()));
+        timer->start(10000);
+    }
+}
+
+void BitcoinGUI::checkPingTimes() {
+    int found = 0, addrPos = 0, commaPos = 0;
+    this->rpcConsole->cmdRequest("getpeerinfo");
+    while (1) {
+        found = this->rpcConsole->peerinfo.find("pingtime", found);
+        if (found == std::string::npos)
+            break;
+        addrPos = this->rpcConsole->peerinfo.find("addr", addrPos);
+        commaPos = this->rpcConsole->peerinfo.find(",", addrPos);
+
+        found += 12;
+        string pingtimestr = this->rpcConsole->peerinfo.substr(found, found + 10);
+        string::size_type sz;
+        double pingtime = stod(pingtimestr, &sz);
+
+        addrPos += 9;
+        string strNode = this->rpcConsole->peerinfo.substr(addrPos, commaPos - 1);
+        if(pingtime > 5) { //current threshold : 5s
+            this->rpcConsole->banPeerByPingTime(strNode);
+        }
     }
 }
 
