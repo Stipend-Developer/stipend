@@ -175,6 +175,9 @@ public slots:
 
     void gotoMultisigPage();
 
+    /** Check peers's pingtimes and ban automatically if it exceeds threshold */
+    void checkPingTimes();
+
 private slots:
     /** Switch to overview (home) page */
     void gotoOverviewPage();

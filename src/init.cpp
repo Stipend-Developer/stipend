@@ -884,6 +884,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         bool fFirstRun = true;
         pwalletMain = new CWallet(strWalletFileName);
         DBErrors nLoadWalletRet = pwalletMain->LoadWallet(fFirstRun);
+        pwalletMain->fFirstRun = fFirstRun;
         if (nLoadWalletRet != DB_LOAD_OK)
         {
             if (nLoadWalletRet == DB_CORRUPT)

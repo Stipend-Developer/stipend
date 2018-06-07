@@ -1,12 +1,17 @@
 #include "addressbookpage.h"
 #include "ui_addressbookpage.h"
 
+#include "walletmodel.h"
 #include "addresstablemodel.h"
 #include "optionsmodel.h"
 #include "bitcoingui.h"
 #include "editaddressdialog.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+#include "init.h"
+#include "uint256.h"
+#include "base58.h"
+
 
 #ifdef USE_QRCODE
 #include "qrcodedialog.h"
@@ -16,11 +21,14 @@
 #include <QClipboard>
 #include <QMessageBox>
 #include <QMenu>
+#include <sstream>
+#include <iostream>
 
 AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
+    walletModel(0),
     optionsModel(0),
     mode(mode),
     tab(tab)
@@ -56,7 +64,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
         ui->signMessage->setVisible(false);
         break;
     case ReceivingTab:
-        ui->deleteButton->setVisible(false);
+        ui->deleteButton->setVisible(true);
         ui->signMessage->setVisible(true);
         break;
     }
@@ -75,8 +83,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     contextMenu->addAction(copyAddressAction);
     contextMenu->addAction(copyLabelAction);
     contextMenu->addAction(editAction);
-    if(tab == SendingTab)
-        contextMenu->addAction(deleteAction);
+    contextMenu->addAction(deleteAction);
     contextMenu->addSeparator();
     contextMenu->addAction(showQRCodeAction);
     if(tab == ReceivingTab)
@@ -145,6 +152,10 @@ void AddressBookPage::setModel(AddressTableModel *model)
             this, SLOT(selectNewAddress(QModelIndex,int,int)));
 
     selectionChanged();
+}
+
+void AddressBookPage::setWalletModel(WalletModel *walletModel) {
+    this->walletModel = walletModel;
 }
 
 void AddressBookPage::setOptionsModel(OptionsModel *optionsModel)
@@ -233,7 +244,59 @@ void AddressBookPage::on_deleteButton_clicked()
     QModelIndexList indexes = table->selectionModel()->selectedRows();
     if(!indexes.isEmpty())
     {
-        table->model()->removeRow(indexes.at(0).row());
+        if(tab == ReceivingTab) {
+            double amount = 0;
+            string addressStr = table->selectionModel()->model()->data(table->selectionModel()->model()->index(indexes.at(0).row(), 1)).toString().toStdString();
+            CStipendAddress address(addressStr);
+            CScript scriptPubKey;
+            scriptPubKey.SetDestination(address.Get());
+            if (!IsMine(*pwalletMain,scriptPubKey))
+                amount = 0;
+
+            // Tally
+            CAmount nAmount = 0;
+            std::vector<uint256> hasharray;
+            for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
+            {
+                const CWalletTx& wtx = (*it).second;
+                if (wtx.IsCoinBase() || wtx.IsCoinStake() || !IsFinalTx(wtx))
+                    continue;
+
+                BOOST_FOREACH(const CTxOut& txout, wtx.vout) {
+                    if (txout.scriptPubKey == scriptPubKey) {
+                        nAmount += txout.nValue;
+                        hasharray.push_back(wtx.GetHash());
+                    }
+                }
+            }
+            amount = (double) nAmount / (double) COIN;
+
+            std::ostringstream strs;
+            strs << amount;
+
+            QMessageBox::StandardButton reply;
+            string alertStr;
+
+            if(amount == 0)
+                alertStr = "This address is empty, deleting will dump privkey from the wallet. Do you want to delete right now?";
+            else
+                alertStr = "There are " + strs.str() + " SPD in this address, you may want to move them before deleting this address, or coins will be lost. Do you want to delete right now?";
+            reply = QMessageBox::question(this, "Notification", QString::fromStdString(alertStr), QMessageBox::No | QMessageBox::Yes);
+
+            if (reply == QMessageBox::Yes) {
+                for (int i = 0; i < hasharray.size(); i++) {
+                    pwalletMain->EraseFromWallet(hasharray[i]);
+                }
+                pwalletMain->DelAddressBookName(address.Get());
+                if (this->walletModel != NULL)
+                    this->walletModel->checkBalanceChanged();
+
+                //QMessageBox::question(this, "Notification", QString::fromStdString("You need to restart the wallet!"), QMessageBox::Ok);
+                //QApplication::exit();
+            }
+        }
+        else
+            table->model()->removeRow(indexes.at(0).row());
     }
 }
 
@@ -260,9 +323,9 @@ void AddressBookPage::selectionChanged()
             break;
         case ReceivingTab:
             // Deleting receiving addresses, however, is not allowed
-            ui->deleteButton->setEnabled(false);
-            ui->deleteButton->setVisible(false);
-            deleteAction->setEnabled(false);
+            ui->deleteButton->setEnabled(true);
+            ui->deleteButton->setVisible(true);
+            deleteAction->setEnabled(true);
             ui->signMessage->setEnabled(true);
             ui->signMessage->setVisible(true);
             ui->verifyMessage->setEnabled(false);
@@ -274,7 +337,7 @@ void AddressBookPage::selectionChanged()
     }
     else
     {
-        ui->deleteButton->setEnabled(false);
+        ui->deleteButton->setEnabled(true);
         ui->showQRCode->setEnabled(false);
         ui->copyToClipboard->setEnabled(false);
         ui->signMessage->setEnabled(false);
