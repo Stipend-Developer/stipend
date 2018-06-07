@@ -574,6 +574,20 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 
         // Ask for passphrase if needed
         connect(walletModel, SIGNAL(requireUnlock()), this, SLOT(unlockWallet()));
+        if (pwalletMain->fFirstRun) {
+            QMessageBox m( QMessageBox::Information, "Notification", "Welcome to Stipend!", QMessageBox::Ok, 0);
+            QSize mSize = m.sizeHint(); // here's what you want, not m.width()/height()
+            QRect screenRect =  frameGeometry();
+            m.move( QPoint( screenRect.width()/2 - mSize.width()/2,
+                            screenRect.height()/2 - mSize.height()/2 ) );
+            m.exec();
+        }
+        else {
+            QMessageBox m( QMessageBox::Question, "Notification", "Please save your wallet.dat on a regular basis to keep your fund secured. Would you like to save the wallet.dat file?", QMessageBox::Yes | QMessageBox::No, 0);
+            if (m.exec() == QMessageBox::Yes) {
+                backupWallet();
+            }
+        }
     }
 }
 
