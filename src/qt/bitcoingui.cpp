@@ -557,8 +557,9 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         // Put transaction list in tabs
         transactionView->setModel(walletModel);
         overviewPage->setWalletModel(walletModel);
-        addressBookPage->setModel(walletModel->getAddressTableModel());
+        addressBookPage->setModel(walletModel->getAddressTableModel());        
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
+        receiveCoinsPage->setWalletModel(walletModel);
         sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
         blockBrowser->setModel(walletModel);

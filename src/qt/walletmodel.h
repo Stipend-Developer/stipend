@@ -198,6 +198,7 @@ public:
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
     bool processingQueuedTransactions() { return fProcessingQueuedTransactions; }
     CWallet* getWallet();
+    void checkBalanceChanged();
 
 private:
     CWallet *wallet;
@@ -232,7 +233,6 @@ private:
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
-    void checkBalanceChanged();
 
 signals:
     // Signal that balance in wallet changed

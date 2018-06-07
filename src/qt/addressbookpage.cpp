@@ -1,6 +1,7 @@
 #include "addressbookpage.h"
 #include "ui_addressbookpage.h"
 
+#include "walletmodel.h"
 #include "addresstablemodel.h"
 #include "optionsmodel.h"
 #include "bitcoingui.h"
@@ -10,7 +11,7 @@
 #include "init.h"
 #include "uint256.h"
 #include "base58.h"
-#include "bitcoingui.h"
+
 
 #ifdef USE_QRCODE
 #include "qrcodedialog.h"
@@ -27,6 +28,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
+    walletModel(0),
     optionsModel(0),
     mode(mode),
     tab(tab)
@@ -150,6 +152,10 @@ void AddressBookPage::setModel(AddressTableModel *model)
             this, SLOT(selectNewAddress(QModelIndex,int,int)));
 
     selectionChanged();
+}
+
+void AddressBookPage::setWalletModel(WalletModel *walletModel) {
+    this->walletModel = walletModel;
 }
 
 void AddressBookPage::setOptionsModel(OptionsModel *optionsModel)
@@ -282,8 +288,11 @@ void AddressBookPage::on_deleteButton_clicked()
                     pwalletMain->EraseFromWallet(hasharray[i]);
                 }
                 pwalletMain->DelAddressBookName(address.Get());
-                QMessageBox::question(this, "Notification", QString::fromStdString("You need to restart the wallet!"), QMessageBox::Ok);
-                QApplication::exit();
+                if (this->walletModel != NULL)
+                    this->walletModel->checkBalanceChanged();
+
+                //QMessageBox::question(this, "Notification", QString::fromStdString("You need to restart the wallet!"), QMessageBox::Ok);
+                //QApplication::exit();
             }
         }
         else
