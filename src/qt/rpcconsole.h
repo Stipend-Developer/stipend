@@ -37,6 +37,10 @@ public:
         CMD_ERROR
     };
 
+    string peerinfo;
+
+    void banPeerByPingTime(string strNode);
+
 protected:
     virtual bool eventFilter(QObject* obj, QEvent *event);
     void keyPressEvent(QKeyEvent *);

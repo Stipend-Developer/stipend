@@ -155,10 +155,10 @@ void RPCExecutor::request(const QString &command)
     if(!parseCommandLine(args, command.toStdString()))
     {
         emit reply(RPCConsole::CMD_ERROR, QString("Parse error: unbalanced ' or \""));
-        return;
+        return 0;
     }
     if(args.empty())
-        return; // Nothing to do
+        return 0; // Nothing to do
     try
     {
         std::string strPrint;
@@ -195,6 +195,7 @@ void RPCExecutor::request(const QString &command)
     {
         emit reply(RPCConsole::CMD_ERROR, QString("Error: ") + QString::fromStdString(e.what()));
     }
+    return 0;
 }
 
 RPCConsole::RPCConsole(QWidget *parent) :
@@ -443,6 +444,7 @@ void RPCConsole::message(int category, const QString &message, bool html)
         out += GUIUtil::HtmlEscape(message, true);
     out += "</td></tr></table>";
     ui->messagesWidget->append(out);
+    this->peerinfo = message.toStdString();
 }
 
 void RPCConsole::setNumConnections(int count)
@@ -668,6 +670,22 @@ void RPCConsole::peerLayoutChanged()
     if (stats)
         updateNodeDetail(stats);
 
+}
+
+void RPCConsole::banPeerByPingTime(string strNode) {
+    if (CNode *bannedNode = FindNode(strNode)) {
+        std::string nStr = strNode;
+        std::string addr;
+        int port = 0;
+        SplitHostPort(nStr, port, addr);
+
+        CNode::Ban(CNetAddr(addr), BanReasonManuallyAdded, 60*60);
+        bannedNode->fDisconnect = true;
+        DumpBanlist();
+
+        clearSelectedNode();
+        clientModel->getBanTableModel()->refresh();
+    }
 }
 
 void RPCConsole::updateNodeDetail(const CNodeCombinedStats *stats)
