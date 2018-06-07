@@ -6,6 +6,7 @@
 namespace Ui {
     class AddressBookPage;
 }
+class WalletModel;
 class AddressTableModel;
 class OptionsModel;
 
@@ -38,6 +39,7 @@ public:
     ~AddressBookPage();
 
     void setModel(AddressTableModel *model);
+    void setWalletModel(WalletModel *walletModel);
     void setOptionsModel(OptionsModel *optionsModel);
     const QString &getReturnValue() const { return returnValue; }
 
@@ -48,6 +50,7 @@ public slots:
 private:
     Ui::AddressBookPage *ui;
     AddressTableModel *model;
+    WalletModel *walletModel;
     OptionsModel *optionsModel;
     Mode mode;
     Tabs tab;

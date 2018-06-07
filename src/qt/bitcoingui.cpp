@@ -542,6 +542,33 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         rpcConsole->setClientModel(clientModel);
         addressBookPage->setOptionsModel(clientModel->getOptionsModel());
         receiveCoinsPage->setOptionsModel(clientModel->getOptionsModel());
+
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(checkPingTimes()));
+        timer->start(10000);
+    }
+}
+
+void BitcoinGUI::checkPingTimes() {
+    int found = 0, addrPos = 0, commaPos = 0;
+    this->rpcConsole->cmdRequest("getpeerinfo");
+    while (1) {
+        found = this->rpcConsole->peerinfo.find("pingtime", found);
+        if (found == std::string::npos)
+            break;
+        addrPos = this->rpcConsole->peerinfo.find("addr", addrPos);
+        commaPos = this->rpcConsole->peerinfo.find(",", addrPos);
+
+        found += 12;
+        string pingtimestr = this->rpcConsole->peerinfo.substr(found, found + 10);
+        string::size_type sz;
+        double pingtime = stod(pingtimestr, &sz);
+
+        addrPos += 9;
+        string strNode = this->rpcConsole->peerinfo.substr(addrPos, commaPos - 1);
+        if(pingtime > 5) { //current threshold : 5s
+            this->rpcConsole->banPeerByPingTime(strNode);
+        }
     }
 }
 
@@ -557,8 +584,9 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         // Put transaction list in tabs
         transactionView->setModel(walletModel);
         overviewPage->setWalletModel(walletModel);
-        addressBookPage->setModel(walletModel->getAddressTableModel());
+        addressBookPage->setModel(walletModel->getAddressTableModel());        
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
+        receiveCoinsPage->setWalletModel(walletModel);
         sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
         blockBrowser->setModel(walletModel);
@@ -574,6 +602,20 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 
         // Ask for passphrase if needed
         connect(walletModel, SIGNAL(requireUnlock()), this, SLOT(unlockWallet()));
+        if (pwalletMain->fFirstRun) {
+            QMessageBox m( QMessageBox::Information, "Notification", "Welcome to Stipend!", QMessageBox::Ok, 0);
+            QSize mSize = m.sizeHint(); // here's what you want, not m.width()/height()
+            QRect screenRect =  frameGeometry();
+            m.move( QPoint( screenRect.width()/2 - mSize.width()/2,
+                            screenRect.height()/2 - mSize.height()/2 ) );
+            m.exec();
+        }
+        else {
+            QMessageBox m( QMessageBox::Question, "Notification", "Please save your wallet.dat on a regular basis to keep your fund secured. Would you like to save the wallet.dat file?", QMessageBox::Yes | QMessageBox::No, 0);
+            if (m.exec() == QMessageBox::Yes) {
+                backupWallet();
+            }
+        }
     }
 }
 
