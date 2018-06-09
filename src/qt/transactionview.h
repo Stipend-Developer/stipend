@@ -79,6 +79,8 @@ private:
 
     bool eventFilter(QObject *obj, QEvent *event);
 
+	void setDateRange();
+
 private slots:
     void contextualMenu(const QPoint &);
     void dateRangeChanged();
@@ -98,7 +100,7 @@ signals:
     void message(const QString &title, const QString &message, unsigned int style);
 
     /** Send computed sum back to wallet-view */
-    void trxAmount(QString amount);
+    void trxTotalAmountUpdated(QString message);
 
 public slots:
     void chooseDate(int idx);
@@ -108,7 +110,11 @@ public slots:
     void changedAmount(const QString &amount);
     void exportClicked();
     void focusTransaction(const QModelIndex&);
-    void computeSum();
+    void updateTotalAmount(bool ensureTotalAmountHidden = false);
+
+protected:
+    virtual void showEvent(QShowEvent *);
+    virtual void hideEvent(QHideEvent *);
 };
 
 #endif // TRANSACTIONVIEW_H

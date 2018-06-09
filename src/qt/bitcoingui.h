@@ -91,6 +91,7 @@ private:
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
     QProgressDialog *progressDialog;
+    QLabel *totalAmountLabel;
 
     QMenuBar *appMenuBar;
     QAction *overviewAction;
@@ -174,6 +175,8 @@ public slots:
     void handleURI(QString strURI);
 
     void gotoMultisigPage();
+
+    void showTotalAmount(QString message);
 
 private slots:
     /** Switch to overview (home) page */
