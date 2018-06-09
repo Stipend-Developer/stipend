@@ -67,12 +67,22 @@ bool fReindex = false;
 bool fAddrIndex = false;
 bool fHaveGUI = false;
 
+// Max number of Receive messages that can be processed in 1 cycle in 
+// ProcessMessages() function.
+const int MAX_RECEIVE_MESSAGES_PROCESSED_IN_CYCLE = 500;
+
+// The period in seconds which limits how often "getblocks" message can be sent for
+// orphan block. It cannot be sent often than specified.
+const int64_t MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN = 20;
 
 struct COrphanBlock {
     uint256 hashBlock;
     uint256 hashPrev;
     std::pair<COutPoint, unsigned int> stake;
     vector<unsigned char> vchBlock;
+
+	// The time in seconds when "getblocks" message was sent the last time for the orphan block. 
+	int64_t nLastTimeGetBlocksSent;
 };
 map<uint256, COrphanBlock*> mapOrphanBlocks;
 multimap<uint256, COrphanBlock*> mapOrphanBlocksByPrev;
@@ -1337,6 +1347,57 @@ uint256 static GetOrphanRoot(const uint256& hash)
             return it->first;
         it = it2;
     } while(true);
+}
+
+// Pushes "getblocks" message for Orphan block if required. 
+// It checks time when "getmessage" was sent for the orphan block last time if it was
+// later than value specified in MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN, it sends it again 
+// otherwise no.
+// The goal of this funciton is to limit the number of "getblocks" and "inv" messages for
+// orphan blocks because in reality huge number of orphan blocks (several thoursands) 
+// generates massive number of repeated messages which just overloads the node and 
+// and freezes initial sync.
+bool PushGetBlocksForOrphan(CNode* pnode, CBlockIndex* pindexBegin, uint256 orphanHash,
+	bool forcePush)
+{
+	// We requests blocks root orphan block so to invlude all the orphan tree in the "inv"
+	// response message.  
+	uint256 orphanRootHash = GetOrphanRoot(orphanHash);
+
+    map<uint256, COrphanBlock*>::iterator it = mapOrphanBlocks.find(orphanRootHash);
+    if (it == mapOrphanBlocks.end())
+        return false;
+		
+	COrphanBlock* pOrphanRootBlock = it->second;
+	int64_t currentTime = GetTime();
+
+	// Checks when "getblocks" was sent the last time for the orphan block and whether
+	// we can send it again.
+	if (forcePush 
+		|| (currentTime - pOrphanRootBlock->nLastTimeGetBlocksSent >= MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN)
+			// Negative difference can be in case if the system clock was moved back, in that case
+			// we should also send getblocks to avoid infinitive waits.
+			|| currentTime - pOrphanRootBlock->nLastTimeGetBlocksSent < 0)
+	{
+		pOrphanRootBlock->nLastTimeGetBlocksSent = currentTime;
+		PushGetBlocks(pnode, pindexBest, orphanRootHash);
+
+		// if (fDebug)
+		// {
+		// 	LogPrintf("PushGetBlocksForOrphan() : getblocks sent for orphan block. Orphan: %s\n", 
+		// 		orphanRootHash.ToString().c_str());
+		// }
+
+		return true;
+	}
+
+	// if (fDebug)
+	// {
+	// 	LogPrintf("PushGetBlocksForOrphan() : Ignores sending getblocks for orphan block. Orphan: %s\n", 
+	// 		orphanRootHash.ToString().c_str());
+	// }
+
+	return false;
 }
 
 // ppcoin: find block wanted by given orphan block
@@ -3010,8 +3071,9 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             if (pblock->IsProofOfStake())
                 setStakeSeenOrphan.insert(pblock->GetProofOfStake());
 
-            // Ask this guy to fill in what we're missing
-            PushGetBlocks(pfrom, pindexBest, GetOrphanRoot(hash));
+            // Ask this guy to fill in what we're missing if requried.
+			PushGetBlocksForOrphan(pfrom, pindexBest, hash, false);
+
             // ppcoin: getblocks may not obtain the ancestor block rejected
             // earlier by duplicate-stake check so we ask for it again directly
             if (!IsInitialBlockDownload())
@@ -3937,7 +3999,15 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 if (!fImporting)
                     pfrom->AskFor(inv);
             } else if (inv.type == MSG_BLOCK && mapOrphanBlocks.count(inv.hash)) {
-                PushGetBlocks(pfrom, pindexBest, GetOrphanRoot(inv.hash));
+                // If the block is Orphan block (that means it was already loaded and added to
+			 	// mapOrphanBlocks but it was not included in the chain as one of its parents are
+			 	// not loaded yet). So we should sent "getblocks" again to add orphan block to
+				// to the chain.
+
+				PushGetBlocksForOrphan(pfrom, pindexBest, inv.hash, 
+					// We should ensure that we send the message for the last block.
+					nInv == nLastBlock);
+
             } else if (nInv == nLastBlock) {
                 // In case we are on a very long side-chain, it is possible that we already have
                 // the last block in an inv bundle sent in response to getblocks. Try to detect
@@ -4403,8 +4473,19 @@ bool ProcessMessages(CNode* pfrom)
     // this maintains the order of responses
     if (!pfrom->vRecvGetData.empty()) return fOk;
 
+	// Calculates the number of messages processed in this cycle.
+	int msgProcessedCount = 0;
+
     std::deque<CNetMessage>::iterator it = pfrom->vRecvMsg.begin();
-    while (!pfrom->fDisconnect && it != pfrom->vRecvMsg.end()) {
+    while (!pfrom->fDisconnect 
+		&& it != pfrom->vRecvMsg.end()
+		// We process messages by groups. This is optimal solution as when
+		// we processed messages by 1, there was very long initial sync.
+		// If we process all the messages from incoiming queue, there is a
+		// risk to be blocked by some external node which sends a lot of 
+		// spam messages. So processing by groups is the best choice.
+		&& msgProcessedCount < MAX_RECEIVE_MESSAGES_PROCESSED_IN_CYCLE) 
+	{
         // Don't bother if send buffer is too full to respond anyway
         if (pfrom->nSendSize >= SendBufferSize())
             break;
@@ -4422,7 +4503,8 @@ bool ProcessMessages(CNode* pfrom)
             break;
 
         // at this point, any failure means we can delete the current message
-        it++;
+        ++it;
+		++msgProcessedCount;
 
         // Scan for message start
         if (memcmp(msg.hdr.pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE) != 0) {
@@ -4490,8 +4572,6 @@ bool ProcessMessages(CNode* pfrom)
 
         if (!fRet)
             LogPrintf("ProcessMessage(%s, %u bytes) FAILED\n", strCommand, nMessageSize);
-
-        break;
     }
 
     // In case the connection got shut down, its receive buffer was wiped
