@@ -72,12 +72,17 @@ inline bool IsProtocolV3(int nHeight) { return TestNet() || nHeight > 205000; }
 
 static const int64_t DRIFT = 600;
 static const int64_t DRIFT_FORK = 120;
+static const int64_t DRIFT_FORK_2 = 15;
 
 inline int64_t FutureDrift(int64_t nTime, int nHeight) {
-    if (nHeight >= 205000) {
-        return nTime + DRIFT_FORK;
+    if (nHeight >= 225000) {
+        return nTime + DRIFT_FORK_2
     } else {
-        return nTime + DRIFT;
+        if (nHeight >= 205000) {
+            return nTime + DRIFT_FORK;
+        } else {
+            return nTime + DRIFT;
+        }
     }
 }
 
@@ -1060,10 +1065,14 @@ public:
 
     int64_t GetPastTimeLimit() const
     {
-        if (nHeight >= 205000) {
-            return GetBlockTime() - DRIFT_FORK;
+        if (nHeight >= 225000) {
+            return GetBlockTime() - DRIFT_FORK_2
         } else {
-            return GetBlockTime() - DRIFT;
+            if (nHeight >= 205000) {
+                return GetBlockTime() - DRIFT_FORK;
+            } else {
+                return GetBlockTime() - DRIFT;
+            }
         }
     }
 
