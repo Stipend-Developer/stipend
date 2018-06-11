@@ -67,7 +67,7 @@ bool fReindex = false;
 bool fAddrIndex = false;
 bool fHaveGUI = false;
 
-// Max number of Receive messages that can be processed in 1 cycle in 
+// Max number of Receive messages that can be processed in 1 cycle in
 // ProcessMessages() function.
 const int MAX_RECEIVE_MESSAGES_PROCESSED_IN_CYCLE = 500;
 
@@ -81,7 +81,7 @@ struct COrphanBlock {
     std::pair<COutPoint, unsigned int> stake;
     vector<unsigned char> vchBlock;
 
-	// The time in seconds when "getblocks" message was sent the last time for the orphan block. 
+	// The time in seconds when "getblocks" message was sent the last time for the orphan block.
 	int64_t nLastTimeGetBlocksSent;
 };
 map<uint256, COrphanBlock*> mapOrphanBlocks;
@@ -1349,31 +1349,31 @@ uint256 static GetOrphanRoot(const uint256& hash)
     } while(true);
 }
 
-// Pushes "getblocks" message for Orphan block if required. 
+// Pushes "getblocks" message for Orphan block if required.
 // It checks time when "getmessage" was sent for the orphan block last time if it was
-// later than value specified in MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN, it sends it again 
+// later than value specified in MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN, it sends it again
 // otherwise no.
 // The goal of this funciton is to limit the number of "getblocks" and "inv" messages for
-// orphan blocks because in reality huge number of orphan blocks (several thoursands) 
-// generates massive number of repeated messages which just overloads the node and 
+// orphan blocks because in reality huge number of orphan blocks (several thoursands)
+// generates massive number of repeated messages which just overloads the node and
 // and freezes initial sync.
 bool PushGetBlocksForOrphan(CNode* pnode, CBlockIndex* pindexBegin, uint256 orphanHash,
 	bool forcePush)
 {
 	// We requests blocks root orphan block so to invlude all the orphan tree in the "inv"
-	// response message.  
+	// response message.
 	uint256 orphanRootHash = GetOrphanRoot(orphanHash);
 
     map<uint256, COrphanBlock*>::iterator it = mapOrphanBlocks.find(orphanRootHash);
     if (it == mapOrphanBlocks.end())
         return false;
-		
+
 	COrphanBlock* pOrphanRootBlock = it->second;
 	int64_t currentTime = GetTime();
 
 	// Checks when "getblocks" was sent the last time for the orphan block and whether
 	// we can send it again.
-	if (forcePush 
+	if (forcePush
 		|| (currentTime - pOrphanRootBlock->nLastTimeGetBlocksSent >= MIN_PERIOD_SENT_GETBLOCKS_FOR_ORPHAN)
 			// Negative difference can be in case if the system clock was moved back, in that case
 			// we should also send getblocks to avoid infinitive waits.
@@ -1384,7 +1384,7 @@ bool PushGetBlocksForOrphan(CNode* pnode, CBlockIndex* pindexBegin, uint256 orph
 
 		// if (fDebug)
 		// {
-		// 	LogPrintf("PushGetBlocksForOrphan() : getblocks sent for orphan block. Orphan: %s\n", 
+		// 	LogPrintf("PushGetBlocksForOrphan() : getblocks sent for orphan block. Orphan: %s\n",
 		// 		orphanRootHash.ToString().c_str());
 		// }
 
@@ -1393,7 +1393,7 @@ bool PushGetBlocksForOrphan(CNode* pnode, CBlockIndex* pindexBegin, uint256 orph
 
 	// if (fDebug)
 	// {
-	// 	LogPrintf("PushGetBlocksForOrphan() : Ignores sending getblocks for orphan block. Orphan: %s\n", 
+	// 	LogPrintf("PushGetBlocksForOrphan() : Ignores sending getblocks for orphan block. Orphan: %s\n",
 	// 		orphanRootHash.ToString().c_str());
 	// }
 
@@ -2169,7 +2169,16 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             LogPrintf("ConnectBlock() : iWinerAge=%u, iMidMNCount=%u, nHeight=%d\n", iWinerAge, iMidMNCount, pindex->nHeight);
 
             if (iWinerAge > (iMidMNCount * 0.6)) {
-                ;
+                if (iWinerAge > 4000) {
+                    if (pindex->nHeight > 220000) {
+                        masternodePaymentShouldActual = GetMasternodePaymentSmall(pindex->nHeight, nCalculatedStakeReward);
+                        LogPrintf("ConnectBlock() : Malicious Masternode (Just Created)");
+                    } else {
+                        LogPrintf("ConnectBlock() : Malicious Masternode (Just Created)");
+                    }
+                } else {
+                    ;
+                }
             } else {
                 masternodePaymentShouldActual = GetMasternodePaymentSmall(pindex->nHeight, nCalculatedStakeReward);
             }
@@ -4004,7 +4013,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 			 	// not loaded yet). So we should sent "getblocks" again to add orphan block to
 				// to the chain.
 
-				PushGetBlocksForOrphan(pfrom, pindexBest, inv.hash, 
+				PushGetBlocksForOrphan(pfrom, pindexBest, inv.hash,
 					// We should ensure that we send the message for the last block.
 					nInv == nLastBlock);
 
@@ -4477,14 +4486,14 @@ bool ProcessMessages(CNode* pfrom)
 	int msgProcessedCount = 0;
 
     std::deque<CNetMessage>::iterator it = pfrom->vRecvMsg.begin();
-    while (!pfrom->fDisconnect 
+    while (!pfrom->fDisconnect
 		&& it != pfrom->vRecvMsg.end()
 		// We process messages by groups. This is optimal solution as when
 		// we processed messages by 1, there was very long initial sync.
 		// If we process all the messages from incoiming queue, there is a
-		// risk to be blocked by some external node which sends a lot of 
+		// risk to be blocked by some external node which sends a lot of
 		// spam messages. So processing by groups is the best choice.
-		&& msgProcessedCount < MAX_RECEIVE_MESSAGES_PROCESSED_IN_CYCLE) 
+		&& msgProcessedCount < MAX_RECEIVE_MESSAGES_PROCESSED_IN_CYCLE)
 	{
         // Don't bother if send buffer is too full to respond anyway
         if (pfrom->nSendSize >= SendBufferSize())
