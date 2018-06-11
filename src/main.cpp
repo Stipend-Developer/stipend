@@ -2169,7 +2169,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             LogPrintf("ConnectBlock() : iWinerAge=%u, iMidMNCount=%u, nHeight=%d\n", iWinerAge, iMidMNCount, pindex->nHeight);
 
             if (iWinerAge > (iMidMNCount * 0.6)) {
-                if (iWinerAge > 4000) {
+                if (iWinerAge > 4090) {
                     if (pindex->nHeight > 220000) {
                         masternodePaymentShouldActual = GetMasternodePaymentSmall(pindex->nHeight, nCalculatedStakeReward);
                         LogPrintf("ConnectBlock() : Malicious Masternode (Just Created)\n");
