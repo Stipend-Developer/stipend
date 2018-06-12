@@ -794,16 +794,23 @@ WalletModel::UnlockContext WalletModel::requestUnlock()
 		|| wasEncryptionStatus == UnlockedForStakingOnly
 		|| wasEncryptionStatus == UnlockedForAnonymizationOnly;
 
+	bool valid = false;
+
 	// if the wallet is already unlocked, we do not show UI and just 
 	// continue.
 	if (requestingUnlockRequired)
 	{
         // Request UI to unlock wallet
         emit requireUnlock();
-	}
 
-    // If wallet was not unlocked, unlock was failed or cancelled, mark context as invalid
-    bool valid = getEncryptionStatus() == Unlocked;
+    	// If wallet was not unlocked, unlock was failed or cancelled, mark context as invalid
+    	valid = getEncryptionStatus() == Unlocked;
+	}
+	else
+	{
+	    // If wallet is unencrypted or unlocked.
+    	valid = wasEncryptionStatus == Unencrypted || wasEncryptionStatus == Unlocked;
+	}
 
     return UnlockContext(this, valid, 
 		// We want to restore initial state if we requested unlock from user.
