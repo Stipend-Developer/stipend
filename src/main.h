@@ -72,7 +72,7 @@ inline bool IsProtocolV3(int nHeight) { return TestNet() || nHeight > 205000; }
 
 static const int64_t DRIFT = 600;
 static const int64_t DRIFT_FORK = 120;
-static const int64_t DRIFT_FORK_2 = 15;
+static const int64_t DRIFT_FORK_2 = 45;
 
 inline int64_t FutureDrift(int64_t nTime, int nHeight) {
     if (nHeight >= 225000) {
