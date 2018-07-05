@@ -8,7 +8,7 @@ We introduce you a new cryptocoin called Stipend.
 Stipend is a safe, anonymous, fast and highly profitable coin with Masternodes and advanced reward system with Long-Term Development & Support.
 Welcome to the future!
 
-## Main futures:
+## Main Features:
 
 *	ASIC Resistance
 *	NiceHash Resistance
