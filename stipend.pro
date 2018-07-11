@@ -271,6 +271,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/tinyformat.h \
     src/stealth.h \
     src/qt/flowlayout.h \
+    src/qt/darksendconfig.h \
     src/masternode.h \
     src/darksend.h \
     src/darksend-relay.h \
@@ -398,6 +399,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/support/cleanse.cpp \
     src/stealth.cpp \
     src/qt/flowlayout.cpp \
+    src/qt/darksendconfig.cpp \
     src/masternode.cpp \
     src/darksend.cpp \
     src/darksend-relay.cpp \
@@ -458,6 +460,7 @@ FORMS += \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
+    src/qt/forms/darksendconfig.ui \
     src/qt/forms/masternodemanager.ui \
     src/qt/forms/addeditadrenalinenode.ui \
     src/qt/forms/adrenalinenodeconfigdialog.ui \

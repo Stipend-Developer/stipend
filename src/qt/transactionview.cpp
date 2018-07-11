@@ -88,6 +88,13 @@ TransactionView::TransactionView(QWidget *parent) :
                                         TransactionFilterProxy::TYPE(TransactionRecord::RecvFromOther));
     typeWidget->addItem(tr("Sent to"), TransactionFilterProxy::TYPE(TransactionRecord::SendToAddress) |
                                   TransactionFilterProxy::TYPE(TransactionRecord::SendToOther));
+
+    typeWidget->addItem(tr("Darksent"), TransactionFilterProxy::TYPE(TransactionRecord::Darksent));
+    typeWidget->addItem(tr("Darksend Make Collateral Inputs"), TransactionFilterProxy::TYPE(TransactionRecord::DarksendMakeCollaterals));
+    typeWidget->addItem(tr("Darksend Create Denominations"), TransactionFilterProxy::TYPE(TransactionRecord::DarksendCreateDenominations));
+    typeWidget->addItem(tr("Darksend Denominate"), TransactionFilterProxy::TYPE(TransactionRecord::DarksendDenominate));
+    typeWidget->addItem(tr("Darksend Collateral Payment"), TransactionFilterProxy::TYPE(TransactionRecord::DarksendCollateralPayment));
+
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
@@ -488,7 +495,7 @@ void TransactionView::updateTotalAmount(bool ensureTotalAmountHidden)
 	QString strAmount;
 
 	// We want to show total amount just if more than 1 transaction is selected.
-	if (selection.size() > 1) 
+	if (selection.size() > 1)
 	{
 		qint64 amount = 0;
 	    foreach (QModelIndex index, selection)
@@ -498,19 +505,19 @@ void TransactionView::updateTotalAmount(bool ensureTotalAmountHidden)
 
 		int nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
-		strAmount = BitcoinUnits::formatWithUnit(nDisplayUnit, amount, false, 
+		strAmount = BitcoinUnits::formatWithUnit(nDisplayUnit, amount, false,
 			BitcoinUnits::separatorAlways);
 
-	    if (amount >= 0) 
+	    if (amount >= 0)
 		{
 			QRgb amountColor = fUseBlackTheme ? COLOR_POSITIVE_BACK_THEME.rgb() : COLOR_POSITIVE.rgb();
-			strAmount = "<span>Sum: <span style='color:#" 
-				+ QString::number(amountColor, 16) 
-				+ ";'>" + strAmount + "</span></span>";        
+			strAmount = "<span>Sum: <span style='color:#"
+				+ QString::number(amountColor, 16)
+				+ ";'>" + strAmount + "</span></span>";
 		}
 		else
 		{
-			strAmount = "<span>Sum: <span style='color:#" + QString::number(COLOR_NEGATIVE.rgb(), 16) 
+			strAmount = "<span>Sum: <span style='color:#" + QString::number(COLOR_NEGATIVE.rgb(), 16)
 				+ ";'>" + strAmount + "</span></span>";
 		}
 	}
@@ -618,7 +625,7 @@ void TransactionView::updateWatchOnlyColumn(bool fHaveWatchOnly)
 
 void TransactionView::showEvent(QShowEvent *)
 {
-	// We would like to show/hide the total amount of selected items 
+	// We would like to show/hide the total amount of selected items
 	// when the view is shown/hidden. As it does not make sense to show it
 	// when the view is hidden.
 	updateTotalAmount();
@@ -626,7 +633,7 @@ void TransactionView::showEvent(QShowEvent *)
 
 void TransactionView::hideEvent(QHideEvent *)
 {
-	// We would like to show/hide the total amount of selected items 
+	// We would like to show/hide the total amount of selected items
 	// when the view is shown/hidden. As it does not make sense to show it
 	// when the view is hidden.
 	updateTotalAmount(true);
