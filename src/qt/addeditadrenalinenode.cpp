@@ -21,17 +21,12 @@ AddEditAdrenalineNode::AddEditAdrenalineNode(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
-
     //Labels
     ui->aliasLineEdit->setPlaceholderText("Enter your Masternode alias");
     ui->addressLineEdit->setPlaceholderText("Enter your IP & port");
     ui->privkeyLineEdit->setPlaceholderText("Enter your Masternode private key");
     ui->txhashLineEdit->setPlaceholderText("Enter your 5000 SPD TXID");
     ui->outputindexLineEdit->setPlaceholderText("Enter your transaction output index");
-    ui->donationaddressLineEdit->setPlaceholderText("Enter aSPDaddress for your MN donation");
-    ui->donationpercentageLineEdit->setPlaceholderText("Input the % for the donation");
 }
 
 AddEditAdrenalineNode::~AddEditAdrenalineNode()
