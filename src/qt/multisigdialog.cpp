@@ -4,21 +4,23 @@
 #include <QScrollBar>
 #include <vector>
 
+#include "main/main.h"
 #include "addresstablemodel.h"
-#include "base58.h"
-#include "key.h"
-#include "main.h"
 #include "multisigaddressentry.h"
 #include "multisiginputentry.h"
 #include "multisigdialog.h"
 #include "ui_multisigdialog.h"
-#include "script.h"
 #include "sendcoinsentry.h"
-#include "util.h"
-#include "wallet.h"
+
+#include "misc/base58.h"
+#include "misc/key.h"
+#include "misc/script.h"
+#include "misc/util.h"
+
+#include "wallet/wallet.h"
 #include "walletmodel.h"
 
-#include "txdb-leveldb.h"
+#include "misc/txdb-leveldb.h"
 
 MultisigDialog::MultisigDialog(QWidget *parent) : QDialog(parent), ui(new Ui::MultisigDialog), model(0)
 {

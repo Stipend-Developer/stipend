@@ -1,7 +1,7 @@
 #ifndef OVERVIEWPAGE_H
 #define OVERVIEWPAGE_H
 
-#include "util.h"
+#include "misc/util.h"
 
 #include <QTimer>
 #include <QWidget>

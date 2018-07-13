@@ -2,7 +2,7 @@
 
 #include <boost/foreach.hpp>
 
-#include "init.h"
+#include "main/init.h"
 #include "wallet.h"
 #include "walletdb.h"
 

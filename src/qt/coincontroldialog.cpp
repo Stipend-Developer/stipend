@@ -3,16 +3,16 @@
 
 #include "addresstablemodel.h"
 #include "bitcoinunits.h"
-#include "base58.h"
-#include "core.h"
 #include "guiutil.h"
-#include "init.h"
+#include "main/init.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
 
-#include "coincontrol.h"
-#include "wallet.h"
-#include "darksend.h"
+#include "misc/base58.h"
+#include "misc/core.h"
+#include "misc/coincontrol.h"
+#include "wallet/wallet.h"
+#include "darksend/darksend.h"
 
 #include <ctime>
 #include <QMessageBox>

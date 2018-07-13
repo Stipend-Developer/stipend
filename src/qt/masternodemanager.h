@@ -1,8 +1,8 @@
 #ifndef MASTERNODEMANAGER_H
 #define MASTERNODEMANAGER_H
 
-#include "util.h"
-#include "sync.h"
+#include "misc/util.h"
+#include "misc/sync.h"
 
 #include <QWidget>
 #include <QTimer>

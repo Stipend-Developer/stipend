@@ -2,8 +2,6 @@
 #include "ui_overviewpage.h"
 
 #include "clientmodel.h"
-#include "darksend.h"
-#include "darksendconfig.h"
 #include "walletmodel.h"
 #include "bitcoinunits.h"
 #include "optionsmodel.h"
@@ -11,6 +9,9 @@
 #include "transactionfilterproxy.h"
 #include "guiutil.h"
 #include "guiconstants.h"
+#include "darksendconfig.h"
+
+#include "darksend/darksend.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>

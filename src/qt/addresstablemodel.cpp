@@ -3,9 +3,9 @@
 #include "guiutil.h"
 #include "walletmodel.h"
 
-#include "wallet.h"
-#include "base58.h"
-#include "stealth.h"
+#include "wallet/wallet.h"
+#include "misc/base58.h"
+#include "misc/stealth.h"
 
 #include <QFont>
 #include <QDebug>
@@ -364,21 +364,21 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                 editStatus = INVALID_ADDRESS;
                 return QString();
             }
-            
+
             // -- Check for duplicate addresses
             {
                 LOCK(wallet->cs_wallet);
-                
+
                 if (wallet->stealthAddresses.count(sxAddr))
                 {
                     editStatus = DUPLICATE_ADDRESS;
                     return QString();
                 };
-                
+
                 sxAddr.label = strLabel;
                 wallet->AddStealthAddress(sxAddr);
             }
-            
+
         } else
         {
             if (!walletModel->validateAddress(address))
@@ -394,7 +394,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                     editStatus = DUPLICATE_ADDRESS;
                     return QString();
                 };
-                
+
                 wallet->SetAddressBookName(CStipendAddress(strAddress).Get(), strLabel);
             }
         }
@@ -403,14 +403,14 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
     {
         // Generate a new address to associate with given label
         WalletModel::UnlockContext ctx(walletModel->requestUnlock());
-        
+
         if(!ctx.isValid())
         {
             // Unlock wallet failed or was cancelled
             editStatus = WALLET_UNLOCK_FAILURE;
             return QString();
         }
-        
+
         if (addressType == AT_Stealth)
         {
             CStealthAddress newStealthAddr;
@@ -431,7 +431,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                 return QString();
             }
             strAddress = CStipendAddress(newKey.GetID()).ToString();
-            
+
             {
                 LOCK(wallet->cs_wallet);
                 wallet->SetAddressBookName(CStipendAddress(strAddress).Get(), strLabel);
@@ -443,7 +443,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
         return QString();
     }
 
-    
+
     return QString::fromStdString(strAddress);
 }
 
@@ -471,18 +471,18 @@ QString AddressTableModel::labelForAddress(const QString &address) const
     {
         LOCK(wallet->cs_wallet);
         std::string sAddr = address.toStdString();
-        
+
         if (sAddr.length() > 75)
         {
             CStealthAddress sxAddr;
             if (!sxAddr.SetEncoded(sAddr))
                 return QString();
-            
+
             std::set<CStealthAddress>::iterator it;
             it = wallet->stealthAddresses.find(sxAddr);
             if (it == wallet->stealthAddresses.end())
                 return QString();
-            
+
             return QString::fromStdString(it->label);
         } else
         {

@@ -1,7 +1,7 @@
 #ifndef TRANSACTIONFILTERPROXY_H
 #define TRANSACTIONFILTERPROXY_H
 
-#include "util.h"
+#include "misc/util.h"
 
 #include <QSortFilterProxyModel>
 #include <QDateTime>

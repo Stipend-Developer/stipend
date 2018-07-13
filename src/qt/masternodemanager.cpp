@@ -3,17 +3,20 @@
 #include "addeditadrenalinenode.h"
 #include "adrenalinenodeconfigdialog.h"
 
-#include "sync.h"
+#include "main/init.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
-#include "activemasternode.h"
-#include "masternodeconfig.h"
-#include "masternodeman.h"
-#include "masternode.h"
-#include "walletdb.h"
-#include "wallet.h"
-#include "init.h"
-#include "rpcserver.h"
+#include "misc/sync.h"
+
+#include "masternode/activemasternode.h"
+#include "masternode/masternodeconfig.h"
+#include "masternode/masternodeman.h"
+#include "masternode/masternode.h"
+
+#include "wallet/walletdb.h"
+#include "wallet/wallet.h"
+#include "rpc/rpcserver.h"
+
 #include <boost/lexical_cast.hpp>
 #include <fstream>
 using namespace json_spirit;

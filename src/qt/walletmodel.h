@@ -6,10 +6,10 @@
 #define WALLETMODEL_H
 
 #include "walletmodeltransaction.h"
+#include "instantx/instantx.h"
 
-#include "allocators.h" /* for SecureString */
-#include "instantx.h"
-#include "wallet.h"
+#include "misc/allocators.h" /* for SecureString */
+#include "wallet/wallet.h"
 
 #include <map>
 #include <vector>
@@ -183,8 +183,8 @@ public:
         WalletModel *wallet;
         bool valid;
 
-		// Muutable as they are updated in CopyFrom for const parameter. 
-        mutable bool relock; 
+		// Muutable as they are updated in CopyFrom for const parameter.
+        mutable bool relock;
 		mutable bool forStakingOnly;
 
         void CopyFrom(const UnlockContext& rhs);

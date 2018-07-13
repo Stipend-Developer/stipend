@@ -3,7 +3,7 @@
 
 #include "bitcoinunits.h"
 #include "monitoreddatamapper.h"
-#include "netbase.h"
+#include "misc/netbase.h"
 #include "optionsmodel.h"
 
 #include <QDir>

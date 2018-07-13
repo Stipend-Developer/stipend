@@ -6,12 +6,12 @@
 #include "bitcoinunits.h"
 #include "guiutil.h"
 
-#include "init.h"
-#include "main.h"
-#include "net.h"
+#include "main/init.h"
+#include "main/main.h"
+#include "misc/net.h"
 #ifdef ENABLE_WALLET
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 #endif
 
 #include <QNetworkProxy>
@@ -55,9 +55,9 @@ void OptionsModel::Init()
     if (!settings.contains("nDisplayUnit"))
         settings.setValue("nDisplayUnit", BitcoinUnits::BTC);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
-    
+
     fUseBlackTheme = settings.value("fUseBlackTheme", false).toBool();
-    
+
     if (!settings.contains("fCoinControlFeatures"))
         settings.setValue("fCoinControlFeatures", false);
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
@@ -194,7 +194,7 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
                 settings.setValue("nTransactionFee", (qint64)nTransactionFee);
             // Todo: Consider to revert back to use just nTransactionFee here, if we don't want
             // -paytxfee to update our QSettings!
-            return settings.value("nTransactionFee");            
+            return settings.value("nTransactionFee");
         case ReserveBalance:
             return QVariant((qint64) nReserveBalance);
 #endif

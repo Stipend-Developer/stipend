@@ -1,7 +1,7 @@
 #ifndef BITCOINUNITS_H
 #define BITCOINUNITS_H
 
-#include "util.h"
+#include "misc/util.h"
 
 #include <QString>
 #include <QAbstractListModel>

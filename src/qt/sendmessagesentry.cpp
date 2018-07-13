@@ -7,7 +7,7 @@
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 
-#include "smessage.h"
+#include "misc/smessage.h"
 
 #include <QApplication>
 #include <QClipboard>

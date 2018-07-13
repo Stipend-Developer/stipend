@@ -1,10 +1,12 @@
 #include "transactionrecord.h"
 
-#include "base58.h"
-#include "util.h"
-#include "wallet.h"
-#include "darksend.h"
-#include "instantx.h"
+#include "misc/base58.h"
+#include "misc/util.h"
+
+#include "wallet/wallet.h"
+#include "darksend/darksend.h"
+
+#include "instantx/instantx.h"
 
 #include <stdint.h>
 

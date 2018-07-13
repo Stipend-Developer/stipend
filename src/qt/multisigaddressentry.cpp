@@ -5,12 +5,13 @@
 
 #include "addressbookpage.h"
 #include "addresstablemodel.h"
-#include "base58.h"
 #include "guiutil.h"
-#include "key.h"
 #include "multisigaddressentry.h"
 #include "ui_multisigaddressentry.h"
 #include "walletmodel.h"
+
+#include "misc/base58.h"
+#include "misc/key.h"
 
 
 MultisigAddressEntry::MultisigAddressEntry(QWidget *parent) : QFrame(parent), ui(new Ui::MultisigAddressEntry), model(0)

@@ -3,9 +3,10 @@
 
 #include "clientmodel.h"
 #include "walletmodel.h"
-#include "main.h"
-#include "wallet.h"
-#include "base58.h"
+#include "main/main.h"
+
+#include "wallet/wallet.h"
+#include "misc/base58.h"
 #include <QWidget>
 
 #include <QDir>
@@ -48,11 +49,11 @@ class BlockBrowser : public QWidget
 public:
     explicit BlockBrowser(QWidget *parent = 0);
     ~BlockBrowser();
-    
+
     void setModel(WalletModel *model);
-    
+
 public slots:
-    
+
     void blockClicked();
     void txClicked();
     void updateExplorer(bool);
@@ -62,7 +63,7 @@ private slots:
 private:
     Ui::BlockBrowser *ui;
     WalletModel *model;
-    
+
 };
 
 #endif // BLOCKBROWSER_H

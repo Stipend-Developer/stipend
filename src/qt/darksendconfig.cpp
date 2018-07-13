@@ -5,7 +5,7 @@
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
-#include "init.h"
+#include "main/init.h"
 
 #include <QMessageBox>
 #include <QPushButton>

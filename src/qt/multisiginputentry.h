@@ -3,8 +3,8 @@
 
 #include <QFrame>
 
-#include "uint256.h"
-#include "util.h"
+#include "misc/uint256.h"
+#include "misc/util.h"
 
 
 class CTxIn;

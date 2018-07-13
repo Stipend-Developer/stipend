@@ -4,22 +4,23 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletmodel.h"
+#include "main/main.h"
 
 #include "addresstablemodel.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "transactiontablemodel.h"
 
-#include "base58.h"
-#include "checkpoints.h"
-#include "db.h"
-#include "keystore.h"
-#include "main.h"
-#include "ui_interface.h"
-#include "wallet.h"
-#include "walletdb.h" // for BackupWallet
-#include "spork.h"
-#include "smessage.h"
+#include "misc/base58.h"
+#include "misc/checkpoints.h"
+#include "misc/db.h"
+#include "misc/keystore.h"
+#include "misc/ui_interface.h"
+#include "misc/smessage.h"
+
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h" // for BackupWallet
+#include "masternode/spork.h"
 
 #include <stdint.h>
 
@@ -125,7 +126,7 @@ void WalletModel::updateStatus()
 
 	// We resets StackingOnly flag if the wallet is locked. We do this here
 	// just for any case to make sure we do not have a case with invalid state.
-	// fWalletUnlockStakingOnly should be false all the time while 
+	// fWalletUnlockStakingOnly should be false all the time while
 	// EncryptionStatus is Locked.
 	if (newEncryptionStatus == Locked)
 	{
@@ -617,15 +618,15 @@ bool WalletModel::lockWallet(bool stakingOnly)
 {
 	// Lock
     bool result = true;
-	
-	if (!stakingOnly) 
+
+	if (!stakingOnly)
 	{
 		result = wallet->Lock();
 	}
 
 	//Resets Unlock Stacking Only flag.
 	if (result)
-	{	
+	{
 		fWalletUnlockStakingOnly = stakingOnly;
 
 		// Updates status to reflect UI chnages as we changed fWalletUnlockStakingOnly flag,
@@ -796,7 +797,7 @@ WalletModel::UnlockContext WalletModel::requestUnlock()
 
 	bool valid = false;
 
-	// if the wallet is already unlocked, we do not show UI and just 
+	// if the wallet is already unlocked, we do not show UI and just
 	// continue.
 	if (requestingUnlockRequired)
 	{
@@ -812,14 +813,14 @@ WalletModel::UnlockContext WalletModel::requestUnlock()
     	valid = wasEncryptionStatus == Unencrypted || wasEncryptionStatus == Unlocked;
 	}
 
-    return UnlockContext(this, valid, 
+    return UnlockContext(this, valid,
 		// We want to restore initial state if we requested unlock from user.
 		requestingUnlockRequired,
 		// We want to restore UnlockedForStakingOnly if it was initially configured.
 		wasEncryptionStatus == UnlockedForStakingOnly);
 }
 
-WalletModel::UnlockContext::UnlockContext(WalletModel *wallet, bool valid, 
+WalletModel::UnlockContext::UnlockContext(WalletModel *wallet, bool valid,
 	bool relock, bool forStakingOnly):
         wallet(wallet),
 		valid(valid),

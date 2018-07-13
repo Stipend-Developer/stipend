@@ -1,8 +1,8 @@
 #ifndef TRANSACTIONRECORD_H
 #define TRANSACTIONRECORD_H
 
-#include "uint256.h"
-#include "util.h"
+#include "misc/uint256.h"
+#include "misc/util.h"
 
 #include <QList>
 #include <QString>

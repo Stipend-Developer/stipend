@@ -13,12 +13,14 @@
 #include "optionsmodel.h"
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
-#include "base58.h"
-#include "coincontrol.h"
-#include "wallet.h"
-#include "init.h"
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
+
+#include "main/init.h"
+
+#include "misc/base58.h"
+#include "misc/coincontrol.h"
+#include "wallet/wallet.h"
 
 #include <QMessageBox>
 #include <QLocale>
@@ -333,9 +335,9 @@ void SendCoinsDialog::on_sendButton_clicked()
     // and make many transactions while unlocking through this dialog
     // will call relock
     WalletModel::EncryptionStatus encStatus = model->getEncryptionStatus();
-    if(encStatus == model->Locked 
+    if(encStatus == model->Locked
 		// UnlockedForStakingOnly was added as before it was substate of Locked state.
-		|| encStatus == model->UnlockedForStakingOnly 
+		|| encStatus == model->UnlockedForStakingOnly
 		|| encStatus == model->UnlockedForAnonymizationOnly)
     {
         WalletModel::UnlockContext ctx(model->requestUnlock());

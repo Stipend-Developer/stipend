@@ -6,12 +6,12 @@
 #include "guiutil.h"
 #include "peertablemodel.h"
 
-#include "main.h"
-#include "chainparams.h"
-#include "util.h"
+#include "main/main.h"
+#include "chainparams/chainparams.h"
+#include "misc/util.h"
 
-#include "rpcserver.h"
-#include "rpcclient.h"
+#include "rpc/rpcserver.h"
+#include "rpc/rpcclient.h"
 
 #include <QClipboard>
 #include <QTime>
@@ -815,4 +815,4 @@ void RPCConsole::showOrHideBanTableIfRequired()
     bool visible = clientModel->getBanTableModel()->shouldShow();
     ui->banlistWidget->setVisible(visible);
     ui->banHeading->setVisible(visible);
-} 
+}

@@ -2,7 +2,7 @@
 #define BITCOINAMOUNTFIELD_H
 
 #include <QWidget>
-#include "util.h"
+#include "misc/util.h"
 
 QT_BEGIN_NAMESPACE
 class QDoubleSpinBox;

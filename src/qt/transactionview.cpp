@@ -13,7 +13,7 @@
 #include "walletmodel.h"
 #include "guiconstants.h"
 
-#include "ui_interface.h"
+#include "misc/ui_interface.h"
 
 #include <QComboBox>
 #include <QDateTimeEdit>

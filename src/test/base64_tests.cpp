@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "main.h"
+#include "main/main.h"
 #include "wallet.h"
 #include "util.h"
 

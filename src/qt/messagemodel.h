@@ -1,12 +1,12 @@
 #ifndef MESSAGEMODEL_H
 #define MESSAGEMODEL_H
 
-#include "uint256.h"
+#include "misc/uint256.h"
+#include "misc/smessage.h"
+#include "misc/allocators.h" /* for SecureString */
 
-#include <vector>
-#include "allocators.h" /* for SecureString */
-#include "smessage.h"
 #include <map>
+#include <vector>
 #include <QSortFilterProxyModel>
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -36,7 +36,7 @@ struct MessageTableEntry
         Sent,
         Received
     };
-    
+
     std::vector<unsigned char> chKey;
     Type type;
     QString label;
@@ -162,9 +162,9 @@ public:
     // Send messages to a list of recipients
     StatusCode sendMessages(const QList<SendMessagesRecipient> &recipients);
     StatusCode sendMessages(const QList<SendMessagesRecipient> &recipients, const QString &addressFrom);
-    
+
     QSortFilterProxyModel *proxyModel;
-    
+
 private:
     CWallet *wallet;
     WalletModel *walletModel;
@@ -180,9 +180,9 @@ public slots:
     /* Check for new messages */
     void newMessage(const SecMsgStored& smsg);
     void newOutboxMessage(const SecMsgStored& smsg);
-    
+
     void walletUnlocked();
-    
+
     void setEncryptionStatus(int status);
 
     friend class MessageTablePriv;

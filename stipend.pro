@@ -93,7 +93,7 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
 #Build Leveldb
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/misc/txdb-leveldb.cpp
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
@@ -189,39 +189,39 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/aboutdialog.h \
     src/qt/editaddressdialog.h \
     src/qt/bitcoinaddressvalidator.h \
-    src/alert.h \
-    src/allocators.h \
-    src/addrman.h \
-    src/base58.h \
-    src/bignum.h \
-    src/chainparams.h \
-    src/chainparamsseeds.h \
-    src/checkpoints.h \
-    src/compat.h \
-    src/coincontrol.h \
-    src/sync.h \
-    src/util.h \
-    src/hash.h \
-    src/uint256.h \
-    src/kernel.h \
-    src/pbkdf2.h \
-    src/serialize.h \
+    src/misc/alert.h \
+    src/misc/allocators.h \
+    src/misc/addrman.h \
+    src/misc/base58.h \
+    src/misc/bignum.h \
+    src/chainparams/chainparams.h \
+    src/chainparams/chainparamsseeds.h \
+    src/misc/checkpoints.h \
+    src/misc/compat.h \
+    src/misc/coincontrol.h \
+    src/misc/sync.h \
+    src/misc/util.h \
+    src/misc/hash.h \
+    src/misc/uint256.h \
+    src/misc/kernel.h \
+    src/misc/pbkdf2.h \
+    src/misc/serialize.h \
     src/support/cleanse.h \
-    src/core.h \
-    src/main.h \
-    src/miner.h \
-    src/net.h \
-    src/ecwrapper.h \
-    src/key.h \
-    src/pubkey.h \
-    src/db.h \
-    src/txdb.h \
-    src/txmempool.h \
-    src/walletdb.h \
-    src/script.h \
-    src/scrypt.h \
-    src/init.h \
-    src/mruset.h \
+    src/misc/core.h \
+    src/main/main.h \
+    src/misc/miner.h \
+    src/misc/net.h \
+    src/misc/ecwrapper.h \
+    src/misc/key.h \
+    src/misc/pubkey.h \
+    src/misc/db.h \
+    src/misc/txdb.h \
+    src/misc/txmempool.h \
+    src/wallet/walletdb.h \
+    src/misc/script.h \
+    src/misc/scrypt.h \
+    src/main/init.h \
+    src/misc/mruset.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
     src/json/json_spirit_value.h \
@@ -242,45 +242,45 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/transactiondesc.h \
     src/qt/transactiondescdialog.h \
     src/qt/bitcoinamountfield.h \
-    src/wallet.h \
-    src/keystore.h \
+    src/wallet/wallet.h \
+    src/misc/keystore.h \
     src/qt/transactionfilterproxy.h \
     src/qt/transactionview.h \
     src/qt/walletmodel.h \
     src/qt/walletmodeltransaction.h \
-    src/rpcclient.h \
-    src/rpcprotocol.h \
-    src/rpcserver.h \
+    src/rpc/rpcclient.h \
+    src/rpc/rpcprotocol.h \
+    src/rpc/rpcserver.h \
     src/qt/overviewpage.h \
     src/qt/csvmodelwriter.h \
-    src/crypter.h \
+    src/misc/crypter.h \
     src/qt/sendcoinsentry.h \
     src/qt/qvalidatedlineedit.h \
     src/qt/bitcoinunits.h \
     src/qt/qvaluecombobox.h \
     src/qt/askpassphrasedialog.h \
-    src/protocol.h \
+    src/misc/protocol.h \
     src/qt/notificator.h \
     src/qt/paymentserver.h \
-    src/ui_interface.h \
+    src/misc/ui_interface.h \
     src/qt/rpcconsole.h \
-    src/version.h \
-    src/netbase.h \
-    src/clientversion.h \
-    src/threadsafety.h \
-    src/tinyformat.h \
-    src/stealth.h \
+    src/misc/version.h \
+    src/misc/netbase.h \
+    src/misc/clientversion.h \
+    src/misc/threadsafety.h \
+    src/misc/tinyformat.h \
+    src/misc/stealth.h \
     src/qt/flowlayout.h \
     src/qt/darksendconfig.h \
-    src/masternode.h \
-    src/darksend.h \
-    src/darksend-relay.h \
-    src/instantx.h \
-    src/activemasternode.h \
-    src/masternodeconfig.h \
-    src/masternodeman.h \
-    src/masternode-payments.h \
-    src/spork.h \
+    src/masternode/masternode.h \
+    src/darksend/darksend.h \
+    src/darksend/darksend-relay.h \
+    src/instantx/instantx.h \
+    src/masternode/activemasternode.h \
+    src/masternode/masternodeconfig.h \
+    src/masternode/masternodeman.h \
+    src/masternode/masternode-payments.h \
+    src/masternode/spork.h \
     src/crypto/common.h \
     src/crypto/hmac_sha256.h \
     src/crypto/hmac_sha512.h \
@@ -292,7 +292,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/addeditadrenalinenode.h \
     src/qt/adrenalinenodeconfigdialog.h \
     src/qt/qcustomplot.h \
-    src/smessage.h \
+    src/misc/smessage.h \
     src/qt/messagepage.h \
     src/qt/messagemodel.h \
     src/qt/sendmessagesdialog.h \
@@ -303,19 +303,19 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/multisigaddressentry.h \
     src/qt/multisiginputentry.h \
     src/qt/multisigdialog.h \
-    src/sph_skein.h \
-    src/sph_keccak.h \
-    src/sph_jh.h \
-    src/sph_groestl.h \
-    src/sph_bmw.h \
-    src/sph_types.h \
-    src/sph_luffa.h \
-    src/sph_cubehash.h \
-    src/sph_echo.h \
-    src/sph_shavite.h \
-    src/sph_simd.h \
-    src/sph_types.h \
-    src/limitedmap.h
+    src/crypto/sph_skein.h \
+    src/crypto/sph_keccak.h \
+    src/crypto/sph_jh.h \
+    src/crypto/sph_groestl.h \
+    src/crypto/sph_bmw.h \
+    src/crypto/sph_types.h \
+    src/crypto/sph_luffa.h \
+    src/crypto/sph_cubehash.h \
+    src/crypto/sph_echo.h \
+    src/crypto/sph_shavite.h \
+    src/crypto/sph_simd.h \
+    src/crypto/sph_types.h \
+    src/misc/limitedmap.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -330,30 +330,30 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
-    src/alert.cpp \
-    src/allocators.cpp \
-    src/base58.cpp \
-    src/chainparams.cpp \
-    src/version.cpp \
-    src/sync.cpp \
-    src/txmempool.cpp \
-    src/util.cpp \
-    src/hash.cpp \
-    src/netbase.cpp \
-    src/ecwrapper.cpp \
-    src/key.cpp \
-    src/pubkey.cpp \
-    src/script.cpp \
-    src/scrypt.cpp \
-    src/core.cpp \
-    src/main.cpp \
-    src/miner.cpp \
-    src/init.cpp \
-    src/net.cpp \
-    src/checkpoints.cpp \
-    src/addrman.cpp \
-    src/db.cpp \
-    src/walletdb.cpp \
+    src/misc/alert.cpp \
+    src/misc/allocators.cpp \
+    src/misc/base58.cpp \
+    src/chainparams/chainparams.cpp \
+    src/misc/version.cpp \
+    src/misc/sync.cpp \
+    src/misc/txmempool.cpp \
+    src/misc/util.cpp \
+    src/misc/hash.cpp \
+    src/misc/netbase.cpp \
+    src/misc/ecwrapper.cpp \
+    src/misc/key.cpp \
+    src/misc/pubkey.cpp \
+    src/misc/script.cpp \
+    src/misc/scrypt.cpp \
+    src/misc/core.cpp \
+    src/main/main.cpp \
+    src/misc/miner.cpp \
+    src/main/init.cpp \
+    src/misc/net.cpp \
+    src/misc/checkpoints.cpp \
+    src/misc/addrman.cpp \
+    src/misc/db.cpp \
+    src/wallet/walletdb.cpp \
     src/qt/clientmodel.cpp \
     src/qt/guiutil.cpp \
     src/qt/transactionrecord.cpp \
@@ -365,51 +365,51 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiondescdialog.cpp \
     src/qt/bitcoinstrings.cpp \
     src/qt/bitcoinamountfield.cpp \
-    src/wallet.cpp \
-    src/keystore.cpp \
+    src/wallet/wallet.cpp \
+    src/misc/keystore.cpp \
     src/qt/transactionfilterproxy.cpp \
     src/qt/transactionview.cpp \
     src/qt/walletmodel.cpp \
     src/qt/walletmodeltransaction.cpp \
-    src/rpcclient.cpp \
-    src/rpcprotocol.cpp \
-    src/rpcserver.cpp \
-    src/rpcdump.cpp \
-    src/rpcmisc.cpp \
-    src/rpcnet.cpp \
-    src/rpcmining.cpp \
-    src/rpcwallet.cpp \
-    src/rpcblockchain.cpp \
-    src/rpcrawtransaction.cpp \
+    src/rpc/rpcclient.cpp \
+    src/rpc/rpcprotocol.cpp \
+    src/rpc/rpcserver.cpp \
+    src/rpc/rpcdump.cpp \
+    src/rpc/rpcmisc.cpp \
+    src/rpc/rpcnet.cpp \
+    src/rpc/rpcmining.cpp \
+    src/rpc/rpcwallet.cpp \
+    src/rpc/rpcblockchain.cpp \
+    src/rpc/rpcrawtransaction.cpp \
     src/qt/overviewpage.cpp \
     src/qt/csvmodelwriter.cpp \
-    src/crypter.cpp \
+    src/misc/crypter.cpp \
     src/qt/sendcoinsentry.cpp \
     src/qt/qvalidatedlineedit.cpp \
     src/qt/bitcoinunits.cpp \
     src/qt/qvaluecombobox.cpp \
     src/qt/askpassphrasedialog.cpp \
-    src/protocol.cpp \
+    src/misc/protocol.cpp \
     src/qt/notificator.cpp \
     src/qt/paymentserver.cpp \
     src/qt/rpcconsole.cpp \
-    src/noui.cpp \
-    src/kernel.cpp \
-    src/pbkdf2.cpp \
+    src/misc/noui.cpp \
+    src/misc/kernel.cpp \
+    src/misc/pbkdf2.cpp \
     src/support/cleanse.cpp \
-    src/stealth.cpp \
+    src/misc/stealth.cpp \
     src/qt/flowlayout.cpp \
     src/qt/darksendconfig.cpp \
-    src/masternode.cpp \
-    src/darksend.cpp \
-    src/darksend-relay.cpp \
-    src/rpcdarksend.cpp \
-    src/instantx.cpp \
-    src/activemasternode.cpp \
-    src/masternodeman.cpp \
-    src/masternode-payments.cpp \
-    src/spork.cpp \
-    src/masternodeconfig.cpp \
+    src/masternode/masternode.cpp \
+    src/darksend/darksend.cpp \
+    src/darksend/darksend-relay.cpp \
+    src/rpc/rpcdarksend.cpp \
+    src/instantx/instantx.cpp \
+    src/masternode/activemasternode.cpp \
+    src/masternode/masternodeman.cpp \
+    src/masternode/masternode-payments.cpp \
+    src/masternode/spork.cpp \
+    src/masternode/masternodeconfig.cpp \
     src/crypto/hmac_sha256.cpp \
     src/crypto/hmac_sha512.cpp \
     src/crypto/ripemd160.cpp \
@@ -420,7 +420,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/addeditadrenalinenode.cpp \
     src/qt/adrenalinenodeconfigdialog.cpp \
     src/qt/qcustomplot.cpp \
-    src/smessage.cpp \
+    src/misc/smessage.cpp \
     src/qt/messagepage.cpp \
     src/qt/messagemodel.cpp \
     src/qt/sendmessagesdialog.cpp \
@@ -431,18 +431,18 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/multisigaddressentry.cpp \
     src/qt/multisiginputentry.cpp \
     src/qt/multisigdialog.cpp \
-    src/rpcsmessage.cpp \
-    src/blake.c \
-    src/bmw.c \
-    src/groestl.c \
-    src/jh.c \
-    src/keccak.c \
-    src/skein.c \
-    src/luffa.c \
-    src/cubehash.c \
-    src/shavite.c \
-    src/echo.c \
-    src/simd.c
+    src/rpc/rpcsmessage.cpp \
+    src/crypto/blake.c \
+    src/crypto/bmw.c \
+    src/crypto/groestl.c \
+    src/crypto/jh.c \
+    src/crypto/keccak.c \
+    src/crypto/skein.c \
+    src/crypto/luffa.c \
+    src/crypto/cubehash.c \
+    src/crypto/shavite.c \
+    src/crypto/echo.c \
+    src/crypto/simd.c
 
 RESOURCES += \
     src/qt/bitcoin.qrc
@@ -605,7 +605,7 @@ macx:HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit -framework CoreServices
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/bitcoin.icns
+macx:ICON = src/qt/res/icons/stipend.icns
 macx:TARGET = "Stipend-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread

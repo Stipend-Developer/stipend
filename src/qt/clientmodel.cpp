@@ -7,11 +7,12 @@
 #include "peertablemodel.h"
 #include "transactiontablemodel.h"
 
-#include "chainparams.h"
-#include "alert.h"
-#include "main.h"
-#include "ui_interface.h"
-#include "masternodeman.h"
+#include "chainparams/chainparams.h"
+#include "main/main.h"
+
+#include "misc/alert.h"
+#include "misc/ui_interface.h"
+#include "masternode/masternodeman.h"
 
 #include <QDateTime>
 #include <QTimer>

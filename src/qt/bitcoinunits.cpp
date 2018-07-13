@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "bitcoinunits.h"
-#include "main.h"
+#include "main/main.h"
 
 #include <QSettings>
 #include <QStringList>

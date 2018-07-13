@@ -1,17 +1,19 @@
 #include "addeditadrenalinenode.h"
 #include "ui_addeditadrenalinenode.h"
-#include "masternodeconfig.h"
+#include "masternode/masternodeconfig.h"
 #include "masternodemanager.h"
 #include "ui_masternodemanager.h"
 
-#include "walletdb.h"
-#include "wallet.h"
-#include "ui_interface.h"
-#include "util.h"
-#include "key.h"
-#include "script.h"
-#include "init.h"
-#include "base58.h"
+#include "wallet/walletdb.h"
+#include "wallet/wallet.h"
+
+#include "misc/ui_interface.h"
+#include "misc/util.h"
+#include "misc/key.h"
+#include "misc/script.h"
+#include "misc/base58.h"
+
+#include "main/init.h"
 #include <QMessageBox>
 #include <QClipboard>
 
