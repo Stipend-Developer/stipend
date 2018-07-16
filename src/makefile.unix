@@ -110,7 +110,7 @@ xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 OBJS= \
     obj/misc/alert.o \
     obj/misc/allocators.o \
-    obj/misc/version.o \
+    obj/version.o \
     obj/support/cleanse.o \
     obj/misc/checkpoints.o \
     obj/misc/netbase.o \

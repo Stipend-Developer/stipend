@@ -1,6 +1,7 @@
 *
 !support
 !crypto
+!chainparams
 !darksend
 !instantx
 !main

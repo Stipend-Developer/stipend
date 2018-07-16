@@ -64,7 +64,7 @@ HEADERS = $(wildcard *.h)
 
 OBJS= \
     obj/misc/alert.o \
-    obj/misc/version.o \
+    obj/version.o \
     obj/misc/checkpoints.o \
     obj/misc/netbase.o \
     obj/misc/addrman.o \

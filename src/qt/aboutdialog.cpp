@@ -2,7 +2,7 @@
 #include "ui_aboutdialog.h"
 #include "clientmodel.h"
 
-#include "misc/version.h"
+#include "version.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),

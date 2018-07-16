@@ -33,7 +33,7 @@ const std::string CLIENT_NAME("StipendClient");
 #    include "build.h"
 #endif
 
-// git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
+// git will put "#define GIT_ARCHIVE 1" on the next line inside archives.
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
 #    define GIT_COMMIT_ID "70100"
