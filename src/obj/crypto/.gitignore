@@ -1,2 +1,11 @@
 *
+!support
+!crypto
+!darksend
+!instantx
+!main
+!masternode
+!misc
+!rpc
+!wallet
 !.gitignore
