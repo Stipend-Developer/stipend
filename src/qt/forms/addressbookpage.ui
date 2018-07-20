@@ -262,11 +262,6 @@ margin-left: 2px;</string>
                       <height>30</height>
                      </size>
                     </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
                     <property name="styleSheet">
                      <string notr="true">margin-left: 2px;</string>
                     </property>
@@ -386,11 +381,6 @@ margin-left: 2px;</string>
              </property>
              <item>
               <widget class="QPushButton" name="newAddressButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>New Address</string>
                </property>
@@ -398,11 +388,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="copyToClipboard">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Copy Address</string>
                </property>
@@ -410,11 +395,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="showQRCode">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Show QR Code</string>
                </property>
@@ -422,11 +402,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="signMessage">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Sign Message</string>
                </property>
@@ -434,11 +409,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="verifyMessage">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Verify Message</string>
                </property>
@@ -446,11 +416,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="deleteButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Delete</string>
                </property>
@@ -471,11 +436,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QDialogButtonBox" name="buttonBox">
-               <property name="font">
-                <font>
-                 <pointsize>-1</pointsize>
-                </font>
-               </property>
                <property name="styleSheet">
                 <string notr="true">font-size: 11px</string>
                </property>

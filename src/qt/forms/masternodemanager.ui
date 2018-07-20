@@ -242,11 +242,6 @@ margin-left: 2px;</string>
                       <height>30</height>
                      </size>
                     </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
                     <property name="styleSheet">
                      <string notr="true">margin-left: 2px;</string>
                     </property>
@@ -310,11 +305,6 @@ margin-left: 2px;</string>
               <layout class="QHBoxLayout" name="horizontalLayout_11">
                <item>
                 <widget class="QPushButton" name="createButton">
-                 <property name="font">
-                  <font>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
                  <property name="text">
                   <string>&amp;Create...</string>
                  </property>
@@ -342,11 +332,6 @@ margin-left: 2px;</string>
                  <width>550</width>
                  <height>0</height>
                 </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
                </property>
                <property name="editTriggers">
                 <set>QAbstractItemView::NoEditTriggers</set>
@@ -413,11 +398,6 @@ margin-left: 2px;</string>
              </property>
              <item>
               <widget class="QPushButton" name="editButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>&amp;Edit</string>
                </property>
@@ -425,11 +405,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="removeButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>&amp;Remove</string>
                </property>
@@ -437,11 +412,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="UpdateButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>&amp;Update</string>
                </property>
@@ -462,11 +432,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="startButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>S&amp;tart</string>
                </property>
@@ -474,11 +439,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="startAllButton">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>St&amp;art All</string>
                </property>
