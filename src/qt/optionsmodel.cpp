@@ -18,8 +18,6 @@
 #include <QSettings>
 #include <QStringList>
 
-bool fUseBlackTheme;
-
 OptionsModel::OptionsModel(QObject *parent) :
     QAbstractListModel(parent)
 {
@@ -55,8 +53,6 @@ void OptionsModel::Init()
     if (!settings.contains("nDisplayUnit"))
         settings.setValue("nDisplayUnit", BitcoinUnits::BTC);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
-
-    fUseBlackTheme = settings.value("fUseBlackTheme", false).toBool();
 
     if (!settings.contains("fCoinControlFeatures"))
         settings.setValue("fCoinControlFeatures", false);
@@ -208,8 +204,6 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return QVariant(nDarksendRounds);
         case AnonymizeStipendAmount:
             return QVariant(nAnonymizeStipendAmount);
-        case UseBlackTheme:
-            return QVariant(fUseBlackTheme);
         default:
             return QVariant();
         }
@@ -308,10 +302,6 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             fCoinControlFeatures = value.toBool();
             settings.setValue("fCoinControlFeatures", fCoinControlFeatures);
             emit coinControlFeaturesChanged(fCoinControlFeatures);
-            break;
-        case UseBlackTheme:
-            fUseBlackTheme = value.toBool();
-            settings.setValue("fUseBlackTheme", fUseBlackTheme);
             break;
         case DarksendRounds:
             nDarksendRounds = value.toInt();
