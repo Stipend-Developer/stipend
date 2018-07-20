@@ -13,14 +13,10 @@ class TransactionView;
 class OverviewPage;
 class AddressBookPage;
 class SendCoinsDialog;
-class SignVerifyMessageDialog;
 class MultisigDialog;
 class Notificator;
 class RPCConsole;
 class MasternodeManager;
-class MessagePage;
-class MessageModel;
-class BlockBrowser;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -52,7 +48,6 @@ public:
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
-    void setMessageModel(MessageModel *messageModel);
 
 protected:
     void changeEvent(QEvent *e);
@@ -63,7 +58,6 @@ protected:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
-    MessageModel *messageModel;
 
     QToolBar *toolbar;
 
@@ -76,12 +70,9 @@ private:
     AddressBookPage *addressBookPage;
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
-    SignVerifyMessageDialog *signVerifyMessageDialog;
     MultisigDialog *multisigPage;
     MasternodeManager *masternodeManagerPage;
-    MessagePage *messagePage;
     QLabel* netLabel;
-    BlockBrowser *blockBrowser;
     QLabel *labelEncryptionIcon;
     QLabel *labelStakingIcon;
     QLabel *labelConnectionsIcon;
@@ -97,8 +88,6 @@ private:
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *addressBookAction;
-    QAction *signMessageAction;
-    QAction *verifyMessageAction;
     QAction *multisigAction;
     QAction *aboutAction;
     QAction *receiveCoinsAction;
@@ -113,7 +102,6 @@ private:
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
     QAction *masternodeManagerAction;
-    QAction *messageAction;
     QAction *blockAction;
     QAction *TradingAction;
     QAction *showBackupsAction;
@@ -188,16 +176,8 @@ private slots:
     /** Switch to send coins page */
     void gotoSendCoinsPage();
     /** Switch to block explorer*/
-    void gotoBlockBrowser();
-    /** Switch to masternode manager page*/
     void gotoMasternodeManagerPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
-    void gotoSignMessageTab(QString addr = "");
-    /** Show Sign/Verify Message dialog and switch to verify message tab */
-    void gotoVerifyMessageTab(QString addr = "");
-    /** Switch to message page*/
-    void gotoMessagePage();
-    /** Show configuration dialog */
     void optionsClicked();
     /** Show about dialog */
     void aboutClicked();
@@ -210,7 +190,6 @@ private slots:
         The new items are those between start and end inclusive, under the given parent item.
     */
     void incomingTransaction(const QModelIndex & parent, int start, int end);
-    void incomingMessage(const QModelIndex & parent, int start, int end);
     /** Encrypt the wallet */
     void encryptWallet();
     /** Backup the wallet */

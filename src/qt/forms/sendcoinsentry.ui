@@ -72,36 +72,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="addressBookButton">
-       <property name="toolTip">
-        <string>Choose address from address book</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
-       </property>
-       <property name="shortcut">
-        <string>Alt+A</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="8" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="BitcoinAmountField" name="payAmount">
-       <zorder>deleteButton</zorder>
-       <zorder>deleteButton</zorder>
-       <zorder>deleteButton</zorder>
-       <zorder>deleteButton</zorder>
-       <zorder>deleteButton</zorder>
-      </widget>
-     </item>
-     <item>
       <widget class="QToolButton" name="deleteButton">
        <property name="toolTip">
         <string>Remove this recipient</string>
@@ -114,6 +84,13 @@
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
        </property>
       </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="8" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="BitcoinAmountField" name="payAmount"/>
      </item>
     </layout>
    </item>
