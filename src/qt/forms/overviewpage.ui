@@ -503,13 +503,19 @@
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: #fff</string>
+             <string notr="true">#frame_5 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_14">
              <property name="leftMargin">
@@ -583,12 +589,15 @@
                      <widget class="QLabel" name="balanceLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">margin-top: 10px;
-margin-left: 2px;</string>
+                       <string notr="true">background-color: #fff;
+padding-left: 2px;
+padding-top: 10px;</string>
                       </property>
                       <property name="text">
                        <string>Total Balance</string>
@@ -602,6 +611,9 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="Line" name="line">
+                 <property name="styleSheet">
+                  <string notr="true">b</string>
+                 </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -623,6 +635,9 @@ margin-left: 2px;</string>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
@@ -654,7 +669,10 @@ margin-left: 2px;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: #fff</string>
+             <string notr="true">#frame_6 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -728,12 +746,15 @@ margin-left: 2px;</string>
                      <widget class="QLabel" name="miscBalanceLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">margin-top: 10px;
-margin-left: 2px;
+                       <string notr="true">background-color: #fff;
+padding-top: 10px;
+padding-left: 2px;
 </string>
                       </property>
                       <property name="lineWidth">
@@ -760,13 +781,8 @@ margin-left: 2px;
                 <layout class="QGridLayout" name="gridLayout_2">
                  <item row="2" column="0">
                   <widget class="QLabel" name="labelPendingText">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-left: 2px;</string>
+                    <string notr="true">margin-left: 2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>Pending</string>
@@ -775,13 +791,8 @@ margin-left: 2px;
                  </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="labelStakeText">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-left: 2px;</string>
+                    <string notr="true">margin-left: 2px; background-color: #fff;</string>
                    </property>
                    <property name="text">
                     <string>Stake</string>
@@ -792,13 +803,12 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelStake">
                    <property name="font">
                     <font>
-                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-right:2px</string>
+                    <string notr="true">margin-right:2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
@@ -812,13 +822,12 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelBalance">
                    <property name="font">
                     <font>
-                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-right:2px;</string>
+                    <string notr="true">margin-right:2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
@@ -830,13 +839,8 @@ margin-left: 2px;
                  </item>
                  <item row="0" column="0">
                   <widget class="QLabel" name="labelBalanceText">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-left: 2px</string>
+                    <string notr="true">margin-left: 2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>Available: </string>
@@ -847,13 +851,12 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelUnconfirmed">
                    <property name="font">
                     <font>
-                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-right: 2px;</string>
+                    <string notr="true">margin-right: 2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
@@ -890,7 +893,10 @@ margin-left: 2px;
           <item>
            <widget class="QFrame" name="frame_4">
             <property name="styleSheet">
-             <string notr="true">background-color: #fff</string>
+             <string notr="true">#frame_4 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -970,12 +976,15 @@ margin-left: 2px;
                      <widget class="QLabel" name="transactionsLabel">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">margin-top: 10px;
-margin-left: 2px;</string>
+                       <string notr="true">background-color: #fff;
+padding-top: 10px;
+padding-left: 2px;</string>
                       </property>
                       <property name="lineWidth">
                        <number>1</number>
@@ -1006,7 +1015,7 @@ margin-left: 2px;</string>
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border: 0;</string>
+                  <string notr="true">border: 0; background-color: #fff</string>
                  </property>
                  <property name="lineWidth">
                   <number>0</number>
