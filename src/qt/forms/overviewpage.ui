@@ -779,28 +779,8 @@ padding-left: 2px;
                </item>
                <item>
                 <layout class="QGridLayout" name="gridLayout_2">
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="labelPendingText">
-                   <property name="styleSheet">
-                    <string notr="true">margin-left: 2px; background-color: #fff</string>
-                   </property>
-                   <property name="text">
-                    <string>Pending</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="labelStakeText">
-                   <property name="styleSheet">
-                    <string notr="true">margin-left: 2px; background-color: #fff;</string>
-                   </property>
-                   <property name="text">
-                    <string>Stake</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QLabel" name="labelStake">
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="labelUnconfirmed">
                    <property name="font">
                     <font>
                      <weight>75</weight>
@@ -808,13 +788,33 @@ padding-left: 2px;
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-right:2px; background-color: #fff</string>
+                    <string notr="true">margin-right: 2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="labelBalanceText">
+                   <property name="styleSheet">
+                    <string notr="true">margin-left: 2px; background-color: #fff</string>
+                   </property>
+                   <property name="text">
+                    <string>Available: </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="labelPendingText">
+                   <property name="styleSheet">
+                    <string notr="true">margin-left: 2px; background-color: #fff</string>
+                   </property>
+                   <property name="text">
+                    <string>Pending</string>
                    </property>
                   </widget>
                  </item>
@@ -837,18 +837,8 @@ padding-left: 2px;
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="labelBalanceText">
-                   <property name="styleSheet">
-                    <string notr="true">margin-left: 2px; background-color: #fff</string>
-                   </property>
-                   <property name="text">
-                    <string>Available: </string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLabel" name="labelUnconfirmed">
+                 <item row="1" column="1">
+                  <widget class="QLabel" name="labelStake">
                    <property name="font">
                     <font>
                      <weight>75</weight>
@@ -856,7 +846,7 @@ padding-left: 2px;
                     </font>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">margin-right: 2px; background-color: #fff</string>
+                    <string notr="true">margin-right:2px; background-color: #fff</string>
                    </property>
                    <property name="text">
                     <string>0.000 000 00 BTC</string>
@@ -865,6 +855,32 @@ padding-left: 2px;
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                   </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="labelStakeText">
+                   <property name="styleSheet">
+                    <string notr="true">margin-left: 2px; background-color: #fff;</string>
+                   </property>
+                   <property name="text">
+                    <string>Stake</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <spacer name="verticalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>10</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </item>
