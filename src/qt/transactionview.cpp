@@ -40,7 +40,7 @@ TransactionView::TransactionView(QWidget *parent) :
 {
     QSettings settings;
     // Build filter row
-    setContentsMargins(16,16,16,16);
+    setContentsMargins(15,15,15,15);
 
     QHBoxLayout *hlayout = new QHBoxLayout();
     hlayout->setContentsMargins(0,0,0,0);

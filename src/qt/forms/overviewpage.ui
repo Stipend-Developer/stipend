@@ -13,7 +13,13 @@
   <property name="minimumSize">
    <size>
     <width>1024</width>
-    <height>0</height>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="palette">
@@ -461,26 +467,26 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="topMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="rightMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="bottomMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
-         <number>25</number>
+         <number>10</number>
         </property>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <property name="spacing">
-           <number>25</number>
+           <number>10</number>
           </property>
           <item>
            <widget class="QFrame" name="frame_5">
@@ -534,6 +540,12 @@
                </property>
                <item>
                 <widget class="QFrame" name="frame_7">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
@@ -571,7 +583,7 @@
                      <widget class="QLabel" name="balanceLabel">
                       <property name="font">
                        <font>
-                        <pointsize>16</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -607,7 +619,7 @@ margin-left: 2px;</string>
                   <widget class="QLabel" name="labelTotal">
                    <property name="font">
                     <font>
-                     <pointsize>20</pointsize>
+                     <pointsize>17</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -716,7 +728,7 @@ margin-left: 2px;</string>
                      <widget class="QLabel" name="miscBalanceLabel">
                       <property name="font">
                        <font>
-                        <pointsize>16</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -750,7 +762,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelPendingText">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -765,7 +777,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelStakeText">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -780,7 +792,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelStake">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -800,7 +812,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelBalance">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -820,7 +832,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelBalanceText">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -835,7 +847,7 @@ margin-left: 2px;
                   <widget class="QLabel" name="labelUnconfirmed">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>11</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -958,7 +970,7 @@ margin-left: 2px;
                      <widget class="QLabel" name="transactionsLabel">
                       <property name="font">
                        <font>
-                        <pointsize>16</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">

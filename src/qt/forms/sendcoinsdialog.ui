@@ -10,6 +10,18 @@
     <height>750</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Send Coins</string>
   </property>
@@ -54,7 +66,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <property name="spacing">
-         <number>25</number>
+         <number>10</number>
         </property>
         <item>
          <widget class="QFrame" name="frameCoinControl">
@@ -67,7 +79,7 @@
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>230</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -156,7 +168,7 @@
                      <widget class="QLabel" name="labelCoinControlFeatures">
                       <property name="font">
                        <font>
-                        <pointsize>16</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -184,11 +196,6 @@ margin-left: 2px;</string>
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
                   <widget class="QPushButton" name="pushButtonCoinControl">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
                    <property name="text">
                     <string>Inputs...</string>
                    </property>
@@ -196,11 +203,6 @@ margin-left: 2px;</string>
                  </item>
                  <item>
                   <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
                    <property name="text">
                     <string>automatically selected</string>
                    </property>
@@ -299,13 +301,6 @@ margin-left: 2px;</string>
                      </disabled>
                     </palette>
                    </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
                    <property name="styleSheet">
                     <string notr="true">font-color: red;</string>
                    </property>
@@ -336,10 +331,594 @@ margin-left: 2px;</string>
                  </property>
                 </widget>
                </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QWidget" name="widgetCoinControl" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayoutCoinControl5">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayoutCoinControl3" stretch="0,0,0,1">
+                  <property name="spacing">
+                   <number>20</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <layout class="QFormLayout" name="formLayoutCoinControl1">
+                    <property name="horizontalSpacing">
+                     <number>10</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>14</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>10</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>4</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="labelCoinControlQuantityText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Quantity:</string>
+                      </property>
+                      <property name="margin">
+                       <number>0</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="labelCoinControlQuantity">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0</string>
+                      </property>
+                      <property name="margin">
+                       <number>0</number>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="labelCoinControlBytesText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Bytes:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="labelCoinControlBytes">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QFormLayout" name="formLayoutCoinControl2">
+                    <property name="horizontalSpacing">
+                     <number>10</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>14</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>6</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>4</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="labelCoinControlAmountText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Amount:</string>
+                      </property>
+                      <property name="margin">
+                       <number>0</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="labelCoinControlAmount">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0.00 SPD</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="labelCoinControlPriorityText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Priority:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="labelCoinControlPriority">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>medium</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QFormLayout" name="formLayoutCoinControl3">
+                    <property name="horizontalSpacing">
+                     <number>10</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>14</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>6</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>4</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="labelCoinControlFeeText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Fee:</string>
+                      </property>
+                      <property name="margin">
+                       <number>0</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="labelCoinControlFee">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0.00 SPD</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="labelCoinControlLowOutputText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Low Output:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="labelCoinControlLowOutput">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>no</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QFormLayout" name="formLayoutCoinControl4">
+                    <property name="horizontalSpacing">
+                     <number>10</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>14</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>6</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>4</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="labelCoinControlAfterFeeText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>After Fee:</string>
+                      </property>
+                      <property name="margin">
+                       <number>0</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="labelCoinControlAfterFee">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0.00 SPD</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="labelCoinControlChangeText">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font-weight:bold;</string>
+                      </property>
+                      <property name="text">
+                       <string>Change</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="labelCoinControlChange">
+                      <property name="font">
+                       <font>
+                        <family>Monospace</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>IBeamCursor</cursorShape>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ActionsContextMenu</enum>
+                      </property>
+                      <property name="text">
+                       <string>0.00 SPD</string>
+                      </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #fff;</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_4">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="checkBoxCoinControlChange">
+               <property name="text">
+                <string>Custom Change Address</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
                <item>
-                <widget class="QWidget" name="widgetCoinControl" native="true">
+                <widget class="QLineEdit" name="splitBlockLineEdit">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>50</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="placeholderText">
+                  <string># of outputs</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelBlockSizeText">
+                 <property name="text">
+                  <string>UTXO Size:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelBlockSize">
+                 <property name="text">
+                  <string>0 SPD</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelCoinControlChangeLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="margin">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QLineEdit" name="lineEditCoinControlChange">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -353,620 +932,40 @@ margin-left: 2px;</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>80</height>
+                   <height>25</height>
                   </size>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
+                 <property name="text">
+                  <string>&quot;Enter a Stipend address (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)&quot;)</string>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayoutCoinControl5">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayoutCoinControl3" stretch="0,0,0,1">
-                    <property name="spacing">
-                     <number>20</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>10</number>
-                    </property>
-                    <item>
-                     <layout class="QFormLayout" name="formLayoutCoinControl1">
-                      <property name="horizontalSpacing">
-                       <number>10</number>
-                      </property>
-                      <property name="verticalSpacing">
-                       <number>14</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>10</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>4</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>6</number>
-                      </property>
-                      <item row="0" column="0">
-                       <widget class="QLabel" name="labelCoinControlQuantityText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Quantity:</string>
-                        </property>
-                        <property name="margin">
-                         <number>0</number>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="labelCoinControlQuantity">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0</string>
-                        </property>
-                        <property name="margin">
-                         <number>0</number>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="labelCoinControlBytesText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Bytes:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="labelCoinControlBytes">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <layout class="QFormLayout" name="formLayoutCoinControl2">
-                      <property name="horizontalSpacing">
-                       <number>10</number>
-                      </property>
-                      <property name="verticalSpacing">
-                       <number>14</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>6</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>4</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>6</number>
-                      </property>
-                      <item row="0" column="0">
-                       <widget class="QLabel" name="labelCoinControlAmountText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Amount:</string>
-                        </property>
-                        <property name="margin">
-                         <number>0</number>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="labelCoinControlAmount">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0.00 SPD</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="labelCoinControlPriorityText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Priority:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="labelCoinControlPriority">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>medium</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <layout class="QFormLayout" name="formLayoutCoinControl3">
-                      <property name="horizontalSpacing">
-                       <number>10</number>
-                      </property>
-                      <property name="verticalSpacing">
-                       <number>14</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>6</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>4</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>6</number>
-                      </property>
-                      <item row="0" column="0">
-                       <widget class="QLabel" name="labelCoinControlFeeText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Fee:</string>
-                        </property>
-                        <property name="margin">
-                         <number>0</number>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="labelCoinControlFee">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0.00 SPD</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="labelCoinControlLowOutputText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Low Output:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="labelCoinControlLowOutput">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>no</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <layout class="QFormLayout" name="formLayoutCoinControl4">
-                      <property name="horizontalSpacing">
-                       <number>10</number>
-                      </property>
-                      <property name="verticalSpacing">
-                       <number>14</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>6</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>4</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>6</number>
-                      </property>
-                      <item row="0" column="0">
-                       <widget class="QLabel" name="labelCoinControlAfterFeeText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>After Fee:</string>
-                        </property>
-                        <property name="margin">
-                         <number>0</number>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="labelCoinControlAfterFee">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0.00 SPD</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="labelCoinControlChangeText">
-                        <property name="font">
-                         <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font-weight:bold;</string>
-                        </property>
-                        <property name="text">
-                         <string>Change</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="labelCoinControlChange">
-                        <property name="font">
-                         <font>
-                          <family>Monospace</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>IBeamCursor</cursorShape>
-                        </property>
-                        <property name="contextMenuPolicy">
-                         <enum>Qt::ActionsContextMenu</enum>
-                        </property>
-                        <property name="text">
-                         <string>0.00 SPD</string>
-                        </property>
-                        <property name="textInteractionFlags">
-                         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
                 </widget>
                </item>
-               <item>
-                <layout class="QGridLayout" name="gridLayout_4">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QCheckBox" name="checkBoxCoinControlChange">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Custom Change Address</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <layout class="QHBoxLayout" name="horizontalLayout_8">
-                   <item>
-                    <widget class="QLineEdit" name="splitBlockLineEdit">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                       <horstretch>50</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>100</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>12</pointsize>
-                      </font>
-                     </property>
-                     <property name="placeholderText">
-                      <string># of outputs</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="labelBlockSizeText">
-                     <property name="font">
-                      <font>
-                       <pointsize>12</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>UTXO Size:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="labelBlockSize">
-                     <property name="font">
-                      <font>
-                       <pointsize>12</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0 SPD</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="labelCoinControlChangeLabel">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>12</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="margin">
-                      <number>3</number>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="0" column="1">
-                  <layout class="QHBoxLayout" name="horizontalLayout_9">
-                   <item>
-                    <widget class="QLineEdit" name="lineEditCoinControlChange">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>12</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>&quot;Enter a Stipend address (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)&quot;)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QCheckBox" name="splitBlockCheckBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>200</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>200</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Split UTXO</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
               </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="splitBlockCheckBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Split UTXO</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -975,10 +974,16 @@ margin-left: 2px;</string>
         </item>
         <item>
          <widget class="QFrame" name="frame_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>300</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>500</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -1010,7 +1015,7 @@ margin-left: 2px;</string>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>400</height>
+                 <height>0</height>
                 </size>
                </property>
                <property name="widgetResizable">
@@ -1022,10 +1027,22 @@ margin-left: 2px;</string>
                   <x>0</x>
                   <y>0</y>
                   <width>964</width>
-                  <height>398</height>
+                  <height>372</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="leftMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
                  <item>
                   <layout class="QVBoxLayout" name="entries"/>
                  </item>
@@ -1085,11 +1102,6 @@ margin-left: 2px;</string>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
               <widget class="QPushButton" name="addButton">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Add Recipient</string>
                </property>
@@ -1097,11 +1109,6 @@ margin-left: 2px;</string>
              </item>
              <item>
               <widget class="QPushButton" name="clearButton">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
                <property name="text">
                 <string>Clear All</string>
                </property>
@@ -1111,11 +1118,6 @@ margin-left: 2px;</string>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
                 <widget class="QCheckBox" name="checkInstantX">
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
                  <property name="text">
                   <string>InstantX</string>
                  </property>
@@ -1123,11 +1125,6 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="label">
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
                  <property name="text">
                   <string>Balance: </string>
                  </property>
@@ -1135,11 +1132,6 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="labelBalance">
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
                  <property name="text">
                   <string>123.456 SPD</string>
                  </property>
@@ -1167,11 +1159,6 @@ margin-left: 2px;</string>
                  <width>200</width>
                  <height>0</height>
                 </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
                </property>
                <property name="text">
                 <string>Send</string>
