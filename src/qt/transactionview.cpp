@@ -510,7 +510,7 @@ void TransactionView::updateTotalAmount(bool ensureTotalAmountHidden)
 
 	    if (amount >= 0)
 		{
-			QRgb amountColor = fUseBlackTheme ? COLOR_POSITIVE_BACK_THEME.rgb() : COLOR_POSITIVE.rgb();
+			QRgb amountColor = COLOR_POSITIVE.rgb();
 			strAmount = "<span>Sum: <span style='color:#"
 				+ QString::number(amountColor, 16)
 				+ ";'>" + strAmount + "</span></span>";

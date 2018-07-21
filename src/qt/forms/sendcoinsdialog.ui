@@ -52,16 +52,16 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="leftMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="topMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="rightMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <property name="bottomMargin">
-       <number>25</number>
+       <number>24</number>
       </property>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -83,7 +83,10 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #fff;</string>
+           <string notr="true">#frameCoinControl {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -168,12 +171,15 @@
                      <widget class="QLabel" name="labelCoinControlFeatures">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
+                        <pointsize>12</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">margin-top: 10px;
-margin-left: 2px;</string>
+                       <string notr="true">padding-top: 10px;
+padding-left: 2px;
+background-color: #fff;</string>
                       </property>
                       <property name="text">
                        <string>Coin Control Features</string>
@@ -203,6 +209,9 @@ margin-left: 2px;</string>
                  </item>
                  <item>
                   <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #fff</string>
+                   </property>
                    <property name="text">
                     <string>automatically selected</string>
                    </property>
@@ -302,7 +311,8 @@ margin-left: 2px;</string>
                     </palette>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">font-color: red;</string>
+                    <string notr="true">font-color: red;
+background-color: #fff;</string>
                    </property>
                    <property name="text">
                     <string>Insufficient funds!</string>
@@ -354,7 +364,7 @@ margin-left: 2px;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">background-color: #fff</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayoutCoinControl5">
                 <property name="leftMargin">
@@ -808,7 +818,10 @@ margin-left: 2px;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #fff;</string>
+           <string notr="true">#frame_2 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -827,6 +840,9 @@ margin-left: 2px;</string>
              </property>
              <item row="0" column="0">
               <widget class="QCheckBox" name="checkBoxCoinControlChange">
+               <property name="styleSheet">
+                <string notr="true">background-color: #fff</string>
+               </property>
                <property name="text">
                 <string>Custom Change Address</string>
                </property>
@@ -854,6 +870,9 @@ margin-left: 2px;</string>
                    <height>25</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="placeholderText">
                   <string># of outputs</string>
                  </property>
@@ -861,6 +880,9 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="labelBlockSizeText">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>UTXO Size:</string>
                  </property>
@@ -868,6 +890,9 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="labelBlockSize">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>0 SPD</string>
                  </property>
@@ -899,6 +924,9 @@ margin-left: 2px;</string>
                    <width>0</width>
                    <height>0</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -935,6 +963,9 @@ margin-left: 2px;</string>
                    <height>25</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>&quot;Enter a Stipend address (e.g. SXZ1DpQPXqAq5pWGFjLgsAsxoSRM23cbNK)&quot;)</string>
                  </property>
@@ -962,6 +993,9 @@ margin-left: 2px;</string>
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #fff</string>
+               </property>
                <property name="text">
                 <string>Split UTXO</string>
                </property>
@@ -987,7 +1021,10 @@ margin-left: 2px;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #fff;</string>
+           <string notr="true">#frame_3 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -1018,6 +1055,9 @@ margin-left: 2px;</string>
                  <height>0</height>
                 </size>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #fff;</string>
+               </property>
                <property name="widgetResizable">
                 <bool>true</bool>
                </property>
@@ -1026,8 +1066,8 @@ margin-left: 2px;</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>964</width>
-                  <height>372</height>
+                  <width>966</width>
+                  <height>354</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1073,11 +1113,14 @@ margin-left: 2px;</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>30</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #fff</string>
+           <string notr="true">#frame_4 {
+    background-color: #fff;
+    border: 1px solid black;
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -1087,19 +1130,22 @@ margin-left: 2px;</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="leftMargin">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="bottomMargin">
-            <number>0</number>
+            <number>10</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QPushButton" name="addButton">
                <property name="text">
@@ -1118,6 +1164,9 @@ margin-left: 2px;</string>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
                 <widget class="QCheckBox" name="checkInstantX">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>InstantX</string>
                  </property>
@@ -1125,6 +1174,9 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="label">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>Balance: </string>
                  </property>
@@ -1132,6 +1184,9 @@ margin-left: 2px;</string>
                </item>
                <item>
                 <widget class="QLabel" name="labelBalance">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #fff</string>
+                 </property>
                  <property name="text">
                   <string>123.456 SPD</string>
                  </property>

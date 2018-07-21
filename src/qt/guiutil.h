@@ -90,7 +90,7 @@ namespace GUIUtil
 
     // Open debug.log
     void openDebugLogfile();
-    
+
     // Browse backup folder
     void showBackups();
 
@@ -195,8 +195,6 @@ namespace GUIUtil
         QString coreOptions;
         QString uiOptions;
     };
-
-    void SetBlackThemeQSS(QApplication& app);
 
 #if defined(Q_OS_MAC) && QT_VERSION >= 0x050000
     // workaround for Qt OSX Bug:
