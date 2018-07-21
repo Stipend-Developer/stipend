@@ -808,7 +808,7 @@ background-color: #fff;</string>
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>20</height>
+            <height>80</height>
            </size>
           </property>
           <property name="maximumSize">
