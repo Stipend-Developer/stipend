@@ -426,7 +426,7 @@ void BitcoinGUI::createToolBars()
     fLiteMode = GetBoolArg("-litemode", false);
 
     toolbar = new QToolBar(tr("Tabs toolbar"));
-    toolbar->setContentsMargins(20, 0, 0, 0);
+    toolbar->setContentsMargins(25, 0, 0, 0);
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
     toolbar->setObjectName("tabs");
