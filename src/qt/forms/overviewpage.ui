@@ -631,7 +631,7 @@ padding-top: 10px;</string>
                   <widget class="QLabel" name="labelTotal">
                    <property name="font">
                     <font>
-                     <pointsize>17</pointsize>
+                     <pointsize>15</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>

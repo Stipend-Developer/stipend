@@ -307,7 +307,7 @@ background-color: #fff</string>
             <number>10</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0,0,0,0,0,0,0">
+            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0,0,0,0,0">
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -338,20 +338,6 @@ background-color: #fff</string>
               <widget class="QPushButton" name="showQRCode">
                <property name="text">
                 <string>Show QR Code</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="signMessage">
-               <property name="text">
-                <string>Sign Message</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="verifyMessage">
-               <property name="text">
-                <string>Verify Message</string>
                </property>
               </widget>
              </item>
