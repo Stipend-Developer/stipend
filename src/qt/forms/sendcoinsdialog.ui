@@ -1152,16 +1152,6 @@ background-color: #fff;</string>
                  </property>
                 </widget>
                </item>
-               <item>
-                <widget class="QCheckBox" name="checkInstantX">
-                 <property name="styleSheet">
-                  <string notr="true">background-color: #fff</string>
-                 </property>
-                 <property name="text">
-                  <string>InstantX</string>
-                 </property>
-                </widget>
-               </item>
               </layout>
              </item>
              <item>
@@ -1176,6 +1166,19 @@ background-color: #fff;</string>
                 </size>
                </property>
               </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkInstantX">
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #fff</string>
+               </property>
+               <property name="text">
+                <string>InstantX</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="sendButton">
