@@ -298,6 +298,16 @@ background-color: #fff</string>
                </column>
                <column>
                 <property name="text">
+                 <string>Donation %</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Donation Address</string>
+                </property>
+               </column> 
+               <column>
+                <property name="text">
                  <string>Status</string>
                 </property>
                </column>
