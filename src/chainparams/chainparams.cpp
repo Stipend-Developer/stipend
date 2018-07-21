@@ -57,14 +57,6 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
 {
     std::vector<std::string> ips;
-    ips.push_back("34.225.25.154");
-    ips.push_back("52.45.189.6");
-    ips.push_back("34.232.249.188");
-    ips.push_back("34.231.228.73");
-    ips.push_back("34.239.99.171");
-    ips.push_back("18.218.0.160");
-    ips.push_back("13.59.189.252");
-    ips.push_back("52.15.218.190");
     ips.push_back("45.77.103.39");
     ips.push_back("149.28.61.137");
     ips.push_back("207.148.29.157");
