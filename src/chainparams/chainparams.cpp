@@ -65,6 +65,26 @@ static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
     ips.push_back("18.218.0.160");
     ips.push_back("13.59.189.252");
     ips.push_back("52.15.218.190");
+    ips.push_back("45.77.103.39");
+    ips.push_back("149.28.61.137");
+    ips.push_back("207.148.29.157");
+    ips.push_back("45.32.1.154");
+    ips.push_back("149.28.55.16");
+    ips.push_back("149.28.48.108");
+    ips.push_back("45.77.156.56");
+    ips.push_back("149.28.225.249");
+    ips.push_back("149.28.59.79");
+    ips.push_back("45.77.159.63");
+    ips.push_back("45.77.152.136");
+    ips.push_back("64.154.38.191");
+    ips.push_back("149.28.52.83");
+    ips.push_back("8.9.36.42");
+    ips.push_back("45.77.207.90");
+    ips.push_back("140.82.11.159");
+    ips.push_back("149.28.230.142");
+    ips.push_back("8.9.8.80");
+    ips.push_back("149.28.236.185");
+    ips.push_back("207.148.28.187");
 
     const int64_t oneWeek = 7 * 24 * 60 * 60;
     for (size_t i = 0; i < ips.size(); ++i)
