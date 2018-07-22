@@ -1290,6 +1290,42 @@ Value ListReceived(const Array& params, bool fByAccounts)
     return ret;
 }
 
+Value listcoins(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error(
+            "listcoins \"address\"\n"
+                "list your spendable coins and their information\n");
+
+        Array result;
+
+  	    std::vector<COutput> vCoins;
+        pwalletMain->AvailableCoins(vCoins);
+
+    string strAccount = AccountFromValue(params[0]);
+  	BOOST_FOREACH(const COutput& out, vCoins)
+    {
+    		Object coutput;
+    		int nHeight = nBestHeight - out.nDepth;
+    		CBlockIndex* pindex = FindBlockByHeight(nHeight);
+
+    		CTxDestination outputAddress;
+        ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress);
+
+        if (strAccount == CBitcoinAddress(outputAddress).ToString())
+        {
+        		coutput.push_back(Pair("Address", CBitcoinAddress(outputAddress).ToString()));
+        		coutput.push_back(Pair("Output Hash", out.tx->GetHash().ToString()));
+        		coutput.push_back(Pair("blockIndex", out.i));
+        		double dAmount = double(out.tx->vout[out.i].nValue) / double(COIN);
+        		coutput.push_back(Pair("Value", dAmount));
+        		coutput.push_back(Pair("Confirmations", int(out.nDepth)));
+        		result.push_back(coutput);
+        }
+  	}
+    return result;
+}
+
 Value listreceivedbyaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 3)
