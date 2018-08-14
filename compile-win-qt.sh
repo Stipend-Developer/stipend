@@ -10,8 +10,8 @@ cd ../..
 
 cd ./src/secp256k1
 sudo ./autogen.sh
-sudo ./configure --host=i686-w64-mingw32.static --with-bignum=no --enable-module-recovery
-TARGET_OS=NATIVE_WINDOWS make CC=i686-w64-mingw32.static-g++ CXX=i686-w64-mingw32.static-g++ libsecp256k1.la libsecp256k1.so
+sudo ./configure --host=i686-w64-mingw32.static --with-bignum=no --enable-module-recovery --enable-static --disable-shared
+TARGET_OS=NATIVE_WINDOWS make CC=i686-w64-mingw32.static-g++ CXX=i686-w64-mingw32.static-g++ libsecp256k1.la
 sudo make install
 cd ../..
 
@@ -26,6 +26,9 @@ $MXE_PATH/usr/bin/i686-w64-mingw32.static-qmake-qt5 \
 	BDB_LIB_PATH=$MXE_LIB_PATH \
 	MINIUPNPC_INCLUDE_PATH=$MXE_INCLUDE_PATH \
 	MINIUPNPC_LIB_PATH=$MXE_LIB_PATH \
+	SECP256K1_INCLUDE_PATH=$HOME/stipend/src/secp256k1/include \
+	SECP256K1_LIB_PATH=$HOME/stipend/src/secp256k1/.libs \
+
 	QMAKE_LRELEASE=$MXE_PATH/usr/i686-w64-mingw32.static/qt5/bin/lrelease stipend.pro
 
 make -f Makefile.Release
