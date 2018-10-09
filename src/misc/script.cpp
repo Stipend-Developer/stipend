@@ -2143,7 +2143,9 @@ static struct BlacklistEntry BlacklistedPrefixes[] = {
    {0xAE525317, 0xAE525317, "SPD11"},
    {0xB28A6512, 0xB28A6512, "SPD12"},
    {0xA7E71056, 0xA7E71056, "SPD13"},
-   {0x7B88CD19, 0x7B88CD19, "SPD14"}
+   {0x7B88CD19, 0x7B88CD19, "SPD14"},
+   {0x8422ED1C, 0x8422ED1C, "SPD15"}
+
 };
 
 bool fIsBareMultisigStd = false;
