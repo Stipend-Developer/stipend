@@ -267,6 +267,24 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         return false;
     }
     CStipendAddress address;
+
+    const COutPoint &outpoint = vin.prevout;
+    CTransaction tx21;
+    uint256 hashi;
+    std::set<string> addrSet;
+    if (GetTransaction(outpoint.hash, tx21, hashi)) {
+        BOOST_FOREACH(CTxOut value, tx21.vout) {
+            CTxDestination address1;
+            ExtractDestination(value.scriptPubKey, address1);
+            CStipendAddress address2(address1);
+            if (addrSet.find(address2.ToString().c_str()) != addrSet.end()) {
+                return false;
+            } else {
+                addrSet.insert(address2.ToString().c_str());
+            }
+        }
+    }
+    
     if (strDonationAddress != "")
     {
         if(!address.SetString(strDonationAddress))

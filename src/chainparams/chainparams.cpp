@@ -57,6 +57,22 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
 {
     std::vector<std::string> ips;
+    ips.push_back("185.233.106.249");
+    ips.push_back("185.233.107.150");
+    ips.push_back("94.16.123.6");
+    ips.push_back("185.233.107.159");
+    ips.push_back("185.233.107.160");
+    ips.push_back("185.233.107.162");
+    ips.push_back("185.243.8.150");
+    ips.push_back("185.243.8.152");
+    ips.push_back("185.243.8.151");
+    ips.push_back("185.243.8.159");
+    ips.push_back("185.243.8.154");
+    ips.push_back("94.16.116.16");
+    ips.push_back("94.16.116.18");
+    ips.push_back("94.16.116.19");
+    ips.push_back("94.16.116.20");
+    ips.push_back("94.16.116.33");
     ips.push_back("45.77.103.39");
     ips.push_back("149.28.61.137");
     ips.push_back("207.148.29.157");
@@ -76,7 +92,7 @@ static void getHardcodedSeeds(std::vector<CAddress> &vSeedsOut)
     ips.push_back("149.28.230.142");
     ips.push_back("8.9.8.80");
     ips.push_back("149.28.236.185");
-    ips.push_back("207.148.28.187");
+    ips.push_back("spd.overemo.com");
 
     const int64_t oneWeek = 7 * 24 * 60 * 60;
     for (size_t i = 0; i < ips.size(); ++i)
@@ -137,27 +153,60 @@ public:
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x99)(0x73)(0x43)(0xE3).convert_to_container<std::vector<unsigned char> >();
 
         vSeeds.push_back(CDNSSeedData("1",  "45.77.103.39"));
-        vSeeds.push_back(CDNSSeedData("2",  "149.28.61.137"));
-        vSeeds.push_back(CDNSSeedData("3",  "207.148.29.157"));
-        vSeeds.push_back(CDNSSeedData("4",  "45.32.1.154"));
-        vSeeds.push_back(CDNSSeedData("5",  "149.28.55.16"));
-        vSeeds.push_back(CDNSSeedData("6",  "149.28.48.108"));
-        vSeeds.push_back(CDNSSeedData("7",  "45.77.156.56"));
-        vSeeds.push_back(CDNSSeedData("8",  "149.28.225.249"));
-        vSeeds.push_back(CDNSSeedData("9",  "149.28.59.79"));
-        vSeeds.push_back(CDNSSeedData("10",  "45.77.159.63"));
-        vSeeds.push_back(CDNSSeedData("11",  "45.77.152.136"));
-        vSeeds.push_back(CDNSSeedData("12",  "64.154.38.191"));
-        vSeeds.push_back(CDNSSeedData("13",  "149.28.52.83"));
-        vSeeds.push_back(CDNSSeedData("14",  "8.9.36.42"));
-        vSeeds.push_back(CDNSSeedData("15",  "45.77.207.90"));
-        vSeeds.push_back(CDNSSeedData("16",  "140.82.11.159"));
-        vSeeds.push_back(CDNSSeedData("17",  "149.28.230.142"));
-        vSeeds.push_back(CDNSSeedData("18",  "8.9.8.80"));
-        vSeeds.push_back(CDNSSeedData("19",  "149.28.236.185"));
-        vSeeds.push_back(CDNSSeedData("20",  "207.148.28.187"));
+        vSeeds.push_back(CDNSSeedData("2",  "52.45.189.6"));
+        vSeeds.push_back(CDNSSeedData("3",  "34.232.249.188"));
+      	vSeeds.push_back(CDNSSeedData("4",  "34.231.228.73"));
+        vSeeds.push_back(CDNSSeedData("5",  "34.239.99.171"));
+      	vSeeds.push_back(CDNSSeedData("6",  "18.218.0.160"));
+        vSeeds.push_back(CDNSSeedData("7",  "13.59.189.252"));
+      	vSeeds.push_back(CDNSSeedData("8",  "52.15.218.190"));
+        vSeeds.push_back(CDNSSeedData("9",  "185.233.105.89"));
+      	vSeeds.push_back(CDNSSeedData("10", "185.233.105.117"));
+        vSeeds.push_back(CDNSSeedData("11", "185.233.105.98"));
+        vSeeds.push_back(CDNSSeedData("12", "185.233.105.109"));
+        vSeeds.push_back(CDNSSeedData("13", "185.233.104.196"));
+        vSeeds.push_back(CDNSSeedData("14", "94.16.122.251"));
+        vSeeds.push_back(CDNSSeedData("15", "185.233.104.219"));
+        vSeeds.push_back(CDNSSeedData("16", "185.233.106.12"));
+        vSeeds.push_back(CDNSSeedData("17", "185.233.106.160"));
+        vSeeds.push_back(CDNSSeedData("18", "185.233.106.249"));
+        vSeeds.push_back(CDNSSeedData("19", "185.233.107.150"));
+        vSeeds.push_back(CDNSSeedData("20", "94.16.123.6"));
+        vSeeds.push_back(CDNSSeedData("21", "185.233.107.159"));
+        vSeeds.push_back(CDNSSeedData("22", "185.233.107.160"));
+        vSeeds.push_back(CDNSSeedData("23", "185.233.107.162"));
+        vSeeds.push_back(CDNSSeedData("24", "185.243.8.150"));
+        vSeeds.push_back(CDNSSeedData("25", "185.243.8.152"));
+        vSeeds.push_back(CDNSSeedData("26", "185.243.8.151"));
+        vSeeds.push_back(CDNSSeedData("27", "185.243.8.159"));
+        vSeeds.push_back(CDNSSeedData("28", "185.243.8.154"));
+        vSeeds.push_back(CDNSSeedData("29", "94.16.116.16"));
+        vSeeds.push_back(CDNSSeedData("30", "94.16.116.18"));
+        vSeeds.push_back(CDNSSeedData("31", "94.16.116.19"));
+        vSeeds.push_back(CDNSSeedData("32", "94.16.116.20"));
+        vSeeds.push_back(CDNSSeedData("33", "94.16.116.33"));
+        vSeeds.push_back(CDNSSeedData("34", "45.77.103.39"));
+        vSeeds.push_back(CDNSSeedData("35", "149.28.61.137"));
+        vSeeds.push_back(CDNSSeedData("36", "207.148.29.157"));
+        vSeeds.push_back(CDNSSeedData("37", "45.32.1.154"));
+        vSeeds.push_back(CDNSSeedData("38", "149.28.55.16"));
+        vSeeds.push_back(CDNSSeedData("39", "149.28.48.108"));
+        vSeeds.push_back(CDNSSeedData("40", "45.77.156.56"));
+        vSeeds.push_back(CDNSSeedData("41", "149.28.225.249"));
+        vSeeds.push_back(CDNSSeedData("42", "149.28.59.79"));
+        vSeeds.push_back(CDNSSeedData("43", "45.77.159.63"));
+        vSeeds.push_back(CDNSSeedData("44", "45.77.152.136"));
+        vSeeds.push_back(CDNSSeedData("45", "64.154.38.191"));
+        vSeeds.push_back(CDNSSeedData("46", "149.28.52.83"));
+        vSeeds.push_back(CDNSSeedData("47", "8.9.36.42"));
+        vSeeds.push_back(CDNSSeedData("48", "45.77.207.90"));
+        vSeeds.push_back(CDNSSeedData("49", "140.82.11.159"));
+        vSeeds.push_back(CDNSSeedData("50", "149.28.230.142"));
+        vSeeds.push_back(CDNSSeedData("51", "8.9.8.80"));
+        vSeeds.push_back(CDNSSeedData("52", "149.28.236.185"));
+        vSeeds.push_back(CDNSSeedData("53", "spd.overemo.com"));
 
-	convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
+	      convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
 
         getHardcodedSeeds(vFixedSeeds);
 
