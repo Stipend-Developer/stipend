@@ -1515,6 +1515,7 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
 }
 
 const int targetReadjustmentForkHeight = 192000;
+const int targetReadjustmentForkHeight2 = 320000;
 
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
@@ -1540,11 +1541,17 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
         if (nActualSpacing < 0) {
             nActualSpacing = 1;
         }
-
-        if (nActualSpacing < TARGET_SPACING / 2)
-            nActualSpacing = TARGET_SPACING / 2;
-        if (nActualSpacing > TARGET_SPACING * 2)
-            nActualSpacing = TARGET_SPACING * 2;
+        if(pindexBest->nHeight < targetReadjustmentForkHeight2) {
+            if (nActualSpacing < TARGET_SPACING / 2)
+                nActualSpacing = TARGET_SPACING / 2;
+            if (nActualSpacing > TARGET_SPACING * 2)
+                nActualSpacing = TARGET_SPACING * 2;
+        } else {
+            if (nActualSpacing < TARGET_SPACING_FORK / 2)
+                nActualSpacing = TARGET_SPACING_FORK / 2;
+            if (nActualSpacing > TARGET_SPACING_FORK * 2)
+                nActualSpacing = TARGET_SPACING_FORK * 2;
+        }
     }
 
     // ppcoin: target change every block
