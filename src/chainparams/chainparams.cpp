@@ -129,7 +129,7 @@ public:
 	// original 1516154401
         CTransaction txNew(1, 1517616496, vin, vout, 0);
 
-        LogPrintf("genesis mainnet transaction:  %s\n", txNew.ToString().c_str());
+        //LogPrintf("genesis mainnet transaction:  %s\n", txNew.ToString().c_str());
 
         genesis.vtx.push_back(txNew);
 
@@ -255,8 +255,8 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
 
-        LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
-	      LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //LogPrintf("Display genesis hash so we can input it below %s\n", hashGenesisBlock.ToString().c_str());
+	      //LogPrintf("Display merkle root so we can input it below %s\n", genesis.hashMerkleRoot.ToString().c_str());
 
         assert(hashGenesisBlock == uint256("0xe133d1d3f584f1c3f561e7d0606fa87dabb869325a979c2a82e2f3943c0e3370"));
         assert(genesis.hashMerkleRoot == uint256("0xc556e8828b26bdd1d9b09a7a51e19c554c015098f129d204020df9db58cb563c"));
