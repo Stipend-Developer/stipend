@@ -243,7 +243,7 @@ void CMasternode::Check()
                 }
             }
         }
-        LogPrintf("Check(): Resetting nLastCheck until next call\n")
+        LogPrintf("Check(): Resetting nLastCheck until next call\n");
         nLastCheck = 0;
     } else {
         nLastCheck += 1;
