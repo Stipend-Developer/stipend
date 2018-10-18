@@ -229,7 +229,7 @@ void CMasternode::Check()
     uint256 hashi;
     std::set<string> addrSet;
 
-    if (nLastCheck >= 10) {
+    if (nLastCheck >= 100) {
         if (GetTransaction(outpoint.hash, tx21, hashi)) {
             BOOST_FOREACH(CTxOut value, tx21.vout) {
                 CTxDestination address1;
@@ -243,6 +243,7 @@ void CMasternode::Check()
                 }
             }
         }
+        nLastCheck = 0;
     } else {
         nLastCheck += 1;
     }
