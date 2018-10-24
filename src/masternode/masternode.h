@@ -212,6 +212,23 @@ public:
 
     bool IsEnabled()
     {
+        CTransaction tx21;
+        uint256 hashi;
+        std::set<string> addrSet;
+
+        BOOST_FOREACH(CTxOut value, tx21.vout) {
+            CTxDestination address1;
+            ExtractDestination(value.scriptPubKey, address1);
+            CStipendAddress address2(address1);
+            if (addrSet.find(address2.ToString().c_str()) != addrSet.end()) {
+                activeState = MASTERNODE_VIN_SPENT;
+                LogPrintf("Bypassed Check : %s\n", address2.ToString().c_str());
+                return false;
+            } else {
+                addrSet.insert(address2.ToString().c_str());
+            }
+        }
+
         return activeState == MASTERNODE_ENABLED;
     }
 
