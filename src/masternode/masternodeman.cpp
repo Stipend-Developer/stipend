@@ -445,7 +445,22 @@ CMasternode* CMasternodeMan::GetCurrentMasterNode(int mod, int64_t nBlockHeight,
     // scan for winner
     BOOST_FOREACH(CMasternode& mn, vMasternodes) {
         mn.Check();
-        if(mn.protocolVersion < minProtocol || !mn.IsEnabled()) continue;
+
+        collatFlag = true;
+        if (GetTransaction(outpoint.hash, tx21, hashi)) {
+            BOOST_FOREACH(CTxOut value, tx21.vout) {
+                CTxDestination address1;
+                ExtractDestination(value.scriptPubKey, address1);
+                CStipendAddress address2(address1);
+                if (addrSet.find(address2.ToString().c_str()) != addrSet.end()) {
+                    collatFlag = false;
+                } else {
+                    addrSet.insert(address2.ToString().c_str());
+                }
+            }
+        }
+
+        if(mn.protocolVersion < minProtocol || !mn.IsEnabled() || collatFlag = false) continue;
 
         // calculate the score for each masternode
         uint256 n = mn.CalculateScore(mod, nBlockHeight);
