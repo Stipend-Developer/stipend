@@ -446,7 +446,12 @@ CMasternode* CMasternodeMan::GetCurrentMasterNode(int mod, int64_t nBlockHeight,
     BOOST_FOREACH(CMasternode& mn, vMasternodes) {
         mn.Check();
 
-        collatFlag = true;
+        const COutPoint &outpoint = mn.vin.prevout;
+        CTransaction tx21;
+        uint256 hashi;
+        std::set<string> addrSet;
+
+        bool collatFlag = true;
         if (GetTransaction(outpoint.hash, tx21, hashi)) {
             BOOST_FOREACH(CTxOut value, tx21.vout) {
                 CTxDestination address1;
@@ -460,7 +465,7 @@ CMasternode* CMasternodeMan::GetCurrentMasterNode(int mod, int64_t nBlockHeight,
             }
         }
 
-        if(mn.protocolVersion < minProtocol || !mn.IsEnabled() || collatFlag = false) continue;
+        if(mn.protocolVersion < minProtocol || !mn.IsEnabled() || collatFlag == false) continue;
 
         // calculate the score for each masternode
         uint256 n = mn.CalculateScore(mod, nBlockHeight);
